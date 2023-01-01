@@ -6,6 +6,11 @@ var AIScore = 0;
 var playerReverseSweep = false;
 var computerReverseSweep = false;
 
+
+window.onload = function() {
+    updateScores(); //Load scores
+}
+
 //Utility functions
 
 function hide(id) {
@@ -153,8 +158,8 @@ function winAI() {
     }
 }
 
-function disableRPS() {
-    document.getElementById("r").disabled = true;
+function disableRPStElement() {
+    document.geById("r").disabled = true;
     document.getElementById("p").disabled = true;
     document.getElementById("s").disabled = true;
 }
@@ -264,8 +269,4 @@ if (localStorage.getItem("playerScore") == null) {
 function updateScores() {
     setText("leftScore", localStorage.getItem("playerScore"));
     setText("rightScore", localStorage.getItem("computerScore"));
-}
-
-window.onload = function() {
-    updateScores();
 }
