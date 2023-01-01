@@ -1,0 +1,41 @@
+#triesText{
+    margin-top: -30px;
+}
+
+.downArrow{
+    position: absolute;
+    top: -40px;
+    left: 0px;
+    margin-left: 3%;
+    width: 25%; 
+    text-align: center;
+    animation: lower;
+    animation-play-state: paused;
+    animation-duration: 2s;
+    scale: 5;   
+}
+
+.upArrow{
+    position: absolute;
+    bottom: -50px;
+    scale: 5;
+    text-align: center;
+    left: 0px;
+    margin-left: 3%;
+    width: 25%;
+    animation: higher;
+    animation-play-state: paused;
+    animation-duration: 2s;
+}
+
+#rightDownArrow{
+    margin-left: auto;
+    right: 0px;
+    margin-right: 3%;
+}
+
+#rightUpArrow{
+    margin-left: auto;
+    right: 0px;
+    margin-right: 3%;
+}

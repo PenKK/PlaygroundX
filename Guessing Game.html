@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/837a8073e0.js" crossorigin="anonymous"></script>
+    <title>Guessing Game</title>
+    
+    <link rel="stylesheet" type="text/css" href="style.css"/>
+    <link rel="stylesheet" type="text/css" href="guessingGame.css"/>
+    <script src="guessingGame.js"></script>
+    <script src="homeListener.js"></script>
+    
+
+</head>
+<body>
+
+    <!-- Error notification animation -->
+
+    <div class="notificationClass" id="noti">Sample error message</div>
+
+    <!-- Arrow animations -->
+
+    <div class="downArrow" id="leftDownArrow">
+        <i class="fa-solid fa-arrow-down"></i>
+    </div> 
+    
+    <div id="rightDownArrow" class="downArrow">
+        <i class="fa-solid fa-arrow-down"></i>
+    </div>
+
+    <div class="upArrow" id="leftUpArrow">
+        <i class="fa-solid fa-arrow-up"></i> 
+    </div> 
+    
+    <div class="upArrow" id="rightUpArrow">
+        <i class="fa-solid fa-arrow-up"></i>
+    </div>
+
+        <!-- Page header -->
+
+    <h1>Guessing game!</h1>
+
+        <!-- Home button -->
+
+    <button class="homeButton">
+        <a href="Project.html">Home</a>
+    </button>
+
+      <!-- Guessing game -->
+
+      <div class="gameBox">
+        <h2>Enter the range <br> of the guessing game</h2>
+        <input id="range" class="gameInput" type="number" value="100" onkeypress="eventKey(event, play)">
+        <br>
+        <button id="play" class="gameButton" onclick="play()">PLAY</button>
+        <br>
+        <h2>Enter your guess!</h2>
+        <input id="guess" class="gameInput" type="number" disabled value="0" onkeypress="eventKey(event, enterGuess)">
+        <br>
+        <button id="enter" class="gameButton" onclick="setTimeout(enterGuess(), 3000)" disabled>ENTER</button>
+        <br>
+        <button class="gameButton" onclick="reset()" style="position: relative; bottom: -28px;">RESTART</button>
+      </div>
+
+      <!-- Win -->
+
+      <div id="winBox" hidden>
+        <h2>Congratulations you win!</h2>
+        <h2 id="triesText"></h2>
+      </div>
+      
+</body>
+</html>

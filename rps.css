@@ -1,0 +1,122 @@
+#headerText {
+    margin-bottom: 17px
+}
+
+#leftScore {
+    left: 1%;
+}
+
+#rightScore {
+    right: 1%;
+}
+
+#leftSmallGameBox {
+    position: absolute;
+    left: 11%;
+}
+
+#rightSmallGameBox {
+    position: absolute;
+    right: 11%;
+}
+
+.scores {
+    position: absolute;
+    top: 3px;
+    font-size: 100px;
+}
+
+.smallBoxBelowText {
+    position: relative;
+    bottom: -120px;
+}
+
+#questionBox {
+    width: 50px;
+    height: 50px;
+    border: 3px black solid;
+    border-radius: 5px;
+    position: relative;
+    top: -80%;
+    left: 88%;
+    transition: all ease-in 100ms;
+    background-color: gray;
+}
+
+#questionBox:hover {
+     background-color: brown;
+     
+}
+
+#infoBox {
+    width: 700%;
+    height: 115px;
+    top: -85%;
+    left: 195%;
+    border:darkred solid;
+    background-color: blanchedalmond;
+    border-radius: 10px;
+    position: absolute;
+    opacity: 0;
+    transition: opacity ease-in 150ms;
+}
+
+#questionBox:hover #infoBox {
+    opacity: 1;
+}
+
+.displayMoves {
+    left: 35px;
+    bottom: 35px;
+    position: absolute;
+    color: brown;
+    text-shadow: black 10px 10px;
+}
+
+#playerRock {
+    visibility: hidden;
+    transform: scaleX(-1);
+}
+
+#result {
+    animation: floatDown;
+}
+
+#playerPaper {
+    visibility: hidden;
+    transform: scaleX(-1);
+}
+
+#playerScissors {
+    visibility: hidden;
+    transform: scaleX(-1);
+}
+
+#computerRock {
+    visibility: hidden;
+}
+
+#computerPaper {
+    visibility: hidden;
+    
+}
+
+#computerScissors {
+    visibility: hidden;
+}
+
+#playerScore {
+    text-align: left;
+    position: relative;
+    right: 5%;
+    top: 15%;
+    transition: opacity 1s;
+}
+
+#computerScore {
+    text-align: right;
+    position: relative;
+    left: 5%;
+    top: 15%;
+    transition: opacity 1s;
+}

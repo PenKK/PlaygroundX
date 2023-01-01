@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/837a8073e0.js" crossorigin="anonymous"></script>
+    <title>Rock Paper Scissors</title>
+    
+    <link rel="stylesheet" type="text/css" href="style.css" />
+    <link rel="stylesheet" type="text/css" href="rps.css"/>
+    <script src="rps.js"></script>
+    <script src="homeListener.js"></script>
+    
+
+</head>
+<body id="rpsBody">
+
+    <!-- Page header -->
+
+    <h1>
+        Rock Paper Scissors
+    </h1>
+
+    <!-- Overall score -->
+
+    <h2 class="scores" id="leftScore"></h2> 
+    <h2 class="scores" id="rightScore"></h2>
+
+    <!-- Home button -->
+    <button class="homeButton">
+        <a href="Project.html">Home</a>
+    </button>
+
+    <!-- Game -->
+
+    <div class="gameBox">
+
+        <button id="r" class="gameButton" onclick="play(0)" style="height: 140px; width: 150px; position: relative; left: -50px;">
+            <i class="fa-solid fa-hand-back-fist fa-4x"></i>
+        </button>
+
+        <button id="p" class="gameButton" onclick="play(1)" style="height: 140px; width: 150px;">
+            <i class="fa-solid fa-hand fa-4x"></i>
+        </button>
+
+        <button id="s" class="gameButton" onclick="play(2)" style="height: 140px; width: 150px; position: relative; right: -50px;">
+            <i class="fa-solid fa-hand-scissors fa-4x"></i>
+        </button>
+
+        <h2 id="result" style="color: brown; text-shadow: black 2px 2px;"> Select your move</h2>
+
+        <span id="playerScore">
+            <i class="fa-solid fa-x fa-6x" id="ps1" style="opacity: 0.3;"></i>
+            <i class="fa-solid fa-x fa-8x" id="ps2" style="opacity: 0.3;"></i>
+            <i class="fa-solid fa-x fa-10x" id="ps3" style="opacity: 0.3;"></i>
+        </span>
+
+        <span id="computerScore">
+            <i class="fa-solid fa-x fa-10x" id="cs3" style="opacity: 0.3;"></i>
+            <i class="fa-solid fa-x fa-8x" id="cs2" style="opacity: 0.3;"></i>
+            <i class="fa-solid fa-x fa-7x" id="cs1" style="opacity: 0.3;"></i>
+        </span>
+
+    </div>
+
+    <!-- Result Box -->
+
+    <div class="smallGameBox" id="leftSmallGameBox">
+        <h2 style="position: relative; top: -50px;">Player</h2>
+        <i class="fa-solid fa-hand-back-fist fa-8x displayMoves" id="playerRock"></i>
+        <i class="fa-solid fa-hand fa-8x displayMoves" id="playerPaper"></i>
+        <i class="fa-solid fa-hand-scissors fa-8x displayMoves" id="playerScissors"></i>
+        <h2 id="boxResultTextPlayer" class="smallBoxBelowText">Sample</h2>
+    </div>
+    <div class="smallGameBox" id="rightSmallGameBox">
+        <h2 style="position: relative; top: -50px;">Computer</h2>
+        <i class="fa-solid fa-hand-back-fist fa-8x displayMoves" id="computerRock"></i>
+        <i class="fa-solid fa-hand fa-8x displayMoves" id="computerPaper"></i>
+        <i class="fa-solid fa-hand-scissors fa-8x displayMoves" id="computerScissors"></i>
+        <h2 id="boxResultTextComputer" class="smallBoxBelowText">Sample</h2>
+    </div>
+
+    <!-- Win Box -->
+
+    <div id="winBox" hidden>
+        <h2 id="endText" style="font-size: 35px;">endText</h2>
+        <button class="gameButton" onclick="reset()" style="position: relative; bottom: 34px;">RESTART</button>
+
+        <div id="questionBox" hidden>
+            <h2 id="mark">?</h2>
+
+            <div id="infoBox">
+                <h3 style="position: relative; bottom: 25px;">
+                    A reverse sweep is when someone keeps on 
+                    losing in a series with no score until the 
+                    final game and then wins every remaining game
+                </h3>
+            </div>
+        </div>
+
+        
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,235 @@
+.testClassThatIWillNeverUseProbablyLongNameForFun {
+    background-image: linear-gradient(45deg, rgb(253, 230, 201), rgb(255, 194, 119), rgb(253, 230, 201));
+    background-image: linear-gradient(45deg, rgb(238, 119, 82), rgb(231, 60, 126), rgb(35, 166, 213), rgb(35, 213, 171));
+    background-color: rgb(255, 209, 140);
+}
+
+.gradientAnimation {
+    background-size: 400% 400%;
+    animation: gradient 15s ease infinite;
+    height: 100vh;
+}
+
+h1 {
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    text-align: center;
+    border: 5px dotted;
+    width: fit-content;
+    margin-top: 20px;
+    margin-left: auto; 
+    margin-right: auto;
+    padding: 10px;
+    text-shadow: brown 3px 3px 3px;
+    color: darkred;
+    border-color: firebrick;
+    font-size: 75px;
+}
+
+h2 {
+    font-size: 40px;
+    text-align: center;
+    font-family: 'Consolas', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    margin-top: 0px;  
+}
+
+h3 {
+    font-family: 'Courier New', Courier, monospace;
+    padding: 10px;
+}
+
+.selectButton {
+    height: 60px;
+    width: fit-content;
+    font-size: 35px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    background-color: brown;
+    border-radius: 5px;
+    margin: 15px;
+    cursor: pointer;
+}
+
+.homeButton {
+    position: absolute;
+    top: 200px;
+    left: 1%;
+    height: 60px;
+    width: fit-content;
+    font-size: 35px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    background-color: brown;
+    margin-left: 1%;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+text {
+    color: darkorange;
+}
+
+body {
+    background-color: bisque;
+    overflow: hidden;
+    background-attachment: fixed;
+}
+
+a:link {
+    text-decoration: none;
+    color: azure;
+}
+
+a:active {
+    color: aqua;
+}
+
+a:visited {
+    color:azure;
+}
+
+a:hover {
+    color: bisque;
+    text-shadow: black 3px 3px 3px;
+}
+
+.gameContainer {
+    margin-top: -20px;
+    width: 85%;
+    height: 650px;
+    border: darkred solid;
+    border-radius: 5px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+
+.gameBox {
+    margin-top: 100px;
+    height: 500px;
+    width: 38%;
+    border: darkred solid;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    border-radius: 10px;
+    background-color: blanchedalmond;
+}
+
+.smallGameBox {
+    margin-top: 4%;
+    height: 200px;
+    width: 200px;
+    border: darkred solid;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    border-radius: 10px;
+    background-color: blanchedalmond;
+    animation: floatDown forwards;
+    animation-duration: 1s;
+    animation-play-state: paused;
+    visibility: hidden;
+}
+
+#winBox {
+    border:darkred solid;
+    width: 38%;
+    height: 115px;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 10px;
+    border-radius: 10px;
+    background-color: blanchedalmond;
+}
+
+
+
+.gameInput {
+    width: fit-content;
+    height: 40px;
+    font-size: 30px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    background-color: brown;
+    color: white;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    margin-top: -10px;
+}
+
+.gameButton {
+    width: fit-content;
+    height: 40px;
+    background-color: brown;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size: 30px;
+    color: white;
+    border-radius: 5px;
+    margin: 9px;
+    cursor: pointer;
+    transition: color 0.25s;
+}
+
+.gameButton:hover {
+    text-shadow: black 3px 3px 3px;
+    color:bisque;
+}
+
+.gameButton:disabled {
+    color:darkgray;
+}
+
+.gameInput:disabled {
+    background-color: rgb(128, 27, 27);
+}
+
+.gameButton:active  {
+    color: rgb(163, 163, 163);
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    appearance: none;
+    margin: 0;
+}
+
+.notificationClass {
+    position: absolute;
+    width: 350px;
+    height: auto;
+    border: 2px black solid;
+    border-radius: 5px;
+    background-color: gray;
+    font-family: "Consolas";
+    font-size: 28px;
+    text-align: center;
+    animation: notification forwards;
+    animation-play-state: paused;
+    animation-duration: 2500ms;
+}
+
+@keyframes lower {
+    from { margin-top: 0px; }
+    to { margin-top: 1100px; }
+}
+
+@keyframes higher {
+    from { margin-bottom: 0px; }
+    to { margin-bottom: 1100px; }
+}
+
+@keyframes notification {
+    from { margin-left: 100%; }
+    to { margin-left: 80%; }
+    0%,100% { opacity: 0; }
+    50% { opacity: 1; }
+}
+
+@keyframes floatDown  {
+    from { top: 25%; }
+    to { top: 30%; }
+}
+
+@keyframes gradient  {
+	0% { background-position: 0% 50%; }
+	50% { background-position: 100% 50%; }
+	100% { background-position: 0% 50%; }
+}
