@@ -158,8 +158,8 @@ function winAI() {
     }
 }
 
-function disableRPStElement() {
-    document.geById("r").disabled = true;
+function disableRPS() {
+    document.getElementById("r").disabled = true;
     document.getElementById("p").disabled = true;
     document.getElementById("s").disabled = true;
 }
