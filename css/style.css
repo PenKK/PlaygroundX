@@ -10,6 +10,10 @@
     height: 100vh;
 }
 
+.centerText {
+    text-align: center;
+}
+
 h1 {
     font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     text-align: center;
@@ -39,7 +43,7 @@ h3 {
 
 .selectButton {
     height: 60px;
-    width: fit-content;
+    width: 325px;
     font-size: 35px;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     background-color: brown;
@@ -111,22 +115,6 @@ a:hover {
     text-align: center;
     border-radius: 10px;
     background-color: blanchedalmond;
-}
-
-.smallGameBox {
-    margin-top: 4%;
-    height: 200px;
-    width: 200px;
-    border: darkred solid;
-    margin-left: auto;
-    margin-right: auto;
-    text-align: center;
-    border-radius: 10px;
-    background-color: blanchedalmond;
-    animation: floatDown forwards;
-    animation-duration: 1s;
-    animation-play-state: paused;
-    visibility: hidden;
 }
 
 #winBox {

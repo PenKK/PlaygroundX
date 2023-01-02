@@ -1,0 +1,8 @@
+.achievementBox {
+    width: 150px;
+    height: 150px;
+    border: 5px black solid;
+    border-radius: 4pc;
+    margin: 40px;
+    display: inline-block;
+}
