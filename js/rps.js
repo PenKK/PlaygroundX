@@ -3,7 +3,7 @@
 var selectLock = false;
 var playerScore = 0;
 var AIScore = 0;
-var playerReverseSweep = false;
+var playerReverseSweep = true;
 var computerReverseSweep = false;
 
 
@@ -173,6 +173,7 @@ function endPlayer() {
         sweepAnimation();
         ElementId("endText").innerHTML = "YOU GOT A REVERSE SWEEEP!!!";
         ElementId("questionBox").removeAttribute("hidden");
+        localStorage.setItem("sweeperSweeped", "true");
     }
 
     localStorage.setItem("playerScore", parseInt(localStorage.getItem("playerScore"))+1);
@@ -258,15 +259,18 @@ function play(move) {
     }
 }
 
-//Score Local Storage
+//Scores + achievement local storage
 
 if (localStorage.getItem("playerScore") == null) {
-    console.log("Local storage initialized");
     localStorage.setItem("playerScore", 0);
     localStorage.setItem("computerScore", 0);
+    console.log("Score local storage initialized")
+    localStorage.setItem("sweeperSweeped", false);
+    console.log("Achievement local storage initialized");
 }
 
 function updateScores() {
     setText("leftScore", localStorage.getItem("playerScore"));
     setText("rightScore", localStorage.getItem("computerScore"));
 }
+

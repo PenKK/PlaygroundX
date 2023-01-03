@@ -142,7 +142,7 @@ function winGame() {
     checkAchievements();
 }
 
-//Achievements
+//Local storage achievements
 
 function checkAchievements() {
     if(localStorage.getItem("masterGuesser") == "false") {

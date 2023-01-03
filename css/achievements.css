@@ -4,6 +4,7 @@
     position: relative; 
     top: -110px; 
     font-size: 25px;
+    display: flex;
 }
 
 .achievementBox {
@@ -13,25 +14,28 @@
     border-radius: 4pc;
     margin: 40px;
     background-color: rgb(190, 55, 55);
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 25px;
 }
 
 .infoBox {
     position: absolute;
     border:darkred solid;
     background-color: blanchedalmond;
-    right: 2000px;
+    right: 140%;
     border-radius: 10px;
-    transition: all ease-in 250ms;
+    transition: all ease-in-out 500ms;
     width: 500px;
 }
 
 #masterGuesser:hover #masterGuesserInfo {
-    right: 410px
+    right: 31%;
     
 }
 
-#reverseSweeper:hover #reverseSweeperInfo {
-    right: 410px;
+#sweeperSweeped:hover #sweeperSweepedInfo {
+    right: 31%;
 }
 
 .inlineDiv {
