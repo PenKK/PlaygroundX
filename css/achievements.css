@@ -1,8 +1,39 @@
+#mainBox {
+    width: 70%; 
+    height: 70%; 
+    position: relative; 
+    top: -110px; 
+    font-size: 25px;
+}
+
 .achievementBox {
     width: 150px;
     height: 150px;
     border: 5px black solid;
     border-radius: 4pc;
     margin: 40px;
+    background-color: rgb(190, 55, 55);
+}
+
+.infoBox {
+    position: absolute;
+    border:darkred solid;
+    background-color: blanchedalmond;
+    right: 2000px;
+    border-radius: 10px;
+    transition: all ease-in 250ms;
+    width: 500px;
+}
+
+#masterGuesser:hover #masterGuesserInfo {
+    right: 410px
+    
+}
+
+#reverseSweeper:hover #reverseSweeperInfo {
+    right: 410px;
+}
+
+.inlineDiv {
     display: inline-block;
 }
