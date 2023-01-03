@@ -273,4 +273,3 @@ function updateScores() {
     setText("leftScore", localStorage.getItem("playerScore"));
     setText("rightScore", localStorage.getItem("computerScore"));
 }
-
