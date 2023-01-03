@@ -146,7 +146,7 @@ function winGame() {
 
 function checkAchievements() {
     if(localStorage.getItem("masterGuesser") == "false") {
-        if (rangeElement().value>999999 && 26 > triesCounter) {
+        if (rangeElement().value>999999 && 20 >= triesCounter) {
             localStorage.setItem("masterGuesser", true);
             notification("Achievement completed: Master Guesser!");
         }
