@@ -1,3 +1,17 @@
+.rpsButton {
+    height: 25%; 
+    width: 23%;
+    position: relative;
+}
+
+#r {
+    left: -50px;
+}
+
+#s {
+    right: -50px;
+}
+
 #headerText {
     margin-bottom: 17px
 }
