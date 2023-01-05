@@ -17,23 +17,28 @@
     margin-left: auto;
     margin-right: auto;
     line-height: 25px;
+    display: flex;
+    justify-content: center;
 }
 
 .infoBox {
     position: absolute;
     border:darkred solid;
     background-color: blanchedalmond;
-    right: 140%;
     border-radius: 10px;
-    transition: all ease-in-out 500ms;
+    transition: all ease-in-out 350ms;
     width: 500px;
+    opacity: 0;
+    top: 170px;
+    visibility: hidden;
 }
 
 #masterGuesser:hover #masterGuesserInfo {
-    right: 31%;
-    
+    visibility: visible;
+    opacity: 1;
 }
 
 #sweeperSweeped:hover #sweeperSweepedInfo {
-    right: 31%;
+    visibility: visible;
+    opacity: 1;
 }
