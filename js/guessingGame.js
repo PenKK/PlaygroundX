@@ -1,9 +1,4 @@
 //Utility
-
-function reset() {
-    location.reload();
-}
-
 function eventKey(e, func) {
     // console.log("key code: "+e.keyCode)
     if(e.keyCode == 13) {

@@ -14,31 +14,15 @@ window.onload = function() {
 //Utility functions
 
 function hide(id) {
-    document.getElementById(id).style.visibility = "hidden";
+    ElementId(id).style.visibility = "hidden";
 }
 
 function show(id) {
-    document.getElementById(id).style.visibility = "visible";
+    ElementId(id).style.visibility = "visible";
 }
 
 function setText(id, text) {
-    document.getElementById(id).innerHTML = text;
-}
-
-function ElementId(id) {
-    return document.getElementById(id);
-}
-
-function resetAnimation(cls, id) {
-    var element = document.getElementById(cls);
-    element.classList.remove(id);
-    void element.offsetWidth;
-    element.classList.add(id);
-    // console.log("Class " + cls + " has been reset with id "+ id);
-}
-
-function reset() {
-    location.reload();
+    ElementId(id).innerHTML = text;
 }
 
 //Game functions
