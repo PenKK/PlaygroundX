@@ -27,9 +27,10 @@
     background-color: blanchedalmond;
     border-radius: 10px;
     transition: all ease-in-out 350ms;
-    width: 500px;
+    width: 425px;
+    height: 150px;
     opacity: 0;
-    top: 170px;
+    top: 35%;
     visibility: hidden;
 }
 

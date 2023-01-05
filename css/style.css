@@ -10,8 +10,11 @@
     height: 100vh;
 }
 
-.centerText {
-    text-align: center;
+.vertical-center {
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
 }
 
 h1 {
