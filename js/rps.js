@@ -3,8 +3,8 @@
 var selectLock = false;
 var playerScore = 0;
 var AIScore = 0;
-var playerReverseSweep = true;
-var computerReverseSweep = true;
+var playerReverseSweep = false;
+var computerReverseSweep = false;
 
 
 window.onload = function() {
