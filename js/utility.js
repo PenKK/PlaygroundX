@@ -15,9 +15,9 @@ function notification(message) {
     ElementId("notiText").innerHTML = message;
     ElementId("noti").style.webkitAnimationPlayState = "running";
 
-    // setTimeout(function() {
-    //     ElementId("noti").style.opacity = 0;
-    // }, 2700);
+    setTimeout(function() {
+        ElementId("noti").style.opacity = 0;
+    }, 2700);
 
     resetAnimation("noti", "notificationEnterClass");
 }

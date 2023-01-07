@@ -22,7 +22,7 @@ function play() {
         if(!playLocked) {
 
             playLocked = true;
-            notification("Enter a value<br> of at least 3");
+            notification("Enter a value of <br>at least 3");
             ElementId("play").style.color = "rgb(252, 50, 50)";
             
             setTimeout(function(){
