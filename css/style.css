@@ -190,9 +190,18 @@ input::-webkit-inner-spin-button {
     font-family: "Consolas";
     font-size: 28px;
     text-align: center;
-    animation: notification forwards;
+    transition: opacity 1s;
+}
+
+.notificationEnterClass {
+    animation: notificationEnter forwards;
     animation-play-state: paused;
     animation-duration: 2500ms;
+}
+
+#notiExclamation {
+    left: 20px;
+    color: brown;
 }
 
 @keyframes lower {
@@ -205,11 +214,9 @@ input::-webkit-inner-spin-button {
     to { margin-bottom: 1100px; }
 }
 
-@keyframes notification {
+@keyframes notificationEnter {
     from { margin-left: 100%; }
     to { margin-left: 80%; }
-    0%,100% { opacity: 0; }
-    50% { opacity: 1; }
 }
 
 @keyframes floatDown  {

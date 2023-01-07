@@ -10,6 +10,18 @@ function reset() {
     location.reload();
 }
 
+function notification(message) {
+    ElementId("noti").style.opacity = 1;
+    ElementId("notiText").innerHTML = message;
+    ElementId("noti").style.webkitAnimationPlayState = "running";
+
+    // setTimeout(function() {
+    //     ElementId("noti").style.opacity = 0;
+    // }, 2700);
+
+    resetAnimation("noti", "notificationEnterClass");
+}
+
 function resetAnimation(cls, id) {
     var element = document.getElementById(cls);
     element.classList.remove(id);

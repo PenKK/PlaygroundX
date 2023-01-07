@@ -1,40 +1,10 @@
-//Utility
+//Enter key listener
+
 function eventKey(e, func) {
     // console.log("key code: "+e.keyCode)
     if(e.keyCode == 13) {
         func();
     }
-}
-
-function rangeElement() {
-    return document.getElementById('range');
-}
-
-function guessElement() { 
-    return document.getElementById('guess');
-}
-
-//Notification
-
-function notification(message){
-    var erElement = document.getElementById('noti');
-    erElement.innerHTML = message;
-    erElement.style.webkitAnimationPlayState = "running";
-    resetAnimation("noti", "notificationClass");
-}
-
-//Animation
-
-function resetAnimation(cls, id) {
-    var element = document.getElementById(cls);
-    element.classList.remove(id);
-    void element.offsetWidth;
-    element.classList.add(id);
-    // console.log("Class " + cls + " has been reset with animation "+ animation);
-}
-
-function runAnimation(id) {
-    document.getElementById(id).style.webkitAnimationPlayState = "running";
 }
 
 //Game
@@ -46,17 +16,17 @@ var triesCounter = 0;
 var enterLocked = false;
 var playLocked = false;
 
-function play(){
+function play() {
 
-    if(3>rangeElement().value){
+    if(3>ElementId("range").value){
         if(!playLocked) {
 
             playLocked = true;
-            notification("Enter a value of <br> at least 3!");
-            document.getElementById('play').style.color = "rgb(252, 50, 50)";
+            notification("Enter a value<br> of at least 3");
+            ElementId("play").style.color = "rgb(252, 50, 50)";
             
             setTimeout(function(){
-                document.getElementById('play').style.color = "bisque";
+                ElementId("play").style.color = "bisque";
             }, 500)
 
             setTimeout(function(){
@@ -66,21 +36,21 @@ function play(){
     }
 
     else {
-        rangeElement().disabled = true;
-        document.getElementById('play').disabled = true;
-        guessElement().disabled = false;
+        ElementId("range").disabled = true;
+        ElementId("play").disabled = true;
+        ElementId("guess").disabled = false;
         document.getElementById('enter').disabled = false;
-        ans = Math.round(Math.random()*rangeElement().value);
+        ans = Math.round(Math.random()*ElementId("range").value);
         // console.log(ans);
     }
 }
 
-function enterGuess(){
+function enterGuess() {
 
     if(!enterLocked) {
 
         enterLocked = true;
-        guess = guessElement().value;
+        guess = ElementId("guess").value;
 
         if(guess==ans){
             triesCounter++;
@@ -131,7 +101,7 @@ function enterGuess(){
 function winGame() {
     document.getElementById('triesText').innerHTML = "It took you " + triesCounter +" tries";
     document.getElementById('winBox').removeAttribute("hidden");
-    guessElement().disabled = true;
+    ElementId("guess").disabled = true;
     document.getElementById('enter').disabled = true;
 
     checkAchievements();
@@ -141,7 +111,7 @@ function winGame() {
 
 function checkAchievements() {
     if(localStorage.getItem("masterGuesser") == "false") {
-        if (rangeElement().value>999999 && 20 >= triesCounter) {
+        if (ElementId("range").value>999999 && 20 >= triesCounter) {
             localStorage.setItem("masterGuesser", true);
             notification("Achievement completed: Master Guesser!");
         }
