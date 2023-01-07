@@ -17,7 +17,7 @@ function notification(message) {
 
     setTimeout(function() {
         ElementId("noti").style.opacity = 0;
-    }, 2700);
+    }, 4000);
 
     resetAnimation("noti", "notificationEnterClass");
 }
