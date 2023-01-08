@@ -10,16 +10,24 @@ function reset() {
     location.reload();
 }
 
+var notiLock = false;
+
 function notification(message) {
-    ElementId("noti").style.opacity = 1;
-    ElementId("notiText").innerHTML = message;
-    ElementId("noti").style.webkitAnimationPlayState = "running";
+    if (!notiLock) {
+        notiLock = true;
 
-    setTimeout(function() {
-        ElementId("noti").style.opacity = 0;
-    }, 4000);
-
-    resetAnimation("noti", "notificationEnterClass");
+        ElementId("noti").style.opacity = 1;
+        ElementId("notiText").innerHTML = message;
+        ElementId("noti").style.webkitAnimationPlayState = "running";
+    
+        setTimeout(function() {
+            ElementId("noti").style.opacity = 0;
+            notiLock = false;
+        }, 5000);
+    
+        resetAnimation("noti", "notificationEnterClass");
+    }
+    
 }
 
 function resetAnimation(cls, id) {
