@@ -45,14 +45,15 @@ h3 {
 }
 
 .selectButton {
-    height: 60px;
-    width: 325px;
-    font-size: 35px;
+    height: 150px;
+    width: 200px;
+    font-size: 37px;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     background-color: brown;
     border-radius: 5px;
     margin: 15px;
     cursor: pointer;
+    transition: all 100ms ease-in-out;
 }
 
 .homeButton {
@@ -60,7 +61,7 @@ h3 {
     top: 200px;
     left: 1%;
     height: 60px;
-    width: fit-content;
+    width: 150px;
     font-size: 35px;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     background-color: brown;
@@ -97,15 +98,22 @@ a:hover {
     text-shadow: black 3px 3px 3px;
 }
 
+.selectButton:hover {
+    background-color: rgb(139, 39, 39);
+}
+
 .gameContainer {
     margin-top: -20px;
-    width: 85%;
-    height: 650px;
+    width: 65%;
+    height: 600px;
     border: darkred solid;
     border-radius: 5px;
     margin-left: auto;
     margin-right: auto;
     text-align: center;
+    position: relative;
+    top: -10px;
+    box-shadow: 10px 10px 5px rgb(77, 19, 19);
 }
 
 .gameBox {
@@ -118,6 +126,7 @@ a:hover {
     text-align: center;
     border-radius: 10px;
     background-color: blanchedalmond;
+    box-shadow: 10px 10px 5px rgb(77, 19, 19);
 }
 
 #winBox {
