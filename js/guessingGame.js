@@ -99,7 +99,7 @@ function enterGuess() {
 }
 
 function winGame() {
-    document.getElementById('triesText').innerHTML = "It took you " + triesCounter +" tries";
+    setText("triesText", "It took you " + triesCounter +" tries");
     document.getElementById('winBox').removeAttribute("hidden");
     ElementId("guess").disabled = true;
     document.getElementById('enter').disabled = true;

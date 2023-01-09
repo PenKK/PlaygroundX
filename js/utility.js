@@ -4,6 +4,14 @@ function ElementId(id) {
     return document.getElementById(id);
 }
 
+function hide(id) {
+    ElementId(id).style.visibility = "hidden";
+}
+
+function show(id) {
+    ElementId(id).style.visibility = "visible";
+}
+
 //H for home
 
 document.addEventListener("keydown", pageKeyDown, false);
