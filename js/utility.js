@@ -1,3 +1,11 @@
+//Utility
+
+function ElementId(id) {
+    return document.getElementById(id);
+}
+
+//H for home
+
 document.addEventListener("keydown", pageKeyDown, false);
 
 function pageKeyDown(e) {
@@ -6,9 +14,7 @@ function pageKeyDown(e) {
     }
 }
 
-function reset() {
-    location.reload();
-}
+//Notification
 
 var notiLock = false;
 
@@ -30,6 +36,8 @@ function notification(message) {
     
 }
 
+//Animation
+
 function resetAnimation(cls, id) {
     var element = document.getElementById(cls);
     element.classList.remove(id);
@@ -40,8 +48,4 @@ function resetAnimation(cls, id) {
 
 function runAnimation(id) {
     document.getElementById(id).style.animationPlayState = "running";
-}
-
-function ElementId(id) {
-    return document.getElementById(id);
 }
