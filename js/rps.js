@@ -164,9 +164,11 @@ function endPlayer() {
     }
 
     localStorage.setItem("playerScore", parseInt(localStorage.getItem("playerScore"))+1);
+
     if(localStorage.getItem("playerScore") == "NaN") {
         localStorage.setItem("playerScore", 1);
     }
+
     updateScores();
 }
 
@@ -188,9 +190,11 @@ function endComputer() {
     }
     
     localStorage.setItem("computerScore", parseInt(localStorage.getItem("computerScore"))+1);
+
     if(localStorage.getItem("computerScore") == "NaN") {
         localStorage.setItem("computerScore", 1);
     }
+
     updateScores();
 }
 
@@ -262,8 +266,8 @@ if (localStorage.getItem("playerScore") == null) {
     console.log("Achievement local storage initialized");
 }
 
+
 function updateScores() {
     setText("leftScore", localStorage.getItem("playerScore"));
     setText("rightScore", localStorage.getItem("computerScore"));
 }
-

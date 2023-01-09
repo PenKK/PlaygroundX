@@ -110,7 +110,7 @@ function winGame() {
 //Local storage achievements
 
 function checkAchievements() {
-    if(localStorage.getItem("masterGuesser") == "false") {
+    if (localStorage.getItem("masterGuesser") == "false") {
         if (ElementId("range").value>999999 && triesCounter < 21) {
             localStorage.setItem("masterGuesser", true);
             notification("Achievement completed: Master Guesser!");
