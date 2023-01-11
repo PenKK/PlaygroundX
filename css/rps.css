@@ -63,8 +63,8 @@
 }
 
 #questionBox {
-    width: 50px;
-    height: 50px;
+    width: 35px;
+    height: 35px;
     border: 3px black solid;
     border-radius: 5px;
     position: relative;
@@ -80,10 +80,10 @@
 }
 
 #infoBox {
-    width: 700%;
+    width: 1000%;
     height: 115px;
-    top: -85%;
-    left: 195%;
+    top: -120%;
+    left: 230%;
     border:darkred solid;
     background-color: blanchedalmond;
     border-radius: 10px;

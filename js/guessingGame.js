@@ -39,7 +39,7 @@ function play() {
         ElementId("range").disabled = true;
         ElementId("play").disabled = true;
         ElementId("guess").disabled = false;
-        document.getElementById('enter').disabled = false;
+        ElementId("enter").disabled = false;
         ans = Math.round(Math.random()*ElementId("range").value);
         // console.log(ans);
     }
@@ -99,7 +99,7 @@ function enterGuess() {
 }
 
 function winGame() {
-    setText("triesText", "It took you " + triesCounter +" tries");
+    ElementId("triesText").innerHTML = "It took you " + triesCounter +" tries";
     document.getElementById('winBox').removeAttribute("hidden");
     ElementId("guess").disabled = true;
     document.getElementById('enter').disabled = true;

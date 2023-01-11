@@ -223,12 +223,12 @@ input::-webkit-inner-spin-button {
 
 @keyframes lower {
     from { margin-top: 0px; }
-    to { margin-top: 1100px; }
+    to { margin-top: 1150px; }
 }
 
 @keyframes higher {
     from { margin-bottom: 0px; }
-    to { margin-bottom: 1100px; }
+    to { margin-bottom: 1150px; }
 }
 
 @keyframes notificationEnter {
