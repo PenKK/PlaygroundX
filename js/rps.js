@@ -128,9 +128,9 @@ function winAI() {
 }
 
 function disableRPS() {
-    document.getElementById("r").disabled = true;
-    document.getElementById("p").disabled = true;
-    document.getElementById("s").disabled = true;
+    ElementId("r").disabled = true;
+    ElementId("p").disabled = true;
+    ElementId("s").disabled = true;
 }
 
 function endPlayer() {
