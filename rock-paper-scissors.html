@@ -10,8 +10,7 @@
     <link rel="stylesheet" type="text/css" href="css/style.css" />
     <link rel="stylesheet" type="text/css" href="css/RPS.css"/>
     <script src="js/rps.js"></script>
-    <script src="js/homeListener.js"></script>
-    
+    <script src="js/utility.js"></script>    
 
 </head>
 <body id="rpsBody">
@@ -22,44 +21,48 @@
         Rock Paper Scissors
     </h1>
 
+    <!-- Notification -->
+
+    <div class="notificationClass notificationEnterClass" id="noti">
+        <i id="notiExclamation" class="fa-solid fa-exclamation vertical-center fa-2xl" style="position: absolute;"></i>
+        <div id="notiText" class="vertical-center">
+            Sample
+        </div>
+    </div>
+    
     <!-- Overall score -->
 
     <h2 class="scores" id="leftScore"></h2>
     <h2 class="scores" id="rightScore"></h2>
 
-    <!-- Home button -->
-    <button class="homeButton">
-        <a href="index.html">Home</a>
-    </button>
-
     <!-- Game -->
 
     <div class="gameBox">
 
-        <button id="r" class="gameButton" onclick="play(0)" style="height: 140px; width: 150px; position: relative; left: -50px;">
-            <i class="fa-solid fa-hand-back-fist fa-4x"></i>
+        <button id="r" class="gameButton rpsButton" onclick="play(0)">
+            <i class="fa-solid fa-hand-back-fist fa-3x"></i>
         </button>
 
-        <button id="p" class="gameButton" onclick="play(1)" style="height: 140px; width: 150px;">
-            <i class="fa-solid fa-hand fa-4x"></i>
+        <button id="p" class="gameButton rpsButton" onclick="play(1)">
+            <i class="fa-solid fa-hand fa-3x"></i>
         </button>
 
-        <button id="s" class="gameButton" onclick="play(2)" style="height: 140px; width: 150px; position: relative; right: -50px;">
-            <i class="fa-solid fa-hand-scissors fa-4x"></i>
+        <button id="s" class="gameButton rpsButton" onclick="play(2)">
+            <i class="fa-solid fa-hand-scissors fa-3x"></i>
         </button>
 
-        <h2 id="result" style="color: brown; text-shadow: black 2px 2px;"> Select your move</h2>
+        <h2 id="result" style="color: brown; text-shadow: black 2px 2px; position: relative; top: 60px;"> Select your move</h2>
 
         <span id="playerScore">
-            <i class="fa-solid fa-x fa-6x" id="ps1" style="opacity: 0.3;"></i>
-            <i class="fa-solid fa-x fa-8x" id="ps2" style="opacity: 0.3;"></i>
-            <i class="fa-solid fa-x fa-10x" id="ps3" style="opacity: 0.3;"></i>
+            <i class="fa-solid fa-x fa-5x" id="ps1" style="opacity: 0.3;"></i>
+            <i class="fa-solid fa-x fa-7x" id="ps2" style="opacity: 0.3;"></i>
+            <i class="fa-solid fa-x fa-9x" id="ps3" style="opacity: 0.3;"></i>
         </span>
 
         <span id="computerScore">
-            <i class="fa-solid fa-x fa-10x" id="cs3" style="opacity: 0.3;"></i>
-            <i class="fa-solid fa-x fa-8x" id="cs2" style="opacity: 0.3;"></i>
-            <i class="fa-solid fa-x fa-7x" id="cs1" style="opacity: 0.3;"></i>
+            <i class="fa-solid fa-x fa-9x" id="cs3" style="opacity: 0.3;"></i>
+            <i class="fa-solid fa-x fa-7x" id="cs2" style="opacity: 0.3;"></i>
+            <i class="fa-solid fa-x fa-5x" id="cs1" style="opacity: 0.3;"></i>
         </span>
 
     </div>
@@ -85,10 +88,10 @@
 
     <div id="winBox" hidden>
         <h2 id="endText" style="font-size: 35px;">endText</h2>
-        <button class="gameButton" onclick="reset()" style="position: relative; bottom: 34px;">RESTART</button>
+        <button class="gameButton" onclick="location.reload()" style="position: relative; bottom: 34px;">RESTART</button>
 
-        <div id="questionBox" hidden>
-            <h2 id="mark">?</h2>
+        <div id="questionBox">
+            <h2 id="mark" style="bottom: 5px; position: relative;">?</h2>
 
             <div id="infoBox">
                 <h3 style="position: relative; bottom: 25px;">

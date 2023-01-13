@@ -6,39 +6,8 @@ var AIScore = 0;
 var playerReverseSweep = false;
 var computerReverseSweep = false;
 
-
 window.onload = function() {
     updateScores(); //Load scores
-}
-
-//Utility functions
-
-function hide(id) {
-    document.getElementById(id).style.visibility = "hidden";
-}
-
-function show(id) {
-    document.getElementById(id).style.visibility = "visible";
-}
-
-function setText(id, text) {
-    document.getElementById(id).innerHTML = text;
-}
-
-function ElementId(id) {
-    return document.getElementById(id);
-}
-
-function resetAnimation(cls, id) {
-    var element = document.getElementById(cls);
-    element.classList.remove(id);
-    void element.offsetWidth;
-    element.classList.add(id);
-    // console.log("Class " + cls + " has been reset with id "+ id);
-}
-
-function reset() {
-    location.reload();
 }
 
 //Game functions
@@ -59,30 +28,30 @@ function displayResult(playerMove, AIMove) {
     switch(playerMove) {
         case 0:
             show("playerRock");
-            setText("boxResultTextPlayer", "Rock");
+            ElementId("boxResultTextPlayer").innerHTML =  "Rock";
             break;
         case 1:
             show("playerPaper");
-            setText("boxResultTextPlayer", "Paper");
+            ElementId("boxResultTextPlayer").innerHTML =  "Paper";
             break;
         case 2:
             show("playerScissors");
-            setText("boxResultTextPlayer", "Scissors");
+            ElementId("boxResultTextPlayer").innerHTML =  "Scissors";
             break;
     }
 
     switch(AIMove) {
         case 0:
             show("computerRock");
-            setText("boxResultTextComputer", "Rock");
+            ElementId("boxResultTextComputer").innerHTML =  "Rock";
             break;
         case 1:
             show("computerPaper");
-            setText("boxResultTextComputer", "Paper");
+            ElementId("boxResultTextComputer").innerHTML =  "Paper";
             break;
         case 2:
             show("computerScissors");
-            setText("boxResultTextComputer", "Scissors");
+            ElementId("boxResultTextComputer").innerHTML =  "Scissors";
             break;
     }
 
@@ -94,7 +63,7 @@ function displayResult(playerMove, AIMove) {
 }
 
 function tie() {
-    setText("result", "It's a tie!");
+    ElementId("result").innerHTML =  "It's a tie!";
 
     ElementId("rightSmallGameBox").style.backgroundColor = "blanchedalmond";
     ElementId("leftSmallGameBox").style.backgroundColor = "blanchedalmond";
@@ -107,9 +76,9 @@ function winPlayer() {
     ElementId("leftSmallGameBox").style.backgroundColor = "rgb(255, 209, 140)";
     
     if(playerScore == 3) {
-        setText("result", "Player wins the game!");
+        ElementId("result").innerHTML = "Player wins the game!";
     } else {
-        setText("result", "Player wins the round!");
+        ElementId("result").innerHTML = "Player wins the round!";
     }
 
     switch(playerScore) {
@@ -136,9 +105,9 @@ function winAI() {
     ElementId("rightSmallGameBox").style.backgroundColor = "rgb(255, 209, 140)";
     
     if(AIScore == 3) {
-        setText("result", "Computer wins the game!");
+        ElementId("result").innerHTML = "Computer wins the game!";
     } else {
-        setText("result", "Computer wins the round!");
+        ElementId("result").innerHTML = "Computer wins the round!";
     }
     
     switch(AIScore) {
@@ -173,13 +142,19 @@ function endPlayer() {
         sweepAnimation();
         ElementId("endText").innerHTML = "YOU GOT A REVERSE SWEEEP!!!";
         ElementId("questionBox").removeAttribute("hidden");
-        localStorage.setItem("sweeperSweeped", "true");
+
+        if (localStorage.getItem("sweeperSweeped") != "true") {
+            localStorage.setItem("sweeperSweeped", "true");
+            notification("Achievement unlocked: Sweeper or Sweeped?")
+        }
     }
 
     localStorage.setItem("playerScore", parseInt(localStorage.getItem("playerScore"))+1);
+
     if(localStorage.getItem("playerScore") == "NaN") {
         localStorage.setItem("playerScore", 1);
     }
+
     updateScores();
 }
 
@@ -192,12 +167,20 @@ function endComputer() {
         sweepAnimation();
         ElementId("endText").innerHTML = "THE COMPUTER GOT A REVERSE SWEEP!";
         ElementId("questionBox").removeAttribute("hidden");
+
+        if (localStorage.getItem("sweeperSweeped") != "true") {
+            localStorage.setItem("sweeperSweeped", "true");
+            notification("Achievement unlocked: Sweeper or Sweeped?")
+        }
+
     }
     
     localStorage.setItem("computerScore", parseInt(localStorage.getItem("computerScore"))+1);
+
     if(localStorage.getItem("computerScore") == "NaN") {
         localStorage.setItem("computerScore", 1);
     }
+
     updateScores();
 }
 
@@ -269,7 +252,8 @@ if (localStorage.getItem("playerScore") == null) {
     console.log("Achievement local storage initialized");
 }
 
+
 function updateScores() {
-    setText("leftScore", localStorage.getItem("playerScore"));
-    setText("rightScore", localStorage.getItem("computerScore"));
+    ElementId("leftScore").innerHTML =  localStorage.getItem("playerScore");
+    ElementId("rightScore").innerHTML =  localStorage.getItem("computerScore");
 }
