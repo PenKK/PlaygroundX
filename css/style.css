@@ -139,6 +139,7 @@ a:hover {
     margin-top: 20px;
     border-radius: 10px;
     background-color: blanchedalmond;
+    box-shadow: 10px 10px 5px rgb(77, 19, 19);
 }
 
 .gameInput {
