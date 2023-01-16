@@ -17,8 +17,12 @@ function show(id) {
 document.addEventListener("keydown", pageKeyDown, false);
 
 function pageKeyDown(e) {
-    if(e.keyCode==72) {
+    if(e.keyCode == 72) {
         window.location.href = "index.html";
+    }
+
+    if(e.keyCode == 82) {
+        location.reload();
     }
 }
 
