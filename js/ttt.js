@@ -1,20 +1,21 @@
-if (localStorage.getItem("startingMove") == "computer") {
-    localStorage.setItem("startingMove", "player");
-} else if (localStorage.getItem("startingMove") == "player") {
-    localStorage.setItem("startingMove", "computer");
-} else {
-    localStorage.setItem("startingMove", "player");
-    console.log("Turns initialized");
-}
-
-var turn = localStorage.getItem("startingMove");
-var moveLock = false;
-
-var board = [[0,0,0],
-             [0,0,0],
-             [0,0,0]]
-
 function startTTT() {
+
+    if (localStorage.getItem("startingMove") == "computer") {
+        localStorage.setItem("startingMove", "player");
+    } else if (localStorage.getItem("startingMove") == "player") {
+        localStorage.setItem("startingMove", "computer");
+    } else {
+        localStorage.setItem("startingMove", "player");
+        console.log("Turns initialized");
+    }
+    
+    var turn = localStorage.getItem("startingMove");
+    var moveLock = false;
+    
+    var board = [[0,0,0],
+                 [0,0,0],
+                 [0,0,0]]
+    
     ElementId("tttCover").style.opacity = 0;
     ElementId("tttCover").style.visibility = "hidden";
 }
@@ -31,7 +32,7 @@ function LOCK() {
 }
 
 function checkWin() {
-    
+
 }
 
 function one() {
