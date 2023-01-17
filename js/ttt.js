@@ -1,49 +1,39 @@
-if (localStorage.getItem("startingMove") == "computer") {
-    localStorage.setItem("startingMove", "player");
-} else if (localStorage.getItem("startingMove") == "player") {
-    localStorage.setItem("startingMove", "computer");
-} else {
-    localStorage.setItem("startingMove", "player");
-    console.log("Turns initialized");
-}
 
-var turn = localStorage.getItem("startingMove");
+var turn = 1;
+
 var moveLock = false;
 
 var board = [[0,0,0],
              [0,0,0],
              [0,0,0]];
 
-function rand13() {
+function randTile() {
     return Math.floor(Math.random()*3);
 }
 
 function updateBoard() {
     for (let x = 0; x < 3; x++) {
         for (let y = 0; y < 3; y++) {
-            switch (board[i][y]) {
+            var id = x + "" + y;
+            switch (board[x][y]) {
                 case 0:
-                    return;
+                    break;
                 case 1:
-                    ElementId(x + y)
-
+                    ElementId(id + "x").style.opacity = 1;
+                    ElementId(id + "x").parentElement.style.pointerEvents = "none";
+                    break;
+                case 2:
+                    ElementId(id + "o").style.opacity = 1;
+                    ElementId(id + "o").parentElement.style.pointerEvents = "none";
+                    break;
             }
         }
     }
 }
 
-function changeTile(x, y, XO, num) { //x, y, x/o, 1/2
-    board[x][y] = num
-    updateBoard()
-}
-
 function startGame() {    
     ElementId("tttCover").style.opacity = 0;
     ElementId("tttCover").style.visibility = "hidden";
-
-    if (turn == "computer") {
-        changeTile(rand13(), rand13(), "x", 1);
-    }
 }
 
 function LOCK() {
@@ -51,22 +41,40 @@ function LOCK() {
         moveLock = true;
         setTimeout(() => {
             moveLock = false;
-        }, 1000);
+        }, 250);
     } else {
         return true;
     }
 }
 
 function checkWin() {
-
+    for (let x = 0; i < 3; i++) {
+        for (let y = 0; y < 3; y++) {
+            board[x][y]    
+        }
+    } 
 }
 
 function one() {
 
-    if (LOCK()) { return; }
+    if (LOCK()) { return; } 
 
     board[0][0] = 1;
-    ElementId("x1").style.opacity = 1;
+    updateBoard();
+    checkWin();
+}
+
+function clickTile(x,y) {
+
+    if (LOCK()) { return; }
+    if (turn == 1) {
+        board[x][y] = turn;
+        turn = 2;
+    } else {
+        board[x][y] = turn;
+        turn = 1;
+    }
     
+    updateBoard();
     checkWin();
 }
