@@ -1,4 +1,5 @@
 .toeBox {
+    background-color: rgb(180, 123, 123);
     height: 200px;
     width: 200px;
     border: 2px black solid;
@@ -10,4 +11,23 @@
     margin: 16px;
     margin-left: 8px;
     margin-right: 8px;
+    cursor: pointer;
+}
+
+
+
+.toeBox:active {
+    background-color: rgb(90, 61, 61);
+}
+
+.fa-solid.fa-x {
+    position: absolute;
+    opacity: 0;
+    transition: opacity 250ms;
+}
+
+.fa-solid.fa-o {
+    position: absolute;
+    opacity: 0;
+    transition: opacity 250ms;
 }

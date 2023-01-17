@@ -152,20 +152,21 @@ a:hover {
     position: absolute;
     background-color: black;
     opacity: 0.8;
-    height: 700px;
-    width: 700px;
+    height: 710px;
+    width: 710px;
+    border-radius: 10px;
     display: flex;
     justify-content: center;
     align-items: center;
+    transition: all 250ms;
 }
 
 .coverButton:hover {
     background-color: rgb(139, 39, 39);
 }
 
-
 .coverButton {
-    width: 200px;
+    width: 230px;
     height: 110px;
     background-color: brown;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
@@ -175,6 +176,10 @@ a:hover {
     cursor: pointer;
     transition: color 100ms;
     user-select: none;
+}
+
+.coverButton:active {
+    color: rgb(163, 163, 163);
 }
 
 #winBox {
