@@ -12,7 +12,7 @@ var moveLock = false;
 
 var board = [[0,0,0],
              [0,0,0],
-             [0,0,0]]
+             [0,0,0]];
 
 function rand13() {
     return Math.floor(Math.random()*3);
@@ -26,6 +26,7 @@ function updateBoard() {
                     return;
                 case 1:
                     ElementId(x + y)
+
             }
         }
     }
