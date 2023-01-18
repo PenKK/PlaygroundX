@@ -38,6 +38,7 @@
 #restart {
     width: 150px;
     position: absolute;
+    bottom: 25px;
     left: 0; 
     right: 0; 
     margin-left: auto; 
