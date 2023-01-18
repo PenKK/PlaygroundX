@@ -19,7 +19,7 @@ function displayResult(playerMove, AIMove) {
 
     hide("playerRock");
     hide("playerPaper");
-    hide("playerScissors")
+    hide("playerScissors");
 
     hide("computerRock");
     hide("computerPaper");

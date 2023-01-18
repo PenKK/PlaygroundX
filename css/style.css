@@ -1,7 +1,7 @@
 .testClassThatIWillNeverUseProbablyLongNameForFun {
     background-image: linear-gradient(45deg, rgb(253, 230, 201), rgb(255, 194, 119), rgb(253, 230, 201));
     background-image: linear-gradient(45deg, rgb(238, 119, 82), rgb(231, 60, 126), rgb(35, 166, 213), rgb(35, 213, 171));
-    background-color: rgb(224, 224, 224);
+    background-color: rgb(231, 101, 101);
 }
 
 *{
@@ -58,20 +58,6 @@ h3 {
     margin: 15px;
     cursor: pointer;
     transition: all 100ms ease-in-out;
-}
-
-.homeButton {
-    position: absolute;
-    top: 200px;
-    left: 1%;
-    height: 60px;
-    width: 150px;
-    font-size: 35px;
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    background-color: brown;
-    margin-left: 1%;
-    border-radius: 5px;
-    cursor: pointer;
 }
 
 text {
@@ -134,7 +120,7 @@ a:hover {
 }
 
 .squreGameBox {
-    margin-top: 100px;
+    margin-top: -20px;
     height: 700px;
     width: 700px;
     border: darkred solid;

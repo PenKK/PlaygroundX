@@ -13,9 +13,11 @@
 </head>
 <body>
 
-   
+    <h1>
+        Tic Tac Toe
+    </h1>
     
-    <div class="squreGameBox">
+    <div class="squreGameBox" id="game">
         <span>
             <div class="toeBox" onclick="clickTile(0,0)" id="one">
                 <i class="fa-solid fa-x fa-10x" id="00x"></i>
@@ -53,7 +55,7 @@
             </div>
             <div class="toeBox" onclick="clickTile(1,2)" id="eight">
                 <i class="fa-solid fa-x fa-10x" id="12x"></i>
-                <i class="fa-solid fa-o fa-10x" id="12x"></i>
+                <i class="fa-solid fa-o fa-10x" id="12o"></i>
             </div>
             <div class="toeBox" onclick="clickTile(2,2)" id="nine">
                 <i class="fa-solid fa-x fa-10x" id="22x"></i>
@@ -65,6 +67,11 @@
             <button class="coverButton" onclick="startGame()">PLAY</button>
         </div>
         
+    </div>
+    
+    <div id="endBox">
+        <h2 id="endText">It's a tie!</h2>
+        <button id="restart" onclick="location.reload()">RESTART</button>
     </div>
 </body>
 </html>
