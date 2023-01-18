@@ -1,15 +1,11 @@
 var rgb = "rgb(231, 101, 101)"; 
-var turn = 1;
+var turn = parseInt(localStorage.getItem("firstTurn"));
 var moveLock = false;
 var tilesUsed = 0;
 
 var board = [[0,0,0],
              [0,0,0],
              [0,0,0]];
-
-function randTile() {
-    return Math.floor(Math.random()*3);
-}
 
 function updateBoard() {
     for (let x = 0; x < 3; x++) {
@@ -84,7 +80,6 @@ function checkWin() {
 }
 
 function checkGame(turn) {
-
     switch (turn) {
         case -1:
             console.log("tie");
@@ -93,12 +88,21 @@ function checkGame(turn) {
             return;
         case 1:
             ElementId("endText").innerHTML = ("X <br> Wins!");
+            localStorage.setItem("scoreX", parseInt(localStorage.getItem("scoreX"))+1);
             break;
         case 2:
             ElementId("endText").innerHTML = "O <br> Wins!";
+            localStorage.setItem("scoreO", parseInt(localStorage.getItem("scoreO"))+1);
             break;
     }
-
+    //Swap turns
+    if (localStorage.getItem("firstTurn") == "1") {
+        localStorage.setItem("firstTurn", "2");
+    } else {
+        localStorage.setItem("firstTurn", "1");
+    }
+    
+    updateScores();
     ElementId("game").style.pointerEvents = "none";
 
     setTimeout(() => {
@@ -121,4 +125,20 @@ function clickTile(x, y) {
         turn = 1;
     }
     updateBoard();
+}
+
+if (localStorage.getItem("scoreX") == null) {
+    localStorage.setItem("scoreX", "0");
+    localStorage.setItem("scoreO", "0");
+    localStorage.setItem("firstTurn", "1");
+    console.log("Scores initialized");
+}
+
+function updateScores() {
+    ElementId("leftScore").innerHTML =  localStorage.getItem("scoreX");
+    ElementId("rightScore").innerHTML =  localStorage.getItem("scoreO");
+}
+
+window.onload = function() {
+    updateScores();
 }

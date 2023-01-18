@@ -17,14 +17,6 @@
     margin-bottom: 17px
 }
 
-#leftScore {
-    left: 1%;
-}
-
-#rightScore {
-    right: 1%;
-}
-
 #leftSmallGameBox {
     position: absolute;
     left: 11%;
@@ -39,6 +31,14 @@
     position: absolute;
     top: 3px;
     font-size: 100px;
+}
+
+#leftScore {
+    left: 1%;
+}
+
+#rightScore {
+    right: 1%;
 }
 
 .smallBoxBelowText {

@@ -23,6 +23,10 @@
     background-color: rgb(90, 61, 61);
 }
 
+#player2 {
+    right: 0px;
+}
+
 .fa-solid.fa-x {
     position: absolute;
     opacity: 0;
@@ -80,3 +84,16 @@
     font-size: 100px;
 }
 
+.scores {
+    position: absolute;
+    top: 20px;
+    font-size: 100px;
+}
+
+#leftScore {
+    left: 1%;
+}
+
+#rightScore {
+    right: 1%;
+}
