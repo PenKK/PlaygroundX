@@ -71,6 +71,9 @@
     border-radius: 10px;
     visibility: hidden;
     animation: floatDown 800ms paused forwards;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 #endText {

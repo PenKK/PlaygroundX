@@ -162,6 +162,7 @@ a:hover {
     cursor: pointer;
     transition: color 100ms;
     user-select: none;
+    border: 5px darkred solid;
 }
 
 .coverButton:active {

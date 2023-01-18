@@ -241,7 +241,6 @@ function play(move) {
         }
     }
 }
-
 //Scores + achievement local storage
 
 if (localStorage.getItem("playerScore") == null) {
@@ -251,7 +250,6 @@ if (localStorage.getItem("playerScore") == null) {
     localStorage.setItem("sweeperSweeped", false);
     console.log("Achievement local storage initialized");
 }
-
 
 function updateScores() {
     ElementId("leftScore").innerHTML =  localStorage.getItem("playerScore");
