@@ -82,6 +82,17 @@ function tilesTie() {
     }
 }
 
+function LOCK() {
+    if (!moveLock) {
+        moveLock = true;
+        setTimeout(() => {
+            moveLock = false;
+        }, 1000);
+    } else {
+        return true;
+    }
+}
+
 function checkGame(turn) {
     switch (turn) {
         case -1:
@@ -116,6 +127,8 @@ function checkGame(turn) {
 
 function clickTile(x, y) {
 
+    if (LOCK()) { return; }
+
     if (board[x][y] != 0 ) {
         console.log("Invalid move");
         return false;
@@ -137,10 +150,10 @@ function clickTile(x, y) {
 }
 
 function aiTrigger() {
+
     while (clickTile(Math.floor(Math.random()*3), Math.floor(Math.random()*3)) == false) {
         clickTile(Math.floor(Math.random()*3), Math.floor(Math.random()*3));
     }
-    
     
     console.log("THE BOT MOVED HEHEHAHEAHAEHAEHAEHAEHEAAHHE");
 }
