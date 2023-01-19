@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tic Tac Toe</title>
-    <script src="js/ttt.js"></script>
+    <script src="js/tttAI.js"></script>
     <script src="js/utility.js"></script>
     <script src="https://kit.fontawesome.com/837a8073e0.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" type="text/css" href="css/style.css"/>
@@ -17,50 +17,50 @@
     <h2 class="scores" id="rightScore">0</h2>
 
     <h1>
-        Tic Tac Toe
+        Tic Tac Toe (AI)
     </h1>
     
     <div class="squreGameBox" id="game">
         <span>
-            <div class="toeBox" onclick="clickTile(0,0)" id="one">
+            <div class="toeBox" onclick="clickTile(0,0); aiTrigger();" id="one">
                 <i class="fa-solid fa-x fa-10x" id="00x"></i>
                 <i class="fa-solid fa-o fa-10x" id="00o"></i>
             </div>
-            <div class="toeBox" onclick="clickTile(1,0)" id="two">
+            <div class="toeBox" onclick="clickTile(1,0); aiTrigger();" id="two">
                 <i class="fa-solid fa-x fa-10x" id="10x"></i>
                 <i class="fa-solid fa-o fa-10x" id="10o"></i>
             </div>
-            <div class="toeBox" onclick="clickTile(2,0)" id="three">
+            <div class="toeBox" onclick="clickTile(2,0); aiTrigger();" id="three">
                 <i class="fa-solid fa-x fa-10x" id="20x"></i>
                 <i class="fa-solid fa-o fa-10x" id="20o"></i>
             </div>
         </span>
 
         <span>
-            <div class="toeBox" onclick="clickTile(0,1)" id="four">
+            <div class="toeBox" onclick="clickTile(0,1); aiTrigger();" id="four">
                 <i class="fa-solid fa-x fa-10x" id="01x"></i>
                 <i class="fa-solid fa-o fa-10x" id="01o"></i>
             </div>
-            <div class="toeBox" onclick="clickTile(1,1)" id="five">
+            <div class="toeBox" onclick="clickTile(1,1); aiTrigger();" id="five">
                 <i class="fa-solid fa-x fa-10x" id="11x"></i>
                 <i class="fa-solid fa-o fa-10x" id="11o"></i>
             </div>
-            <div class="toeBox" onclick="clickTile(2,1)" id="six">
+            <div class="toeBox" onclick="clickTile(2,1); aiTrigger();" id="six">
                 <i class="fa-solid fa-x fa-10x" id="21x"></i>
                 <i class="fa-solid fa-o fa-10x" id="21o"></i>
             </div>
         </span>
 
         <span>
-            <div class="toeBox" onclick="clickTile(0,2)" id="seven">
+            <div class="toeBox" onclick="clickTile(0,2); aiTrigger();" id="seven">
                 <i class="fa-solid fa-x fa-10x" id="02x"></i>
                 <i class="fa-solid fa-o fa-10x" id="02o"></i>
             </div>
-            <div class="toeBox" onclick="clickTile(1,2)" id="eight">
+            <div class="toeBox" onclick="clickTile(1,2); aiTrigger();" id="eight">
                 <i class="fa-solid fa-x fa-10x" id="12x"></i>
                 <i class="fa-solid fa-o fa-10x" id="12o"></i>
             </div>
-            <div class="toeBox" onclick="clickTile(2,2)" id="nine">
+            <div class="toeBox" onclick="clickTile(2,2); aiTrigger();" id="nine">
                 <i class="fa-solid fa-x fa-10x" id="22x"></i>
                 <i class="fa-solid fa-o fa-10x" id="22o"></i>
             </div>
@@ -70,7 +70,7 @@
             <button class="coverButton" onclick="startGame()" style="position: absolute;">PLAY</button>
             <div class="break"></div>
             <button id="buttonSmall" class="coverButton" onclick="resetScores()">RESET SCORES</button>
-            <button id="buttonSmall" class="coverButton" onclick="goTo(1)">VS AI (very easy)</button>
+            <button id="buttonSmall" class="coverButton" onclick="goTo(0)">VS PLAYER</button>
         </div>
         
     </div>

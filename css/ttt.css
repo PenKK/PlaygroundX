@@ -27,11 +27,11 @@
     right: 0px;
 }
 
-#scoreReset {
+#buttonSmall {
     cursor: pointer;
     font-size: 25px;
     height: 50px;
-    width: 190px;
+    width: 220px;
 }
 
 .fa-solid.fa-x {

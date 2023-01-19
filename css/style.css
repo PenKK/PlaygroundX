@@ -169,6 +169,7 @@ a:hover {
     transition: color 100ms;
     user-select: none;
     border: 5px rgb(80, 0, 0) solid;
+    margin: 20px;
 }
 
 .coverButton:active {
