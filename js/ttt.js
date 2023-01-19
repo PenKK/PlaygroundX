@@ -1,7 +1,12 @@
 var rgb = "rgb(231, 101, 101)"; 
-var turn = parseInt(localStorage.getItem("firstTurn"));
+var turn = 1;
 var moveLock = false;
 var tilesUsed = 0;
+
+window.onload = function() {
+    turn = parseInt(localStorage.getItem("firstTurn"));
+    updateScores();
+}
 
 var board = [[0,0,0],
              [0,0,0],
@@ -79,10 +84,18 @@ function checkWin() {
     return 0;
 }
 
+function tilesTie() {
+    for (let x = 0; x < 3; x++) {
+        for (let y = 0; y < 3; y++) {
+            ElementId(x + "" + y + "x").parentElement.style.backgroundColor = "rgb(240, 192, 90)";
+        }
+    }
+}
+
 function checkGame(turn) {
     switch (turn) {
         case -1:
-            console.log("tie");
+            tilesTie();
             break;
         case 0:
             return;
@@ -126,6 +139,12 @@ function clickTile(x, y) {
     updateBoard();
 }
 
+function resetScores() {
+    localStorage.setItem("scoreX", "0");
+    localStorage.setItem("scoreO", "0");
+    updateScores();
+}
+
 if (localStorage.getItem("scoreX") == null) {
     localStorage.setItem("scoreX", "0");
     localStorage.setItem("scoreO", "0");
@@ -136,8 +155,4 @@ if (localStorage.getItem("scoreX") == null) {
 function updateScores() {
     ElementId("leftScore").innerHTML =  localStorage.getItem("scoreX");
     ElementId("rightScore").innerHTML =  localStorage.getItem("scoreO");
-}
-
-window.onload = function() {
-    updateScores();
 }
