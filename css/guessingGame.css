@@ -15,6 +15,25 @@
     scale: 5;   
 }
 
+.triesBoxClass {
+    height: 200px;
+    width: 200px;
+    border: darkred solid;
+    position: absolute;
+    text-align: center;
+    border-radius: 10px;
+    background-color: blanchedalmond;
+    bottom: 350px;
+    left: 200px;
+    visibility: hidden;
+}
+
+#triesH2 {
+    font-size: 150px;
+    position: relative;
+    bottom: 50px;
+}
+
 .upArrow{
     position: absolute;
     bottom: -50px;

@@ -37,7 +37,7 @@ function LOCK() {
         moveLock = true;
         setTimeout(() => {
             moveLock = false;
-        }, 250);
+        }, 200);
     } else {
         return true;
     }
@@ -112,9 +112,8 @@ function checkGame(turn) {
 }
 
 function clickTile(x, y) {
-    tilesUsed++;
     if (LOCK()) { return; }
-
+    tilesUsed++;
     if (turn == 1) {
         board[x][y] = turn;
         checkGame(checkWin(turn));

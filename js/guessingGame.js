@@ -40,6 +40,7 @@ function play() {
         ElementId("play").disabled = true;
         ElementId("guess").disabled = false;
         ElementId("enter").disabled = false;
+        ElementId("triesBox").style.visibility = "visible";
         ans = Math.round(Math.random()*ElementId("range").value);
         // console.log(ans);
     }
@@ -90,6 +91,8 @@ function enterGuess() {
             triesCounter++;
         }
 
+        updateTries();
+
         setTimeout(function() {
             enterLocked = false;
         }, 600);
@@ -98,8 +101,13 @@ function enterGuess() {
 
 }
 
+function updateTries() {
+    ElementId("triesH2").innerHTML = triesCounter;
+}
+
 function winGame() {
     ElementId("triesText").innerHTML = "It took you " + triesCounter +" tries";
+    ElementId("triesBox").style.visibility = "hidden";
     document.getElementById('winBox').removeAttribute("hidden");
     ElementId("guess").disabled = true;
     document.getElementById('enter').disabled = true;
