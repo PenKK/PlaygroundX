@@ -42,7 +42,7 @@ function LOCK() {
         moveLock = true;
         setTimeout(() => {
             moveLock = false;
-        }, 200);
+        }, 300);
     } else {
         return true;
     }

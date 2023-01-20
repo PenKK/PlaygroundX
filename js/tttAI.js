@@ -1,11 +1,12 @@
 var rgb = "rgb(231, 101, 101)"; 
 var turn = 1;
 var moveLock = false;
+var aiLock = false;
 var tilesUsed = 0;
-var success = true;
+var gameEnded = false;
 
 window.onload = function() {
-    turn = parseInt(localStorage.getItem("firstTurn"));
+    turn = parseInt(localStorage.getItem("AIfirstTurn"));
     updateScores();
 }
 
@@ -36,6 +37,10 @@ function updateBoard() {
 function startGame() {    
     ElementId("tttCover").style.opacity = 0;
     ElementId("tttCover").style.visibility = "hidden";
+
+    if (turn == 2) {
+        aiTrigger();
+    }
 }
 
 function checkWin() {
@@ -45,7 +50,7 @@ function checkWin() {
             for (var e = 0; e < 3; e++) {
                 ElementId(e + "" + x + "x").parentElement.style.backgroundColor = rgb;
             }
-            return(turn)
+            return(turn);
         }
         if (board[x][0] == turn && board[x][1] == turn && board[x][2] == turn) {
             for (var e = 0; e < 3; e++) {
@@ -87,7 +92,7 @@ function LOCK() {
         moveLock = true;
         setTimeout(() => {
             moveLock = false;
-        }, 1000);
+        }, 300);
     } else {
         return true;
     }
@@ -102,18 +107,19 @@ function checkGame(turn) {
             return;
         case 1:
             ElementId("endText").innerHTML = ("X <br> Wins!");
-            localStorage.setItem("scoreX", parseInt(localStorage.getItem("scoreX"))+1);
+            localStorage.setItem("scorePlayer", parseInt(localStorage.getItem("scorePlayer"))+1);
             break;
         case 2:
             ElementId("endText").innerHTML = "O <br> Wins!";
-            localStorage.setItem("scoreO", parseInt(localStorage.getItem("scoreO"))+1);
+            localStorage.setItem("scoreAI", parseInt(localStorage.getItem("scoreAI"))+1);
             break;
     }
+    gameEnded = true;
     //Swap turns
-    if (localStorage.getItem("firstTurn") == "1") {
-        localStorage.setItem("firstTurn", "2");
+    if (localStorage.getItem("AIfirstTurn") == "1") {
+        localStorage.setItem("AIfirstTurn", "2");
     } else {
-        localStorage.setItem("firstTurn", "1");
+        localStorage.setItem("AIfirstTurn", "1");
     }
     
     updateScores();
@@ -122,18 +128,25 @@ function checkGame(turn) {
     setTimeout(() => {
         ElementId("endBox").style.visibility = "visible";
         runAnimation("endBox");
-    }, 850);
+    }, 1000);
 }
 
-function clickTile(x, y) {
-
-    if (LOCK()) { return; }
-
-    if (board[x][y] != 0 ) {
-        console.log("Invalid move");
-        return false;
+function clickTile(x, y, skip) {
+    if (skip) {
+        if (gameEnded) {
+            console.log("AI move stopped, game ended")
+            return;
+        }
+    } else {
+        if (LOCK()) { return; };
     }
 
+    if (board[x][y] != 0 ) {
+        console.log("Invalid move, rolling another tile");     
+        clickTile(Math.floor(Math.random()*3), Math.floor(Math.random()*3), true);
+        return;
+    }
+    ElementId("game").style.pointerEvents = "all";
     tilesUsed++;
     if (turn == 1) {
         board[x][y] = turn;
@@ -145,33 +158,29 @@ function clickTile(x, y) {
         turn = 1;
     }
     updateBoard();
-
-    return true;
 }
 
 function aiTrigger() {
-
-    while (clickTile(Math.floor(Math.random()*3), Math.floor(Math.random()*3)) == false) {
-        clickTile(Math.floor(Math.random()*3), Math.floor(Math.random()*3));
-    }
-    
-    console.log("THE BOT MOVED HEHEHAHEAHAEHAEHAEHAEHEAAHHE");
+    setTimeout(() => {
+        clickTile(Math.floor(Math.random()*3), Math.floor(Math.random()*3), true);
+    }, 325);
+    ElementId("game").style.pointerEvents = "none";
 }
 
 function resetScores() {
-    localStorage.setItem("scoreX", "0");
-    localStorage.setItem("scoreO", "0");
+    localStorage.setItem("scorePlayer", "0");
+    localStorage.setItem("scoreAI", "0");
     updateScores();
 }
 
-if (localStorage.getItem("scoreX") == null) {
-    localStorage.setItem("scoreX", "0");
-    localStorage.setItem("scoreO", "0");
-    localStorage.setItem("firstTurn", "1");
-    console.log("Scores initialized");
+if (localStorage.getItem("scorePlayer") == null) {
+    localStorage.setItem("scorePlayer", "0");
+    localStorage.setItem("scoreAI", "0");
+    localStorage.setItem("AIfirstTurn", "1");
+    console.log("AI VS scores initialized");
 }
 
 function updateScores() {
-    ElementId("leftScore").innerHTML =  localStorage.getItem("scoreX");
-    ElementId("rightScore").innerHTML =  localStorage.getItem("scoreO");
+    ElementId("leftScore").innerHTML =  localStorage.getItem("scorePlayer");
+    ElementId("rightScore").innerHTML =  localStorage.getItem("scoreAI");
 }
