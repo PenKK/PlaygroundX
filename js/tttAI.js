@@ -4,6 +4,7 @@ var moveLock = false;
 var aiLock = false;
 var tilesUsed = 0;
 var gameEnded = false;
+var debug = false;
 
 window.onload = function() {
     turn = parseInt(localStorage.getItem("AIfirstTurn"));
@@ -106,11 +107,15 @@ function checkGame(turn) {
         case 0:
             return;
         case 1:
-            ElementId("endText").innerHTML = ("X <br> Wins!");
+            ElementId("endText").innerHTML = ("Player <br> Wins!");
             localStorage.setItem("scorePlayer", parseInt(localStorage.getItem("scorePlayer"))+1);
             break;
         case 2:
-            ElementId("endText").innerHTML = "O <br> Wins!";
+            ElementId("endText").innerHTML = "Computer <br> Wins!";
+            if (localStorage.getItem("TIC_TAC_TOE_LOSER") != "true") {
+                localStorage.setItem("TIC_TAC_TOE_LOSER", "true");
+                notification("Achievement completed: Tic Tac Toe Loser...");
+            }
             localStorage.setItem("scoreAI", parseInt(localStorage.getItem("scoreAI"))+1);
             break;
     }
@@ -134,7 +139,9 @@ function checkGame(turn) {
 function clickTile(x, y, skip) {
     if (skip) {
         if (gameEnded) {
-            console.log("AI move stopped, game ended")
+            if (debug) { 
+                console.log("AI move stopped, game ended"); 
+            }
             return;
         }
     } else {
@@ -142,7 +149,9 @@ function clickTile(x, y, skip) {
     }
 
     if (board[x][y] != 0 ) {
-        console.log("Invalid move, rolling another tile");     
+        if (debug) {
+            console.log("Invalid move, rolling another tile"); 
+        }  
         clickTile(Math.floor(Math.random()*3), Math.floor(Math.random()*3), true);
         return;
     }
@@ -178,6 +187,8 @@ if (localStorage.getItem("scorePlayer") == null) {
     localStorage.setItem("scoreAI", "0");
     localStorage.setItem("AIfirstTurn", "1");
     console.log("AI VS scores initialized");
+    localStorage.setItem("TIC_TAC_TOE_LOSER", "false");
+    console.log("Tic Tac Toe AI achievements initialized");
 }
 
 function updateScores() {

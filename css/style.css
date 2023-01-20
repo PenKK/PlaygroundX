@@ -284,8 +284,8 @@ input::-webkit-inner-spin-button {
 }
 
 @keyframes notificationEnter {
-    from { margin-left: 100%; }
-    to { margin-left: 80%; }
+    from { right: -20%; }
+    to { right: 1%; }
 }
 
 @keyframes floatDown  {

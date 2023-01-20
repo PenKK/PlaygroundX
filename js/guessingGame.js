@@ -118,15 +118,15 @@ function winGame() {
 //Local storage achievements
 
 function checkAchievements() {
-    if (localStorage.getItem("masterGuesser") == "false") {
+    if (localStorage.getItem("MASTER_GUESSER") == "false") {
         if (ElementId("range").value>999999 && triesCounter < 21) {
-            localStorage.setItem("masterGuesser", true);
-            notification("Achievement completed: Master Guesser!");
+            localStorage.setItem("MASTER_GUESSER", true);
+            notification("Achievement complete: Master Guesser!");
         }
     }
 }
 
-if (localStorage.getItem("masterGuesser") == null) {
+if (localStorage.getItem("MASTER_GUESSER") == null) {
     console.log("Guessing game achievements initialized");
-    localStorage.setItem("masterGuesser", false);
+    localStorage.setItem("MASTER_GUESSER", false);
 }

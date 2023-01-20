@@ -143,8 +143,8 @@ function endPlayer() {
         ElementId("endText").innerHTML = "YOU GOT A REVERSE SWEEEP!!!";
         ElementId("questionBox").removeAttribute("hidden");
 
-        if (localStorage.getItem("sweeperSweeped") != "true") {
-            localStorage.setItem("sweeperSweeped", "true");
+        if (localStorage.getItem("SWEEPER_OR_SWEEPED") != "true") {
+            localStorage.setItem("SWEEPER_OR_SWEEPED", "true");
             notification("Achievement unlocked: Sweeper or Sweeped?")
         }
     }
@@ -168,9 +168,9 @@ function endComputer() {
         ElementId("endText").innerHTML = "THE COMPUTER GOT A REVERSE SWEEP!";
         ElementId("questionBox").removeAttribute("hidden");
 
-        if (localStorage.getItem("sweeperSweeped") != "true") {
-            localStorage.setItem("sweeperSweeped", "true");
-            notification("Achievement unlocked: Sweeper or Sweeped?")
+        if (localStorage.getItem("SWEEPER_OR_SWEEPED") != "true") {
+            localStorage.setItem("SWEEPER_OR_SWEEPED", "true");
+            notification("Achievement complete: Sweeper or Sweeped?")
         }
 
     }
@@ -247,7 +247,7 @@ if (localStorage.getItem("playerScore") == null) {
     localStorage.setItem("playerScore", 0);
     localStorage.setItem("computerScore", 0);
     console.log("Score local storage initialized")
-    localStorage.setItem("sweeperSweeped", false);
+    localStorage.setItem("SWEEPER_OR_SWEEPED", false);
     console.log("Achievement local storage initialized");
 }
 
