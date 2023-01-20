@@ -247,6 +247,7 @@ input::-webkit-inner-spin-button {
     font-family: "Consolas";
     font-size: 28px;
     text-align: center;
+    opacity: 0;
     transition: opacity 1s;
 }
 
