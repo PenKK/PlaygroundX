@@ -44,7 +44,7 @@ function notification(message) {
 
         ElementId("noti").style.opacity = 1;
         ElementId("notiText").innerHTML = message;
-        ElementId("noti").style.webkitAnimationPlayState = "running";
+        runAnimation("noti")
     
         setTimeout(function() {
             ElementId("noti").style.opacity = 0;

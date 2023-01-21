@@ -106,6 +106,22 @@ a:hover {
     box-shadow: 10px 10px 5px rgb(77, 19, 19);
 }
 
+.smallGameBox {
+    margin-top: 4%;
+    height: 200px;
+    width: 200px;
+    border: darkred solid;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    border-radius: 10px;
+    background-color: blanchedalmond;
+    animation: floatDown forwards;
+    animation-duration: 1s;
+    animation-play-state: paused;
+    visibility: hidden;
+}
+
 .gameBox {
     margin-top: 100px;
     height: 500px;
@@ -276,26 +292,26 @@ input::-webkit-inner-spin-button {
 
 @keyframes lower {
     from { margin-top: 0px; }
-    to { margin-top: 1150px; }
+    to   { margin-top: 1150px; }
 }
 
 @keyframes higher {
     from { margin-bottom: 0px; }
-    to { margin-bottom: 1150px; }
+    to   { margin-bottom: 1150px; }
 }
 
 @keyframes notificationEnter {
     from { right: -20%; }
-    to { right: 1%; }
+    to   { right: 1%; }
 }
 
 @keyframes floatDown  {
     from { top: 25%; }
-    to { top: 30%; }
+    to   { top: 30%; }
 }
 
 @keyframes gradient  {
-	0% { background-position: 0% 50%; }
-	50% { background-position: 100% 50%; }
+	0%   { background-position: 0% 50%; }
+	50%  { background-position: 100% 50%; }
 	100% { background-position: 0% 50%; }
 }

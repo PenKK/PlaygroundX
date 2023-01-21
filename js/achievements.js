@@ -3,11 +3,14 @@ var offRGB = "rgb(224, 224, 224)";
 
 window.onload = function() {
     if (localStorage.getItem("MASTER_GUESSER") == "true") {
-        ElementId("masterGuesser").style.backgroundColor = onRGB;
+        ElementId("masterGuesser").parentElement.style.backgroundColor = onRGB;
     }
     
     if (localStorage.getItem("SWEEPER_OR_SWEEPED") == "true") {
-        ElementId("sweeperSweeped").style.backgroundColor = onRGB;
+        ElementId("sweeperSweeped").parentElement.style.backgroundColor = onRGB;
     }
 
+    if (localStorage.getItem("TIC_TAC_TOE_LOSER") == "true") {
+        ElementId("ticTacLoser").parentElement.style.backgroundColor = onRGB;
+    }
 }

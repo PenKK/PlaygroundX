@@ -40,6 +40,16 @@ function startGame() {
     ElementId("tttCover").style.visibility = "hidden";
 
     if (turn == 2) {
+        ElementId("oBox").style.backgroundColor = "rgb(102, 28, 28)";
+        ElementId("xBox").style.backgroundColor = "blanchedalmond";
+    } else {
+        ElementId("xBox").style.backgroundColor = "rgb(102, 28, 28)";
+        ElementId("oBox").style.backgroundColor = "blanchedalmond";
+    }
+    ElementId("xBox").style.opacity = "1";
+    ElementId("oBox").style.opacity = "1";
+
+    if (turn == 2) {
         aiTrigger();
     }
 }
@@ -119,6 +129,9 @@ function checkGame(turn) {
             localStorage.setItem("scoreAI", parseInt(localStorage.getItem("scoreAI"))+1);
             break;
     }
+    ElementId("xBox").style.opacity = "0";
+    ElementId("oBox").style.opacity = "0";
+
     gameEnded = true;
     //Swap turns
     if (localStorage.getItem("AIfirstTurn") == "1") {
@@ -160,10 +173,14 @@ function clickTile(x, y, skip) {
     if (turn == 1) {
         board[x][y] = turn;
         checkGame(checkWin(turn));
+        ElementId("oBox").style.backgroundColor = "rgb(102, 28, 28)";
+        ElementId("xBox").style.backgroundColor = "blanchedalmond";
         turn = 2;
     } else {
         board[x][y] = turn;
         checkGame(checkWin(turn));
+        ElementId("xBox").style.backgroundColor = "rgb(102, 28, 28)";
+        ElementId("oBox").style.backgroundColor = "blanchedalmond";
         turn = 1;
     }
     updateBoard();

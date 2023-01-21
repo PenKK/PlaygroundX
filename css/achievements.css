@@ -34,7 +34,7 @@
     visibility: hidden;
 }
 
-#masterGuesser:hover #masterGuesserInfo {
+#infoBoxID:hover #info {
     visibility: visible;
     opacity: 1;
 }
