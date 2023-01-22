@@ -6,7 +6,7 @@ var tilesUsed = 0;
 var gameEnded = false;
 var debug = false;
 
-window.onload = function() {
+window.onload = () => {
     turn = parseInt(localStorage.getItem("AIfirstTurn"));
     updateScores();
 }

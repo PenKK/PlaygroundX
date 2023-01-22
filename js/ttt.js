@@ -3,7 +3,7 @@ var turn = 1;
 var moveLock = false;
 var tilesUsed = 0;
 
-window.onload = function() {
+window.onload = () => {
     turn = parseInt(localStorage.getItem("firstTurn"));
     updateScores();
 }

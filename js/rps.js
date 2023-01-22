@@ -6,7 +6,7 @@ var AIScore = 0;
 var playerReverseSweep = false;
 var computerReverseSweep = false;
 
-window.onload = function() {
+window.onload = ()  => {
     updateScores(); //Load scores
 }
 

@@ -17,7 +17,7 @@ function goTo(location) {
         window.location.href = "tic-tac-toe-ai.html";
     } else if (location == 0) {
         window.location.href = "tic-tac-toe.html";
-    } 
+    }
 }
 
 //H for home
