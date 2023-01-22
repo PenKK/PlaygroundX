@@ -1,7 +1,7 @@
 var onRGB = "rgb(97, 209, 53)";
 var offRGB = "rgb(224, 224, 224)";
 
-window.onload = function() {
+window.onload = () => {
     if (localStorage.getItem("MASTER_GUESSER") == "true") {
         ElementId("masterGuesser").parentElement.style.backgroundColor = onRGB;
     }
