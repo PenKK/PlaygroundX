@@ -4,14 +4,6 @@ var moveLock = false;
 var tilesUsed = 0;
 var gameEnded = false;
 
-function goTo(location) {
-    if (location == 1) {
-        window.location.href = "tic-tac-toe-ai.html";
-    } else if (location == 0) {
-        window.location.href = "tic-tac-toe.html";
-    }
-}
-
 window.onload = () => {
     turn = parseInt(localStorage.getItem("firstTurn"));
     updateScores();

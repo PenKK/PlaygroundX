@@ -1,5 +1,4 @@
 //Utility
-
 function ElementId(id) {
     return document.getElementById(id);
 }
@@ -13,7 +12,6 @@ function show(id) {
 }
 
 //Controls
-
 document.addEventListener("keydown", pageKeyDown, false);
 
 function pageKeyDown(e) {
@@ -25,9 +23,9 @@ function pageKeyDown(e) {
         location.reload();
     }
 
-    // Page specific controls
+    //Page specific controls
     if (document.URL.endsWith("tic-tac-toe.html") || document.URL.endsWith("tic-tac-toe-ai.html")) {
-        switch(e.keyCode) {
+        switch(e.keyCode) { //Numpad keys
             case 36:
                 clickTile(0,0);
                 break;
@@ -59,8 +57,16 @@ function pageKeyDown(e) {
     }
 }
 
-//Notification
+//Page transfering
+function goTo(location) {
+    if (location == 1) {
+        window.location.href = "tic-tac-toe-ai.html";
+    } else if (location == 0) {
+        window.location.href = "tic-tac-toe.html";
+    }
+}
 
+//Notification
 var notiLock = false;
 
 function notification(message) {
@@ -82,7 +88,6 @@ function notification(message) {
 }
 
 //Animation
-
 function resetAnimation(cls, id) {
     var element = document.getElementById(cls);
     element.classList.remove(id);
