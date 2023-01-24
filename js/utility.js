@@ -26,7 +26,7 @@ function pageKeyDown(e) {
     }
 
     // Page specific controls
-    if (document.URL.endsWith("tic-tac-toe.html")) {
+    if (document.URL.endsWith("tic-tac-toe.html") || document.URL.endsWith("tic-tac-toe-ai.html")) {
         switch(e.keyCode) {
             case 36:
                 clickTile(0,0);

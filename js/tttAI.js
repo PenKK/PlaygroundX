@@ -4,19 +4,12 @@ var moveLock = false;
 var aiLock = false;
 var tilesUsed = 0;
 var gameEnded = false;
+var gameStarted = false;
 var debug = false;
 
 window.onload = () => {
     turn = parseInt(localStorage.getItem("AIfirstTurn"));
     updateScores();
-}
-
-function goTo(location) {
-    if (location == 1) {
-        window.location.href = "tic-tac-toe-ai.html";
-    } else if (location == 0) {
-        window.location.href = "tic-tac-toe.html";
-    }
 }
 
 var board = [[0,0,0],
@@ -44,6 +37,8 @@ function updateBoard() {
 }
 
 function startGame() {    
+    gameStarted = true;
+    
     ElementId("tttCover").style.opacity = 0;
     ElementId("tttCover").style.visibility = "hidden";
 
@@ -160,13 +155,11 @@ function checkGame(turn) {
 function clickTile(x, y, skip) {
     if (skip) {
         if (gameEnded) {
-            if (debug) { 
-                console.log("AI move stopped, game ended"); 
-            }
+            // console.log("AI move stopped, game ended"); 
             return;
         }
-    } else {
-        if (LOCK()) { return; };
+    } else if (LOCK()) {
+        return;
     }
 
     if (board[x][y] != 0 ) {

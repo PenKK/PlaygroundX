@@ -41,7 +41,8 @@ function updateBoard() {
     }
 }
 
-function startGame() {    
+function startGame() {
+    gameStarted = true;    
     ElementId("tttCover").style.opacity = 0;
     ElementId("tttCover").style.visibility = "hidden";
 
@@ -147,8 +148,9 @@ function checkGame(turn) {
 
 function clickTile(x, y) {
     if (LOCK()) { return; }
-    if (gameEnded) { return; } //For keyboard controls
-    if (board[x][y] != 0) { return; } //Also for keyboard controls
+    if (board[x][y] != 0 || !gameStarted || gameEnded) {
+        return;
+    }
 
     tilesUsed++;
     if (turn == 1) {
