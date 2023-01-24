@@ -11,6 +11,14 @@ window.onload = () => {
     updateScores();
 }
 
+function goTo(location) {
+    if (location == 1) {
+        window.location.href = "tic-tac-toe-ai.html";
+    } else if (location == 0) {
+        window.location.href = "tic-tac-toe.html";
+    }
+}
+
 var board = [[0,0,0],
              [0,0,0],
              [0,0,0]];

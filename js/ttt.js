@@ -2,6 +2,15 @@ var rgb = "rgb(231, 101, 101)";
 var turn = 1;
 var moveLock = false;
 var tilesUsed = 0;
+var gameEnded = false;
+
+function goTo(location) {
+    if (location == 1) {
+        window.location.href = "tic-tac-toe-ai.html";
+    } else if (location == 0) {
+        window.location.href = "tic-tac-toe.html";
+    }
+}
 
 window.onload = () => {
     turn = parseInt(localStorage.getItem("firstTurn"));
@@ -52,7 +61,7 @@ function LOCK() {
         moveLock = true;
         setTimeout(() => {
             moveLock = false;
-        }, 300);
+        }, 150);
     } else {
         return true;
     }
@@ -65,7 +74,7 @@ function checkWin() {
             for (var e = 0; e < 3; e++) {
                 ElementId(e + "" + x + "x").parentElement.style.backgroundColor = rgb;
             }
-            return(turn)
+            return(turn);
         }
         if (board[x][0] == turn && board[x][1] == turn && board[x][2] == turn) {
             for (var e = 0; e < 3; e++) {
@@ -126,7 +135,7 @@ function checkGame(turn) {
     } else {
         localStorage.setItem("firstTurn", "1");
     }
-    
+    gameEnded = true;
     updateScores();
     ElementId("game").style.pointerEvents = "none";
 
@@ -138,6 +147,9 @@ function checkGame(turn) {
 
 function clickTile(x, y) {
     if (LOCK()) { return; }
+    if (gameEnded) { return; } //For keyboard controls
+    if (board[x][y] != 0) { return; } //Also for keyboard controls
+
     tilesUsed++;
     if (turn == 1) {
         board[x][y] = turn;

@@ -12,25 +12,50 @@ function show(id) {
     ElementId(id).style.visibility = "visible";
 }
 
-function goTo(location) {
-    if (location == 1) {
-        window.location.href = "tic-tac-toe-ai.html";
-    } else if (location == 0) {
-        window.location.href = "tic-tac-toe.html";
-    }
-}
-
-//H for home
+//Controls
 
 document.addEventListener("keydown", pageKeyDown, false);
 
 function pageKeyDown(e) {
     if(e.keyCode == 72) {
         window.location.href = "index.html";
-    }
+    } else 
 
     if(e.keyCode == 82) {
         location.reload();
+    }
+
+    // Page specific controls
+    if (document.URL.endsWith("tic-tac-toe.html")) {
+        switch(e.keyCode) {
+            case 36:
+                clickTile(0,0);
+                break;
+            case 38:
+                clickTile(0,1);
+                break;
+            case 33:
+                clickTile(0,2);
+                break;
+            case 37:
+                clickTile(1,0);
+                break;
+            case 12:
+                clickTile(1,1);
+                break;
+            case 39:
+                clickTile(1,2);
+                break;
+            case 35:
+                clickTile(2,0);
+                break;
+            case 40:
+                clickTile(2,1);
+                break;
+            case 34:
+                clickTile(2,2);
+                break;
+        }
     }
 }
 
