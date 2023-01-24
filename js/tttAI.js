@@ -106,7 +106,7 @@ function LOCK() {
         moveLock = true;
         setTimeout(() => {
             moveLock = false;
-        }, 300);
+        }, 150);
     } else {
         return true;
     }
@@ -153,12 +153,12 @@ function checkGame(turn) {
 }
 
 function clickTile(x, y, skip) {
-    if (skip) {
+    if (skip) { //Skip needed to ignore lock
         if (gameEnded) {
             // console.log("AI move stopped, game ended"); 
             return;
         }
-    } else if (LOCK()) {
+    } else if (LOCK() || !gameStarted) {
         return;
     }
 
@@ -169,6 +169,7 @@ function clickTile(x, y, skip) {
         clickTile(Math.floor(Math.random()*3), Math.floor(Math.random()*3), true);
         return;
     }
+
     ElementId("game").style.pointerEvents = "all";
     tilesUsed++;
     if (turn == 1) {
