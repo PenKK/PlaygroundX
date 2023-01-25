@@ -28,32 +28,47 @@ function pageKeyDown(e) {
         switch(e.keyCode) { //Numpad keys
             case 36:
                 clickTile(0,0);
+                aiTriggerKeyboard();
                 break;
             case 38:
                 clickTile(0,1);
+                aiTriggerKeyboard();
                 break;
             case 33:
                 clickTile(0,2);
+                aiTriggerKeyboard();
                 break;
             case 37:
                 clickTile(1,0);
+                aiTriggerKeyboard();
                 break;
             case 12:
                 clickTile(1,1);
+                aiTriggerKeyboard();
                 break;
             case 39:
                 clickTile(1,2);
+                aiTriggerKeyboard();
                 break;
             case 35:
                 clickTile(2,0);
+                aiTriggerKeyboard();
                 break;
             case 40:
                 clickTile(2,1);
+                aiTriggerKeyboard();
                 break;
             case 34:
                 clickTile(2,2);
+                aiTriggerKeyboard();
                 break;
         }
+    }
+}
+
+function aiTriggerKeyboard() {
+    if (document.URL.endsWith("tic-tac-toe-ai.html")) {
+        aiTrigger();
     }
 }
 

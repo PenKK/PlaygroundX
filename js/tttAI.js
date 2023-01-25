@@ -153,23 +153,22 @@ function checkGame(turn) {
 }
 
 function clickTile(x, y, skip) {
-    if (skip) { //Skip needed to ignore lock
+    if (skip) {
         if (gameEnded) {
             // console.log("AI move stopped, game ended"); 
             return;
         }
-    } else if (LOCK() || !gameStarted) {
+    } else if (LOCK()) {
         return;
     }
 
-    if (board[x][y] != 0 ) {
+    if (board[x][y] != 0) {
         if (debug) {
             console.log("Invalid move, rolling another tile"); 
         }  
         clickTile(Math.floor(Math.random()*3), Math.floor(Math.random()*3), true);
         return;
     }
-
     ElementId("game").style.pointerEvents = "all";
     tilesUsed++;
     if (turn == 1) {
