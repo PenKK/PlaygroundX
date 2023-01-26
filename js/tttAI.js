@@ -106,7 +106,7 @@ function LOCK() {
         moveLock = true;
         setTimeout(() => {
             moveLock = false;
-        }, 150);
+        }, 325);
     } else {
         return true;
     }
