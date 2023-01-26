@@ -188,32 +188,9 @@ function clickTile(x, y, skip) {
 }
 
 function aiTrigger() {
-    // setTimeout(() => {
-    //     clickTile(Math.floor(Math.random()*3), Math.floor(Math.random()*3), true);
-    // }, 325);
-
-    var downMove = 0;
-    var acrossMove = 0;
-    
-    for (var x = 0; x < 3; x++) {
-        //Across check
-        if (board[0][x] == turn && board[1][x] == turn || board[1][x] == turn && board[2][x] == turn || board[2][x] == turn && board[0][x] == turn) {
-            console.log("Win condition found");
-            downMove = 2;
-            acrossMove = 0;
-        }
-        //Down check
-        if (board[x][0] == turn && board[x][1] == turn && board[x][2] == turn) {
-            
-            
-        }
-    }
-    
-
     setTimeout(() => {
-        clickTile(downMove, acrossMove, true);
+        clickTile(Math.floor(Math.random()*3), Math.floor(Math.random()*3), true);
     }, 325);
-    ElementId("game").style.pointerEvents = "none";
 }
 
 function resetScores() {
