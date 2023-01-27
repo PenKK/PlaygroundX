@@ -36,7 +36,10 @@ function updateBoard() {
     }
 }
 
-function startGame() {    
+function startGame() {   
+    if (gameStarted) {
+        return;
+    }
     gameStarted = true;
     
     ElementId("tttCover").style.opacity = 0;

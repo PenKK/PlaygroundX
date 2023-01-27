@@ -34,6 +34,9 @@ function updateBoard() {
 }
 
 function startGame() {
+    if (gameStarted) {
+        return;
+    }
     gameStarted = true;    
     ElementId("tttCover").style.opacity = 0;
     ElementId("tttCover").style.visibility = "hidden";

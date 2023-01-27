@@ -62,6 +62,9 @@ function pageKeyDown(e) {
                 clickTile(2,2);
                 aiTriggerKeyboard();
                 break;
+            case 13:
+                startGame();
+                break;
         }
     }
 }
