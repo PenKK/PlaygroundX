@@ -34,7 +34,7 @@ function updateBoard() {
 }
 
 function startGame() {
-    if (gameStarted) {
+    if (gameEnded) {
         return;
     }
     gameStarted = true;    

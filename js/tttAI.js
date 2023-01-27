@@ -2,6 +2,7 @@ var rgb = "rgb(231, 101, 101)";
 var turn = 1;
 var moveLock = false;
 var aiLock = false;
+var pass = true;
 var tilesUsed = 0;
 var gameEnded = false;
 var gameStarted = false;
@@ -39,7 +40,7 @@ function updateBoard() {
 function startGame() {   
     if (gameStarted) {
         return;
-    }
+    } 
     gameStarted = true;
     
     ElementId("tttCover").style.opacity = 0;
@@ -166,12 +167,14 @@ function clickTile(x, y, skip) {
     }
 
     if (board[x][y] != 0) {
-        if (debug) {
-            console.log("Invalid move, rolling another tile"); 
-        }  
-        clickTile(Math.floor(Math.random()*3), Math.floor(Math.random()*3), true);
+        if (skip) {
+            // console.log("Invalid move, rolling another tile"); 
+            clickTile(Math.floor(Math.random()*3), Math.floor(Math.random()*3), true);
+        }
+        pass = false;
         return;
     }
+    pass = true;
     ElementId("game").style.pointerEvents = "all";
     tilesUsed++;
     if (turn == 1) {
@@ -192,7 +195,9 @@ function clickTile(x, y, skip) {
 
 function aiTrigger() {
     setTimeout(() => {
-        clickTile(Math.floor(Math.random()*3), Math.floor(Math.random()*3), true);
+        if (pass) {
+            clickTile(Math.floor(Math.random()*3), Math.floor(Math.random()*3), true);
+        }
     }, 325);
 }
 
