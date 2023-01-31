@@ -142,8 +142,7 @@ function checkGame(turn) {
 }
 
 function clickTile(x, y) {
-    if (LOCK()) { return; }
-    if (board[x][y] != 0 || !gameStarted || gameEnded) {
+    if (board[x][y] != 0 || !gameStarted || gameEnded || LOCK()) {
         return;
     }
 
