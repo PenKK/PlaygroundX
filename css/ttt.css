@@ -72,7 +72,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    transition: opacity 500ms;
+    transition: all 250ms;
 }
 
 #xBox {
@@ -83,7 +83,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    transition: opacity 500ms;
+    transition: all 250ms;
 }
 
 #endBox {

@@ -7,7 +7,7 @@ var playerReverseSweep = false;
 var computerReverseSweep = false;
 
 window.onload = ()  => {
-    updateScores(); //Load scores
+    updateScores(); 
 }
 
 //Game functions
@@ -139,7 +139,7 @@ function endPlayer() {
     ElementId("endText").innerHTML = "Congratulations you win!";
 
     if(playerReverseSweep) {
-        sweepAnimation();
+        rainbowAnimation();
         ElementId("endText").innerHTML = "YOU GOT A REVERSE SWEEEP!!!";
         ElementId("questionBox").removeAttribute("hidden");
 
@@ -164,7 +164,7 @@ function endComputer() {
     ElementId("endText").innerHTML = "The computer won!";
 
     if(computerReverseSweep) {
-        sweepAnimation();
+        rainbowAnimation();
         ElementId("endText").innerHTML = "THE COMPUTER GOT A REVERSE SWEEP!";
         ElementId("questionBox").removeAttribute("hidden");
 
@@ -182,11 +182,6 @@ function endComputer() {
     }
 
     updateScores();
-}
-
-function sweepAnimation() {
-    document.body.style.backgroundImage = "linear-gradient(45deg, rgb(238, 119, 82), rgb(231, 60, 126), rgb(35, 166, 213), rgb(35, 213, 171))";
-    ElementId("rpsBody").classList.add("gradientAnimation");
 }
 
 function play(move) {

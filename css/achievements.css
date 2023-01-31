@@ -5,6 +5,11 @@
     top: -110px; 
     font-size: 25px;
     display: flex;
+    flex-wrap: wrap;
+}
+
+.row2 {
+    transform: translateX(75%) translateY(120%);
 }
 
 .achievementBox {
@@ -24,11 +29,11 @@
 .infoBox {
     position: absolute;
     border:darkred solid;
-    background-color: blanchedalmond;
+    background-color: rgb(252, 228, 195);
     border-radius: 10px;
     transition: all ease-in-out 350ms;
     width: 425px;
-    height: 150px;
+    height: 115px;
     opacity: 0;
     top: 37%;
     visibility: hidden;

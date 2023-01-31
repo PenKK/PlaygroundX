@@ -11,6 +11,11 @@ function show(id) {
     ElementId(id).style.visibility = "visible";
 }
 
+function grantAchievements() {
+    localStorage.setItem("MASTER_GUESSER", true);
+    localStorage.setItem("SWEEPER_OR_SWEEPED", true);
+    localStorage.setItem("TIC_TAC_TOE_LOSER", true);
+}
 //Controls
 document.addEventListener("keydown", pageKeyDown, false);
 
@@ -116,4 +121,9 @@ function resetAnimation(cls, id) {
 
 function runAnimation(id) {
     document.getElementById(id).style.animationPlayState = "running";
+}
+
+function rainbowAnimation() {
+    document.body.style.backgroundImage = "linear-gradient(45deg, rgb(238, 119, 82), rgb(231, 60, 126), rgb(35, 166, 213), rgb(35, 213, 171))";
+    document.body.classList.add("gradientAnimation");
 }
