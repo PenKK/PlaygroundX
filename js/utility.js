@@ -71,7 +71,17 @@ function pageKeyDown(e) {
                 startGame();
                 break;
         }
+        return;
     }
+
+    if (document.URL.endsWith("index.html")) {
+        switch(e.keyCode) {
+            case 49:
+                
+        }
+        alert(e.keyCode);
+    }
+    
 }
 
 function aiTriggerKeyboard() {

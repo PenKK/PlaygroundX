@@ -162,7 +162,7 @@ function clickTile(x, y, skip) {
             // console.log("AI move stopped, game ended"); 
             return;
         }
-    } else if (LOCK()) {
+    } else if (LOCK() || gameEnded) {
         return;
     }
 
