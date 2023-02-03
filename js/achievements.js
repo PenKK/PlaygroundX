@@ -16,10 +16,12 @@ window.onload = () => {
 
     if ((localStorage.getItem("MASTER_GUESSER") == "true") && (localStorage.getItem("SWEEPER_OR_SWEEPED") == "true") && (localStorage.getItem("TIC_TAC_TOE_LOSER") == "true")) {
         rainbowAnimation();
-        ElementId("bestGuesser").parentElement.style.visibility = "visible";
+        ElementId("grandmasterGuesser").parentElement.style.visibility = "visible";
     }
 
-    if (localStorage.getItem("BEST_GUESSER") == "true") {
-        ElementId("bestGuesser").parentElement.style.backgroundColor = onRGB;
+    if (localStorage.getItem("GRANDMASTER_GUESSER") == "true") {
+        ElementId("grandmasterGuesser").parentElement.style.backgroundColor = onRGB;
+        ElementId("headerDiv").innerHTML = "ACHIEVEMENTS";
+        ElementId("pText").innerHTML = "Congratulations on completing all achievements!"
     }
 }

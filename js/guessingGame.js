@@ -125,8 +125,8 @@ function checkAchievements() {
         }
     } else {
         if (ElementId("range").value>999999 && triesCounter < 21) {
-            localStorage.setItem("BEST_GUESSER", true);
-            notification("Achievement complete: Secret Guesser!");
+            localStorage.setItem("GRANDMASTER_GUESSER", true);
+            notification("Achievement complete: Grandmaster Guesser!");
         }
     }
 }
@@ -134,5 +134,5 @@ function checkAchievements() {
 if (localStorage.getItem("MASTER_GUESSER") == null) {
     console.log("Guessing game achievements initialized");
     localStorage.setItem("MASTER_GUESSER", false);
-    localStorage.setItem("BEST_GUESSER", false);
+    localStorage.setItem("GRANDMASTER_GUESSER", false);
 }
