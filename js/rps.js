@@ -5,6 +5,7 @@ var playerScore = 0;
 var AIScore = 0;
 var playerReverseSweep = false;
 var computerReverseSweep = false;
+var gameOver = false;
 
 window.onload = ()  => {
     updateScores(); 
@@ -131,6 +132,7 @@ function disableRPS() {
     ElementId("r").disabled = true;
     ElementId("p").disabled = true;
     ElementId("s").disabled = true;
+    gameOver = true;
 }
 
 function endPlayer() {
@@ -185,6 +187,9 @@ function endComputer() {
 }
 
 function play(move) {
+    if (gameOver) {
+        return;
+    }
 
     if(!selectLock) {
 

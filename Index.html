@@ -6,8 +6,10 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Capstone Project</title>
 	<script src="js/utility.js"></script>
-	<link rel="stylesheet" type="text/css" href="css/style.css" />
-	<link rel="stylesheet" type="text/css" href="css/index.css" />
+	<script src="js/index.js"></script>
+	<script src="https://kit.fontawesome.com/837a8073e0.js" crossorigin="anonymous"></script>
+	<link rel="stylesheet" type="text/css" href="css/style.css"/>
+	<link rel="stylesheet" type="text/css" href="css/index.css"/>
 	<!-- SCHOOL COMPUTERS ARE 1600x1200 -->
 	<!-- SMALL LAPTOPS AT SCHOOL ARE 1366x768 WTF IM TOO BAD AT CSS FOR THIS -->
 </head>
@@ -19,10 +21,17 @@
 		Capstone Project
 	</h1>
 
+	<div class="notificationClass notificationEnterClass" id="noti">
+        <i id="notiExclamation" class="fa-solid fa-exclamation vertical-center fa-2xl" style="position: absolute;"></i>
+        <div id="notiText">
+            Sample
+        </div>
+    </div>
+
 	<!-- Header text -->
 
-	<h2 id="headerText">Press H at any time to return back here!<br>
-						Press R to reload your page</h2>
+	<h2 id="headerText">Welcome to my Capstone Project!<br>
+						Try to complete all achievements throughout games!</h2>
 
 	<!-- Game buttons -->
 
@@ -40,12 +49,16 @@
 			<a href="tic-tac-toe.html">2 Player Tic Tac Toe</a>	
 		</button>
 
-		<br>
+	</div>
+
+	<div class="gameContainer" id="otherContainer">
 		<button id="achievementsButton" class="selectButton">
 			<a href="achievements.html">Achievements</a>
 		</button>
-
+		<button class="selectButton" id="controlsButton">
+			<a href="controls.html">Controls</a>
+		</button>
 	</div>
-
+		
 </body>
 </html>

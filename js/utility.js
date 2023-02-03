@@ -20,68 +20,100 @@ function grantAchievements() {
 document.addEventListener("keydown", pageKeyDown, false);
 
 function pageKeyDown(e) {
-    if(e.keyCode == 72) {
-        window.location.href = "index.html";
-    } else 
-
-    if(e.keyCode == 82) {
-        location.reload();
+    // alert(e.keyCode);
+    if (event.ctrlKey || event.shiftKey) {
+        return;
+    }
+    //General controls across all pages
+    switch(e.keyCode) {
+        case 72: //H
+            window.location.href = "index.html";
+            return;
+        case 82: //R
+            location.reload();
+            return;
+        case 67: //C
+            window.location.href = "controls.html";
+            return;
+        case 65: //A
+            location.href = "achievements.html";
+            break;
     }
 
     //Page specific controls
+
+    if (document.URL.endsWith("index.html")) {
+        switch(e.keyCode) {
+            case 49: 
+                location.href = "guessing-game.html";
+                break;
+            case 50:
+                location.href = "rock-paper-scissors.html";
+                break;
+            case 51:
+                location.href = "tic-tac-toe.html";
+                break;
+        }
+    } else 
+
+    if (document.URL.endsWith("rock-paper-scissors.html")) {
+        switch(e.keyCode) {
+            case 49:
+                play(0);
+                break;
+            case 50:
+                play(1);
+                break;
+            case 51:
+                play(2);
+                break;
+        }
+    } else
+
     if (document.URL.endsWith("tic-tac-toe.html") || document.URL.endsWith("tic-tac-toe-ai.html")) {
         switch(e.keyCode) { //Numpad keys
             case 36:
                 clickTile(0,0);
                 aiTriggerKeyboard();
-                break;
+                return;
             case 38:
                 clickTile(0,1);
                 aiTriggerKeyboard();
-                break;
+                return;
             case 33:
                 clickTile(0,2);
                 aiTriggerKeyboard();
-                break;
+                return;
             case 37:
                 clickTile(1,0);
                 aiTriggerKeyboard();
-                break;
+                return;
             case 12:
                 clickTile(1,1);
                 aiTriggerKeyboard();
-                break;
+                return;
             case 39:
                 clickTile(1,2);
                 aiTriggerKeyboard();
-                break;
+                return;
             case 35:
                 clickTile(2,0);
                 aiTriggerKeyboard();
-                break;
+                return;
             case 40:
                 clickTile(2,1);
                 aiTriggerKeyboard();
-                break;
+                return;
             case 34:
                 clickTile(2,2);
                 aiTriggerKeyboard();
-                break;
+                return;
             case 13:
                 startGame();
-                break;
+                return;
         }
         return;
     }
-
-    if (document.URL.endsWith("index.html")) {
-        switch(e.keyCode) {
-            case 49:
-                
-        }
-        alert(e.keyCode);
-    }
-    
 }
 
 function aiTriggerKeyboard() {
@@ -136,4 +168,13 @@ function runAnimation(id) {
 function rainbowAnimation() {
     document.body.style.backgroundImage = "linear-gradient(45deg, rgb(238, 119, 82), rgb(231, 60, 126), rgb(35, 166, 213), rgb(35, 213, 171))";
     document.body.classList.add("gradientAnimation");
+}
+
+//H for home first time
+
+window.onload = () => {
+    if (localStorage.getItem("visited") == null) {
+        notification("Press H to return to the home page <br>at any time!")
+        localStorage.setItem("visited", "true");
+    }
 }
