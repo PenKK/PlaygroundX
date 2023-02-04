@@ -169,12 +169,3 @@ function rainbowAnimation() {
     document.body.style.backgroundImage = "linear-gradient(45deg, rgb(238, 119, 82), rgb(231, 60, 126), rgb(35, 166, 213), rgb(35, 213, 171))";
     document.body.classList.add("gradientAnimation");
 }
-
-//H for home first time
-
-window.onload = () => {
-    if (localStorage.getItem("visited") == null) {
-        notification("Press H to return to the home page <br>at any time!")
-        localStorage.setItem("visited", "true");
-    }
-}
