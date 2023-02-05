@@ -40,7 +40,7 @@ function play() {
         ElementId("play").disabled = true;
         ElementId("guess").disabled = false;
         ElementId("enter").disabled = false;
-        ElementId("triesBox").style.visibility = "visible";
+        ElementId("triesBox").style.opacity = "1";
         ans = Math.round(Math.random()*ElementId("range").value);
         // console.log(ans);
     }

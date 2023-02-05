@@ -169,3 +169,17 @@ function rainbowAnimation() {
     document.body.style.backgroundImage = "linear-gradient(45deg, rgb(238, 119, 82), rgb(231, 60, 126), rgb(35, 166, 213), rgb(35, 213, 171))";
     document.body.classList.add("gradientAnimation");
 }
+
+//Mobile check
+
+setTimeout(() => {
+    if (navigator.userAgent.includes("Mobile") && !document.URL.endsWith("index.html")) {
+        console.log("Mobile")
+        // ElementId("mobileHomeButton").style.visibility = "visible"; DO LATER
+        if (document.URL.includes("tic-tac-toe")) {
+            for (let i = 0; i < tileElements.length; i++) {
+                tileElements[i].classList.add("mobileScale");
+            }
+        }
+    }
+}, 100);

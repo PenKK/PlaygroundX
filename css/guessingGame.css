@@ -16,7 +16,7 @@
 }
 
 .triesBoxClass {
-    height: 150px;
+    height: 17vh;
     width: 150px;
     border: darkred solid;
     text-align: center;
@@ -25,7 +25,8 @@
     position: absolute;
     top: 38%;
     left: 20%;
-    visibility: hidden;
+    opacity: 0;
+    transition: all 300ms;
 }
 
 #triesH2 {

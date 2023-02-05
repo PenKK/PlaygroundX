@@ -3,9 +3,11 @@ var turn = 1;
 var moveLock = false;
 var tilesUsed = 0;
 var gameEnded = false;
+var tileElements = [];
 
 window.onload = () => {
     turn = parseInt(localStorage.getItem("firstTurn"));
+    tileElements = document.querySelectorAll("i.fa-solid.fa-x,i.fa-solid.fa-o");
     updateScores();
 }
 

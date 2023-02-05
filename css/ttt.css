@@ -1,16 +1,16 @@
 .toeBox {
     background-color: rgb(180, 123, 123);
-    height: 200px;
-    width: 200px;
+    height: 21.5vh;
+    width: 21.5vh;
     border: 2px black solid;
     display: flex;
     justify-content: center;
     align-items: center;
     border: 4px solid rgb(102, 28, 28);
     border-radius: 4px;
-    margin: 16px;
-    margin-left: 8px;
-    margin-right: 8px;
+    margin: 1.8vh;
+    margin-left: 0.9vh;
+    margin-right: 0.9vh;
     transition: background-color 100ms;
     cursor: pointer;
 }
@@ -29,9 +29,9 @@
 
 #buttonSmall {
     cursor: pointer;
-    font-size: 25px;
-    height: 50px;
-    width: 220px;
+    font-size: 4vh;
+    height: fit-content;
+    width: 32vh;
 }
 
 .fa-solid.fa-10x {
@@ -42,7 +42,7 @@
 }
 
 #restart {
-    width: 150px;
+    width: fit-content;
     position: absolute;
     bottom: 25px;
     left: 0; 
@@ -50,10 +50,10 @@
     margin-left: auto; 
     margin-right: auto;
     font-size: 50px;
-    height: 40px;
+    height: 6.5vh;
     background-color: brown;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    font-size: 30px;
+    font-size: 5vh;
     color: white;
     border-radius: 5px;
     cursor: pointer;
@@ -87,8 +87,8 @@
 }
 
 #endBox {
-    width: 800px;
-    height: 400px;
+    width: 40vw;
+    height: 38vh;
     border: 5px brown solid;
     position: absolute;
     left: 0; 
@@ -105,7 +105,7 @@
 }
 
 #endText {
-    font-size: 100px;
+    font-size: 8vh;
 }
 
 .scores {
@@ -120,4 +120,8 @@
 
 #rightScore {
     right: 1%;
+}
+
+.mobileScale {
+    scale: 0.45;
 }

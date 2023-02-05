@@ -7,9 +7,11 @@ var tilesUsed = 0;
 var gameEnded = false;
 var gameStarted = false;
 var debug = false;
+var tileElements = [];
 
 window.onload = () => {
     turn = parseInt(localStorage.getItem("AIfirstTurn"));
+    tileElements = document.querySelectorAll("i.fa-solid.fa-x,i.fa-solid.fa-o");
     updateScores();
 }
 
@@ -199,6 +201,7 @@ function aiTrigger() {
             clickTile(Math.floor(Math.random()*3), Math.floor(Math.random()*3), true);
         }
     }, 325);
+    ElementId("game").style.pointerEvents = "none";
 }
 
 function resetScores() {
