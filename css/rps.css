@@ -95,6 +95,7 @@
 
 #result {
     animation: floatDown;
+    font-size: 4vh;
 }
 
 #playerPaper {
