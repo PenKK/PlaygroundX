@@ -1,6 +1,6 @@
 #controlsBox {
     display: flex;
-    width: 72vh;
+    width: 40vw;
     flex-wrap: wrap;
     justify-content: center;
 }
