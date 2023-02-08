@@ -8,7 +8,23 @@ var computerReverseSweep = false;
 var gameOver = false;
 
 window.onload = ()  => {
-    updateScores(); 
+    updateScores();
+    updateXScale();
+}
+
+window.onresize = () => {
+    updateXScale();
+}
+
+function updateXScale() {
+    console.log("resized");
+    if (!(screen.width == 1920 && screen.height == 1070)) {
+        var icons = document.getElementsByClassName("Xscores");
+        var viewportAdjusted = window.innerHeight/1000;
+        for (let i = 0; i < icons.length; i++) {
+        icons[i].style.scale = viewportAdjusted;
+        }
+    }
 }
 
 //Game functions
@@ -255,3 +271,4 @@ function updateScores() {
     ElementId("leftScore").innerHTML =  localStorage.getItem("playerScore");
     ElementId("rightScore").innerHTML =  localStorage.getItem("computerScore");
 }
+
