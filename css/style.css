@@ -25,6 +25,13 @@
     transform: translateY(-50%);
 }
 
+.divFlexRow {
+    display: flex;
+    height: 50%;
+    width: 100%;
+    justify-content: center;
+}
+
 h1 {
     font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     text-align: center;
@@ -33,18 +40,18 @@ h1 {
     margin-top: 20px;
     margin-left: auto; 
     margin-right: auto;
-    padding: 10px;
     text-shadow: brown 3px 3px 3px;
     color: darkred;
     border-color: firebrick;
     font-size: 8vh;
+    z-index: 1;
 }
 
 h2 {
     font-size: 5vh;
     text-align: center;
     font-family: 'Consolas', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    margin-top: 0px;
+    
 }
 
 h3 {

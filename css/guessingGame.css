@@ -59,3 +59,8 @@
     right: 0px;
     margin-right: 3%;
 }
+
+#bottomButton {
+    position: relative;
+    bottom: 0px;
+}
