@@ -209,13 +209,15 @@ a:hover {
     border:darkred solid;
     width: 38%;
     height: 115px;
-    text-align: center;
     margin-left: auto;
     margin-right: auto;
     margin-top: 20px;
     border-radius: 10px;
     background-color: blanchedalmond;
     box-shadow: 10px 10px 5px rgb(77, 19, 19);
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .gameInput {

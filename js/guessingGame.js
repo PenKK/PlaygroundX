@@ -106,7 +106,7 @@ function updateTries() {
 }
 
 function winGame() {
-    ElementId("triesText").innerHTML = "It took you " + triesCounter +" tries";
+    ElementId("triesText").innerHTML = "Congratulations you win!<br>It took you " + triesCounter +" tries";
     ElementId("triesBox").style.visibility = "hidden";
     document.getElementById('winBox').removeAttribute("hidden");
     ElementId("guess").disabled = true;
