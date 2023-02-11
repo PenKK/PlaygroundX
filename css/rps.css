@@ -51,15 +51,19 @@
 }
 
 #questionBox {
-    width: 35px;
-    height: 35px;
+    width: 4vw;
+    height: 4vh;
+    margin: 1vh;
     border: 3px black solid;
     border-radius: 5px;
     position: relative;
-    top: -80%;
-    left: 90%;
     transition: all ease-in 100ms;
     background-color: gray;
+}
+
+.textC {
+    width: 100%;
+    height: 50%;
 }
 
 #questionBox:hover {
@@ -81,7 +85,6 @@
 }
 .Xscores {
     opacity: 0.3;
-    margin: ;
 }
 
 #questionBox:hover #infoBox {
