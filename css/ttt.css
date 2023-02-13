@@ -65,10 +65,13 @@
 }
 
 #oBox {
+    right: 5vw;
+}
+
+.boxType {
     visibility: visible;
     opacity: 0;
     position: absolute;
-    right: 10%;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -76,14 +79,7 @@
 }
 
 #xBox {
-    visibility: visible;
-    opacity: 0;
-    position: absolute;
-    left: 10%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    transition: all 250ms;
+    left: 5vw;
 }
 
 #endBox {
