@@ -9,18 +9,18 @@ var gameOver = false;
 
 window.onload = ()  => {
     updateScores();
-    updateXScale();
+    updateIconScale();
 }
 
 window.onresize = () => {
-    updateXScale();
+    updateIconScale();
 }
 
-function updateXScale() {
+function updateIconScale() {
     console.log("resized");
     if (!(screen.width == 1920 && screen.height == 1070)) {
-        var icons = document.getElementsByClassName("Xscores");
-        var viewportAdjusted = window.innerHeight/1000;
+        var icons = document.getElementsByClassName("fa-solid");
+        var viewportAdjusted = window.innerHeight/1100;
         for (let i = 0; i < icons.length; i++) {
         icons[i].style.scale = viewportAdjusted;
         }
