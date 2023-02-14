@@ -124,13 +124,9 @@ a:hover {
 
 
 .smallGameBox {
-    margin-top: 4%;
     height: 19vh;
     width: 19vh;
     border: darkred solid;
-    margin-left: auto;
-    margin-right: auto;
-    text-align: center;
     border-radius: 10px;
     background-color: blanchedalmond;
     animation: floatDown forwards;
