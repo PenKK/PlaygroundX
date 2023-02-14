@@ -17,6 +17,13 @@
     right: -50px;
 }
 
+.flexDiv {
+    display: flex;
+    justify-content: center;
+    font-size: 3.5vh;
+    font-family: 'Consolas', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
 #headerText {
     margin-bottom: 17px
 }
@@ -47,40 +54,46 @@
 
 .smallBoxBelowText {
     position: relative;
-    bottom: -120px;
+    transform: translateY(170%);
+}
+
+.smallBoxHeader {
+    position: relative;
+    transform: translateY(-190%);
 }
 
 #questionBox {
-    width: 4vw;
+    width: 4vh;
     height: 4vh;
     margin: 1vh;
     border: 3px black solid;
     border-radius: 5px;
-    position: relative;
+    position: absolute;
     transition: all ease-in 100ms;
     background-color: gray;
+    right: 0px;
+    top: 25%;
 }
 
-.textC {
-    width: 100%;
-    height: 50%;
+#winBox {
+    display: block;
+    position: relative;
 }
 
 #questionBox:hover {
      background-color: brown;
-     
 }
 
 #infoBox {
-    width: 1000%;
-    height: 115px;
-    top: -120%;
-    left: 230%;
+    width: 40vh;
+    height: fit-content;
     border:darkred solid;
     background-color: blanchedalmond;
     border-radius: 10px;
     position: absolute;
     opacity: 0;
+    left: 0px;
+    transform: translateX(18%) translateY(-75%);
     transition: opacity ease-in 150ms;
 }
 .Xscores {
@@ -97,6 +110,12 @@
     position: absolute;
     color: brown;
     text-shadow: black 10px 10px;
+}
+
+#restartButton {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%) translateY(-90%);
 }
 
 #playerRock {

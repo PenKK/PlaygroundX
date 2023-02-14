@@ -70,14 +70,14 @@
     <!-- Result Box -->
 
     <div class="smallGameBox" id="leftSmallGameBox">
-        <h2 style="position: relative; top: -50px;">Player</h2>
+        <h2 class="smallBoxHeader">Player</h2>
         <i class="fa-solid fa-hand-back-fist fa-8x displayMoves" id="playerRock"></i>
         <i class="fa-solid fa-hand fa-8x displayMoves" id="playerPaper"></i>
         <i class="fa-solid fa-hand-scissors fa-8x displayMoves" id="playerScissors"></i>
         <h2 id="boxResultTextPlayer" class="smallBoxBelowText">Sample</h2>
     </div>
     <div class="smallGameBox" id="rightSmallGameBox">
-        <h2 style="position: relative; top: -50px;">Computer</h2>
+        <h2 class="smallBoxHeader">Computer</h2>
         <i class="fa-solid fa-hand-back-fist fa-8x displayMoves" id="computerRock"></i>
         <i class="fa-solid fa-hand fa-8x displayMoves" id="computerPaper"></i>
         <i class="fa-solid fa-hand-scissors fa-8x displayMoves" id="computerScissors"></i>
@@ -88,13 +88,15 @@
 
     <div id="winBox" hidden>
         <h2 id="endText" style="font-size: 35px;">endText</h2>
-        <button class="gameButton" onclick="location.reload()" style="position: relative; bottom: 34px;">RESTART</button>
+        <button class="gameButton" id="restartButton" onclick="location.reload()">RESTART</button>
 
         <div id="questionBox" hidden>
-            <h2 id="mark" style="bottom: 5px; position: relative;">?</h2>
+            <div class="flexDiv">
+                ?
+            </div>
 
             <div id="infoBox">
-                <h3 style="position: relative; bottom: 25px;">
+                <h3>
                     A reverse sweep is when someone keeps on 
                     losing in a series with no score until the 
                     final game and then wins every remaining game
