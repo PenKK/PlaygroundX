@@ -16,14 +16,20 @@ window.onresize = () => {
     updateIconScale();
 }
 
+function sweepDebug() {
+    computerReverseSweep = true;
+    playerReverseSweep = true;
+}
+
 function updateIconScale() {
-    console.log("resized");
-    if (!(screen.width == 1920 && screen.height == 1070)) {
+    
+    if (screen.width != 1920 || screen.height != 1080) {
         var icons = document.getElementsByClassName("fa-solid");
         var viewportAdjusted = window.innerHeight/1100;
         for (let i = 0; i < icons.length; i++) {
         icons[i].style.scale = viewportAdjusted;
         }
+        console.log("Icons resized to: " + viewportAdjusted.toFixed(2) + "px");
     }
 }
 
@@ -158,7 +164,7 @@ function endPlayer() {
 
     if(playerReverseSweep) {
         rainbowAnimation();
-        ElementId("endText").innerHTML = "YOU GOT A REVERSE SWEEEP!!!";
+        ElementId("endText").innerHTML = "YOU GOT A REVERSE SWEEEP!";
         ElementId("questionBox").removeAttribute("hidden");
 
         if (localStorage.getItem("SWEEPER_OR_SWEEPED") != "true") {
