@@ -22,7 +22,9 @@ var board = [[0,0,0],
 function updateBoard() {
     for (let x = 0; x < 3; x++) {
         for (let y = 0; y < 3; y++) {
+
             var id = x + "" + y;
+
             switch (board[x][y]) {
                 case 0:
                     break;
@@ -36,6 +38,7 @@ function updateBoard() {
                     break;
             }
         }
+        
     }
 }
 
