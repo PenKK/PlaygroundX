@@ -130,7 +130,7 @@ function checkGame(turn) {
             return;
         case 1:
             ElementId("endText").innerHTML = ("Player <br> Wins!");
-            localStorage.setItem("scorePlayer", parseInt(localStorage.getItem("scorePlayer"))+1);
+            incrementStorage("scorePlayer")
             break;
         case 2:
             ElementId("endText").innerHTML = "Computer <br> Wins!";
@@ -138,7 +138,7 @@ function checkGame(turn) {
                 localStorage.setItem("TIC_TAC_TOE_LOSER", "true");
                 notification("Achievement completed: Tic Tac Toe Loser...");
             }
-            localStorage.setItem("scoreAI", parseInt(localStorage.getItem("scoreAI"))+1);
+            incrementStorage("scoreAI");
             break;
     }
     ElementId("xBox").style.opacity = "0";

@@ -118,11 +118,11 @@ function checkGame(turn) {
             return;
         case 1:
             ElementId("endText").innerHTML = ("X <br> Wins!");
-            localStorage.setItem("scoreX", parseInt(localStorage.getItem("scoreX"))+1);
+            incrementStorage("scoreX");
             break;
         case 2:
             ElementId("endText").innerHTML = "O <br> Wins!";
-            localStorage.setItem("scoreO", parseInt(localStorage.getItem("scoreO"))+1);
+            incrementStorage("scoreO");
             break;
     }
     ElementId("xBox").style.opacity = "0";

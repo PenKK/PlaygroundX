@@ -27,7 +27,7 @@ function updateIconScale() {
         var icons = document.getElementsByClassName("fa-solid");
         var viewportAdjusted = window.innerHeight/1100;
         for (let i = 0; i < icons.length; i++) {
-        icons[i].style.scale = viewportAdjusted;
+            icons[i].style.scale = viewportAdjusted;
         }
         console.log("Icons resized to: " + viewportAdjusted.toFixed(2) + "px");
     }
@@ -173,7 +173,7 @@ function endPlayer() {
         }
     }
 
-    localStorage.setItem("playerScore", parseInt(localStorage.getItem("playerScore"))+1);
+    incrementStorage("playerScore");
 
     if(localStorage.getItem("playerScore") == "NaN") {
         localStorage.setItem("playerScore", 1);
@@ -199,7 +199,7 @@ function endComputer() {
 
     }
     
-    localStorage.setItem("computerScore", parseInt(localStorage.getItem("computerScore"))+1);
+    incrementStorage("computerScore");
 
     if(localStorage.getItem("computerScore") == "NaN") {
         localStorage.setItem("computerScore", 1);
@@ -277,4 +277,3 @@ function updateScores() {
     ElementId("leftScore").innerHTML =  localStorage.getItem("playerScore");
     ElementId("rightScore").innerHTML =  localStorage.getItem("computerScore");
 }
-

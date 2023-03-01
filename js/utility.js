@@ -16,6 +16,11 @@ function grantAchievements() {
     localStorage.setItem("SWEEPER_OR_SWEEPED", true);
     localStorage.setItem("TIC_TAC_TOE_LOSER", true);
 }
+
+function incrementStorage(item) {
+    localStorage.setItem(item, parseInt(localStorage.getItem(item))+1)
+}
+
 //Controls
 document.addEventListener("keydown", pageKeyDown, false);
 
