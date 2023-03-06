@@ -1,4 +1,4 @@
-var rgb = "rgb(231, 101, 101)"; 
+var rgb = "rgb(100, 0, 0)"; 
 var turn = 1;
 var moveLock = false;
 var tilesUsed = 0;
@@ -104,7 +104,7 @@ function checkWin() {
 function tilesTie() {
     for (let x = 0; x < 3; x++) {
         for (let y = 0; y < 3; y++) {
-            ElementId(x + "" + y + "x").parentElement.style.backgroundColor = "rgb(240, 192, 90)";
+            ElementId(x + "" + y + "x").parentElement.style.backgroundColor = "rgb(255, 224, 175)";
         }
     }
 }

@@ -76,6 +76,7 @@
     justify-content: center;
     align-items: center;
     transition: all 250ms;
+    transform: translateY(90%);
 }
 
 #xBox {

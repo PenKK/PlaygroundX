@@ -19,7 +19,7 @@
     border-radius: 10px;
     background-color: blanchedalmond;
     position: absolute;
-    transform: translateY(-200%) translateX(200%);
+    transform: translateY(-200%) translateX(100%);
     opacity: 0;
     transition: all 300ms;
 }
