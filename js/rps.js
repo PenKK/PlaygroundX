@@ -6,6 +6,7 @@ var AIScore = 0;
 var playerReverseSweep = false;
 var computerReverseSweep = false;
 var gameOver = false;
+var logDelayLock = false;
 
 window.onload = ()  => {
     updateScores();
@@ -22,14 +23,25 @@ function sweepDebug() {
 }
 
 function updateIconScale() {
+
+    function logDelay() {
+        if (!logDelayLock) {
+            logDelayLock = true;
+            console.log("Icons resized to: " + viewportAdjusted.toFixed(2) + "px");
+
+            setTimeout(() => {
+                logDelayLock = false;
+            }, 250);
+        }
+    }
     
-    if (screen.width != 1920 || screen.height != 1080) {
+    if (screen.width != 1920 || screen.height != 1070) {
         var icons = document.getElementsByClassName("fa-solid");
-        var viewportAdjusted = window.innerHeight/1100;
+        var viewportAdjusted = window.innerHeight/1050;
         for (let i = 0; i < icons.length; i++) {
             icons[i].style.scale = viewportAdjusted;
         }
-        console.log("Icons resized to: " + viewportAdjusted.toFixed(2) + "px");
+        logDelay();
     }
 }
 
@@ -81,8 +93,8 @@ function displayResult(playerMove, AIMove) {
     show("leftSmallGameBox");
     show("rightSmallGameBox");
     
-    document.getElementById('leftSmallGameBox').style.webkitAnimationPlayState = "running";
-    document.getElementById('rightSmallGameBox').style.webkitAnimationPlayState = "running";
+    document.getElementById('leftSmallGameBox').style.animationPlayState = "running";
+    document.getElementById('rightSmallGameBox').style.animationPlayState = "running";
 }
 
 function tie() {
