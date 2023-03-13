@@ -13,6 +13,7 @@
 	<link rel="stylesheet" type="text/css" href="css/index.css"/>
 	<!-- SCHOOL COMPUTERS ARE 1600x1200 -->
 	<!-- SMALL LAPTOPS AT SCHOOL ARE 1366x768 WTF IM TOO BAD AT CSS FOR THIS -->
+	<!-- ^ update: vary ez just use vh and vw ehaheaheaea i was so foolish -->
 </head>
 
 <body>
@@ -21,8 +22,6 @@
 	<h1>
 		Capstone Project
 	</h1>
-
-	
 
 	<div class="notificationClass notificationEnterClass" id="noti">
         <i id="notiExclamation" class="fa-solid fa-exclamation vertical-center fa-2xl" style="position: absolute;"></i>
@@ -34,34 +33,61 @@
 	<!-- Header text -->
 	<div class="mainContainer">
 		<h2 id="headerText">Welcome to my Capstone Project!<br>
-			Try to complete all achievements throughout games!</h2>
-
+			Try to complete all achievements throughout games!
+		</h2>
 
 		<!-- Game buttons -->
 
 		<div class="innerContainer">
 			<div class="gameContainer">
-				<button class="selectButton">
+				<script>
+					gg = () => {
+						window.location.href = "guessing-game.html"
+					}
+					rps = () => {
+						window.location.href = "rock-paper-scissors.html"
+					}
+					ttt = () => {
+						window.location.href = "tic-tac-toe.html"
+					}
+					tft = () => {
+						window.location.href = "2048.html"
+					}
+				</script>
+				<button class="selectButton" onclick="gg()">
 				<a href="guessing-game.html">Guessing Game</a>
 				</button>
 	
-				<button class="selectButton">
+				<button class="selectButton" onclick="rps()">
 				<a href="rock-paper-scissors.html">Rock Paper Scissors</a>
 				</button>
 	
-				<button class="selectButton">
+				<button class="selectButton" onclick="ttt()">
 				<a href="tic-tac-toe.html">2 Player Tic Tac Toe</a>	
 				</button>
+
+				<button class="selectButton" onclick="tft()">
+					<a href="2048.html">2048</a>	
+				</button>
+				
 			</div>
 
 			<div class="break"></div>
 	
 			<div class="gameContainer" id="otherContainer">
-				<button id="achievementsButton" class="selectButton">
+				<script>
+					ach = () => {
+						window.location.href = "achievements.html"
+					}
+					cont = () => {
+						window.location.href = "controls.html"
+					}
+				</script>
+				<button id="achievementsButton" class="selectButton" onclick="ach()">
 				<a href="achievements.html">Achievements</a>
 				</button>
 	
-				<button class="selectButton">
+				<button class="selectButton" onclick="cont()">
 				<a href="controls.html">Controls</a>
 				</button>
 			</div>

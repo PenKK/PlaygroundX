@@ -36,6 +36,9 @@ function pageKeyDown(e) {
             case 51:
                 location.href = "tic-tac-toe.html";
                 break;
+            case 52:
+                location.href = "2048.html";
+                break;
         }
     } else 
 
@@ -101,10 +104,10 @@ function pageKeyDown(e) {
     if (document.URL.endsWith("2048.html")) {
         switch(e.keyCode) {
             case 87:
-                up();
+                move("up");
                 return;
             case 38:
-                up();
+                move("up");
                 return;
             case 65:
                 left();
@@ -113,16 +116,19 @@ function pageKeyDown(e) {
                 left();
                 return;
             case 83:
-                down();
+                move("down");
                 return;
             case 40:
-                down();
+                move("down");
                 return;
             case 68:
                 right();
                 return;
             case 39:
-                right();
+                right()
+                return;
+            case 220:
+                spawnTile();
                 return;
         }
     }

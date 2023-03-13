@@ -1,33 +1,41 @@
 .testClassThatIWillNeverUseProbablyLongNameForFun {
     background-image: linear-gradient(45deg, rgb(253, 230, 201), rgb(255, 194, 119), rgb(253, 230, 201));
     background-image: linear-gradient(45deg, rgb(238, 119, 82), rgb(231, 60, 126), rgb(35, 166, 213), rgb(35, 213, 171));
-    background-color: rgb(185, 92, 92);
+    background-color: rgb(143, 1, 1);
 }
+
 *{
     user-select: none;
 }
+
 [hidden] {
     display: none !important;
 }
+
 #mobileHomeButton {
+    
 }
+
 .gradientAnimation {
     background-size: 400% 400%;
     animation: gradient 15s ease infinite;
     height: 100vh;
 }
+
 .vertical-center {
     position: absolute;
     top: 50%;
     -ms-transform: translateY(-50%);
     transform: translateY(-50%);
 }
+
 .divFlexRow {
     display: flex;
     height: 50%;
     width: 100%;
     justify-content: center;
 }
+
 h1 {
     font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     text-align: center;
@@ -42,15 +50,18 @@ h1 {
     font-size: 8vh;
     z-index: 1;
 }
+
 h2 {
     font-size: 4vh;
     text-align: center;
     font-family: 'Consolas', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
+
 h3 {
     font-family: 'Courier New', Courier, monospace;
     padding: 10px;
 }
+
 .selectButton {
     height: 10vh;
     width: 28vh;
@@ -62,30 +73,38 @@ h3 {
     cursor: pointer;
     transition: all 100ms ease-in-out;
 }
+
 text {
     color: darkorange;
 }
+
 body {
     background-color: bisque;
     overflow: hidden;
 }
+
 a:link {
     text-decoration: none;
     color: azure;
 }
+
 a:active {
     color: aqua;
 }
+
 a:visited {
     color:azure;
 }
+
 a:hover {
     color: bisque;
     text-shadow: black 3px 3px 3px;
 }
+
 .selectButton:hover {
     background-color: rgb(139, 39, 39);
 }
+
 .gameContainer {
     margin-top: -10px;
     margin-bottom: 50px;
@@ -102,6 +121,7 @@ a:hover {
     top: -60px;
     box-shadow: 10px 10px 5px rgb(77, 19, 19);
 }
+
 .smallGameBox {
     height: 19vh;
     width: 19vh;
@@ -113,6 +133,7 @@ a:hover {
     animation-play-state: paused;
     visibility: hidden;
 }
+
 .gameBox {
     margin-top: 100px;
     height: 55vh;
@@ -125,6 +146,7 @@ a:hover {
     background-color: blanchedalmond;
     box-shadow: 10px 10px 5px rgb(77, 19, 19);
 }
+
 .squreGameBox {
     margin-top: -20px;
     height: 75.35vh;
@@ -139,10 +161,12 @@ a:hover {
     justify-content: center;
     align-items: center;
 }
+
 .break {
     flex-basis: 100%;
     height: 0;
 }
+
 .cover {
     position: absolute;
     background-color: black;
@@ -156,9 +180,11 @@ a:hover {
     transition: all 250ms;
     flex-wrap: wrap;
 }
+
 .coverButton:hover {
     background-color: rgb(139, 39, 39);
 }
+
 .coverButton {
     width: fit-content;
     height: 12vh;
@@ -173,9 +199,11 @@ a:hover {
     border: 5px rgb(80, 0, 0) solid;
     margin: 20px;
 }
+
 .coverButton:active {
     color: rgb(163, 163, 163);
 }
+
 #winBox {
     border:darkred solid;
     width: 38%;
@@ -190,6 +218,7 @@ a:hover {
     align-items: center;
     justify-content: center;
 }
+
 .gameInput {
     width: 20vw;
     height: 4vh;
@@ -201,6 +230,7 @@ a:hover {
     border-radius: 5px;
     margin-top: -10px;
 }
+
 .gameButton {
     width: fit-content;
     height: 4.5vh;
@@ -213,23 +243,29 @@ a:hover {
     cursor: pointer;
     transition: color 100ms;
 }
+
 .gameButton:hover {
     text-shadow: black 3px 3px 3px;
     color:bisque;
 }
+
 .gameButton:disabled {
     color:darkgray;
 }
+
 .gameInput:disabled {
     background-color: rgb(128, 27, 27);
 }
+
 .gameButton:active {
     color: rgb(163, 163, 163);
 }
+
 input::-webkit-outer-spin-button,input::-webkit-inner-spin-button {
     appearance: none;
     margin: 0;
 }
+
 .notificationClass {
     position: absolute;
     width: 30vw;
@@ -244,15 +280,18 @@ input::-webkit-outer-spin-button,input::-webkit-inner-spin-button {
     transition: opacity 1s;
     z-index: 1;
 }
+
 .notificationEnterClass {
     animation: notificationEnter forwards;
     animation-play-state: paused;
     animation-duration: 2500ms;
 }
+
 #notiExclamation {
     left: 20px;
     color: brown;
 }
+
 #notiText {
     left: 50px;
     position: absolute;
@@ -260,46 +299,29 @@ input::-webkit-outer-spin-button,input::-webkit-inner-spin-button {
     -ms-transform: translateY(-50%);
     transform: translateY(-50%);
 }
+
 @keyframes lower {
-    from {
-        margin-top: 0px;
-   }
-    to {
-        margin-top: 1150px;
-   }
+    from {margin-top: 0px;}
+    to {margin-top: 1150px;}
 }
+
 @keyframes higher {
-    from {
-        margin-bottom: 0px;
-   }
-    to {
-        margin-bottom: 1150px;
-   }
+    from {margin-bottom: 0px;}
+    to {margin-bottom: 1150px;}
 }
+
 @keyframes notificationEnter {
-    from {
-        right: -20%;
-   }
-    to {
-        right: 1%;
-   }
+    from {right: -20%;}
+    to {right: 1%;}
 }
+
 @keyframes floatDown {
-    from {
-        top: 25%;
-   }
-    to {
-        top: 30%;
-   }
+    from {top: 25%;}
+    to {top: 30%;}
 }
+
 @keyframes gradient {
-    0% {
-        background-position: 0% 50%;
-   }
-    50% {
-        background-position: 100% 50%;
-   }
-    100% {
-        background-position: 0% 50%;
-   }
+    0% {background-position: 0% 50%;}
+    50% {background-position: 100% 50%;}
+    100% {background-position: 0% 50%;}
 }
