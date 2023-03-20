@@ -104,10 +104,10 @@ function pageKeyDown(e) {
     if (document.URL.endsWith("2048.html")) {
         switch(e.keyCode) {
             case 87:
-                move("up");
+                up();
                 return;
             case 38:
-                move("up");
+                up();
                 return;
             case 65:
                 left();

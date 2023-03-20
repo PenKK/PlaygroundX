@@ -1,12 +1,11 @@
-let fullBoard = false;
-let oldBoard;
-board = [[0, 0, 2, 2],
+board = [[0, 0, 0, 0],
          [0, 0, 0, 0],
          [0, 0, 0, 0],
          [0, 0, 0, 0]];
 
 window.onload = () => {
-    updateTiles();
+    spawnTile();
+    spawnTile();
 }
 
 updateTiles = () => {
@@ -19,7 +18,7 @@ updateTiles = () => {
                 id.innerHTML = "";
                 id.style.backgroundColor = "rgb(180, 123, 123)";
             }
-            
+
             switch(board[x][y]) {
                 case 2:
                     id.style.backgroundColor = "#A30010";
@@ -32,10 +31,11 @@ updateTiles = () => {
                 case 8:
                     id.style.backgroundColor = "#1B020C";
                     id.style.color = "rgb(0,0,0,1)";
+                    break;
                 case 16:
                     id.style.backgroundColor = "#BC121C";
                     id.style.color = "rgb(0,0,0,1)";
-
+                    break;
                 
             }
         }
@@ -43,117 +43,142 @@ updateTiles = () => {
 }
 
 spawnTile = () => {
-    let attempts = 0;
+
     let tileX = -1;
     let tileY = -1;
     do {
         tileX = Math.floor(Math.random() * 4);
         tileY = Math.floor(Math.random() * 4);
-        if (attempts++ > 150) {
-            console.log("Board considered full");
-            fullBoard = true;
-            return;
-        } 
     } while (board[tileX][tileY] != 0);
 
-    board[tileX][tileY] = (Math.floor(Math.random()*2)+1)*2
-    updateTiles();
-}
-
-spawnTile = () => {
-    let attempts = 0;
-    let tileX = -1;
-    let tileY = -1;
-    do {
-        tileX = Math.floor(Math.random() * 4);
-        tileY = Math.floor(Math.random() * 4);
-        if (attempts++ > 150) {
-            console.log("Board considered full");
-            fullBoard = true;
-            return;
-        } 
-    } while (board[tileX][tileY] != 0);
-
-    board[tileX][tileY] = (Math.floor(Math.random()*2)+1)*2
+    if (Math.random() > 0.75) {
+        board[tileX][tileY] = 4;
+    } else {
+        board[tileX][tileY] = 2;
+    }
+    
     updateTiles();
 }
 
 right = () => {
     for (let row = 0; row < 4; row++) {
+
         let arr = removeZeros(board[row]);
         let i = 0;
         let j = 1;
+        let found = true;
         
         while (arr[i] != arr[j]) {
             i++;
             j++;
+            if (arr[j] == undefined) {
+                found = false;
+            }
         }
 
-        arr[j] *= 2;
-        arr[i] = 0;
-        
-        fixNaN(arr);
-        arr = removeZeros(arr);
+        if (found) {
+            arr[j] *= 2;
+            arr[i] = 0;
+        }
         
         while (arr.length < 4) {
             arr.unshift(0);
         }
+
+        fixNaN(arr);
         
         board[row] = arr;
         
     }
+    
     spawnTile();
 }
+
 
 left = () => {
     for (let row = 0; row < 4; row++) {
         let arr = removeZeros(board[row]);
         let i = 0;
         let j = 1;
-        
+        let found = true;
+
         while (arr[i] != arr[j]) {
             i++;
             j++;
+            if (arr[j] == undefined) {
+                found = false;
+            }
         }
 
-        arr[i] *= 2;
-        arr[j] = 0;
+        if (found) {
+            arr[i] *= 2;
+            arr[j] = 0;
+        }
         
-        arr = removeZeros(arr)
         fixNaN(arr);
         
         board[row] = arr;
-        
-    }
-    if (board == oldBoard) {
-        console.log("End")
     }
     
     spawnTile();
 }
 
+up = () => {
+    let newBoard = [[]];
+    for (let column = 0; column < 4; column++) {
+        let arr = [];
+        let i = 0;
+        let j = 1;
+        let found = true;
+
+        for (let row = 0; row < 4; row++) {
+            arr.push(board[row][column]);
+        }
+        arr = removeZeros(arr);
+        
+        while (arr[i] != arr[j]) {
+            i++;
+            j++;
+            if (arr[j] == undefined) {
+                found = false;
+            }
+        }
+
+        if (found) {
+            arr[i] *= 2;
+            arr[j] = 0;
+        }
+
+        arr = removeZeros(arr);
+        fixNaN(arr);
+        newBoard[column] = arr;
+    }
+    console.log(newBoard);
+    // board = convertArr(newBoard);
+    
+}
+
+convertArr = (arr) => { //CONVERT THIS
+    for (let i = 0; i < 4; i++) {
+        let temp;
+        for (let j = 0; i < 4; i++) {
+            
+        }
+    }
+}
+
 removeZeros = (arr) => {
-    // var i = arr.length;
-    // while (i--) {
-    //     if (arr[i] === 0) {
-    //         arr.splice(i, 1);
-    //     }
-    // }
-    // return arr;
     return arr.filter(num => num != 0);
 }
 
 fixNaN = (arr) => {
     for (let i = 0; i < 4; i++) {
-        try {
-            if (isNaN(arr[i])) {
-                arr[i] = 0;
-            }
-        } catch (e) {
-
+        if (isNaN(arr[i])) {
+            arr[i] = 0;
         }
     }
 }
+
 // function prob() {
 //     let two = 0;
 //     let four = 0;
