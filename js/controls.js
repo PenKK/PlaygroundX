@@ -116,10 +116,10 @@ function pageKeyDown(e) {
                 left();
                 return;
             case 83:
-                move("down");
+                down();
                 return;
             case 40:
-                move("down");
+                down();
                 return;
             case 68:
                 right();
