@@ -20,9 +20,9 @@ const textColor = "rgb(200,200,200,1)";
 //              [8192, 16384, 0, 0]];
 
 let board = [[0, 0, 0, 0],
-             [4, 0, 0, 0],
-             [2, 0, 0, 0],
-             [2, 0, 0, 0]];
+             [0, 0, 0, 0],
+             [0, 0, 0, 0],
+             [0, 0, 0, 0]];
 
 let oldBoard = "";
 
@@ -134,7 +134,7 @@ spawnTile = () => {
 }
 
 checkCanMove = () => {
-    
+
 }
 
 right = () => {
@@ -168,9 +168,7 @@ right = () => {
     }
     if (JSON.stringify(board) != oldBoard) {
         spawnTile();
-    } else {
-        checkCanMove();
-    }
+    } 
 }
 
 left = () => {
