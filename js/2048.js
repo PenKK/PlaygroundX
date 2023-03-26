@@ -1,6 +1,6 @@
-const c2 = "#e60202";
-const c4 = "#cf0202";
-const c8 = "#b50202";
+const c2 = "#8f4949";
+const c4 = "#963838";
+const c8 = "#b02020";
 const c16 = "#9c0202";
 const c32 = "#850101";
 const c64 = "#6e0000";
@@ -12,11 +12,17 @@ const c2048 = "#120000";
 const c4096 = "#100000";
 const c8192 = "#0c0000";
 const c16384 = "#080000";
+const textColor = "rgb(200,200,200,1)";
 
-let board = [[2, 4, 8, 16],
-             [32, 64, 128, 256],
-             [512, 1024, 2048, 4096],
-             [8192, 16384, 0, 0]];
+// let board = [[2, 4, 8, 16],
+//              [32, 64, 128, 256],
+//              [512, 1024, 2048, 4096],
+//              [8192, 16384, 0, 0]];
+
+let board = [[0, 0, 0, 0],
+             [4, 0, 0, 0],
+             [2, 0, 0, 0],
+             [2, 0, 0, 0]];
 
 let oldBoard = "";
 
@@ -31,6 +37,7 @@ updateTiles = () => {
         for (let x = 0; x < 4; x++) {
 
             const id = ElementId(x + "" + y);
+            id.style.color = textColor;
 
             if (board[x][y] != 0) {
                 id.innerHTML = board[x][y];
@@ -44,63 +51,48 @@ updateTiles = () => {
                     break;
                 case 2:
                     id.style.backgroundColor = c2;
-                    id.style.color = "rgb(200,200,200,1)";
                     break;
                 case 4:
                     id.style.backgroundColor = c4;
-                    id.style.color = "rgb(200,200,200,1)";
                     break;
                 case 8:
                     id.style.backgroundColor = c8;
-                    id.style.color = "rgb(200,200,200,1)";
                     break;
                 case 16:
                     id.style.backgroundColor = c16;
-                    id.style.color = "rgb(200,200,200,1)";
                     break;
                 case 32:
                     id.style.backgroundColor = c32;
-                    id.style.color = "rgb(200,200,200,1)";
                     break;
                 case 64:
                     id.style.backgroundColor = c64;
-                    id.style.color = "rgb(200,200,200,1)";
                     break;
                 case 128:
                     id.style.backgroundColor = c128;
-                    id.style.color = "rgb(200,200,200,1)";
                     break;
                 case 256:
                     id.style.backgroundColor = c256;
-                    id.style.color = "rgb(200,200,200,1)";
                     break;
                 case 512:
                     id.style.backgroundColor = c512;
-                    id.style.color = "rgb(200,200,200,1)";
                     break;
                 case 1024:
                     id.style.backgroundColor = c1024;
-                    id.style.color = "rgb(200,200,200,1)";
                     break;
                 case 2048:
                     id.style.backgroundColor = c2048;
-                    id.style.color = "rgb(200,200,200,1)";
                     break;
                 case 4096:
                     id.style.backgroundColor = c4096;
-                    id.style.color = "rgb(200,200,200,1)";
                     break;
                 case 8192:
                     id.style.backgroundColor = c8192;
-                    id.style.color = "rgb(200,200,200,1)";
                     break;
                 case 16384:
                     id.style.backgroundColor = c16384;
-                    id.style.color = "rgb(200,200,200,1)";
                     break;
                 default:
                     id.style.backgroundColor = "rgb(0,0,0)"
-                    id.style.color = "rgb(200,200,200,1)";
                 
             }
         }
@@ -141,14 +133,23 @@ spawnTile = () => {
     updateTiles();
 }
 
+checkCanMove = () => {
+    
+}
+
 right = () => {
     for (let row = 0; row < 4; row++) {
         let arr = removeZeros(board[row]);
         let i = arr.length-1;
         let j = arr.length-2;
+        let combined = -1;
 
         while (arr[j] != undefined) {
             if (arr[i] == arr[j]) {
+                if (combined != -1 && arr[i] != combined) {
+                    break;
+                }
+                combined = arr[i];
                 arr[j] *= 2;
                 arr[i] = 0;
             }
@@ -167,6 +168,8 @@ right = () => {
     }
     if (JSON.stringify(board) != oldBoard) {
         spawnTile();
+    } else {
+        checkCanMove();
     }
 }
 
@@ -175,9 +178,14 @@ left = () => {
         let arr = removeZeros(board[row]);
         let i = 0;
         let j = 1;
-        
+        let combined = -1;
+
         while (arr[j] != undefined) {
             if (arr[i] == arr[j]) {
+                if (combined != -1 && arr[i] != combined) {
+                    break;
+                }
+                combined = arr[i];
                 arr[j] *= 2;
                 arr[i] = 0;
             }
@@ -206,9 +214,14 @@ up = () => {
         
         let i = 0;
         let j = 1;
+        let combined = -1
 
         while (arr[j] != undefined) {
             if (arr[i] == arr[j]) {
+                if (combined != -1 && arr[i] != combined) {
+                    break;
+                }
+                combined = arr[i];
                 arr[j] *= 2;
                 arr[i] = 0;
             }
@@ -240,9 +253,14 @@ down = () => {
         
         let i = arr.length-1;
         let j = arr.length-2;
+        let combined = -1;
 
         while (arr[j] != undefined) {
             if (arr[i] == arr[j]) {
+                if (combined != -1 && arr[i] != combined) {
+                    break;
+                }
+                combined = arr[i];
                 arr[j] *= 2;
                 arr[i] = 0;
             }
