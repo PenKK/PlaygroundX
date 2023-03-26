@@ -111,7 +111,7 @@ updateTiles = () => {
         ElementId("hsHolder").style.color = "brown";
         localStorage.setItem("2048hs", score);
     }
-    if (score >= 2500 && localStorage.getItem("2048_AMBASSADOR") != "true") {
+    if (score >= 3000 && localStorage.getItem("2048_AMBASSADOR") != "true") {
         localStorage.setItem("2048_AMBASSADOR", true);
         notification("Achievement complete: 2048 Ambassador");
     }
@@ -354,7 +354,7 @@ fixNaN = (arr) => {
     }
 }
 
-function transpose2DArray(arr) { //shoutout to chat gpt
+transpose2DArray = (arr) => { //shoutout to chat gpt
     for (let i = 0; i < arr.length; i++) {
         for (let j = i; j < arr.length; j++) {
             [arr[i][j], arr[j][i]] = [arr[j][i], arr[i][j]];
