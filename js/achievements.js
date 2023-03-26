@@ -22,6 +22,6 @@ window.onload = () => {
     if (localStorage.getItem("GRANDMASTER_GUESSER") == "true") {
         ElementId("grandmasterGuesser").parentElement.style.backgroundColor = onRGB;
         ElementId("headerDiv").innerHTML = "ACHIEVEMENTS";
-        ElementId("pText").innerHTML = "Congratulations on completing all achievements!"
+        ElementId("pText").innerHTML = "Congratulations on completing all achievements!";
     }
 }
