@@ -25,11 +25,14 @@ let board = [[0, 0, 0, 0],
              [0, 0, 0, 0]];
 
 let oldBoard = "";
+let score = 0;
 
 window.onload = () => {
+    ElementId("hsHolder").innerHTML = localStorage.getItem("2048hs");
     spawnTile();
     spawnTile();
     oldBoard = "";
+    ElementId("scoreHolder").innerHTML = "2048";
 }
 
 updateTiles = () => {
@@ -93,10 +96,39 @@ updateTiles = () => {
                     break;
                 default:
                     id.style.backgroundColor = "rgb(0,0,0)"
-                
+            
             }
         }
     }
+    if (gameEndCheck()) {
+        setTimeout(() => {
+            endGame();     
+        }, 750);
+    }
+    ElementId("scoreHolder").innerHTML = score;
+    if (score > localStorage.getItem("2048hs")) {
+        ElementId("hsHolder").innerHTML = score;
+        ElementId("hsHolder").style.color = "brown";
+        localStorage.setItem("2048hs", score);
+    }
+}
+
+spawnTile = () => {
+    let x,y;
+
+    do {
+        x = Math.floor(Math.random() * 4);
+        y = Math.floor(Math.random() * 4);
+    } while (board[x][y] != 0);
+
+    board[x][y] = 2;
+
+    if (Math.random() >= 0.9) {
+        board[x][y] = 4;
+    }
+
+    oldBoard = JSON.stringify(board);
+    updateTiles();
 }
 
 boardIsOpen = () => {
@@ -107,34 +139,42 @@ boardIsOpen = () => {
             }
         }
     }
-    console.log("Board not open");
     return false;
 }
 
-spawnTile = () => {
-    if (!boardIsOpen) {
-        console.log("Board is full");
-        return;
+gameEndCheck = () => {
+    if (boardIsOpen()) {
+        return false;
     }
-
-    let x,y;
-
-    do {
-        x = Math.floor(Math.random() * 4);
-        y = Math.floor(Math.random() * 4);
-    } while (board[x][y] != 0);
-
-    if (Math.random() > 0.75) {
-        board[x][y] = 4;
-    } else {
-        board[x][y] = 2;
+    if (canMoveHoriVert()) {
+        return false;
     }
-    oldBoard = JSON.stringify(board);
-    updateTiles();
+    return true
 }
 
-checkCanMove = () => {
+endGame = () => {
+    ElementId("gameCover").style.opacity = 0.9;
+}
 
+canMoveHoriVert = () => {
+    for (let i = 0; i < 4; i++) {
+        for (let j = 0; j < 4; j++) {
+            try {
+                if (board[i][j] == board[i][j + 1]) { //Horizontal
+                    return true;
+                }
+    
+                if (board[i][j] == board[i + 1][j]) { //Verticle
+                    return true;
+                }
+            } catch {
+                // console.log("Error caught in horizontal and verticle check");
+                // console.log("i: " + i);
+                // console.log("j: " + j);
+            }
+        }
+    }
+    return false;
 }
 
 right = () => {
@@ -152,6 +192,7 @@ right = () => {
                 combined = arr[i];
                 arr[j] *= 2;
                 arr[i] = 0;
+                score += combined*2;
             }
             i--;
             j--;
@@ -168,7 +209,7 @@ right = () => {
     }
     if (JSON.stringify(board) != oldBoard) {
         spawnTile();
-    } 
+    }
 }
 
 left = () => {
@@ -184,6 +225,7 @@ left = () => {
                     break;
                 }
                 combined = arr[i];
+                score += combined*2;
                 arr[j] *= 2;
                 arr[i] = 0;
             }
@@ -220,6 +262,7 @@ up = () => {
                     break;
                 }
                 combined = arr[i];
+                score += combined*2;
                 arr[j] *= 2;
                 arr[i] = 0;
             }
@@ -259,6 +302,7 @@ down = () => {
                     break;
                 }
                 combined = arr[i];
+                score += combined*2
                 arr[j] *= 2;
                 arr[i] = 0;
             }
@@ -304,19 +348,6 @@ function transpose2DArray(arr) { //shoutout to chat gpt
     return arr;
 }
 
-
-// function prob() {
-//     let two = 0;
-//     let four = 0;
-//     for (let i = 0; i < 10000; i++) {
-//         const num = (Math.floor(Math.random()*2)+1)*2;
-//         if (num == 2) {
-//             two++;
-//         }
-//         if (num == 4) {
-//             four++;
-//         }
-//     }
-//     console.log("2: " + two);
-//     console.log("4: " + four);
-// }
+if (localStorage.getItem("2048hs") == null) {
+    localStorage.setItem("2048hs", 0);
+}
