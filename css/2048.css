@@ -67,5 +67,10 @@
     color: aliceblue;
     font-size: 7vh;
     position: relative;
-    
+}
+
+#buttonSmall {
+    width: 12vw;
+    height: 8vh;
+    font-size: 5vmin;
 }

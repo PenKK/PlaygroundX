@@ -35,7 +35,7 @@ function updateIconScale() {
         }
     }
     
-    if (screen.width != 1920 || screen.height != 1070) {
+    if (screen.width != 1920 || screen.height != 1080) {
         var icons = document.getElementsByClassName("fa-solid");
         var viewportAdjusted = window.innerHeight/1050;
         for (let i = 0; i < icons.length; i++) {

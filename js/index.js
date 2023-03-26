@@ -1,6 +1,6 @@
 window.onload = () => {
     if (localStorage.getItem("visited") == null) {
-        notification("Press H to return to the home page <br>at any time!")
+        notification("Press H to return to the home page at any time!")
         localStorage.setItem("visited", "true");
     }
 

@@ -111,6 +111,10 @@ updateTiles = () => {
         ElementId("hsHolder").style.color = "brown";
         localStorage.setItem("2048hs", score);
     }
+    if (score >= 2500 && localStorage.getItem("2048_AMBASSADOR") != "true") {
+        localStorage.setItem("2048_AMBASSADOR", true);
+        notification("Achievement complete: 2048 Ambassador");
+    }
 }
 
 spawnTile = () => {
@@ -177,6 +181,13 @@ canMoveHoriVert = () => {
     return false;
 }
 
+check2048 = (num) => {
+    if (num == 2048 && localStorage.getItem("2048_COMPLETIONIST") != "true") {
+        localStorage.setItem("2048_COMPLETIONIST", true);
+        notification("Achievement complete: 2048 Completionist");
+    }
+}
+
 right = () => {
     for (let row = 0; row < 4; row++) {
         let arr = removeZeros(board[row]);
@@ -190,9 +201,10 @@ right = () => {
                     break;
                 }
                 combined = arr[i];
+                score += combined*2;
                 arr[j] *= 2;
                 arr[i] = 0;
-                score += combined*2;
+                check2048(combined*2);
             }
             i--;
             j--;
@@ -228,6 +240,7 @@ left = () => {
                 score += combined*2;
                 arr[j] *= 2;
                 arr[i] = 0;
+                check2048(combined*2);
             }
             i++;
             j++;
@@ -265,6 +278,7 @@ up = () => {
                 score += combined*2;
                 arr[j] *= 2;
                 arr[i] = 0;
+                check2048(combined*2);
             }
             i++;
             j++;
@@ -305,6 +319,7 @@ down = () => {
                 score += combined*2
                 arr[j] *= 2;
                 arr[i] = 0;
+                check2048(combined*2);
             }
             i--;
             j--;
