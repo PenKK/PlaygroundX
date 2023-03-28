@@ -1,6 +1,6 @@
 .downArrow{
     position: absolute;
-    top: -40px;
+    top: -5vh;
     left: 0px;
     margin-left: 3%;
     width: 25%; 
@@ -8,7 +8,7 @@
     animation: lower;
     animation-play-state: paused;
     animation-duration: 2s;
-    scale: 5;   
+    scale: 5;
 }
 
 .triesBoxClass {
@@ -36,7 +36,7 @@
 
 .upArrow{
     position: absolute;
-    bottom: -50px;
+    bottom: -5vh;
     scale: 5;
     text-align: center;
     left: 0px;

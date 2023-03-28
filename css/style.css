@@ -293,7 +293,7 @@ input::-webkit-outer-spin-button,input::-webkit-inner-spin-button {
 }
 
 #notiText {
-    left: 50px;
+    left: 3.125vw;
     position: absolute;
     top: 50%;
     -ms-transform: translateY(-50%);
@@ -302,12 +302,12 @@ input::-webkit-outer-spin-button,input::-webkit-inner-spin-button {
 
 @keyframes lower {
     from {margin-top: 0px;}
-    to {margin-top: 1150px;}
+    to {margin-top: 110vh;}
 }
 
 @keyframes higher {
     from {margin-bottom: 0px;}
-    to {margin-bottom: 1150px;}
+    to {margin-bottom: 110vh;}
 }
 
 @keyframes notificationEnter {
