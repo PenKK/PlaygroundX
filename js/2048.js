@@ -35,6 +35,10 @@ window.onload = () => {
     ElementId("scoreHolder").innerHTML = "2048";
 }
 
+if (localStorage.getItem("2048hs") == null) {
+    localStorage.setItem("2048hs", 0);
+}
+
 updateTiles = () => {
     for (let y = 0; y < 4; y++) {
         for (let x = 0; x < 4; x++) {
@@ -105,16 +109,8 @@ updateTiles = () => {
             endGame();     
         }, 750);
     }
-    ElementId("scoreHolder").innerHTML = score;
-    if (score > localStorage.getItem("2048hs")) {
-        ElementId("hsHolder").innerHTML = score;
-        ElementId("hsHolder").style.color = "brown";
-        localStorage.setItem("2048hs", score);
-    }
-    if (score >= 3000 && localStorage.getItem("2048_AMBASSADOR") != "true") {
-        localStorage.setItem("2048_AMBASSADOR", true);
-        notification("Achievement complete: 2048 Ambassador");
-    }
+    
+    storageEvents();
 }
 
 spawnTile = () => {
@@ -363,6 +359,17 @@ transpose2DArray = (arr) => { //shoutout to chat gpt
     return arr;
 }
 
-if (localStorage.getItem("2048hs") == null) {
-    localStorage.setItem("2048hs", 0);
+
+
+storageEvents = () => {
+    ElementId("scoreHolder").innerHTML = score;
+    if (score > localStorage.getItem("2048hs")) {
+        ElementId("hsHolder").innerHTML = score;
+        ElementId("hsHolder").style.color = "brown";
+        localStorage.setItem("2048hs", score);
+    }
+    if (score >= 3000 && localStorage.getItem("2048_AMBASSADOR") != "true") {
+        localStorage.setItem("2048_AMBASSADOR", true);
+        notification("Achievement complete: 2048 Ambassador");
+    }
 }
