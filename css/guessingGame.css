@@ -1,6 +1,6 @@
 .downArrow{
     position: absolute;
-    top: -5vh;
+    top: -6vh;
     left: 0px;
     margin-left: 3%;
     width: 25%; 
@@ -19,7 +19,8 @@
     border-radius: 10px;
     background-color: blanchedalmond;
     position: absolute;
-    transform: translateY(-200%) translateX(100%);
+    transform: translateY(-250%);
+    left: 3vw;
     opacity: 0;
     transition: all 300ms;
 }
@@ -36,7 +37,7 @@
 
 .upArrow{
     position: absolute;
-    bottom: -5vh;
+    bottom: -6vh;
     scale: 5;
     text-align: center;
     left: 0px;
