@@ -1,24 +1,24 @@
-var rgb = "rgb(100, 0, 0)"; 
-var turn = 1;
-var moveLock = false;
-var tilesUsed = 0;
-var gameEnded = false;
-var tileElements = [];
+let rgb = "rgb(100, 0, 0)"; 
+let turn = 1;
+let moveLock = false;
+let tilesUsed = 0;
+let gameEnded = false;
+let tileElements = [];
 
 window.onload = () => {
     turn = parseInt(localStorage.getItem("firstTurn"));
-    tileElements = document.querySelectorAll("i.fa-solid.fa-x,i.fa-solid.fa-o");
+    tileElements = document.qfuerySelectorAll("i.fa-solid.fa-x,i.fa-solid.fa-o");
     updateScores();
 }
 
-var board = [[0,0,0],
+let board = [[0,0,0],
              [0,0,0],
              [0,0,0]];
 
 function updateBoard() {
     for (let x = 0; x < 3; x++) {
         for (let y = 0; y < 3; y++) {
-            var id = x + "" + y;
+            let id = x + "" + y;
             switch (board[x][y]) {
                 case 0:
                     break;
@@ -67,15 +67,15 @@ function LOCK() {
 
 function checkWin() {
     // Horizontal, Verticle
-    for (var x = 0; x < 3; x++) {
+    for (let x = 0; x < 3; x++) {
         if (board[0][x] == turn && board[1][x] == turn && board[2][x] == turn) {
-            for (var e = 0; e < 3; e++) {
+            for (let e = 0; e < 3; e++) {
                 ElementId(e + "" + x + "x").parentElement.style.backgroundColor = rgb;
             }
             return(turn);
         }
         if (board[x][0] == turn && board[x][1] == turn && board[x][2] == turn) {
-            for (var e = 0; e < 3; e++) {
+            for (let e = 0; e < 3; e++) {
                 ElementId(x + "" + e + "x").parentElement.style.backgroundColor = rgb;
             }
             return(turn);
@@ -83,7 +83,7 @@ function checkWin() {
     }
     //Diagonal
     if (board[0][0] == turn && board[1][1] == turn && board[2][2] == turn) {
-        for (var e = 0; e < 3; e++) {
+        for (let e = 0; e < 3; e++) {
             ElementId(e + "" + e + "x").parentElement.style.backgroundColor = rgb;
         }
         return(turn);
