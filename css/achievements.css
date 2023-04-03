@@ -1,6 +1,6 @@
 #mainBox {
     width: 70vw; 
-    height: 70vh; 
+    height: 60vh; 
     position: relative; 
     top: -100px; 
     font-size: 2.45vh;
@@ -36,7 +36,7 @@
     width: 22vw;
     height: 13vh;
     opacity: 0;
-    top: 27vh;
+    top: 23vh;
     visibility: hidden;
 }
 
