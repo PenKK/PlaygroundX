@@ -203,7 +203,7 @@ function play(move) {
         
         setTimeout(function() {
         selectLock = false;
-        }, 300);
+        }, 150);
 
         var moveAI = Math.floor(Math.random()*3);
         displayResult(move, moveAI);
