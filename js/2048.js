@@ -109,6 +109,9 @@ updateTiles = () => {
             endGame();     
         }, 750);
     }
+    if (score != 0) {
+        ElementId("scoreHolder").innerHTML = score;
+    }
     
     storageEvents();
 }
@@ -168,9 +171,9 @@ canMoveHoriVert = () => {
                     return true;
                 }
             } catch {
-                // console.log("Error caught in horizontal and verticle check");
-                // console.log("i: " + i);
-                // console.log("j: " + j);
+                console.log("Error caught in horizontal and verticle check");
+                console.log("i: " + i);
+                console.log("j: " + j);
             }
         }
     }
@@ -362,7 +365,6 @@ transpose2DArray = (arr) => { //shoutout to chat gpt
 
 
 storageEvents = () => {
-    ElementId("scoreHolder").innerHTML = score;
     if (score > localStorage.getItem("2048hs")) {
         ElementId("hsHolder").innerHTML = score;
         ElementId("hsHolder").style.color = "brown";
