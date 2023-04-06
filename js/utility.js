@@ -1,3 +1,5 @@
+
+
 //Utility
 function ElementId(id) {
     return document.getElementById(id);
@@ -88,3 +90,29 @@ setTimeout(() => {
         }
     }
 }, 100);
+
+//Audio
+
+const buttonTiles = document.getElementsByClassName("buttonSound");
+const clickSound = new Audio("audio/buttonClick.wav");
+
+window.onload = () => {
+    
+    if (localStorage.getItem("visited") == null && window.URL.endsWith("index.html")) {
+        notification("Press H to return to the home page at any time!")
+        localStorage.setItem("visited", "true");
+    }
+
+    if ((localStorage.getItem("MASTER_GUESSER") == "true") && 
+        (localStorage.getItem("SWEEPER_OR_SWEEPED") == "true") && 
+        (localStorage.getItem("TIC_TAC_TOE_LOSER") == "true" &&
+        document.URL.endsWith("index.html"))){
+        ElementId("achievementsButton").style.backgroundSize = "300%";
+    }
+    
+    for (let i = 0; i < buttonTiles.length; i++) {
+        buttonTiles[i].addEventListener("click", function() {
+            clickSound.play();
+        })
+    }
+}

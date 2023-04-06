@@ -7,8 +7,9 @@
 	<title>Capstone Project</title>
 	<script src="js/utility.js"></script>
 	<script src="js/controls.js"></script>
-	<script src="js/index.js"></script>
+	<audio src="https://assets.mixkit.co/active_storage/sfx/2568/2568-preview.mp3"></audio>
 	<script src="https://kit.fontawesome.com/837a8073e0.js" crossorigin="anonymous"></script>
+
 	<link rel="stylesheet" type="text/css" href="css/style.css"/>
 	<link rel="stylesheet" type="text/css" href="css/index.css"/>
 	<!-- SCHOOL COMPUTERS ARE 1600x1200 -->
@@ -28,7 +29,7 @@
 		Capstone Project
 	</h1>
 
-	<div class="notificationClass notificationEnterClass" id="noti">
+	<div class="notificationClass notificationEnterClass " id="noti">
         <i id="notiExclamation" class="fa-solid fa-exclamation vertical-center fa-2xl" style="position: absolute;"></i>
         <div id="notiText">
             Sample
@@ -47,32 +48,40 @@
 			<div class="gameContainer">
 				<script>
 					gg = () => {
-						window.location.href = "guessing-game.html"
+						setTimeout(() => {
+							window.location.href = "guessing-game.html";
+						}, 100);	
 					}
 					rps = () => {
-						window.location.href = "rock-paper-scissors.html"
+						setTimeout(() => {
+							window.location.href = "rock-paper-scissors.html";
+						}, 100);	
 					}
 					ttt = () => {
-						window.location.href = "tic-tac-toe.html"
+						setTimeout(() => {
+							window.location.href = "tic-tac-toe.html";
+						}, 100);	
 					}
 					tft = () => {
-						window.location.href = "2048.html"
+						setTimeout(() => {
+							window.location.href = "2048.html";
+						}, 100);
 					}
 				</script>
-				<button class="selectButton" onclick="gg()">
-				<a href="guessing-game.html">Guessing Game</a>
+				<button class="selectButton buttonSound" onclick="gg()">
+					Guessing Game
 				</button>
 	
-				<button class="selectButton" onclick="rps()">
-				<a href="rock-paper-scissors.html">Rock Paper Scissors</a>
+				<button class="selectButton buttonSound" onclick="rps()">
+					Rock Paper Scissors
 				</button>
 	
-				<button class="selectButton" onclick="ttt()">
-				<a href="tic-tac-toe.html">2 Player Tic Tac Toe</a>	
+				<button class="selectButton buttonSound" onclick="ttt()">
+					2 Player Tic Tac Toe
 				</button>
 
-				<button class="selectButton" onclick="tft()">
-					<a href="2048.html">2048</a>	
+				<button class="selectButton buttonSound" onclick="tft()">
+					2048
 				</button>
 				
 			</div>
@@ -82,18 +91,22 @@
 			<div class="gameContainer" id="otherContainer">
 				<script>
 					ach = () => {
-						window.location.href = "achievements.html"
+						setTimeout(() => {
+							window.location.href = "achievements.html";
+						}, 100);
 					}
 					cont = () => {
-						window.location.href = "controls.html"
+						setTimeout(() => {
+							window.location.href = "controls.html";
+						}, 100);
 					}
 				</script>
-				<button id="achievementsButton" class="selectButton" onclick="ach()">
-				<a href="achievements.html">Achievements</a>
+				<button id="achievementsButton" class="selectButton buttonSound" onclick="ach()">
+					Achievements
 				</button>
 	
-				<button class="selectButton" onclick="cont()">
-				<a href="controls.html">Controls</a>
+				<button class="selectButton buttonSound" onclick="cont()">
+					Controls
 				</button>
 			</div>
 		</div>
