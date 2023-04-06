@@ -94,11 +94,11 @@ setTimeout(() => {
 //Audio
 
 const buttonTiles = document.getElementsByClassName("buttonSound");
-const clickSound = new Audio("audio/buttonClick.wav");
+const clickSound = new Audio("https://assets.mixkit.co/active_storage/sfx/2568/2568-preview.mp3");
 
 window.onload = () => {
     
-    if (localStorage.getItem("visited") == null && window.URL.endsWith("index.html")) {
+    if (localStorage.getItem("visited") == null && document.URL.endsWith("index.html")) {
         notification("Press H to return to the home page at any time!")
         localStorage.setItem("visited", "true");
     }
