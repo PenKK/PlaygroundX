@@ -7,7 +7,7 @@ let tileElements = [];
 
 window.onload = () => {
     turn = parseInt(localStorage.getItem("firstTurn"));
-    tileElements = document.qfuerySelectorAll("i.fa-solid.fa-x,i.fa-solid.fa-o");
+    tileElements = document.querySelectorAll("i.fa-solid.fa-x,i.fa-solid.fa-o");
     updateScores();
 }
 
