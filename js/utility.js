@@ -31,11 +31,14 @@ function aiTriggerKeyboard() {
 
 //Page transfering
 function goTo(location) {
-    if (location == 1) {
-        window.location.href = "tic-tac-toe-ai.html";
-    } else if (location == 0) {
-        window.location.href = "tic-tac-toe.html";
-    }
+    setTimeout(() => {
+        if (location == 1) {
+            window.location.href = "tic-tac-toe-ai.html";
+        } else if (location == 0) {
+            window.location.href = "tic-tac-toe.html";
+        }
+    }, 100);
+    
 }
 
 //Notification
@@ -96,7 +99,7 @@ setTimeout(() => {
 const buttonTiles = document.getElementsByClassName("buttonSound");
 const clickSound = new Audio("https://assets.mixkit.co/active_storage/sfx/2568/2568-preview.mp3");
 
-window.onload = () => {
+
     
     if (localStorage.getItem("visited") == null && document.URL.endsWith("index.html")) {
         notification("Press H to return to the home page at any time!")
@@ -115,4 +118,3 @@ window.onload = () => {
             clickSound.play();
         })
     }
-}

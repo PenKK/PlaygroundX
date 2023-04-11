@@ -8,7 +8,8 @@
     <title>Rock Paper Scissors</title>
     <link rel="stylesheet" type="text/css" href="css/style.css" />
     <link rel="stylesheet" type="text/css" href="css/RPS.css"/>
-    <script src="js/utility.js"></script>
+    <script src="js/rps.js"></script>
+    <script src="js/utility.js" defer></script>
     <script src="js/controls.js"></script>
 
 </head>
@@ -38,15 +39,15 @@
 
     <div class="gameBox" style="height: 46vh;">
 
-        <button id="r" class="gameButton rpsButton" onclick="play(0)">
+        <button id="r" class="gameButton rpsButton buttonSound" onclick="play(0)">
             <i class="fa-solid fa-hand-back-fist fa-3x"></i>
         </button>
 
-        <button id="p" class="gameButton rpsButton" onclick="play(1)">
+        <button id="p" class="gameButton rpsButton buttonSound" onclick="play(1)">
             <i class="fa-solid fa-hand fa-3x"></i>
         </button>
 
-        <button id="s" class="gameButton rpsButton" onclick="play(2)">
+        <button id="s" class="gameButton rpsButton buttonSound" onclick="play(2)">
             <i class="fa-solid fa-hand-scissors fa-3x"></i>
         </button>
 
@@ -105,5 +106,4 @@
 
     </div>
 </body>
-<script src="js/rps.js"></script>
 </html>
