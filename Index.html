@@ -5,10 +5,10 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Capstone Project</title>
+	<script src="js/index.js" defer></script>
 	<script src="js/utility.js" defer></script>
 	<script src="js/controls.js"></script>
 	<script src="https://kit.fontawesome.com/837a8073e0.js" crossorigin="anonymous"></script>
-
 	<link rel="stylesheet" type="text/css" href="css/style.css"/>
 	<link rel="stylesheet" type="text/css" href="css/index.css"/>
 	<!-- SCHOOL COMPUTERS ARE 1600x1200 -->
@@ -45,28 +45,7 @@
 
 		<div class="innerContainer">
 			<div class="gameContainer">
-				<script>
-					gg = () => {
-						setTimeout(() => {
-							window.location.href = "guessing-game.html";
-						}, 100);	
-					}
-					rps = () => {
-						setTimeout(() => {
-							window.location.href = "rock-paper-scissors.html";
-						}, 100);	
-					}
-					ttt = () => {
-						setTimeout(() => {
-							window.location.href = "tic-tac-toe.html";
-						}, 100);	
-					}
-					tft = () => {
-						setTimeout(() => {
-							window.location.href = "2048.html";
-						}, 100);
-					}
-				</script>
+				
 				<button class="selectButton buttonSound" onclick="gg()">
 					Guessing Game
 				</button>
@@ -88,18 +67,7 @@
 			<div class="break"></div>
 	
 			<div class="gameContainer" id="otherContainer">
-				<script>
-					ach = () => {
-						setTimeout(() => {
-							window.location.href = "achievements.html";
-						}, 100);
-					}
-					cont = () => {
-						setTimeout(() => {
-							window.location.href = "controls.html";
-						}, 100);
-					}
-				</script>
+
 				<button id="achievementsButton" class="selectButton buttonSound" onclick="ach()">
 					Achievements
 				</button>
@@ -108,8 +76,14 @@
 					Controls
 				</button>
 			</div>
+			
 		</div>
+		
 
-	</div>		
+	</div>
+	<button id="muteButton" onclick="toggleMute()">
+		<i id="muteIcon" class="fa-solid fa-volume-high fa-2xl"></i>
+		<i id="muteIcon" class="fa-solid fa-volume-off fa-2xl"></i>
+	</button>
 </body>
 </html>

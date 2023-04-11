@@ -1,4 +1,15 @@
+if (localStorage.getItem("visited") == null && document.URL.endsWith("index.html")) {
+    notification("Press H to return to the home page at any time!")
+    localStorage.setItem("visited", "true");
+    localStorage.setItem("muted", "false");
+}
 
+if ((localStorage.getItem("MASTER_GUESSER") == "true") && 
+    (localStorage.getItem("SWEEPER_OR_SWEEPED") == "true") && 
+    (localStorage.getItem("TIC_TAC_TOE_LOSER") == "true" &&
+    document.URL.endsWith("index.html"))){
+    ElementId("achievementsButton").style.backgroundSize = "300%";
+}
 
 //Utility
 function ElementId(id) {
@@ -99,22 +110,25 @@ setTimeout(() => {
 const buttonTiles = document.getElementsByClassName("buttonSound");
 const clickSound = new Audio("https://assets.mixkit.co/active_storage/sfx/2568/2568-preview.mp3");
 
+for (let i = 0; i < buttonTiles.length; i++) {
+    buttonTiles[i].addEventListener("click", function() {
+        clickSound.play();
+    })
+}
 
-    
-    if (localStorage.getItem("visited") == null && document.URL.endsWith("index.html")) {
-        notification("Press H to return to the home page at any time!")
-        localStorage.setItem("visited", "true");
-    }
+const offIcon = document.querySelector(".fa-volume-off");
+const onIcon = document.querySelector(".fa-volume-high");
 
-    if ((localStorage.getItem("MASTER_GUESSER") == "true") && 
-        (localStorage.getItem("SWEEPER_OR_SWEEPED") == "true") && 
-        (localStorage.getItem("TIC_TAC_TOE_LOSER") == "true" &&
-        document.URL.endsWith("index.html"))){
-        ElementId("achievementsButton").style.backgroundSize = "300%";
+checkMuted = () => {
+    if (localStorage.getItem("muted") == "true") {
+        clickSound.volume = 0;
+        onIcon.style.opacity = 0;
+        offIcon.style.opacity = 1;
+    } else {
+        clickSound.volume = 1;
+        onIcon.style.opacity = 1;
+        offIcon.style.opacity = 0;
     }
-    
-    for (let i = 0; i < buttonTiles.length; i++) {
-        buttonTiles[i].addEventListener("click", function() {
-            clickSound.play();
-        })
-    }
+}
+
+checkMuted();
