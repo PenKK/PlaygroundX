@@ -10,42 +10,44 @@ toggleMute = () => {
     checkMuted();
 }
 
-
 //Page transfering
+
+const pageChangeDelay = 75;
+
 gg = () => {
     setTimeout(() => {
         window.location.href = "guessing-game.html";
-    }, 100);	
+    }, pageChangeDelay);	
 }
 
 rps = () => {
     setTimeout(() => {
         window.location.href = "rock-paper-scissors.html";
-    }, 100);	
+    }, pageChangeDelay);	
 }
 
 ttt = () => {
     setTimeout(() => {
         window.location.href = "tic-tac-toe.html";
-    }, 100);	
+    }, pageChangeDelay);	
 }
 
 tft = () => {
     setTimeout(() => {
         window.location.href = "2048.html";
-    }, 100);
+    }, pageChangeDelay);
 }
 
 ach = () => {
     setTimeout(() => {
         window.location.href = "achievements.html";
-    }, 100);
+    }, pageChangeDelay);
 }
 
 cont = () => {
     setTimeout(() => {
         window.location.href = "controls.html";
-    }, 100);
+    }, pageChangeDelay);
 }
 
 
