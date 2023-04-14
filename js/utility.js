@@ -118,15 +118,20 @@ for (let i = 0; i < buttonTiles.length; i++) {
 }
 
 checkMuted = () => {
-    if (localStorage.getItem("muted") == "true") {
-        clickSound.volume = 0;
-        onIcon.style.opacity = 0;
-        offIcon.style.opacity = 1;
-    } else {
-        clickSound.volume = 1;
-        onIcon.style.opacity = 1;
-        offIcon.style.opacity = 0;
+    try {
+        if (localStorage.getItem("muted") == "true") {
+            clickSound.volume = 0;
+            onIcon.style.opacity = 0;
+            offIcon.style.opacity = 1;
+        } else {
+            clickSound.volume = 1;
+            onIcon.style.opacity = 1;
+            offIcon.style.opacity = 0;
+        }
+    } catch {
+
     }
+    
 }
 
 checkMuted();
