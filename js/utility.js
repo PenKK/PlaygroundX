@@ -7,6 +7,7 @@ if (localStorage.getItem("visited") == null && document.URL.endsWith("index.html
 if ((localStorage.getItem("MASTER_GUESSER") == "true") && 
     (localStorage.getItem("SWEEPER_OR_SWEEPED") == "true") && 
     (localStorage.getItem("TIC_TAC_TOE_LOSER") == "true" &&
+     localStorage.getItem("2048_AMBASSADOR") == true &&
     document.URL.endsWith("index.html"))){
     ElementId("achievementsButton").style.backgroundSize = "300%";
 }
@@ -116,19 +117,21 @@ for (let i = 0; i < buttonTiles.length; i++) {
     })
 }
 
-const offIcon = document.querySelector(".fa-volume-off");
-const onIcon = document.querySelector(".fa-volume-high");
-
 checkMuted = () => {
-    if (localStorage.getItem("muted") == "true") {
-        clickSound.volume = 0;
-        onIcon.style.opacity = 0;
-        offIcon.style.opacity = 1;
-    } else {
-        clickSound.volume = 1;
-        onIcon.style.opacity = 1;
-        offIcon.style.opacity = 0;
+    try {
+        if (localStorage.getItem("muted") == "true") {
+            clickSound.volume = 0;
+            onIcon.style.opacity = 0;
+            offIcon.style.opacity = 1;
+        } else {
+            clickSound.volume = 1;
+            onIcon.style.opacity = 1;
+            offIcon.style.opacity = 0;
+        }
+    } catch {
+
     }
+    
 }
 
 checkMuted();

@@ -363,8 +363,6 @@ transpose2DArray = (arr) => { //shoutout to chat gpt
     return arr;
 }
 
-
-
 storageEvents = () => {
     if (score > localStorage.getItem("2048hs")) {
         ElementId("hsHolder").innerHTML = score;
