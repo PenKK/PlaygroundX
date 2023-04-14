@@ -1,4 +1,5 @@
-
+const offIcon = document.querySelector(".fa-volume-off");
+const onIcon = document.querySelector(".fa-volume-high");
 
 toggleMute = () => {
     if (localStorage.getItem("muted") == "false") {
