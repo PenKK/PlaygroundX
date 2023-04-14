@@ -157,6 +157,7 @@ gameEndCheck = () => {
 
 endGame = () => {
     ElementId("gameCover").style.opacity = 0.9;
+    ElementId("buttonSmall").removeAttribute("hidden");
 }
 
 canMoveHoriVert = () => {
