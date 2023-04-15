@@ -12,8 +12,6 @@ toggleMute = () => {
 
 //Page transfering
 
-const pageChangeDelay = 75;
-
 gg = () => {
     setTimeout(() => {
         window.location.href = "guessing-game.html";
@@ -49,5 +47,3 @@ cont = () => {
         window.location.href = "controls.html";
     }, pageChangeDelay);
 }
-
-

@@ -135,3 +135,11 @@ checkMuted = () => {
 }
 
 checkMuted();
+
+const pageChangeDelay = 100;
+
+locationReload = () => {
+    setTimeout(() => {
+        location.reload();
+    }, pageChangeDelay);
+}
