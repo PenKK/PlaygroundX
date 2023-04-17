@@ -1,6 +1,6 @@
 #controlsBox {
     display: flex;
-    width: 53vw;
+    width: 60vw;
     flex-wrap: wrap;
     justify-content: center;
     margin: 0;
@@ -14,8 +14,8 @@
 
 .controlBox {
     margin: 0.8vw;
-    width: 10vw;
-    height: 10vh;
+    width: 11vw;
+    height: 11vh;
     background-color: brown;
     display: flex;
     justify-content: center;
