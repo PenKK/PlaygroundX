@@ -17,7 +17,7 @@ var enterLocked = false;
 var playLocked = false;
 
 function play() {
-
+x
     if(3>ElementId("range").value){
         if(!playLocked) {
 
@@ -117,15 +117,13 @@ function winGame() {
 //Local storage achievements
 
 function checkAchievements() {
-    if (localStorage.getItem("MASTER_GUESSER") == "false") {
-        if (ElementId("range").value>9999 && triesCounter < 16) {
+    if (ElementId("range").value > 9999 && triesCounter <= 15 && localStorage.getItem("MASTER_GUESSER") == "false") {
             localStorage.setItem("MASTER_GUESSER", true);
             notification("Achievement complete: Master Guesser!");
-        }
     } else {
-        if (ElementId("range").value>999999 && triesCounter < 21) {
-            localStorage.setItem("GRANDMASTER_GUESSER", true);
-            notification("Achievement complete: Grandmaster Guesser!");
+    if (ElementId("range").value > 999999 && triesCounter <= 20 && localStorage.getItem("GRANDMASTER_GUESSER") == "false") {
+        localStorage.setItem("GRANDMASTER_GUESSER", true);
+        notification("Achievement complete: Grandmaster Guesser!");
         }
     }
 }
