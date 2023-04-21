@@ -1,20 +1,21 @@
-const c2 = "#8f4949";
-const c4 = "#963838";
-const c8 = "#b02020";
-const c16 = "#9c0202";
-const c32 = "#850101";
-const c64 = "#6e0000";
-const c128 = "#540000";
-const c256 = "#420101";
-const c512 = "#2e0000";
-const c1024 = "#1f0000";
-const c2048 = "#120000";
-const c4096 = "#100000";
-const c8192 = "#0c0000";
-const c16384 = "#080000";
-const textColor = "rgb(200,200,200,1)";
+const c2 = "#fbf049";
+const c4 = "#6dcb2f";
+const c8 = "#f57722";
+const c16 = "#de2c27";
+const c32 = "#a91c38";
+const c64 = "#ef3e82";
+const c128 = "#33a0ec";
+const c256 = "#45d3c7";
+const c512 = "#764add";
+const c1024 = "#3d50df";
+const c2048 = "#fba049";
+const c4096 = "#fcb2c0";
+const c8192 = "#fed4c9";
+const c16384 = "#99d9ed";
+const cLarge = "#660000"
+const textColor = "rgb(0,0,0,1)";
 
-// let board = [[2, 4, 8, 16],
+// let board = [[0, 4, 8, 16],
 //              [32, 64, 128, 256],
 //              [512, 1024, 2048, 4096],
 //              [8192, 16384, 0, 0]];
@@ -99,7 +100,14 @@ updateTiles = () => {
                     id.style.backgroundColor = c16384;
                     break;
                 default:
-                    id.style.backgroundColor = "rgb(0,0,0)"
+                    if (checkValid2048Number(board[x][y])) {
+                        id.style.backgroundColor = cLarge;
+                    } else {
+                        id.style.backgroundColor = "rgb(0,0,0)";
+                        id.style.color = "rgb(255,255,255)";
+                        id.innerHTML = id.innerHTML + "?";
+                        console.log("Invalid number at row " + (x+1) + " column " + (y+1));
+                    }
             
             }
         }
@@ -114,6 +122,16 @@ updateTiles = () => {
     }
     
     storageEvents();
+}
+
+checkValid2048Number = (num) => {
+    if (num == 1) {
+        return false
+    }
+    if (Math.sqrt(num) % 1 == 0 || Math.sqrt(num*2) % 1 == 0) {
+        return true;
+    }
+    return false
 }
 
 spawnTile = () => {
