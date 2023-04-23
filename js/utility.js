@@ -92,6 +92,12 @@ function rainbowAnimation() {
     document.body.classList.add("gradientAnimation");
 }
 
+function rainbowAnimationEl(element, speed) {
+    element.style.backgroundImage = "linear-gradient(45deg, rgb(238, 119, 82), rgb(231, 60, 126), rgb(35, 166, 213), rgb(35, 213, 171))";
+    element.style.animation = "gradient " + speed + "s ease infinite";
+    element.classList.add("gradientAnimation");
+}
+
 //Mobile check
 
 setTimeout(() => {

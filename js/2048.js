@@ -1,21 +1,22 @@
-const c2 = "#fbf049";
-const c4 = "#6dcb2f";
-const c8 = "#f57722";
-const c16 = "#de2c27";
-const c32 = "#a91c38";
-const c64 = "#ef3e82";
-const c128 = "#33a0ec";
-const c256 = "#45d3c7";
-const c512 = "#764add";
-const c1024 = "#3d50df";
-const c2048 = "#fba049";
-const c4096 = "#fcb2c0";
-const c8192 = "#fed4c9";
-const c16384 = "#99d9ed";
-const cLarge = "#660000"
+const c2 = "rgb(130, 203, 77)"; 
+const c4 = "rgb(251, 220, 123)";
+const c8 = "rgb(245, 140, 54)";
+const c16 = "rgb(222, 85, 99)";
+const c32 = "rgb(239, 100, 160)"; 
+const c64 = "rgb(169, 58, 56)";
+const c128 = "rgb(80, 200, 255)";
+const c256 = "rgb(180, 235, 179)";
+const c512 = "rgb(155, 130, 221)";
+const c1024 = "rgb(140, 255, 203)";
+// const c2048 = "rgb(100, 100, 100)";
+const c4096 = "rgb(252, 178, 192)";
+const c8192 = "rgb(245, 190, 254)";
+const c16384 = "rgb(123, 210, 237)";
+const cLarge = "#660000";
 const textColor = "rgb(0,0,0,1)";
+const emptyTileColor = "rgb(180, 123, 123)"
 
-// let board = [[0, 4, 8, 16],
+// let board = [[2, 4, 8, 16],
 //              [32, 64, 128, 256],
 //              [512, 1024, 2048, 4096],
 //              [8192, 16384, 0, 0]];
@@ -46,12 +47,14 @@ updateTiles = () => {
 
             const id = ElementId(x + "" + y);
             id.style.color = textColor;
+            id.classList.remove("gradientAnimation");
+            id.style.backgroundImage = "none";
 
             if (board[x][y] != 0) {
                 id.innerHTML = board[x][y];
             } else {
                 id.innerHTML = "";
-                id.style.backgroundColor = "rgb(180, 123, 123)";
+                id.style.backgroundColor = emptyTileColor;
             }
 
             switch(board[x][y]) {
@@ -88,7 +91,7 @@ updateTiles = () => {
                     id.style.backgroundColor = c1024;
                     break;
                 case 2048:
-                    id.style.backgroundColor = c2048;
+                    rainbowAnimationEl(id, 4);
                     break;
                 case 4096:
                     id.style.backgroundColor = c4096;
