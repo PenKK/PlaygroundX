@@ -17,7 +17,7 @@ var enterLocked = false;
 var playLocked = false;
 
 function play() {
-x
+    
     if(3>ElementId("range").value){
         if(!playLocked) {
 
