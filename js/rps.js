@@ -101,6 +101,7 @@ function winPlayer() {
         case 3:
             ElementId("ps3").style.opacity = 1;
             endPlayer();
+            winSound.play();
             break;
     }
 }
@@ -134,7 +135,7 @@ function winAI() {
     }
 }
 
-function disableRPS() {
+function disableRPSButtons() {
     ElementId("r").disabled = true;
     ElementId("p").disabled = true;
     ElementId("s").disabled = true;
@@ -142,7 +143,7 @@ function disableRPS() {
 }
 
 function endPlayer() {
-    disableRPS();
+    disableRPSButtons();
     ElementId("winBox").removeAttribute("hidden");
     ElementId("endText").innerHTML = "Congratulations you win!";
 
@@ -167,7 +168,7 @@ function endPlayer() {
 }
 
 function endComputer() {
-    disableRPS();
+    disableRPSButtons();
     ElementId("winBox").removeAttribute("hidden");
     ElementId("endText").innerHTML = "The computer won!";
 

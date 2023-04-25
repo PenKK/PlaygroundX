@@ -115,7 +115,8 @@ setTimeout(() => {
 //Audio
 
 const buttonTiles = document.getElementsByClassName("buttonSound");
-const clickSound = new Audio("https://assets.mixkit.co/active_storage/sfx/2568/2568-preview.mp3");
+const clickSound = new Audio("https://www.soundjay.com/buttons/sounds/button-37a.mp3");
+const winSound = new Audio("https://us-tuna-sounds-files.voicemod.net/da55878e-2b63-474d-9d12-191ca7c13c0e-1659618866877.mp3");
 
 for (let i = 0; i < buttonTiles.length; i++) {
     buttonTiles[i].addEventListener("click", function() {
@@ -127,10 +128,12 @@ checkMuted = () => {
     try {
         if (localStorage.getItem("muted") == "true") {
             clickSound.volume = 0;
+            winSound.volume = 0;
             onIcon.style.opacity = 0;
             offIcon.style.opacity = 1;
         } else {
             clickSound.volume = 1;
+            winSound.volume = 1;
             onIcon.style.opacity = 1;
             offIcon.style.opacity = 0;
         }
@@ -142,10 +145,25 @@ checkMuted = () => {
 
 checkMuted();
 
-const pageChangeDelay = 100;
+const pageChangeDelay = 140;
 
 locationReload = () => {
     setTimeout(() => {
         location.reload();
     }, pageChangeDelay);
 }
+
+const williamAftonSinging = new Audio("https://doc-0o-40-docs.googleusercontent.com/docs/securesc/7ch1sjuillh1pqcucc7e2gdc5tmteo7k/ap9fu5se371iq68quhdd774n34l7jhff/1682441100000/00815374287206235034/15189546134039840538Z/13KLPeQm65JQv3Q-JYXAQ29QxyJH1An9Q?e&uuid=efdedae2-5ad8-469f-a37b-47053b042e2b");
+
+checkAfton = () => {
+    if (localStorage.getItem("williamAfton") == "true") {
+        document.body.style.backgroundImage = "url(https://i.scdn.co/image/ab6761610000e5eba07eb018071ca45120dceb4f)";
+        williamAftonSinging.volume = 1;
+        williamAftonSinging.play();
+    } else {
+        document.body.style.backgroundImage = "none";
+        williamAftonSinging.volume = 0;
+    }
+}
+
+checkAfton();
