@@ -30,28 +30,6 @@
     transform: translateY(10vh);
 }
 
-#muteButton {
-    position: absolute;
-    bottom: 0px;
-    left: 0px;
-    height: 3vw;
-    width: 3vw;
-    margin: 0.5vw;
-    background-color: brown;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 0.3vw;
-}
-
-#muteIcon {
-    position: absolute;
-}
-
-.fa-volume-off {
-    right: 1.45vw;
-}
-
 #freddyButton {
     opacity: 1;
     width: 2vw;

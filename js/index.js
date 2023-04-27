@@ -1,24 +1,3 @@
-const offIcon = document.querySelector(".fa-volume-off");
-const onIcon = document.querySelector(".fa-volume-high");
-
-toggleMute = () => {
-    if (localStorage.getItem("muted") == "false") {
-        localStorage.setItem("muted", "true");
-    } else {
-        localStorage.setItem("muted", "false");
-    }
-    checkMuted();
-}
-
-toggleFreddyFazbearMode = () => {
-    if (localStorage.getItem("williamAfton") != "true") {
-        localStorage.setItem("williamAfton", "true");
-    } else {
-        localStorage.setItem("williamAfton", "false");
-    }
-    checkAfton();
-}
-
 //Page transfering
 
 gg = () => {
