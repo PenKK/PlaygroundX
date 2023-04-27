@@ -41,78 +41,6 @@ function aiTriggerKeyboard() {
     }
 }
 
-//Audio
-
-const buttonTiles = document.getElementsByClassName("buttonSound");
-const clickSound = new Audio("https://assets.mixkit.co/active_storage/sfx/2568/2568-preview.mp3");
-
-for (let i = 0; i < buttonTiles.length; i++) {
-    buttonTiles[i].addEventListener("click", function() {
-        clickSound.play();
-    })
-}
-
-checkMuted = () => {
-    
-    if (localStorage.getItem("muted") == "true") {
-        clickSound.volume = 0;
-        williamAftonSinging.volume = 0;
-        onIcon.style.opacity = 0;
-        offIcon.style.opacity = 1;
-    } else {
-        clickSound.volume = 1;
-        williamAftonSinging.volume = 1;
-        onIcon.style.opacity = 1;
-        offIcon.style.opacity = 0;
-    }
-    
-}
-
-const williamAftonSinging = new Audio("https://docs.google.com/uc?export=download&id=1o6ltnLLWPBMq2-zbHiwllc5NowbB3IHH");
-williamAftonSinging.loop = true;
-
-checkAfton = () => {
-    if (localStorage.getItem("williamAfton") == "true") {
-        document.body.style.backgroundImage = "url(https://i.scdn.co/image/ab6761610000e5eba07eb018071ca45120dceb4f)";
-        williamAftonSinging.volume = 1;
-        williamAftonSinging.play();
-    } else {
-        document.body.style.backgroundImage = "none";
-        williamAftonSinging.pause();
-    }
-}
-
-const offIcon = document.querySelector(".fa-volume-off");
-const onIcon = document.querySelector(".fa-volume-high");
-
-toggleMute = () => {
-    if (localStorage.getItem("muted") == "false") {
-        localStorage.setItem("muted", "true");
-    } else {
-        localStorage.setItem("muted", "false");
-    }
-    checkMuted();
-}
-
-toggleFreddyFazbearMode = () => {
-    if (localStorage.getItem("williamAfton") != "true") {
-        localStorage.setItem("williamAfton", "true");
-    } else {
-        localStorage.setItem("williamAfton", "false");
-    }
-    checkAfton();
-}
-
-checkAfton();
-checkMuted();
-
-setInterval(() => {
-    localStorage.setItem("HarrHarrTime", williamAftonSinging.currentTime);
-}, 500);
-
-if (localStorage.getItem("HarrHarrTime") != null) {
-    williamAftonSinging.currentTime = localStorage.getItem("HarrHarrTime");
-}
 //Page transfering
 function goTo(location) {
     setTimeout(() => {
@@ -190,4 +118,77 @@ locationReload = () => {
     setTimeout(() => {
         location.reload();
     }, pageChangeDelay);
+}
+
+//Audio
+
+const buttonTiles = document.getElementsByClassName("buttonSound");
+const clickSound = new Audio("https://assets.mixkit.co/active_storage/sfx/2568/2568-preview.mp3");
+
+for (let i = 0; i < buttonTiles.length; i++) {
+    buttonTiles[i].addEventListener("click", function() {
+        clickSound.play();
+    })
+}
+
+checkMuted = () => {
+    
+    if (localStorage.getItem("muted") == "true") {
+        clickSound.volume = 0;
+        williamAftonSinging.volume = 0;
+        onIcon.style.opacity = 0;
+        offIcon.style.opacity = 1;
+    } else {
+        clickSound.volume = 1;
+        williamAftonSinging.volume = 1;
+        onIcon.style.opacity = 1;
+        offIcon.style.opacity = 0;
+    }
+    
+}
+
+const williamAftonSinging = new Audio("https://docs.google.com/uc?export=download&id=1o6ltnLLWPBMq2-zbHiwllc5NowbB3IHH");
+williamAftonSinging.loop = true;
+
+checkAfton = () => {
+    if (localStorage.getItem("williamAfton") == "true") {
+        document.body.style.backgroundImage = "url(https://i.scdn.co/image/ab6761610000e5eba07eb018071ca45120dceb4f)";
+        williamAftonSinging.volume = 1;
+        williamAftonSinging.play();
+    } else {
+        document.body.style.backgroundImage = "none";
+        williamAftonSinging.pause();
+    }
+}
+
+const offIcon = document.querySelector(".fa-volume-off");
+const onIcon = document.querySelector(".fa-volume-high");
+
+toggleMute = () => {
+    if (localStorage.getItem("muted") == "false") {
+        localStorage.setItem("muted", "true");
+    } else {
+        localStorage.setItem("muted", "false");
+    }
+    checkMuted();
+}
+
+toggleFreddyFazbearMode = () => {
+    if (localStorage.getItem("williamAfton") != "true") {
+        localStorage.setItem("williamAfton", "true");
+    } else {
+        localStorage.setItem("williamAfton", "false");
+    }
+    checkAfton();
+}
+
+checkAfton();
+checkMuted();
+
+setInterval(() => {
+    localStorage.setItem("HarrHarrTime", williamAftonSinging.currentTime);
+}, 500);
+
+if (localStorage.getItem("HarrHarrTime") != null) {
+    williamAftonSinging.currentTime = localStorage.getItem("HarrHarrTime");
 }
