@@ -50,6 +50,8 @@ h1 {
     border-color: firebrick;
     font-size: 8vh;
     z-index: 1;
+    background-color: bisque;
+    border-radius: 15px;
 }
 
 h2 {
@@ -114,6 +116,7 @@ a:hover {
     height: fit-content;
     border: darkred solid;
     border-radius: 5px;
+    background-color: bisque;
     margin-left: auto;
     margin-right: auto;
     display: flex;

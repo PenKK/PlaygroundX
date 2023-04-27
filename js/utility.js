@@ -151,17 +151,30 @@ const williamAftonSinging = new Audio("https://docs.google.com/uc?export=downloa
 williamAftonSinging.loop = true;
 
 checkAfton = () => {
+
+    const imageStyleEl = document.body.style;
+    const h2Els = document.getElementsByClassName("aftonColor");
+
     if (localStorage.getItem("williamAfton") == "true") {
-        imageStyleElement = document.body.style;
-        imageStyleElement.backgroundImage = "url(https://i.scdn.co/image/ab6761610000e5eba07eb018071ca45120dceb4f)";
-        imageStyleElement.backgroundPosition = "center"
-        imageStyleElement.backgroundRepeat = "no-repeat"
-        imageStyleElement.backgroundSize = "cover";
+        
+        imageStyleEl.backgroundImage = "url(https://i.scdn.co/image/ab6761610000e5eba07eb018071ca45120dceb4f)";
+        imageStyleEl.backgroundPosition = "center"
+        imageStyleEl.backgroundRepeat = "no-repeat"
+        imageStyleEl.backgroundSize = "cover";
+
+        for (let i = 0; i < h2Els.length; i++) {
+            h2Els[i].style.color = "white";
+        }
         
         williamAftonSinging.volume = 1;
         williamAftonSinging.play();
     } else {
         document.body.style.backgroundImage = "none";
+
+        for (let i = 0; i < h2Els.length; i++) {
+            h2Els[i].style.color = "black";
+        }
+        
         williamAftonSinging.pause();
     }
 }
