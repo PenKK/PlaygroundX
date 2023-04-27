@@ -24,7 +24,7 @@ const emptyTileColor = "rgb(180, 123, 123)"
 let board = [[16384*2, 16384, 8192, 4096],
             [2048, 1024, 512, 256],
             [128, 64, 32, 16],
-            [8, 4, 0, 0]];
+            [8, 4, 2, 0]];
 
 let oldBoard = "";
 let score = 0;
@@ -140,9 +140,15 @@ checkValid2048Number = (num) => {
 spawnTile = () => {
     let x,y;
 
+    let attempts = 0;
     do {
+        attempts++;
         x = Math.floor(Math.random() * 4);
         y = Math.floor(Math.random() * 4);
+        if (attempts > 500) {
+            console.log("%cERROR: No tile found when spawning, returning function", "color:rgb(255,175,50)");
+            return;
+        }
     } while (board[x][y] != 0);
 
     board[x][y] = 2;
