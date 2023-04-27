@@ -17,7 +17,7 @@ var enterLocked = false;
 var playLocked = false;
 
 function play() {
-x
+
     if(3>ElementId("range").value){
         if(!playLocked) {
 
@@ -112,6 +112,7 @@ function winGame() {
     ElementId("guess").disabled = true;
     document.getElementById('enter').disabled = true;
     checkAchievements();
+    winSound.play();
 }
 
 //Local storage achievements

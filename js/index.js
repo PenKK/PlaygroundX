@@ -10,6 +10,15 @@ toggleMute = () => {
     checkMuted();
 }
 
+toggleFreddyFazbearMode = () => {
+    if (localStorage.getItem("williamAfton") != "true") {
+        localStorage.setItem("williamAfton", "true");
+    } else {
+        localStorage.setItem("williamAfton", "false");
+    }
+    checkAfton();
+}
+
 //Page transfering
 
 gg = () => {

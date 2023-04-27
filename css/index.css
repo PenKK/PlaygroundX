@@ -51,3 +51,13 @@
 .fa-volume-off {
     right: 1.45vw;
 }
+
+#freddyButton {
+    opacity: 1;
+    width: 2vw;
+    height: 2vw;
+    top: 6vh;
+    opacity: 0.05;
+    right: 6vh;
+    position: absolute;
+}
