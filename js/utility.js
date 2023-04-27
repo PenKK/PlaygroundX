@@ -78,7 +78,7 @@ checkAfton = () => {
         williamAftonSinging.play();
     } else {
         document.body.style.backgroundImage = "none";
-        williamAftonSinging.volume = 0;
+        williamAftonSinging.pause();
     }
 }
 
@@ -103,6 +103,16 @@ toggleFreddyFazbearMode = () => {
     checkAfton();
 }
 
+checkAfton();
+checkMuted();
+
+setInterval(() => {
+    localStorage.setItem("HarrHarrTime", williamAftonSinging.currentTime);
+}, 500);
+
+if (localStorage.getItem("HarrHarrTime") != null) {
+    williamAftonSinging.currentTime = localStorage.getItem("HarrHarrTime");
+}
 //Page transfering
 function goTo(location) {
     setTimeout(() => {
@@ -181,6 +191,3 @@ locationReload = () => {
         location.reload();
     }, pageChangeDelay);
 }
-
-checkAfton();
-checkMuted();

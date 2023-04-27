@@ -1,3 +1,8 @@
+if (localStorage.getItem("HarrHarrTime") == null) {
+    console.log("Harr harr initialized");
+    localStorage.setItem("HarrHarrTime", "0");
+}
+
 //Page transfering
 
 gg = () => {
