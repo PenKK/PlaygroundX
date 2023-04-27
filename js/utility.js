@@ -41,6 +41,36 @@ function aiTriggerKeyboard() {
     }
 }
 
+//Audio
+
+const buttonTiles = document.getElementsByClassName("buttonSound");
+const clickSound = new Audio("https://assets.mixkit.co/active_storage/sfx/2568/2568-preview.mp3");
+
+for (let i = 0; i < buttonTiles.length; i++) {
+    buttonTiles[i].addEventListener("click", function() {
+        clickSound.play();
+    })
+}
+
+checkMuted = () => {
+    try {
+        if (localStorage.getItem("muted") == "true") {
+            clickSound.volume = 0;
+            onIcon.style.opacity = 0;
+            offIcon.style.opacity = 1;
+        } else {
+            clickSound.volume = 1;
+            onIcon.style.opacity = 1;
+            offIcon.style.opacity = 0;
+        }
+    } catch {
+
+    }
+    
+}
+
+checkMuted();
+
 //Page transfering
 function goTo(location) {
     setTimeout(() => {
@@ -111,36 +141,6 @@ setTimeout(() => {
         }
     }
 }, 100);
-
-//Audio
-
-const buttonTiles = document.getElementsByClassName("buttonSound");
-const clickSound = new Audio("https://assets.mixkit.co/active_storage/sfx/2568/2568-preview.mp3");
-
-for (let i = 0; i < buttonTiles.length; i++) {
-    buttonTiles[i].addEventListener("click", function() {
-        clickSound.play();
-    })
-}
-
-checkMuted = () => {
-    try {
-        if (localStorage.getItem("muted") == "true") {
-            clickSound.volume = 0;
-            onIcon.style.opacity = 0;
-            offIcon.style.opacity = 1;
-        } else {
-            clickSound.volume = 1;
-            onIcon.style.opacity = 1;
-            offIcon.style.opacity = 0;
-        }
-    } catch {
-
-    }
-    
-}
-
-checkMuted();
 
 const pageChangeDelay = 100;
 
