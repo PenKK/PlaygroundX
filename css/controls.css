@@ -1,3 +1,7 @@
+body {
+    height: 100vh;
+}
+
 #controlsBox {
     display: flex;
     width: 60vw;

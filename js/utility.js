@@ -152,7 +152,12 @@ williamAftonSinging.loop = true;
 
 checkAfton = () => {
     if (localStorage.getItem("williamAfton") == "true") {
-        document.body.style.backgroundImage = "url(https://i.scdn.co/image/ab6761610000e5eba07eb018071ca45120dceb4f)";
+        imageStyleElement = document.body.style;
+        imageStyleElement.backgroundImage = "url(https://i.scdn.co/image/ab6761610000e5eba07eb018071ca45120dceb4f)";
+        imageStyleElement.backgroundPosition = "center"
+        imageStyleElement.backgroundRepeat = "no-repeat"
+        imageStyleElement.backgroundSize = "cover";
+        
         williamAftonSinging.volume = 1;
         williamAftonSinging.play();
     } else {
