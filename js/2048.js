@@ -103,7 +103,7 @@ updateTiles = () => {
                     id.style.backgroundColor = c16384;
                     break;
                 default:
-                    if (checkValid2048Number(board[x][y])) {
+                    if (checkValidBoardNumber(board[x][y])) {
                         id.style.backgroundColor = cLarge;
                     } else {
                         id.style.backgroundColor = "rgb(0,0,0)";
@@ -127,7 +127,7 @@ updateTiles = () => {
     storageEvents();
 }
 
-checkValid2048Number = (num) => {
+checkValidBoardNumber = (num) => {
     if (num == 1) {
         return false
     }
