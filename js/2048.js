@@ -146,7 +146,7 @@ spawnTile = () => {
         x = Math.floor(Math.random() * 4);
         y = Math.floor(Math.random() * 4);
         if (attempts > 500) {
-            console.log("%cERROR: No tile found when spawning, returning function", "color:rgb(255,175,50)");
+            console.error("ERROR: No tile found when spawning, returning function");
             return;
         }
     } while (board[x][y] != 0);
