@@ -145,9 +145,9 @@ spawnTile = () => {
         attempts++;
         x = Math.floor(Math.random() * 4);
         y = Math.floor(Math.random() * 4);
-        if (attempts > 1000) {
-            console.error("ERROR: No empty tile found in " + attempts 
-            + " attempts, returning function");
+        if (attempts >= 1000) {
+            notification("ERROR: No empty tile found in " + attempts + " attempts, returning function");
+            console.log("ERROR: No empty tile found in " + attempts + " attempts, returning function");
             return;
         }
     } while (board[x][y] != 0);
