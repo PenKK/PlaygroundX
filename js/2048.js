@@ -145,8 +145,9 @@ spawnTile = () => {
         attempts++;
         x = Math.floor(Math.random() * 4);
         y = Math.floor(Math.random() * 4);
-        if (attempts > 500) {
-            console.error("ERROR: No tile found when spawning, returning function");
+        if (attempts > 1000) {
+            console.error("ERROR: No empty tile found in " + attempts 
+            + " attempts, returning function");
             return;
         }
     } while (board[x][y] != 0);
@@ -176,7 +177,7 @@ gameEndCheck = () => {
     if (boardIsOpen()) {
         return false;
     }
-    if (canMoveHoriVert()) {
+    if (canMoveDirection()) {
         return false;
     }
     return true
@@ -187,7 +188,7 @@ endGame = () => {
     ElementId("buttonSmall").removeAttribute("hidden");
 }
 
-canMoveHoriVert = () => {
+canMoveDirection = () => {
     for (let i = 0; i < 4; i++) {
         for (let j = 0; j < 4; j++) {
             try {
@@ -199,9 +200,7 @@ canMoveHoriVert = () => {
                     return true;
                 }
             } catch {
-                console.log("Error caught in horizontal and verticle check");
-                console.log("i: " + i);
-                console.log("j: " + j);
+
             }
         }
     }
