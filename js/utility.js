@@ -41,6 +41,10 @@ function aiTriggerKeyboard() {
     }
 }
 
+if (localStorage.getItem("song") == null) {
+    localStorage.setItem("song", "0");
+}
+
 //Page transfering
 function goTo(location) {
     setTimeout(() => {
@@ -150,6 +154,9 @@ checkMuted = () => {
 const williamAftonSinging = new Audio("https://docs.google.com/uc?export=download&id=1o6ltnLLWPBMq2-zbHiwllc5NowbB3IHH");
 williamAftonSinging.loop = true;
 
+const itsBeenSolong = new Audio("https://drive.google.com/uc?export=download&id=14ty-7Tmx3LVAOg0KQSk0oASONeP46MRI");
+itsBeenSolong.loop = true;
+
 checkAfton = () => {
 
     const imageStyleEl = document.body.style;
@@ -163,8 +170,7 @@ checkAfton = () => {
             h2Els[i].style.color = "white";
         }
         
-        williamAftonSinging.volume = 1;
-        williamAftonSinging.play();
+        playSong();
     } else {
         document.body.style.backgroundImage = "none";
 
@@ -173,6 +179,24 @@ checkAfton = () => {
         }
         
         williamAftonSinging.pause();
+    }
+}
+
+pauseAllSongs = () => {
+    williamAftonSinging.pause();
+    itsBeenSolong.pause();
+}
+
+playSong = () => {
+    pauseAllSongs();
+
+    const currentSong = parseInt(localStorage.getItem("song"));
+
+    switch(currentSong) {
+        case 0:
+            williamAftonSinging.play();
+        case 1:
+            itsBeenSolong.play();
     }
 }
 

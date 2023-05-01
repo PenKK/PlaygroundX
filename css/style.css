@@ -317,6 +317,11 @@ input::-webkit-outer-spin-button,input::-webkit-inner-spin-button {
     align-items: center;
     justify-content: center;
     border-radius: 0.3vw;
+    transition: transform 50ms;
+}
+
+#muteButton:active {
+    transform: translateY(5%);
 }
 
 #muteIcon {
@@ -325,6 +330,25 @@ input::-webkit-outer-spin-button,input::-webkit-inner-spin-button {
 
 .fa-volume-off {
     right: 1.40vw;
+}
+
+#skipButton {
+    position: absolute;
+    bottom: 0px;
+    left: 3.5vw;
+    height: 3vw;
+    width: 3vw;
+    margin: 0.5vw;
+    background-color: brown;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 0.3vw;
+    transition: transform 50ms;
+}
+
+#skipButton:active {
+    transform: translateY(5%);
 }
 
 @keyframes lower {
