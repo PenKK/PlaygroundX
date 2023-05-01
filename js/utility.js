@@ -158,9 +158,6 @@ checkAfton = () => {
     if (localStorage.getItem("williamAfton") == "true") {
         
         imageStyleEl.backgroundImage = "url(https://i.scdn.co/image/ab6761610000e5eba07eb018071ca45120dceb4f)";
-        imageStyleEl.backgroundPosition = "center"
-        imageStyleEl.backgroundRepeat = "no-repeat"
-        imageStyleEl.backgroundSize = "cover";
 
         for (let i = 0; i < h2Els.length; i++) {
             h2Els[i].style.color = "white";
