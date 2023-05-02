@@ -41,10 +41,6 @@ function aiTriggerKeyboard() {
     }
 }
 
-if (localStorage.getItem("song") == null) {
-    localStorage.setItem("song", "0");
-}
-
 //Page transfering
 function goTo(location) {
     setTimeout(() => {
@@ -126,6 +122,14 @@ locationReload = () => {
 
 //Audio
 
+function getSong() {
+    return parseInt(localStorage.getItem("song"));
+}
+
+if (localStorage.getItem("song") == null) {
+    localStorage.setItem("song", "0");
+}
+
 const buttonTiles = document.getElementsByClassName("buttonSound");
 const clickSound = new Audio("https://assets.mixkit.co/active_storage/sfx/2568/2568-preview.mp3");
 
@@ -139,14 +143,16 @@ checkMuted = () => {
     
     if (localStorage.getItem("muted") == "true") {
         clickSound.volume = 0;
-        williamAftonSinging.volume = 0;
         onIcon.style.opacity = 0;
         offIcon.style.opacity = 1;
+
+        audioList[getSong()].volume = 0;
     } else {
         clickSound.volume = 1;
-        williamAftonSinging.volume = 1;
         onIcon.style.opacity = 1;
         offIcon.style.opacity = 0;
+
+        audioList[getSong()].volume = 1;
     }
     
 }
@@ -155,7 +161,10 @@ const williamAftonSinging = new Audio("https://docs.google.com/uc?export=downloa
 williamAftonSinging.loop = true;
 
 const itsBeenSolong = new Audio("https://drive.google.com/uc?export=download&id=14ty-7Tmx3LVAOg0KQSk0oASONeP46MRI");
+itsBeenSolong.volume = 0.5;
 itsBeenSolong.loop = true;
+
+const audioList = [itsBeenSolong, williamAftonSinging];
 
 checkAfton = () => {
 
@@ -164,6 +173,7 @@ checkAfton = () => {
 
     if (localStorage.getItem("williamAfton") == "true") {
         
+        ElementId("skipButton").removeAttribute("hidden");
         imageStyleEl.backgroundImage = "url(https://i.scdn.co/image/ab6761610000e5eba07eb018071ca45120dceb4f)";
 
         for (let i = 0; i < h2Els.length; i++) {
@@ -172,32 +182,43 @@ checkAfton = () => {
         
         playSong();
     } else {
+
+        ElementId("skipButton").hidden = true;
         document.body.style.backgroundImage = "none";
 
         for (let i = 0; i < h2Els.length; i++) {
             h2Els[i].style.color = "black";
         }
         
-        williamAftonSinging.pause();
+        pauseAllSongs();
     }
+
+    checkMuted();
 }
 
 pauseAllSongs = () => {
-    williamAftonSinging.pause();
-    itsBeenSolong.pause();
+    for (let i = 0; i < audioList.length; i++) {
+        audioList[i].pause();
+    }
 }
 
 playSong = () => {
     pauseAllSongs();
 
-    const currentSong = parseInt(localStorage.getItem("song"));
+    audioList[getSong()].play();
 
-    switch(currentSong) {
-        case 0:
-            williamAftonSinging.play();
-        case 1:
-            itsBeenSolong.play();
+    checkMuted();
+}
+
+skipSong = () => {
+
+    incrementStorage("song");
+
+    if (getSong() >= audioList.length) {
+        localStorage.setItem("song", "0");
     }
+
+    playSong();
 }
 
 const offIcon = document.querySelector(".fa-volume-off");
@@ -221,13 +242,12 @@ toggleFreddyFazbearMode = () => {
     checkAfton();
 }
 
-checkAfton();
-checkMuted();
-
 setInterval(() => {
-    localStorage.setItem("HarrHarrTime", williamAftonSinging.currentTime);
+    localStorage.setItem("HarrHarrTime", audioList[getSong()].currentTime);
 }, 500);
 
 if (localStorage.getItem("HarrHarrTime") != null) {
-    williamAftonSinging.currentTime = localStorage.getItem("HarrHarrTime");
+    audioList[getSong()].currentTime = localStorage.getItem("HarrHarrTime");
 }
+
+checkAfton();
