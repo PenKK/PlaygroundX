@@ -146,13 +146,13 @@ checkMuted = () => {
         onIcon.style.opacity = 0;
         offIcon.style.opacity = 1;
 
-        audioList[getSong()].volume = 0;
+        pauseAllSongs();
     } else {
         clickSound.volume = 1;
         onIcon.style.opacity = 1;
         offIcon.style.opacity = 0;
 
-        audioList[getSong()].volume = 1;
+        audioList[getSong()].play();
     }
     
 }

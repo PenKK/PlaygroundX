@@ -322,6 +322,7 @@ input::-webkit-outer-spin-button,input::-webkit-inner-spin-button {
 
 #muteButton:active {
     transform: translateY(5%);
+    background-color: rgb(119, 36, 36);
 }
 
 #muteIcon {
@@ -349,6 +350,7 @@ input::-webkit-outer-spin-button,input::-webkit-inner-spin-button {
 
 #skipButton:active {
     transform: translateY(5%);
+    background-color: rgb(119, 36, 36);
 }
 
 @keyframes lower {
