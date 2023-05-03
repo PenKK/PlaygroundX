@@ -159,14 +159,18 @@ checkMuted = () => {
     
 }
 
-const williamAftonSinging = new Audio("https://docs.google.com/uc?export=download&id=1o6ltnLLWPBMq2-zbHiwllc5NowbB3IHH");
-williamAftonSinging.loop = true;
-
+const williamAftonRap = new Audio("https://docs.google.com/uc?export=download&id=1o6ltnLLWPBMq2-zbHiwllc5NowbB3IHH");
 const itsBeenSolong = new Audio("https://drive.google.com/uc?export=download&id=14ty-7Tmx3LVAOg0KQSk0oASONeP46MRI");
-itsBeenSolong.volume = 0.5;
-itsBeenSolong.loop = true;
+const harrHarrNoRap = new Audio("https://drive.google.com/uc?export=download&id=1MpKk2az1Wp83zrBz_MKcbb0E4ssezDMx");
+const jennifer17 = new Audio("https://drive.google.com/uc?export=download&id=1rvFRzkFoPTkShN5XQFzG4pNPBo1LVD_Q");
 
-const audioList = [itsBeenSolong, williamAftonSinging];
+const audioList = [williamAftonRap, itsBeenSolong, harrHarrNoRap, jennifer17];
+
+for (let i = 0; i < audioList.length; i++) {
+    audioList[i].onended = () => {
+        skipSong();
+    }
+}
 
 checkAfton = () => {
 
