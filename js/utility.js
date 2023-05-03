@@ -151,8 +151,10 @@ checkMuted = () => {
         clickSound.volume = 1;
         onIcon.style.opacity = 1;
         offIcon.style.opacity = 0;
+        if (localStorage.getItem("williamAfton") == "true") {
+            audioList[getSong()].play();
+        }
 
-        audioList[getSong()].play();
     }
     
 }
@@ -169,15 +171,15 @@ const audioList = [itsBeenSolong, williamAftonSinging];
 checkAfton = () => {
 
     const imageStyleEl = document.body.style;
-    const h2Els = document.getElementsByClassName("aftonColor");
+    const header2Elements = document.getElementsByClassName("aftonColor");
 
     if (localStorage.getItem("williamAfton") == "true") {
         
         ElementId("skipButton").removeAttribute("hidden");
         imageStyleEl.backgroundImage = "url(https://i.scdn.co/image/ab6761610000e5eba07eb018071ca45120dceb4f)";
 
-        for (let i = 0; i < h2Els.length; i++) {
-            h2Els[i].style.color = "white";
+        for (let i = 0; i < header2Elements.length; i++) {
+            header2Elements[i].style.color = "white";
         }
         
         playSong();
@@ -186,8 +188,8 @@ checkAfton = () => {
         ElementId("skipButton").hidden = true;
         document.body.style.backgroundImage = "none";
 
-        for (let i = 0; i < h2Els.length; i++) {
-            h2Els[i].style.color = "black";
+        for (let i = 0; i < header2Elements.length; i++) {
+            header2Elements[i].style.color = "black";
         }
         
         pauseAllSongs();
