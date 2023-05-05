@@ -122,13 +122,7 @@ locationReload = () => {
 
 //Audio
 
-function getSong() {
-    return parseInt(localStorage.getItem("song"));
-}
 
-if (localStorage.getItem("song") == null) {
-    localStorage.setItem("song", "0");
-}
 
 const buttonTiles = document.getElementsByClassName("buttonSound");
 const clickSound = new Audio("https://assets.mixkit.co/active_storage/sfx/2568/2568-preview.mp3");
@@ -137,6 +131,16 @@ for (let i = 0; i < buttonTiles.length; i++) {
     buttonTiles[i].addEventListener("click", function() {
         clickSound.play();
     })
+}
+
+//Music
+
+function getSongIndex() {
+    return parseInt(localStorage.getItem("song"));
+}
+
+if (localStorage.getItem("song") == null) {
+    localStorage.setItem("song", "0");
 }
 
 checkMuted = () => {
@@ -152,7 +156,7 @@ checkMuted = () => {
         onIcon.style.opacity = 1;
         offIcon.style.opacity = 0;
         if (localStorage.getItem("williamAfton") == "true") {
-            audioList[getSong()].play();
+            audioList[getSongIndex()].play();
         }
 
     }
@@ -211,7 +215,7 @@ pauseAllSongs = () => {
 playSong = () => {
     pauseAllSongs();
 
-    audioList[getSong()].play();
+    audioList[getSongIndex()].play();
 
     checkMuted();
 }
@@ -220,7 +224,7 @@ skipSong = () => {
 
     incrementStorage("song");
 
-    if (getSong() >= audioList.length) {
+    if (getSongIndex() >= audioList.length) {
         localStorage.setItem("song", "0");
     }
 
@@ -249,11 +253,11 @@ toggleFreddyFazbearMode = () => {
 }
 
 setInterval(() => {
-    localStorage.setItem("HarrHarrTime", audioList[getSong()].currentTime);
+    localStorage.setItem("HarrHarrTime", audioList[getSongIndex()].currentTime);
 }, 500);
 
 if (localStorage.getItem("HarrHarrTime") != null) {
-    audioList[getSong()].currentTime = localStorage.getItem("HarrHarrTime");
+    audioList[getSongIndex()].currentTime = localStorage.getItem("HarrHarrTime");
 }
 
 checkAfton();
