@@ -3,7 +3,7 @@ if (localStorage.getItem("HarrHarrTime") == null) {
     localStorage.setItem("HarrHarrTime", "0");
 }
 
-//Page transfering
+//Page transfering terrible names dont ask thank prob way better way to do this
 
 gg = () => {
     setTimeout(() => {
@@ -38,5 +38,11 @@ ach = () => {
 cont = () => {
     setTimeout(() => {
         window.location.href = "controls.html";
+    }, pageChangeDelay);
+}
+
+present = () => {
+    setTimeout(() => {
+        window.location.href = "present.html";
     }, pageChangeDelay);
 }

@@ -1,13 +1,12 @@
-#achievementsButton {
+#secondaryButton {
     background-image: linear-gradient(45deg, rgb(238, 119, 82), rgb(231, 60, 126), rgb(35, 166, 213), rgb(35, 213, 171));
     background-size: 0%;
     transition: all 250ms;
 }
 
-#achievementsButton:hover {
+#secondaryButton:hover {
     background-position: 50%;
 }
-
 
 #headerText {
     top: 0px;
