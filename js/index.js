@@ -40,9 +40,3 @@ cont = () => {
         window.location.href = "controls.html";
     }, pageChangeDelay);
 }
-
-present = () => {
-    setTimeout(() => {
-        window.location.href = "present.html";
-    }, pageChangeDelay);
-}
