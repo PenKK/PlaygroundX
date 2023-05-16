@@ -170,11 +170,11 @@ const jennifer17 = new Audio("https://drive.google.com/uc?export=download&id=1rv
 
 const audioList = [williamAftonRap, itsBeenSolong, harrHarrNoRap, jennifer17];
 
-for (let i = 0; i < audioList.length; i++) {
-    audioList[i].onended = () => {
+audioList.forEach(element => {
+    element.onended = () => {
         skipSong();
     }
-}
+});
 
 checkAfton = () => {
 
@@ -207,9 +207,9 @@ checkAfton = () => {
 }
 
 pauseAllSongs = () => {
-    for (let i = 0; i < audioList.length; i++) {
-        audioList[i].pause();
-    }
+    audioList.forEach(element => {
+        element.pause();
+    });
 }
 
 playSong = () => {
