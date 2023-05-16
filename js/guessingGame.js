@@ -121,7 +121,9 @@ function checkAchievements() {
     if (ElementId("range").value > 9999 && triesCounter <= 15 && localStorage.getItem("MASTER_GUESSER") == "false") {
             localStorage.setItem("MASTER_GUESSER", true);
             notification("Achievement complete: Master Guesser!");
-    } else {
+    } 
+    
+    else {
     if (ElementId("range").value > 999999 && triesCounter <= 20 && localStorage.getItem("GRANDMASTER_GUESSER") == "false") {
         localStorage.setItem("GRANDMASTER_GUESSER", true);
         notification("Achievement complete: Grandmaster Guesser!");
