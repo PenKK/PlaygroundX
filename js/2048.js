@@ -129,7 +129,7 @@ updateTiles = () => {
 
 checkValidBoardNumber = (num) => {
     if (num == 1) {
-        return false
+        return false;
     }
     if (Math.sqrt(num) % 1 == 0 || Math.sqrt(num*2) % 1 == 0) {
         return true;
@@ -293,7 +293,7 @@ up = () => {
         
         let i = 0;
         let j = 1;
-        let combined = -1
+        let combined = -1;
 
         while (arr[j] != undefined) {
             if (arr[i] == arr[j]) {
@@ -342,7 +342,7 @@ down = () => {
                     break;
                 }
                 combined = arr[i];
-                score += combined*2
+                score += combined*2;
                 arr[j] *= 2;
                 arr[i] = 0;
                 check2048(combined*2);
