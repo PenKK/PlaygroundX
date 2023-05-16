@@ -56,10 +56,13 @@ function goTo(location) {
 //Notification
 var notiLock = false;
 
+const notificationSound = new Audio("https://drive.google.com/uc?export=download&id=1tZNIUh7CPhYf16_5GXOcSgxmB_SI52oT");
+
 function notification(message) {
     if (!notiLock) {
         notiLock = true;
 
+        notificationSound.play();
         ElementId("noti").style.opacity = 1;
         ElementId("notiText").innerHTML = message;
         runAnimation("noti")
@@ -121,8 +124,6 @@ locationReload = () => {
 }
 
 //Audio
-
-
 
 const buttonTiles = document.getElementsByClassName("buttonSound");
 const clickSound = new Audio("https://assets.mixkit.co/active_storage/sfx/2568/2568-preview.mp3");

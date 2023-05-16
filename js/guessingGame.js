@@ -48,12 +48,12 @@ function play() {
 
 function enterGuess() {
 
-    if(!enterLocked) {
+    if (!enterLocked) {
 
         enterLocked = true;
         guess = ElementId("guess").value;
 
-        if(guess==ans){
+        if (guess == ans){
             triesCounter++;
 
             runAnimation('leftUpArrow');
