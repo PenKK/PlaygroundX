@@ -145,16 +145,7 @@
     transform: scaleX(-1);
 }
 
-#computerRock {
-    visibility: hidden;
-}
-
-#computerPaper {
-    visibility: hidden;
-    
-}
-
-#computerScissors {
+#computerRock, #computerPaper, #computerScissors{
     visibility: hidden;
 }
 
@@ -172,4 +163,24 @@
     left: 5%;
     top: 15%;
     transition: opacity 1s;
+}
+
+#ps1, #cs1 {
+    font-size: 5vw;
+}
+
+#ps2, #cs2 {
+    font-size: 7vw;
+}
+
+#ps3, #cs3 {
+    font-size: 9vw;
+}
+
+#rockIcon, #paperIcon, #scissorsIcon {
+    font-size: 6vw;
+}
+
+#playerRock, #playerPaper, #playerScissors, #computerRock, #computerPaper, #computerScissors {
+    
 }
