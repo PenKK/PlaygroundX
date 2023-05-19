@@ -111,14 +111,6 @@
     opacity: 1;
 }
 
-.displayMoves {
-    left: 35px;
-    bottom: 35px;
-    position: absolute;
-    color: brown;
-    text-shadow: black 10px 10px;
-}
-
 #restartButton {
     position: absolute;
     left: 50%;
@@ -182,5 +174,20 @@
 }
 
 #playerRock, #playerPaper, #playerScissors, #computerRock, #computerPaper, #computerScissors {
-    
+    font-size: 10vw;
+}
+
+.displayMoves {
+    color: brown;
+    text-shadow: black 0.8vw 0.8vw;
+    position: absolute;
+    top: 50%; right: 50%;
+    transform: translate(50%,-50%);
+}
+
+#leftFix {
+    position: relative;
+    top: -50%;
+    left: 40%;
+    /* FIX ONE DAY OMGGGGGGGG I GIVE UP CRAPPY TEMPORARY SOLUTION */
 }
