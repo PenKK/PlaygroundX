@@ -327,6 +327,7 @@ input::-webkit-outer-spin-button,input::-webkit-inner-spin-button {
 
 #muteIcon {
     position: absolute;
+    font-size: 3.5vh;
 }
 
 .fa-volume-off {
