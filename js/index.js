@@ -40,3 +40,9 @@ cont = () => {
         window.location.href = "controls.html";
     }, pageChangeDelay);
 }
+
+quad = () => {
+    setTimeout(() => {
+        window.location.href = "quadratic-calculator.html";
+    }, pageChangeDelay);
+}

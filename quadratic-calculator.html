@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script defer src="js/utility.js"></script>
+    <script defer src="js/quadcalc.js"></script>
+    <script src="js/controls.js"></script>
+    <script src="https://kit.fontawesome.com/837a8073e0.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" type="text/css" href="css/quadcalc.css"/>
+    <link rel="stylesheet" type="text/css" href="css/style.css"/>
+    <title>Quadratic Calculator</title>
+</head>
+<body>
+    <h1>Quadratic Calculator</h1>
+    
+    <div class="gameBox" id="box">
+        <span> 
+            <input id="a" class="abcInput" type="number" value="2">x&sup2 + 
+            <input id="b" class="abcInput" type="number" value="4">x +
+            <input id="c" class="abcInput" type="number" value="8">
+        </span>
+
+        <div id="results">
+            
+            <div class="subArea">
+                <h7>Vertex Form</h7>
+                <br>
+                <span id="vertForm"></span>
+                
+            </div>
+            <div class="subArea">
+                
+            </div>
+            <div class="subArea">
+                
+            </div>
+            <div class="subArea">
+                
+            </div>
+        </div>
+    </div>
+
+    <button id="muteButton" class="buttonSound" onclick="toggleMute()">
+		<i id="muteIcon" class="fa-solid fa-volume-high fa-2xl"></i>
+		<i id="muteIcon" class="fa-solid fa-volume-off fa-2xl"></i>
+	</button>
+
+    <button hidden id="skipButton" class="buttonSound" onclick="skipSong()">
+		<i class="fa-solid fa-forward fa-2xl"></i>
+	</button>
+</body>
+</html>

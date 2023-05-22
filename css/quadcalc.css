@@ -1,0 +1,32 @@
+html, body {
+    height: 100%;
+}
+
+#box {
+    width: 70vw;
+    height: 60vh;
+    font-size: 4vmin;
+}
+
+.abcInput {
+    font-size: 3vmin;
+    width: 1ch;
+    max-width: 6ch;
+    min-width: 1ch;
+    background: brown;
+    color: aliceblue;
+    margin-top: 2vh;
+}
+
+#results {
+    height: 89%;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+}
+
+.subArea {
+    height: 100%;
+    width: 98.5%;
+    border: 4px rgb(221, 88, 88) solid;
+}
