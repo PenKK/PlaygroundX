@@ -18,6 +18,7 @@ html, body {
     color: aliceblue;
     margin-top: 2vh;
     font-family: "consolas";
+    border-radius: 0.6vh;
 }
 
 #results {
