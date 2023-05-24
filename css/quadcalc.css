@@ -46,4 +46,5 @@ html, body {
     border-radius: 0.5vw;
     padding: 0.4vw;
     box-shadow: 0.25vw 0.25vw 0.3vw black;
+    transition: opacity 0.2s;
 }

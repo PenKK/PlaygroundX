@@ -24,8 +24,10 @@ inputs.forEach(element => {
         c = parseFloat(ElementId("c").value);
 
         if (isNaN(a) || isNaN(b) || isNaN(c) || a == 0) {
+            ElementId("inputs").style.opacity = 0.5;
             return;
         }
+        ElementId("inputs").style.opacity = 1;
 
         calcVertForm();
         calcX();
