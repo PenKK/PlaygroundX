@@ -4,8 +4,9 @@ html, body {
 
 #box {
     width: 70vw;
-    height: 60vh;
+    height: 65vh;
     font-size: 4vmin;
+    font-family: "Consolas";
 }
 
 .abcInput {
@@ -16,6 +17,7 @@ html, body {
     background: brown;
     color: aliceblue;
     margin-top: 2vh;
+    font-family: "consolas";
 }
 
 #results {
@@ -26,7 +28,22 @@ html, body {
 }
 
 .subArea {
-    height: 100%;
-    width: 98.5%;
-    border: 4px rgb(221, 88, 88) solid;
+    margin-top: 2vh;
+    height: 80%;
+    width: 80%;
+    border: 4px brown solid;
+    border-radius: 1vw;
+    transform: translateX(12.5%);
+    background-color: bisque;
+    box-shadow: 0.3vw 0.3vw 0.3vw black;
+    margin-top: 4vh;
+}
+
+#inputs {
+    background-color: bisque;
+    width: fit-content;
+    border: brown solid;
+    border-radius: 0.5vw;
+    padding: 0.4vw;
+    box-shadow: 0.25vw 0.25vw 0.3vw black;
 }
