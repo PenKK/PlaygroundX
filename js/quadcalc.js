@@ -64,8 +64,8 @@ calcX = () => {
     root = (b**2) - (4*a*c);
 
     if (root < 0) {
-        ElementId("+").innerHTML = "";
-        ElementId("-").innerHTML = "No X-Intercepts";
+        ElementId("+").innerHTML = "No X-Intercepts";
+        ElementId("-").innerHTML = "";
     } else {
         xPlus = (b*-1 + Math.sqrt(root)) / (2*a);
         xMinus = (b*-1 - Math.sqrt(root)) / (2*a);
