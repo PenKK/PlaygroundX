@@ -174,7 +174,7 @@
 }
 
 #rockIcon, #paperIcon, #scissorsIcon {
-    font-size: 6vw;
+    font-size: 10vmin;
 }
 
 #playerRock, #playerPaper, #playerScissors, #computerRock, #computerPaper, #computerScissors {
