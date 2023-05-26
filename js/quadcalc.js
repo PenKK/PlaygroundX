@@ -1,5 +1,5 @@
-let a = 1;
-let b = 5;
+let a = 2;
+let b = 7;
 let c = 6;
 
 let p = 0;
@@ -36,14 +36,12 @@ inputs.forEach(element => {
 
 calcVertForm = () => {
 
-    let formString = "y = ";
+    let formString = a + "(x ";
 
     p = (b * -1) / (2 * a);
     // console.log("P: " + p);
     q = (a * p**2) + (b * p) + (c);
     // console.log("Q: " + q);
-
-    formString = formString.concat(a + "(x ");
 
     if (p < 0) { 
         formString = formString.concat("+ " + Math.round(Math.abs(p) * decimalRounding) / decimalRounding  + ")&sup2");
@@ -72,8 +70,41 @@ calcX = () => {
         ElementId("+").innerHTML = "Plus: " + Math.round(xPlus * decimalRounding) / decimalRounding;
         ElementId("-").innerHTML = "Minus: " + Math.round(xMinus * decimalRounding) / decimalRounding;
     }
+}
+
+factor = () => {
+    let tempC = a*c;
+    let limit = Math.abs(b*tempC);
+
+    let num1;
+    let num2;
+
+    let finalNum1;
+    let finalNum2;
+    for (let i = limit * -1; i < limit; i++) {
+        for (let j = limit * -1; j < limit; j++) {
+            if (i * j == c && i + j == b) {
+                num1 = i;
+                num2 = j;
+            }
+        }
+    }
+
+    if (isNaN(num1)) {
+        alert("not found");
+    }
+
+
     
 }
+
+function reduce(numerator,denominator){
+    var gcd = function gcd(a,b){
+      return b ? gcd(b, a%b) : a;
+    };
+    gcd = gcd(numerator,denominator);
+    return [numerator/gcd, denominator/gcd];
+  }
 
 calcVertForm();
 calcX();
