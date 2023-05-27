@@ -31,6 +31,7 @@ inputs.forEach(element => {
 
         calcVertForm();
         calcX();
+        factor();
     })
 });
 
@@ -73,17 +74,22 @@ calcX = () => {
 }
 
 factor = () => {
+
+    let factorString = "(";
     let tempC = a*c;
     let limit = Math.abs(b*tempC);
 
     let num1;
     let num2;
 
+    let num1Extra = "";
+    let num2Extra = "";
+
     let finalNum1;
     let finalNum2;
     for (let i = limit * -1; i < limit; i++) {
         for (let j = limit * -1; j < limit; j++) {
-            if (i * j == c && i + j == b) {
+            if (i * j == tempC && i + j == b) {
                 num1 = i;
                 num2 = j;
             }
@@ -91,14 +97,50 @@ factor = () => {
     }
 
     if (isNaN(num1)) {
-        alert("not found");
+        ElementId("factored").innerHTML = "Can't factor";
+        return;
+    }
+    // console.log(num1 + " " + num2);
+
+    num1Array = reduce(num1, a);
+    num2Array = reduce(num2, a);
+    // console.log(num1Array);
+    // console.log(num2Array);
+
+    finalNum1 = num1Array[0];
+    finalNum2 = num2Array[0];
+    
+    if (num1Array[1] != 1) {
+        num1Extra = num1Array[1];
+        // console.log(num1Extra);
     }
 
+    if (num2Array[1] != 1) {
+        num2Extra = num2Array[1];
+        // console.log(num2Extra);
+    }
 
-    
+    factorString = factorString.concat(num1Extra + "x");
+
+    if (finalNum1 > 0) {
+        factorString = factorString.concat(" + " + finalNum1 + ")(");
+    } else {
+        factorString = factorString.concat(" - " + Math.abs(finalNum1) + ")(");
+    }
+
+    factorString = factorString.concat(num2Extra + "x");
+
+    if (finalNum2 > 0) {
+        factorString = factorString.concat(" + " + finalNum2 + ")");
+    } else {
+        factorString = factorString.concat(" - " + Math.abs(finalNum2) + ")");
+    }
+
+    ElementId("factored").innerHTML = factorString;
+
 }
 
-function reduce(numerator,denominator){
+function reduce(numerator,denominator){ //stack overflow :praying_emoji:
     var gcd = function gcd(a,b){
       return b ? gcd(b, a%b) : a;
     };
@@ -108,3 +150,4 @@ function reduce(numerator,denominator){
 
 calcVertForm();
 calcX();
+factor();
