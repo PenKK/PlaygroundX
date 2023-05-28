@@ -5,7 +5,7 @@ let c = 6;
 let p = 0;
 let q = 0;
 
-let root = 0;
+let discriminant = 0;
 let xPlus = 0;
 let xMinus = 0;
 const decimalRounding = 10000;
@@ -29,11 +29,15 @@ inputs.forEach(element => {
         }
         ElementId("inputs").style.opacity = 1;
 
-        calcVertForm();
-        calcX();
-        factor();
+        runCalculations();
     })
 });
+
+runCalculations = () => {
+    calcVertForm(); //q2
+    calcX(); //q1
+    factor(); //q3
+}
 
 calcVertForm = () => {
 
@@ -60,14 +64,16 @@ calcVertForm = () => {
 }
 
 calcX = () => {
-    root = (b**2) - (4*a*c);
+    discriminant = (b**2) - (4*a*c);
 
-    if (root < 0) {
+    if (discriminant < 0) {
         ElementId("+").innerHTML = "No X-Intercepts";
         ElementId("-").innerHTML = "";
+    } else  if (discriminant == 0) {
+       xPlus = xMinus = -b / (2 * a);
     } else {
-        xPlus = (b*-1 + Math.sqrt(root)) / (2*a);
-        xMinus = (b*-1 - Math.sqrt(root)) / (2*a);
+        xPlus = (b*-1 + Math.sqrt(discriminant)) / (2*a);
+        xMinus = (b*-1 - Math.sqrt(discriminant)) / (2*a);
         ElementId("+").innerHTML = "Plus: " + Math.round(xPlus * decimalRounding) / decimalRounding;
         ElementId("-").innerHTML = "Minus: " + Math.round(xMinus * decimalRounding) / decimalRounding;
     }
@@ -79,14 +85,15 @@ factor = () => {
     let tempC = a*c;
     let limit = Math.abs(b*tempC);
 
-    let num1;
-    let num2;
+    let num1, num2;
 
     let num1Extra = "";
     let num2Extra = "";
 
-    let finalNum1;
-    let finalNum2;
+    let finalNum1, finalNum2;
+
+    let front = "";
+
     for (let i = limit * -1; i < limit; i++) {
         for (let j = limit * -1; j < limit; j++) {
             if (i * j == tempC && i + j == b) {
@@ -100,24 +107,19 @@ factor = () => {
         ElementId("factored").innerHTML = "Can't factor";
         return;
     }
-    // console.log(num1 + " " + num2);
 
     num1Array = reduce(num1, a);
     num2Array = reduce(num2, a);
-    // console.log(num1Array);
-    // console.log(num2Array);
 
     finalNum1 = num1Array[0];
     finalNum2 = num2Array[0];
     
     if (num1Array[1] != 1) {
         num1Extra = num1Array[1];
-        // console.log(num1Extra);
     }
 
     if (num2Array[1] != 1) {
         num2Extra = num2Array[1];
-        // console.log(num2Extra);
     }
 
     factorString = factorString.concat(num1Extra + "x");
@@ -136,7 +138,31 @@ factor = () => {
         factorString = factorString.concat(" - " + Math.abs(finalNum2) + ")");
     }
 
-    ElementId("factored").innerHTML = factorString;
+    if (num1Extra.length == 0) {
+        num1Extra = 1;
+    }
+
+    if (num2Extra.length == 0) {
+        num2Extra = 1;
+    }
+
+    if (num1Extra * num2Extra != a) {
+        console.log("Extra's don't have a product of A, calculating outer");
+        if (num1Extra == 1) {
+            console.log("A: dividing: " + a + "/" + num2Extra);
+            front = a/num2Extra;
+        } else {
+            front = a/num1Extra;
+            console.log("A: dividing: " + a + "/" + num1Extra);
+        }
+    }
+
+    if (a < 0 && front > 0) {
+        front *= -1;
+    }
+    front = front + "";
+
+    ElementId("factored").innerHTML = front.concat(factorString);
 
 }
 
@@ -148,6 +174,4 @@ function reduce(numerator,denominator){ //stack overflow :praying_emoji:
     return [numerator/gcd, denominator/gcd];
   }
 
-calcVertForm();
-calcX();
-factor();
+  runCalculations();
