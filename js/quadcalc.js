@@ -1,6 +1,6 @@
-let a = 2;
-let b = 7;
-let c = 6;
+let a = 4;
+let b = -12;
+let c = 8;
 
 let p = 0;
 let q = 0;
@@ -8,6 +8,7 @@ let q = 0;
 let discriminant = 0;
 let xPlus = 0;
 let xMinus = 0;
+let failedFactor = false;
 const decimalRounding = 10000;
 
 ElementId("a").value = a;
@@ -32,6 +33,10 @@ inputs.forEach(element => {
         runCalculations();
     })
 });
+
+inputs.forEach(element => {
+    element.style.width = element.value.length + "ch";
+})
 
 runCalculations = () => {
     calcVertForm(); //q2
@@ -83,7 +88,7 @@ factor = () => {
 
     let factorString = "(";
     let tempC = a*c;
-    let limit = Math.abs(b*tempC);
+    let limit = a*tempC/2;
 
     let num1, num2;
 
@@ -94,17 +99,19 @@ factor = () => {
 
     let front = "";
 
-    for (let i = limit * -1; i < limit; i++) {
-        for (let j = limit * -1; j < limit; j++) {
-            if (i * j == tempC && i + j == b) {
-                num1 = i;
-                num2 = j;
-            }
-        }
-    }
+    let factors = findFactors(limit, b, tempC);
 
-    if (isNaN(num1)) {
-        ElementId("factored").innerHTML = "Can't factor";
+    try {
+        num1 = factors[0];
+        num2 = factors[1];
+    } catch (error) {
+        console.log("Unable to find");
+        if (failedFactor) {
+            ElementId("factored").innerHTML = "Factor could not be found within a reasonable time";
+        } else {
+            ElementId("factored").innerHTML = "Can't factor";
+        }
+        failedFactor = false;
         return;
     }
 
@@ -160,10 +167,26 @@ factor = () => {
     if (a < 0 && front > 0) {
         front *= -1;
     }
-    front = front + "";
+    front += "";
 
     ElementId("factored").innerHTML = front.concat(factorString);
+}
 
+function findFactors(limit, b, tempC) {
+    let tries = 0;
+    for (let i = limit * -1; i < limit; i++) {
+        for (let j = limit * -1; j < limit; j++) {
+            if (i * j == tempC && i + j == b) {
+                console.log("Found: " + i + "," + j);
+                return [i,j];
+            }
+            tries++;
+            if (tries > 1000000000) {
+                failedFactor = true;
+                return;
+            }
+        }
+    }
 }
 
 function reduce(numerator,denominator){ //stack overflow :praying_emoji:
