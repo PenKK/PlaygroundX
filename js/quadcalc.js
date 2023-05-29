@@ -177,11 +177,11 @@ function findFactors(limit, b, tempC) {
     for (let i = limit * -1; i < limit; i++) {
         for (let j = limit * -1; j < limit; j++) {
             if (i * j == tempC && i + j == b) {
-                console.log("Found: " + i + "," + j);
+                console.log("Found: " + i + "," + j + " in " + tries + " tries");
                 return [i,j];
             }
             tries++;
-            if (tries > 1000000000) {
+            if (tries > 100000000) {
                 failedFactor = true;
                 return;
             }
