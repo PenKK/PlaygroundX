@@ -177,9 +177,8 @@ factor = () => {
     if (a < 0 && front > 0) {
         front *= -1;
     }
-    front += "";
 
-    ElementId("factored").innerHTML = front.concat(factorString);
+    ElementId("factored").innerHTML = front.toString().concat(factorString);
 }
 
 function findFactors(limit, b, tempC) {
