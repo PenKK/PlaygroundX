@@ -86,6 +86,16 @@ calcX = () => {
 
 factor = () => {
 
+    if (c == 0) {
+        ElementId("factored").innerHTML = "Unable to factor <br>when C = 0";
+        return;
+    }
+
+    if (b == 0) {
+        ElementId("factored").innerHTML = "Unable to factor <br>when B = 0";
+        return;
+    }
+    
     let factorString = "(";
     let tempC = a*c;
     let limit = a*tempC/2;

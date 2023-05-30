@@ -41,7 +41,7 @@ h1 {
     text-align: center;
     border: 5px dotted;
     width: fit-content;
-    margin-top: 20px;
+    margin-top: 0.5vh;
     margin-left: auto;
     margin-right: auto;
     padding: 2.5vh;
@@ -51,7 +51,7 @@ h1 {
     font-size: 8vh;
     z-index: 1;
     background-color: bisque;
-    border-radius: 15px;
+    border-radius: 1.5vh;
 }
 
 h2 {
@@ -140,7 +140,7 @@ a:hover {
 }
 
 .gameBox {
-    margin-top: 100px;
+    margin-top: 10vh;
     height: 55vh;
     width: 38%;
     border: darkred solid;
