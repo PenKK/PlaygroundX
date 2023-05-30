@@ -206,4 +206,4 @@ function reduce(numerator,denominator){ //stack overflow :praying_emoji:
     return [numerator/gcd, denominator/gcd];
   }
 
-  runCalculations();
+runCalculations();
