@@ -12,9 +12,9 @@ const c1024 = "rgb(140, 255, 203)";
 const c4096 = "rgb(255, 190, 60)";
 const c8192 = "rgb(245, 190, 254)";
 const c16384 = "rgb(123, 210, 237)";
-const cLarge = "#660000";
-const textColor = "rgb(0,0,0,1)";
-const emptyTileColor = "rgb(180, 123, 123)"
+const COLOR_LARGE = "#660000";
+const TEXT_COLOR = "rgb(0,0,0,1)";
+const EMPTY_TILE_COLOR = "rgb(180, 123, 123)"
 
 // let board = [[0, 4, 8, 16],
 //              [32, 64, 128, 256],
@@ -46,7 +46,7 @@ updateTiles = () => {
         for (let x = 0; x < 4; x++) {
 
             const id = ElementId(x + "" + y);
-            id.style.color = textColor;
+            id.style.color = TEXT_COLOR;
             id.classList.remove("gradientAnimation");
             id.style.backgroundImage = "none";
 
@@ -54,7 +54,7 @@ updateTiles = () => {
                 id.innerHTML = board[x][y];
             } else {
                 id.innerHTML = "";
-                id.style.backgroundColor = emptyTileColor;
+                id.style.backgroundColor = EMPTY_TILE_COLOR;
             }
 
             switch(board[x][y]) {
@@ -104,7 +104,7 @@ updateTiles = () => {
                     break;
                 default:
                     if (checkValidBoardNumber(board[x][y])) {
-                        id.style.backgroundColor = cLarge;
+                        id.style.backgroundColor = COLOR_LARGE;
                     } else {
                         id.style.backgroundColor = "rgb(0,0,0)";
                         id.style.color = "rgb(255,255,255)";
@@ -199,9 +199,7 @@ canMoveDirection = () => {
                 if (board[i][j] == board[i + 1][j]) { //Verticle
                     return true;
                 }
-            } catch {
-
-            }
+            } catch {}
         }
     }
     return false;
