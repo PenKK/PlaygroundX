@@ -183,6 +183,8 @@ checkAfton = () => {
     if (localStorage.getItem("williamAfton") == "true") {
         
         ElementId("skipButton").removeAttribute("hidden");
+        ElementId("aftonHeader").innerHTML = "WILLIAM AFTON MODE ACTIVATED";
+        
         imageStyleEl.backgroundImage = "url(https://i.scdn.co/image/ab6761610000e5eba07eb018071ca45120dceb4f)";
 
         for (let i = 0; i < header2Elements.length; i++) {
@@ -194,7 +196,8 @@ checkAfton = () => {
 
         ElementId("skipButton").hidden = true;
         document.body.style.backgroundImage = "none";
-
+        ElementId("aftonHeader").innerHTML = "Capstone Project";
+        
         for (let i = 0; i < header2Elements.length; i++) {
             header2Elements[i].style.color = "black";
         }

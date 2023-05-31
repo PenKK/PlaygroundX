@@ -112,7 +112,6 @@ function winGame() {
     ElementId("guess").disabled = true;
     document.getElementById('enter').disabled = true;
     checkAchievements();
-    winSound.play();
 }
 
 //Local storage achievements

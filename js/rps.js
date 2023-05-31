@@ -101,7 +101,6 @@ function winPlayer() {
         case 3:
             ElementId("ps3").style.opacity = 1;
             endPlayer();
-            winSound.play();
             break;
     }
 }

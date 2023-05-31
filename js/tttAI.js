@@ -131,7 +131,6 @@ function checkGame(turn) {
         case 1:
             ElementId("endText").innerHTML = ("Player <br> Wins!");
             incrementStorage("scorePlayer");
-            winSound.play();
             break;
         case 2:
             ElementId("endText").innerHTML = "Computer <br> Wins!";
