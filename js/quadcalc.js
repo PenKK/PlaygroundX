@@ -75,7 +75,7 @@ calcX = () => {
         ElementId("+").innerHTML = "No X-Intercepts";
         ElementId("-").innerHTML = "";
     } else if (discriminant == 0) {
-        xMinus = -b / (2 * a);
+        xMinus = xPlus = -b / (2 * a);
         ElementId("intercept").innerHTML = "X-Intercept";
         ElementId("+").innerHTML = "One Real Root";
         ElementId("-").innerHTML = xMinus;
