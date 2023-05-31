@@ -1,6 +1,6 @@
-let a = 4;
+let a = -4;
 let b = -12;
-let c = 8;
+let c = -9;
 
 let p = 0;
 let q = 0;
@@ -48,7 +48,7 @@ calcVertForm = () => {
 
     let formString = a + "(x ";
 
-    p = (b * -1) / (2 * a);
+    p = (-b) / (2 * a);
     // console.log("P: " + p);
     q = (a * p**2) + (b * p) + (c);
     // console.log("Q: " + q);
@@ -74,11 +74,14 @@ calcX = () => {
     if (discriminant < 0) {
         ElementId("+").innerHTML = "No X-Intercepts";
         ElementId("-").innerHTML = "";
-    } else  if (discriminant == 0) {
-       xPlus = xMinus = -b / (2 * a);
+    } else if (discriminant == 0) {
+        xMinus = -b / (2 * a);
+        ElementId("intercept").innerHTML = "X-Intercept";
+        ElementId("+").innerHTML = "One Real Root";
+        ElementId("-").innerHTML = xMinus;
     } else {
-        xPlus = (b*-1 + Math.sqrt(discriminant)) / (2*a);
-        xMinus = (b*-1 - Math.sqrt(discriminant)) / (2*a);
+        xPlus = (-b + Math.sqrt(discriminant)) / (2*a);
+        xMinus = (-b - Math.sqrt(discriminant)) / (2*a);
         ElementId("+").innerHTML = "Plus: " + Math.round(xPlus * decimalRounding) / decimalRounding;
         ElementId("-").innerHTML = "Minus: " + Math.round(xMinus * decimalRounding) / decimalRounding;
     }
@@ -98,7 +101,7 @@ factor = () => {
     
     let factorString = "(";
     let tempC = a*c;
-    let limit = a*tempC/2;
+    let limit = Math.abs(a*tempC/2);
 
     let num1, num2;
 
@@ -182,11 +185,13 @@ factor = () => {
 }
 
 function findFactors(limit, b, tempC) {
+    
     let tries = 0;
-    for (let i = limit * -1; i < limit; i++) {
-        for (let j = limit * -1; j < limit; j++) {
+    for (let i = -limit; i < limit; i++) {
+        for (let j = -limit; j < limit; j++) {
+            console.log("I: " + i + "|J: " + j);
             if (i * j == tempC && i + j == b) {
-                console.log("Found: " + i + "," + j + " in " + tries + " tries");
+                // console.log("Found: " + i + "," + j + " in " + tries + " tries");
                 return [i,j];
             }
             tries++;

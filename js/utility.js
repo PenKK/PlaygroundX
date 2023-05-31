@@ -1,6 +1,4 @@
-if (localStorage.getItem("visited") == null && document.URL.endsWith("index.html")) {
-    notification("Press H to return to the home page at any time!")
-    localStorage.setItem("visited", "true");
+if (localStorage.getItem("muted") == null) {
     localStorage.setItem("muted", "false");
 }
 
