@@ -9,6 +9,14 @@ window.onload = () => {
     turn = parseInt(localStorage.getItem("firstTurn"));
     tileElements = document.querySelectorAll("i.fa-solid.fa-x,i.fa-solid.fa-o");
     updateScores();
+
+    if (turn == 1) {
+        ElementId("oBox").style.backgroundColor = "rgb(102, 28, 28)";
+        ElementId("xBox").style.backgroundColor = "blanchedalmond";
+    } else {
+        ElementId("xBox").style.backgroundColor = "rgb(102, 28, 28)";
+        ElementId("oBox").style.backgroundColor = "blanchedalmond";
+    }
 }
 
 let board = [[0,0,0],

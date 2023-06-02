@@ -50,6 +50,7 @@ function enterGuess() {
 
     if (!enterLocked) {
 
+        clickSound.play();
         enterLocked = true;
         guess = ElementId("guess").value;
 
