@@ -45,24 +45,31 @@ runCalculations = () => {
 }
 
 calcVertForm = () => {
+    let formString;
 
-    let formString = a + "(x ";
+    if (a != 1) {
+        formString = a + "(x";
+    } else {
+        formString = "(x";
+    }
 
     p = (-b) / (2 * a);
     // console.log("P: " + p);
     q = (a * p**2) + (b * p) + (c);
     // console.log("Q: " + q);
-
-    if (p < 0) { 
-        formString = formString.concat("+ " + Math.round(Math.abs(p) * decimalRounding) / decimalRounding  + ")&sup2");
+    if (p == 0 ) {
+        formString = formString.concat(")&sup2");
+    } else if (p < 0) { 
+        formString = formString.concat(" + " + Math.round(Math.abs(p) * decimalRounding) / decimalRounding  + ")&sup2");
     } else {
-        formString = formString.concat("- " + Math.round(p * decimalRounding) / decimalRounding + ")&sup2");
+        formString = formString.concat(" - " + Math.round(p * decimalRounding) / decimalRounding + ")&sup2");
     }
-
-    if (q < 0) {
-        formString = formString.concat(" - " + Math.round(Math.abs(q) * decimalRounding) / decimalRounding);
-    } else {
-        formString = formString.concat(" + " + Math.round(q * decimalRounding) / decimalRounding);
+    if (q != 0 ) {
+        if (q < 0) {
+            formString = formString.concat(" - " + Math.round(Math.abs(q) * decimalRounding) / decimalRounding);
+        } else {
+            formString = formString.concat(" + " + Math.round(q * decimalRounding) / decimalRounding);
+        }
     }
 
     ElementId("vertForm").innerHTML = formString;
@@ -189,7 +196,7 @@ function findFactors(limit, b, tempC) {
     let tries = 0;
     for (let i = -limit; i < limit; i++) {
         for (let j = -limit; j < limit; j++) {
-            console.log("I: " + i + "|J: " + j);
+            // console.log("I: " + i + "|J: " + j);
             if (i * j == tempC && i + j == b) {
                 // console.log("Found: " + i + "," + j + " in " + tries + " tries");
                 return [i,j];
