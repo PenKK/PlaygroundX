@@ -173,19 +173,28 @@ factor = () => {
         num2Extra = 1;
     }
 
-    if (num1Extra * num2Extra != a) {
-        console.log("Extra's don't have a product of A, calculating outer");
+    if (Math.abs(num1Extra) * Math.abs(num2Extra) != Math.abs(a)) {
         if (num1Extra == 1) {
             console.log("A: dividing: " + a + "/" + num2Extra);
             front = a/num2Extra;
         } else {
             front = a/num1Extra;
-            console.log("A: dividing: " + a + "/" + num1Extra);
+            console.log("B: dividing: " + a + "/" + num1Extra);
         }
+    } else {
+        front = 1;
     }
 
     if (a < 0 && front > 0) {
         front *= -1;
+    }
+
+    if (Math.abs(front) == 1) {
+        if (front > 0) {
+            front = "";
+        } else {
+            front = "-"
+        }
     }
 
     ElementId("factored").innerHTML = front.toString().concat(factorString);
