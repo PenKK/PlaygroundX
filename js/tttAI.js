@@ -10,7 +10,6 @@ let debug = false;
 let tileElements = [];
 
 window.onload = () => {
-    turn = parseInt(localStorage.getItem("AIfirstTurn"));
     tileElements = document.querySelectorAll("i.fa-solid.fa-x,i.fa-solid.fa-o");
     updateScores();
 }
@@ -60,8 +59,7 @@ function startGame() {
     }
     ElementId("xBox").style.opacity = "1";
     ElementId("oBox").style.opacity = "1";
-
-    if (turn == 2) {
+    if (parseInt(localStorage.getItem("AIfirstTurn")) == 2) {
         aiTrigger();
     }
 }
@@ -129,16 +127,30 @@ function checkGame(turn) {
         case 0:
             return;
         case 1:
-            ElementId("endText").innerHTML = ("Player <br> Wins!");
-            incrementStorage("scorePlayer");
+            if (parseInt(localStorage.getItem("AIfirstTurn")) == 1) {
+                ElementId("endText").innerHTML = ("Player <br> Wins!");
+                incrementStorage("scorePlayer");
+            } else {
+                ElementId("endText").innerHTML = "Computer <br> Wins!";
+                if (localStorage.getItem("TIC_TAC_TOE_LOSER") != "true") {
+                    localStorage.setItem("TIC_TAC_TOE_LOSER", "true");
+                    notification("Achievement completed: Tic Tac Toe Loser...");
+                }
+                incrementStorage("scoreAI");
+            }
             break;
         case 2:
-            ElementId("endText").innerHTML = "Computer <br> Wins!";
-            if (localStorage.getItem("TIC_TAC_TOE_LOSER") != "true") {
-                localStorage.setItem("TIC_TAC_TOE_LOSER", "true");
-                notification("Achievement completed: Tic Tac Toe Loser...");
+            if (parseInt(localStorage.getItem("AIfirstTurn")) == 2) {
+                ElementId("endText").innerHTML = ("Player <br> Wins!");
+                incrementStorage("scorePlayer");
+            } else {
+                ElementId("endText").innerHTML = "Computer <br> Wins!";
+                if (localStorage.getItem("TIC_TAC_TOE_LOSER") != "true") {
+                    localStorage.setItem("TIC_TAC_TOE_LOSER", "true");
+                    notification("Achievement completed: Tic Tac Toe Loser...");
+                }
+                incrementStorage("scoreAI");
             }
-            incrementStorage("scoreAI");
             break;
     }
     ElementId("xBox").style.opacity = "0";
