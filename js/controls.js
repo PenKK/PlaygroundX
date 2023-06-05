@@ -1,3 +1,5 @@
+//This code is really bad and stupid why did I make it all on one page idc anymore and ima just use dont judge 
+
 document.addEventListener("keydown", pageKeyDown, false);
 
 function pageKeyDown(e) {
@@ -129,6 +131,55 @@ function pageKeyDown(e) {
                 return;
             case 220:
                 spawnTile();
+                return;
+        }
+    } else
+
+    if (document.URL.endsWith("calculator.html")) {
+        console.log(e.keyCode)
+        switch(e.keyCode) {
+            case 49:
+                c1();
+                return;
+            case 50:
+                c2();
+                return;
+            case 51:
+                c3();
+                return;
+            case 52:
+                c4();
+                return;
+            case 53:
+                c5();
+                return;
+            case 54:
+                c6()
+                return;
+            case 55:
+                c7();
+                return;
+            case 56:
+                if (event.shiftKey) {
+                    multiply();
+                } else {
+                    c8();
+                }
+                return;
+            case 57:
+                c9()
+                return;
+            case 48:
+                c0();
+                return;
+            case 88:
+                multiply();
+                return;
+            case 13:
+                calculate();
+                return;
+            case 27:
+                clearDisplay();
                 return;
         }
     }

@@ -46,3 +46,9 @@ quad = () => {
         window.location.href = "quadratic-calculator.html";
     }, pageChangeDelay);
 }
+
+calc = () => {
+    setTimeout(() => {
+        window.location.href = "calculator.html"
+    }, pageChangeDelay);
+}
