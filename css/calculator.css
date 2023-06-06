@@ -27,7 +27,8 @@
 }
 
 #displayText{
-    transform: translateY(65%);
+    
+    word-wrap: break-word;
 }
 #buttonFrame {
     display: grid;

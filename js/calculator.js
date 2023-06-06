@@ -1,5 +1,6 @@
 let calculatorButtons = document.getElementsByClassName("calculatorButton");
 let displayElement = document.getElementById("displayText");
+const decimalRounding = 100000000000;
 
 for (let i = 0; i < calculatorButtons.length; i++) {
     let button = calculatorButtons[i];
@@ -31,8 +32,8 @@ function calculate() {
         if (isNaN((displayArray[i]))) {
             
             let newInt;
-            let behind = parseInt(displayArray[i-1]);
-            let front = parseInt(displayArray[i+1]);
+            let behind = parseFloat(displayArray[i-1]);
+            let front = parseFloat(displayArray[i+1]);
     
             switch(displayArray[i]) {
                 case "+":
@@ -65,7 +66,7 @@ function calculate() {
     if (isNaN(displayArray[0])) {
         displayMessage = "Error";
     } else {
-        displayMessage = displayArray[0].toString();
+        displayMessage = (Math.round(displayArray[0] * decimalRounding) / decimalRounding).toString();
     }
     updateDisplay();
 }
@@ -82,7 +83,7 @@ function updateDisplay() {
 }
 
 function clearDisplay() {
-    displayMessage = " ";
+    displayMessage = "";
     displayElement.innerText = displayMessage;
 }
 

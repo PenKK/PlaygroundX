@@ -181,6 +181,18 @@ function pageKeyDown(e) {
             case 27:
                 clearDisplay();
                 return;
+            case 191:
+                divide();
+                return;
+            case 187:
+                add();
+                return;
+            case 189:
+                subtract();
+                return;
+            case 8:
+                backspace();
+                return;
         }
     }
 }
