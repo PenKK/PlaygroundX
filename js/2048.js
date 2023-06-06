@@ -354,7 +354,6 @@ down = () => {
         while (arr.length < 4) {
             arr.unshift(0);
         }
-
         
         fixNaN(arr);
         newBoard[column] = arr;
