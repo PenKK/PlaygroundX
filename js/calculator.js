@@ -1,6 +1,7 @@
 let calculatorButtons = document.getElementsByClassName("calculatorButton");
 let displayElement = document.getElementById("displayText");
 const decimalRounding = 100000000000;
+let errored = false;
 
 for (let i = 0; i < calculatorButtons.length; i++) {
     let button = calculatorButtons[i];
@@ -65,6 +66,7 @@ function calculate() {
     }
     if (isNaN(displayArray[0])) {
         displayMessage = "Error";
+        errored = true;
     } else {
         displayMessage = (Math.round(displayArray[0] * decimalRounding) / decimalRounding).toString();
     }
@@ -88,8 +90,16 @@ function clearDisplay() {
 }
 
 function calculatorError(message) {
+    errored = true;
     displayMessage = message;
     displayElement.innerText = displayMessage;
+}
+
+function checkErrored() {
+    if (errored) {
+        displayMessage = "";
+        errored = false;
+    }
 }
 
 function add() {
@@ -125,51 +135,61 @@ function divide() {
 }
 
 function c1() {
+    checkErrored();
     displayMessage = displayMessage.concat("1");
     updateDisplay();
 }
 
 function c2() {
+    checkErrored();
     displayMessage = displayMessage.concat("2");
     updateDisplay();
 }
 
 function c3() {
+    checkErrored();
     displayMessage = displayMessage.concat("3");
     updateDisplay();
 }
 
 function c4() {
+    checkErrored();
     displayMessage = displayMessage.concat("4");
     updateDisplay();
 }
 
 function c5() {
+    checkErrored();
     displayMessage = displayMessage.concat("5");
     updateDisplay();
 }
 
 function c6() {
+    checkErrored();
     displayMessage = displayMessage.concat("6");
     updateDisplay();
 }
 
 function c7() {
+    checkErrored();
     displayMessage = displayMessage.concat("7");
     updateDisplay();
 }
 
 function c8() {
+    checkErrored();
     displayMessage = displayMessage.concat("8");
     updateDisplay();
 }
 
 function c9() {
+    checkErrored();
     displayMessage = displayMessage.concat("9");
     updateDisplay();
 }
 
 function c0() {
+    checkErrored();
     displayMessage = displayMessage.concat("0");
     updateDisplay();
 }
