@@ -36,7 +36,7 @@ function calculate() {
 
             let newInt = behind * front;
 
-            displayArray = submitClean(displayArray, i, newInt);
+            displayArray = AdjustArray(displayArray, i, newInt);
             loopLength = displayArray.length;
         }
     }
@@ -54,7 +54,7 @@ function calculate() {
 
             let newInt = behind / front;
 
-            displayArray = submitClean(displayArray, i, newInt);
+            displayArray = AdjustArray(displayArray, i, newInt);
             loopLength = displayArray.length;
         }
     }
@@ -72,7 +72,7 @@ function calculate() {
                 newInt = behind - front;
             }
 
-            displayArray = submitClean(displayArray, i, newInt);
+            displayArray = AdjustArray(displayArray, i, newInt);
         }
     }
 
@@ -85,7 +85,7 @@ function calculate() {
     updateDisplay();
 }
 
-function submitClean(array, index, newNumber) {
+function AdjustArray(array, index, newNumber) {
     array[index] = newNumber;
     array[index-1] = undefined;
     array[index+1] = undefined;
