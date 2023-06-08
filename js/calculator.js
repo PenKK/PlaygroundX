@@ -1,6 +1,6 @@
 let calculatorButtons = document.getElementsByClassName("calculatorButton");
 let displayElement = document.getElementById("displayText");
-const decimalRounding = 100000000000;
+const DECIMAL_ROUNDING = 100000000000;
 let errored = false;
 
 for (let i = 0; i < calculatorButtons.length; i++) {
@@ -68,7 +68,7 @@ function calculate() {
         displayMessage = "Error";
         errored = true;
     } else {
-        displayMessage = (Math.round(displayArray[0] * decimalRounding) / decimalRounding).toString();
+        displayMessage = (Math.round(displayArray[0] * DECIMAL_ROUNDING) / DECIMAL_ROUNDING).toString();
     }
     updateDisplay();
 }
