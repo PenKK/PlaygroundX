@@ -1,5 +1,5 @@
 let calculatorButtons = document.getElementsByClassName("calculatorButton");
-let displayElement = document.getElementById("displayText");
+const displayElement = document.getElementById("displayText");
 const DECIMAL_ROUNDING = 100000000000;
 let errored = false;
 
@@ -14,7 +14,7 @@ for (let i = 0; i < calculatorButtons.length; i++) {
 let displayMessage = "";
 
 function checkLastIndexForNonInteger() {
-    if (isNaN(displayMessage[displayMessage.length-1])) {
+    if (isNaN(displayMessage.trim()[displayMessage.length-1])) {
         return true;
     }
     return false;
@@ -128,6 +128,7 @@ function decimal() {
 }
 
 function backspace() {
+    checkErrored();
     if (displayMessage.endsWith(" ")) {
       displayMessage = displayMessage.substring(0, displayMessage.length-3);  
     } else {
