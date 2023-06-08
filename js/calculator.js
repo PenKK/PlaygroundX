@@ -7,7 +7,7 @@ for (let i = 0; i < calculatorButtons.length; i++) {
     let button = calculatorButtons[i];
     if (!(isNaN(button.innerHTML))) {
         button.setAttribute("id", button.innerHTML);
-        button.setAttribute("onclick", "c" + button.innerHTML + "()");
+        button.setAttribute("onclick", "inputNumber(" + button.innerHTML + ")");
     }
 }
 
@@ -102,94 +102,18 @@ function checkErrored() {
     }
 }
 
-function add() {
+function inputNumber(input) {
+
+    checkErrored();
+    displayMessage = displayMessage.concat(input.toString());
+    updateDisplay();
+}
+
+function inputOpperand(input) {
     if (checkLastIndexForNonInteger()) {
         return;
     }
-    displayMessage = displayMessage.concat(" + ");
-    updateDisplay();
-}
-
-function subtract() {
-    if (checkLastIndexForNonInteger()) {
-        return;
-    }
-    displayMessage = displayMessage.concat(" - ");
-    updateDisplay();
-}
-
-function multiply() {
-    if (checkLastIndexForNonInteger()) {
-        return;
-    }
-    displayMessage = displayMessage.concat(" x ");
-    updateDisplay();
-}
-
-function divide() {
-    if (checkLastIndexForNonInteger()) {
-        return;
-    }
-    displayMessage = displayMessage.concat(" / ");
-    updateDisplay();
-}
-
-function c1() {
     checkErrored();
-    displayMessage = displayMessage.concat("1");
-    updateDisplay();
-}
-
-function c2() {
-    checkErrored();
-    displayMessage = displayMessage.concat("2");
-    updateDisplay();
-}
-
-function c3() {
-    checkErrored();
-    displayMessage = displayMessage.concat("3");
-    updateDisplay();
-}
-
-function c4() {
-    checkErrored();
-    displayMessage = displayMessage.concat("4");
-    updateDisplay();
-}
-
-function c5() {
-    checkErrored();
-    displayMessage = displayMessage.concat("5");
-    updateDisplay();
-}
-
-function c6() {
-    checkErrored();
-    displayMessage = displayMessage.concat("6");
-    updateDisplay();
-}
-
-function c7() {
-    checkErrored();
-    displayMessage = displayMessage.concat("7");
-    updateDisplay();
-}
-
-function c8() {
-    checkErrored();
-    displayMessage = displayMessage.concat("8");
-    updateDisplay();
-}
-
-function c9() {
-    checkErrored();
-    displayMessage = displayMessage.concat("9");
-    updateDisplay();
-}
-
-function c0() {
-    checkErrored();
-    displayMessage = displayMessage.concat("0");
+    displayMessage = displayMessage.concat(" " + input + " ");
     updateDisplay();
 }
