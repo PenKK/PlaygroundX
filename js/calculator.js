@@ -22,6 +22,7 @@ function checkLastIndexForNonInteger() {
 
 function calculate() {
     if (!(endsWithNum())) {
+        invalidStatement();
         return;
     }
 
@@ -158,4 +159,11 @@ function inputOpperand(input) {
     checkErrored();
     displayMessage = displayMessage.concat(" " + input + " ");
     updateDisplay();
+}
+
+function invalidStatement() {
+    displayElement.style.color = "red";
+    setTimeout(() => {
+        displayElement.style.color = "black"; 
+    }, 300);
 }

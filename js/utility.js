@@ -198,7 +198,7 @@ checkAfton = () => {
     } else {
 
         ElementId("skipButton").hidden = true;
-        document.body.style.backgroundImage = "none";
+        document.body.removeAttribute("style")
         try {
             ElementId("aftonHeader").innerHTML = "Capstone Project";
         } catch (error) {}

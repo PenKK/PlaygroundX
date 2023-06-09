@@ -27,7 +27,7 @@
 }
 
 #displayText{
-    
+    transition: color 300ms;
     word-wrap: break-word;
 }
 #buttonFrame {
