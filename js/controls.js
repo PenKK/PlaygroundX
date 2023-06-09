@@ -27,7 +27,7 @@ function pageKeyDown(e) {
 
     //Page specific controls
 
-    if (document.URL.endsWith("index.html")) {
+    if (document.URL.search("index.html") != -1) {
         switch(e.keyCode) {
             case 49: 
                 location.href = "guessing-game.html";
@@ -44,7 +44,7 @@ function pageKeyDown(e) {
         }
     } else 
 
-    if (document.URL.endsWith("rock-paper-scissors.html")) {
+    if (document.URL.search("rock-paper-scissors.html") != -1) {
         switch(e.keyCode) {
             case 49:
                 play(0);
@@ -58,7 +58,7 @@ function pageKeyDown(e) {
         }
     } else 
 
-    if (document.URL.endsWith("tic-tac-toe.html") || document.URL.endsWith("tic-tac-toe-ai.html")) {
+    if (document.URL.search("tic-tac-toe.html") != -1 || document.URL.search("tic-tac-toe-ai.html") != -1) {
         switch(e.keyCode) { //Numpad keys
             case 36:
                 clickTile(0,0);
@@ -103,7 +103,7 @@ function pageKeyDown(e) {
         return;
     } else 
 
-    if (document.URL.endsWith("2048.html")) {
+    if (document.URL.search("2048.html") != -1) {
         switch(e.keyCode) {
             case 87:
                 up();
@@ -135,7 +135,7 @@ function pageKeyDown(e) {
         }
     } else
 
-    if (document.URL.endsWith("calculator.html")) {
+    if (document.URL.search("calculator.html") != -1) {
         console.log(e.keyCode)
         switch(e.keyCode) {
             case 49:
