@@ -38,8 +38,10 @@ function calculate() {
 
             displayArray = AdjustArray(displayArray, i, newInt);
             loopLength = displayArray.length;
+            i = 1;
         }
     }
+    
 
     for (let i = 0; i < loopLength; i++) { //DIVIDE
         if (displayArray[i] == "/") {
@@ -56,6 +58,7 @@ function calculate() {
 
             displayArray = AdjustArray(displayArray, i, newInt);
             loopLength = displayArray.length;
+            i = 1;
         }
     }
 
@@ -73,6 +76,7 @@ function calculate() {
             }
 
             displayArray = AdjustArray(displayArray, i, newInt);
+            i = 1;
         }
     }
 
@@ -123,6 +127,8 @@ function checkErrored() {
 
 function decimal() {
     checkErrored();
+
+    if (displayMessage[displayMessage.length])
     displayMessage = displayMessage.concat(".");
     updateDisplay();
 }
