@@ -38,7 +38,7 @@ function calculate() {
 
             displayArray = AdjustArray(displayArray, i, newInt);
             loopLength = displayArray.length;
-            i = 1;
+            i = 0;
         }
     }
     
@@ -58,7 +58,7 @@ function calculate() {
 
             displayArray = AdjustArray(displayArray, i, newInt);
             loopLength = displayArray.length;
-            i = 1;
+            i = 0;
         }
     }
 
@@ -76,7 +76,8 @@ function calculate() {
             }
 
             displayArray = AdjustArray(displayArray, i, newInt);
-            i = 1;
+            loopLength = displayArray.length;
+            i = 0;
         }
     }
 
