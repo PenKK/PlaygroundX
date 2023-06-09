@@ -1,5 +1,5 @@
 let calculatorButtons = document.getElementsByClassName("calculatorButton");
-let displayElement = document.getElementById("displayText");
+const displayElement = document.getElementById("displayText");
 const DECIMAL_ROUNDING = 100000000000;
 let errored = false;
 
@@ -14,56 +14,73 @@ for (let i = 0; i < calculatorButtons.length; i++) {
 let displayMessage = "";
 
 function checkLastIndexForNonInteger() {
-    if (isNaN(displayMessage[displayMessage.length-1])) {
+    if (isNaN(displayMessage.trim()[displayMessage.length-1])) {
         return true;
     }
     return false;
 }
 
 function calculate() {
-
     if (!(endsWithNum())) {
         return;
     }
 
     let displayArray = displayMessage.split(" ");
+    let loopLength = displayArray.length;
 
-    for (let i = 0; i < displayArray.length; i++) {
+    for (let i = 0; i < loopLength; i++) { //MULTIPLY
+        if (displayArray[i] == "x") {
 
-        if (isNaN((displayArray[i]))) {
-            
+            let behind = parseFloat(displayArray[i-1]);
+            let front = parseFloat(displayArray[i+1]);
+
+            let newInt = behind * front;
+
+            displayArray = AdjustArray(displayArray, i, newInt);
+            loopLength = displayArray.length;
+            i = 0;
+        }
+    }
+    
+
+    for (let i = 0; i < loopLength; i++) { //DIVIDE
+        if (displayArray[i] == "/") {
+
+            let behind = parseFloat(displayArray[i-1]);
+            let front = parseFloat(displayArray[i+1]);
+
+            if (front == 0) {
+                calculatorError("Can't divide by 0");
+                return;
+            }
+
+            let newInt = behind / front;
+
+            displayArray = AdjustArray(displayArray, i, newInt);
+            loopLength = displayArray.length;
+            i = 0;
+        }
+    }
+
+    for (let i = 0; i < loopLength; i++) { //ADD + SUBTRACT
+        if (displayArray[i] == "+" || displayArray[i] == "-") {
+
             let newInt;
             let behind = parseFloat(displayArray[i-1]);
             let front = parseFloat(displayArray[i+1]);
-    
-            switch(displayArray[i]) {
-                case "+":
-                    newInt =  behind + front;
-                    break;
-                case "-":
-                    newInt = behind - front;
-                    break;
-                case "x":
-                    newInt = behind * front;
-                    break;
-                case "/":
 
-                    if (front == 0) {
-                        calculatorError("Can't divide by 0");
-                        return;
-                    }
-                    newInt = behind / front;
-                    break;
+            if (displayArray[i] == "+") {
+                newInt = behind + front;
+            } else {
+                newInt = behind - front;
             }
 
-            displayArray[i] = newInt;
-            displayArray[i-1] = undefined;
-            displayArray[i+1] = undefined;
-
+            displayArray = AdjustArray(displayArray, i, newInt);
+            loopLength = displayArray.length;
             i = 0;
-            displayArray = displayArray.filter(num => num != undefined);
         }
     }
+
     if (isNaN(displayArray[0])) {
         displayMessage = "Error";
         errored = true;
@@ -71,6 +88,13 @@ function calculate() {
         displayMessage = (Math.round(displayArray[0] * DECIMAL_ROUNDING) / DECIMAL_ROUNDING).toString();
     }
     updateDisplay();
+}
+
+function AdjustArray(array, index, newNumber) {
+    array[index] = newNumber;
+    array[index-1] = undefined;
+    array[index+1] = undefined;
+    return array.filter(num => num != undefined);
 }
 
 function endsWithNum() {
@@ -102,10 +126,28 @@ function checkErrored() {
     }
 }
 
-function inputNumber(input) {
-
+function decimal() {
     checkErrored();
-    displayMessage = displayMessage.concat(input.toString());
+
+    if (displayMessage[displayMessage.length])
+    displayMessage = displayMessage.concat(".");
+    updateDisplay();
+}
+
+function backspace() {
+    checkErrored();
+    if (displayMessage.endsWith(" ")) {
+      displayMessage = displayMessage.substring(0, displayMessage.length-3);  
+    } else {
+        displayMessage = displayMessage.substring(0, displayMessage.length-1);
+    }
+    
+    updateDisplay();
+}
+
+function inputNumber(input) {
+    checkErrored();
+    displayMessage = displayMessage.concat(input);
     updateDisplay();
 }
 

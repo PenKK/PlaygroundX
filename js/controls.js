@@ -139,41 +139,41 @@ function pageKeyDown(e) {
         console.log(e.keyCode)
         switch(e.keyCode) {
             case 49:
-                c1();
+                inputNumber(1);
                 return;
             case 50:
-                c2();
+                inputNumber(2);
                 return;
             case 51:
-                c3();
+                inputNumber(3);
                 return;
             case 52:
-                c4();
+                inputNumber(4);
                 return;
             case 53:
-                c5();
+                inputNumber(5);
                 return;
             case 54:
-                c6()
+                inputNumber(6);
                 return;
             case 55:
-                c7();
+                inputNumber(7);
                 return;
             case 56:
                 if (event.shiftKey) {
-                    multiply();
+                    inputOpperand("x");
                 } else {
-                    c8();
+                    inputNumber(8);
                 }
                 return;
             case 57:
-                c9()
+                inputNumber(9);
                 return;
             case 48:
-                c0();
+                inputNumber(0);
                 return;
             case 88:
-                multiply();
+                inputOpperand("x");
                 return;
             case 13:
                 calculate();
@@ -182,17 +182,19 @@ function pageKeyDown(e) {
                 clearDisplay();
                 return;
             case 191:
-                divide();
+                inputOpperand("/");
                 return;
             case 187:
-                add();
+                inputOpperand("+");
                 return;
             case 189:
-                subtract();
+                inputOpperand("-");
                 return;
             case 8:
                 backspace();
                 return;
+            case 190:
+                decimal();
         }
     }
 }
