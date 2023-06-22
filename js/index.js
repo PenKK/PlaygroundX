@@ -52,3 +52,9 @@ calc = () => {
         window.location.href = "calculator.html"
     }, pageChangeDelay);
 }
+
+graph = () => {
+    setTimeout(() => {
+        window.location.href = "graphing-tool.html"
+    }, pageChangeDelay);
+}

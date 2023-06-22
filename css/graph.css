@@ -1,0 +1,36 @@
+#canvas {
+    border: 0.4vh solid black;
+    border-radius: 1vw;
+    width: 65vw;
+    height: 65vh;
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%);
+    background-color: rgb(238, 238, 238);
+}
+
+.axis-y {
+    background-color: black;
+    width: 0.1vw;
+    height: 100%;
+    position: relative;
+    transform: translateX(-50%);
+    left: 50%;
+}
+
+.axis-x {
+    background-color: black;
+    height: 0.1vw;
+    width: 100%;
+    position: relative;
+    transform: translateY(-50%);
+    bottom: 50%;
+}
+
+.line-y {
+
+}
+
+.line-x {
+    
+}
