@@ -135,8 +135,7 @@ function pageKeyDown(e) {
         }
     } else
 
-    if (document.URL.search("calculator.html") != -1) {
-        console.log(e.keyCode)
+    if (document.URL.search("calculator.html") != -1 && document.URL.search("quadratic") == -1) {
         switch(e.keyCode) {
             case 49:
                 inputNumber(1);
