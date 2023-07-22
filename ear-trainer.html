@@ -15,12 +15,38 @@
 
     <h1>Ear Trainer</h1>
 
-    
-
     <div id="mainContainer">
-        <div id="noteSelection" hidden></div>
+        <div id="noteSelection" hidden>
+            <div id="topSelection">
+                <h3>Enable Trombone Notes</h3>
+                <input class="checkBoxOptions" id="tromboneMode" type="checkbox">
+                <h3>C Major</h3>
+            </div>
+            <div id="middleSelection">
+                <div>C</div>
+                <div>D</div>
+                <div>E</div>
+                <div>F</div>
+                <div>G</div>
+                <div>A</div>
+                <div>B</div>
+            </div>
+            <div id="bottomSelection">
+                <input class="checkBoxOptions" id="C" checked="true" type="checkbox">
+                <input class="checkBoxOptions" id="D" checked="true" type="checkbox">
+                <input class="checkBoxOptions" id="E" checked="true" type="checkbox">
+                <input class="checkBoxOptions" id="F" type="checkbox">
+                <input class="checkBoxOptions" id="G" type="checkbox">
+                <input class="checkBoxOptions" id="A" type="checkbox">
+                <input class="checkBoxOptions" id="B" type="checkbox">
+            </div>
+        </div>
         <div id="noteSelectionButton">
             <h3>Select Notes</h3>
+        </div>
+
+        <div id="gameContainer">
+            <input id="guessInput" value="Enter Guess">
         </div>
     </div>
 
