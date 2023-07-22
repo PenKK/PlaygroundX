@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ear Trainer</title>
+    <script defer src="js/eartrainer.js"></script>
+    <script defer src="js/utility.js"></script>
+    <script defer src="js/controls.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/style.css"/>
+    <link rel="stylesheet" type="text/css" href="css/eartrainer.css"/>
+    <script src="https://kit.fontawesome.com/837a8073e0.js" crossorigin="anonymous"></script>
+</head>
+<body>
+
+    <h1>Ear Trainer</h1>
+
+    
+
+    <div id="mainContainer">
+        <div id="noteSelection" hidden></div>
+        <div id="noteSelectionButton">
+            <h3>Select Notes</h3>
+        </div>
+    </div>
+
+    <button id="muteButton" class="buttonSound" onclick="toggleMute()">
+		<i id="muteIcon" class="fa-solid fa-volume-high fa-2xl"></i>
+		<i id="muteIcon" class="fa-solid fa-volume-off fa-2xl"></i>
+	</button>
+
+	<button hidden id="skipButton" class="buttonSound" onclick="skipSong()">
+		<i class="fa-solid fa-forward fa-2xl"></i>
+	</button>
+</body>
+</html>

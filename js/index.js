@@ -58,3 +58,9 @@ graph = () => {
         window.location.href = "graphing-tool.html"
     }, pageChangeDelay);
 }
+
+train = () => {
+    setTimeout(() => {
+        window.location.href = "ear-trainer.html"
+    }, pageChangeDelay);
+}

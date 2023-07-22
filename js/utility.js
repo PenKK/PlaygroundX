@@ -99,11 +99,10 @@ function rainbowAnimationEl(element, speed) {
     element.classList.add("gradientAnimation");
 }
 
-//Mobile check
+//Mobile check dumb af lol but idc anymoer
 
 setTimeout(() => {
     if (navigator.userAgent.includes("Mobile") && !document.URL.endsWith("index.html")) {
-        console.log("Mobile")
         // ElementId("mobileHomeButton").style.visibility = "visible"; DO LATER
         if (document.URL.includes("tic-tac-toe")) {
             for (let i = 0; i < tileElements.length; i++) {

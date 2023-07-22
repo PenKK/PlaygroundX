@@ -1,0 +1,79 @@
+#mainContainer {
+    width: 60vw;
+    height: 60vh;
+    border: solid .4vw brown;
+    border-radius: 1vw;
+    width: 65vw;
+    height: 65vh;
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%);
+}
+
+#noteSelection {
+    width: 70%;
+    height: 70%;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    background-color: rgb(226, 197, 161);
+    transform: translate(-50%, -50%);
+    border: solid 0.25vw rgb(117, 117, 116);
+    border-radius: 0.75vw;
+    box-shadow: 1vw 1vw 1vw rgb(168, 155, 139);
+}
+
+#noteSelectionButton {
+    position: relative;
+    margin-top: 1vw;
+    margin-left: -1vw;
+    left: 100%;
+    display: flex;
+    align-items: center;
+    font-size: 1.3vw;
+    justify-content: center;
+    transform: translate(-100%);
+    width: fit-content;
+    height: 10%;
+    border: solid 0.25vw brown;
+    border-radius: 0.75vw;
+    transition: background-color 200ms;
+}
+
+#noteSelectionButton:hover {
+    background-color: rgb(218, 196, 169)
+}
+
+@media (max-width: 800px) { /*MOBILE */
+
+    h1 {
+        font-size: 13vw;
+    }
+    #mainContainer {
+        width: 60vw;
+        height: 60vh;
+        border: solid 1vw brown;
+        border-radius: 2.5vw;
+        width: 80vw;
+        height: 65vh;
+        position: absolute;
+        left: 50%;
+        transform: translate(-50%);
+    }
+    
+    #noteSelectionButton {
+        position: relative;
+        margin-top: 2vw;
+        margin-left: 0;
+        left: 50%;
+        display: flex;
+        align-items: center;
+        font-size: 6vw;
+        justify-content: center;
+        transform: translate(-50%);
+        width: fit-content;
+        height: 10%;
+        border: solid .7vw brown;
+        border-radius: 2.5vw;
+    }
+}
