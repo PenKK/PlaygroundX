@@ -2,6 +2,10 @@ const noteSelectionButtonDiv = document.getElementById("noteSelectionButton");
 const noteSelectionMenu = document.getElementById("noteSelection");
 const noteCheckBoxes = document.getElementsByClassName('checkBoxOptions');
 const guessInput = document.getElementById('guessInput');
+const enterButton = document.getElementById('enterButton');
+const nextNoteButton = document.getElementById('nextNote');
+
+let answer = -1;
 
 noteSelectionButtonDiv.onclick = () => {
     if (!noteSelectionMenu.checkVisibility()) {
@@ -12,9 +16,15 @@ noteSelectionButtonDiv.onclick = () => {
     }
 }
 
-guessInput.addEventListener('input', () => {
-    guessInput.style.width = guessInput.value.length + "ch";
-})
+nextNoteButton.onclick = () => {
+    nextNoteButton.style.visibility = "hidden";
+}
+
+enterButton.onclick = () => {
+    if (guessInput.value.toUpperCase() == answer) {
+        nextNoteButton.style.visibility = "visible";
+    }
+}
 
 function initializeNotes() {
     const a = "hi";

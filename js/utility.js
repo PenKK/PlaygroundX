@@ -15,6 +15,10 @@ function ElementId(id) {
     return document.getElementById(id);
 }
 
+function isHidden(el) {
+    return (el.offsetParent === null)
+}
+
 function hide(id) {
     ElementId(id).style.visibility = "hidden";
 }

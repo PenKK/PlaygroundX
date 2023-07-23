@@ -10,6 +10,15 @@
     transform: translate(-50%);
 }
 
+.gameButton {
+    width: fit-content;
+    padding-left: 0.3vw;
+    padding-right: 0.3vw;
+    height: 4vh;
+    font-size: 1.5vw;
+    text-align: center;
+}
+
 h3{
     padding: 0px;
 }
@@ -19,7 +28,14 @@ h3{
 }
 
 #guessInput {
-    width: fit-content;
+    height: 10%;
+    width: 25%;
+    text-align: center;
+    font-size: 1.3vw;
+}
+
+#nextNote {
+    visibility: hidden;
 }
 
 #topSelection{
@@ -98,6 +114,10 @@ h3{
     border: brown solid;
     border-radius: 0.5vw;
     background-color: cornsilk;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
 }
 
 @media (max-width: 800px) { /*MOBILE */

@@ -15,14 +15,6 @@ function pageKeyDown(e) {
         case 82: //R
             location.reload();
             return;
-        case 67: //C
-            window.location.href = "controls.html";
-            return;
-        case 65: //A
-            if (event.shiftKey) {
-                location.href = "achievements.html";
-            }
-            break;
     }
 
     //Page specific controls
