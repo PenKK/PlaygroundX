@@ -22,6 +22,22 @@ let answer = -1;
 initializeNotes();
 
 noteSelectionButtonDiv.onclick = () => {
+    selectionDisplay();
+}
+
+nextNoteButton.onclick = () => {
+    correctAnswer();
+}
+
+enterButton.onclick = () => {
+    checkAnswer();
+}
+
+listenButton.onclick = () => {
+    noteToPlay.play();
+}
+
+function selectionDisplay() {
     if (!noteSelectionMenu.checkVisibility()) {
         noteSelectionMenu.removeAttribute("hidden");
     } else {
@@ -30,20 +46,17 @@ noteSelectionButtonDiv.onclick = () => {
     }
 }
 
-nextNoteButton.onclick = () => {
+function correctAnswer() {
     nextNoteButton.style.visibility = "hidden";
     generateNote();
     noteToPlay.play();
 }
 
-enterButton.onclick = () => {
+function checkAnswer() {
     if (guessInput.value.toUpperCase() == answer) {
         nextNoteButton.style.visibility = "visible";
     }
-}
-
-listenButton.onclick = () => {
-    noteToPlay.play();
+    console.log("e");
 }
 
 function initializeNotes() {
