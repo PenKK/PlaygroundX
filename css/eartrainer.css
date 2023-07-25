@@ -170,4 +170,15 @@ h3{
         width: 70%;
         height: 65%;
     }
+
+    #guessInput {
+        font-size: 4vw;
+    }
+
+    .gameButton {
+        padding-left: 2vw;
+        padding-right: 2vw;
+        font-size: 5vw;
+        text-align: center;
+    }
 }
