@@ -59,7 +59,7 @@ function updateNotes() {
         G  = new Audio('https://drive.google.com/uc?export=download&id=1RTC1-pAceRv1sFNe3PAZ4Vu0PMHWoaPp');
         A  = new Audio('https://drive.google.com/uc?export=download&id=1XSanymobasi7z9-Jupdl8Dic7HmywhCI');
         B  = new Audio('https://drive.google.com/uc?export=download&id=10q9KzPp2jv8_9VqFDG3Z89-ownOH8pRB');
-    } else { //Piano Notes
+    } else { //TODO Piano notes
         C  = new Audio();
         D  = new Audio();
         E  = new Audio();
