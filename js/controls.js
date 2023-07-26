@@ -3,7 +3,6 @@
 document.addEventListener("keydown", pageKeyDown, false);
 
 function pageKeyDown(e) {
-    // alert(e.keyCode);
     if (event.ctrlKey) {
         return;
     }
@@ -186,6 +185,20 @@ function pageKeyDown(e) {
                 return;
             case 190:
                 decimal();
+        }
+    } else
+
+    if (document.URL.search("ear-trainer.html") != -1) {
+        switch (e.keyCode) {
+            case 13: correctAnswer(); return;
+            case 76: noteToPlay.play(); return;
+            case 67: checkAnswer('C'); return;
+            case 68: checkAnswer('D'); return;
+            case 69: checkAnswer('E'); return;
+            case 70: checkAnswer('F'); return;
+            case 71: checkAnswer('G'); return;
+            case 65: checkAnswer('A'); return;
+            case 66: checkAnswer('B'); return;
         }
     }
 }

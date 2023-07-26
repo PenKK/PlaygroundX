@@ -8,6 +8,20 @@
     position: absolute;
     left: 50%;
     transform: translate(-50%);
+    display: flex;
+    flex-direction: column;
+}
+
+#upperContainer {
+    height: 20%;
+}
+
+#restOfContainer {
+    height: 80%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transform: translateY(-10%);
 }
 
 .gameButton {
@@ -94,7 +108,7 @@ h3{
     justify-content: center;
     transform: translate(-100%);
     width: fit-content;
-    height: 10%;
+    height: 40%;
     border: solid 0.25vw brown;
     border-radius: 0.75vw;
     transition: background-color 200ms;
@@ -104,11 +118,7 @@ h3{
     background-color: rgb(218, 196, 169)
 }
 
-#gameContainer{
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
+#gameContainer {
     height: 50%;
     width: 50%;
     border: brown solid;
@@ -118,6 +128,15 @@ h3{
     justify-content: center;
     align-items: center;
     flex-direction: column;
+}
+
+#noteButtonContainer {
+    width: 100%;
+    height: 20%;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    flex-direction: row;
 }
 
 @media (max-width: 800px) { /*MOBILE */
@@ -180,5 +199,10 @@ h3{
         padding-right: 2vw;
         font-size: 5vw;
         text-align: center;
+    }
+
+    #noteButtonContainer {
+        flex-wrap: wrap;
+        transform: translateY(-60%);
     }
 }

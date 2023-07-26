@@ -14,8 +14,9 @@ let A;
 let B;
 let CC;
 
-let selectedNotes = [];
+let selectedNotes;
 let noteToPlay;
+let canAdvance = false;
 
 let answer = -1;
 
@@ -27,10 +28,6 @@ noteSelectionButtonDiv.onclick = () => {
 
 nextNoteButton.onclick = () => {
     correctAnswer();
-}
-
-enterButton.onclick = () => {
-    checkAnswer();
 }
 
 listenButton.onclick = () => {
@@ -47,16 +44,19 @@ function selectionDisplay() {
 }
 
 function correctAnswer() {
-    nextNoteButton.style.visibility = "hidden";
-    generateNote();
-    noteToPlay.play();
+    if (canAdvance) {
+        nextNoteButton.style.visibility = "hidden";
+        generateNote();
+        noteToPlay.play();
+        canAdvance = false;
+    }
 }
 
-function checkAnswer() {
-    if (guessInput.value.toUpperCase() == answer) {
+function checkAnswer(input) {
+    if (input == answer) {
         nextNoteButton.style.visibility = "visible";
+        canAdvance = true;
     }
-    console.log("e");
 }
 
 function initializeNotes() {
@@ -93,7 +93,6 @@ function updateNotes() {
     if (noteCheckBoxes[7].checked) {selectedNotes[0].push(B); selectedNotes[1].push("B")}
 
     generateNote();
-    
 }
 
 function generateNote() {
