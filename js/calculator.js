@@ -88,10 +88,7 @@ function AdjustArray(array, index, newNumber) {
 }
 
 function endsWithNum() {
-    if (isNaN(displayElement.innerText[displayElement.innerText.length-1])) {
-        return false;
-    }
-    return true;
+     return isNaN(displayElement.innerText[displayElement.innerText.length-1]) ? false : true
 }
 
 function updateDisplay() {
