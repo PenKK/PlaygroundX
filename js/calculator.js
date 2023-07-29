@@ -23,39 +23,28 @@ function checkLastIndexForNonInteger() {
 function calculate() {
     if (!(endsWithNum())) {
         invalidStatement();
-        return;
+        return; 
     }
 
     let displayArray = displayMessage.split(" ");
     let loopLength = displayArray.length;
 
-    for (let i = 0; i < loopLength; i++) { //MULTIPLY
-        if (displayArray[i] == "x") {
+    for (let i = 0; i < loopLength; i++) { //MULTIPLY + DIVIDE
+        if (displayArray[i] == "x" || displayArray[i] == "/") {
 
             let behind = parseFloat(displayArray[i-1]);
             let front = parseFloat(displayArray[i+1]);
 
-            let newInt = behind * front;
-
-            displayArray = AdjustArray(displayArray, i, newInt);
-            loopLength = displayArray.length;
-            i = 0;
-        }
-    }
-    
-
-    for (let i = 0; i < loopLength; i++) { //DIVIDE
-        if (displayArray[i] == "/") {
-
-            let behind = parseFloat(displayArray[i-1]);
-            let front = parseFloat(displayArray[i+1]);
-
-            if (front == 0) {
-                calculatorError("Can't divide by 0");
-                return;
+            
+            if (displayArray[i] == "x") {
+                newInt = behind * front;
+            } else {
+                if (front == 0) {
+                    calculatorError("Can't divide by 0");
+                    return;
+                }
+                newInt = behind / front;
             }
-
-            let newInt = behind / front;
 
             displayArray = AdjustArray(displayArray, i, newInt);
             loopLength = displayArray.length;
@@ -130,7 +119,7 @@ function checkErrored() {
 function decimal() {
     checkErrored();
 
-    if (displayMessage[displayMessage.length])
+    if (endsWithNum())
     displayMessage = displayMessage.concat(".");
     updateDisplay();
 }
