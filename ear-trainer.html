@@ -21,6 +21,13 @@
             </div>
         </div>
         <div id="restOfContainer">
+            <div class="sideBox" id="wrongBox">
+                <div class="innerBottomSideBox">
+                    <h3>Correct</h3>
+                </div>
+                <div class="scoreHolder"><h3 id="correctScore">0</h3></div>
+            </div>
+
             <div id="gameContainer">
                 <div id="noteButtonContainer">
                     <button onclick="checkAnswer('C')" class="gameButton">C</button>
@@ -35,7 +42,17 @@
                 <button id="nextNote" class="gameButton">Next Note</button>
             </div>
 
-            <div id="correct Box"></div>
+            <div class="sideBox" id="correctBox">
+                <div class="innerBottomSideBox">
+                    <h3>Incorrect</h3>
+                </div>
+                <div class="scoreHolder"><h3 id="incorrectScore">0</h3></div>
+            </div>
+        </div>
+        <div id="mainBottomContainer">
+            <div id="scorePercentage">
+                <h3 id="scorePercentageText">0%</h3>
+            </div>
         </div>
         <div id="noteSelection" hidden>
             <div id="topSelection">

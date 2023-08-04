@@ -4,6 +4,10 @@ const noteCheckBoxes = document.getElementsByClassName('checkBoxOptions');
 const guessInput = document.getElementById('guessInput');
 const enterButton = document.getElementById('enterButton');
 const nextNoteButton = document.getElementById('nextNote');
+const noteButtons = document.querySelectorAll('.gameButton')
+const correctDisplay = document.getElementById('correctScore');
+const incorrectDisplay = document.getElementById('incorrectScore');
+const percentageDisplay = document.getElementById('scorePercentageText');
 
 let C;
 let D;
@@ -19,6 +23,9 @@ let noteToPlay;
 let canAdvance = false;
 
 let answer = -1;
+let correct = 0;
+let incorrect = 0;
+let percentage = 0;
 
 initializeNotes();
 
@@ -53,10 +60,34 @@ function correctAnswer() {
 }
 
 function checkAnswer(input) {
-    if (input == answer) {
+    if (input == answer && !canAdvance) {
         nextNoteButton.style.visibility = "visible";
         canAdvance = true;
+        correct = parseInt(correctDisplay.innerHTML) + 1;
+        correctDisplay.innerHTML = correct;
+    } else {
+        noteColorChange('red');
+        if (!canAdvance) {
+            incorrect = parseInt(incorrectDisplay.innerHTML) + 1;
+            incorrectDisplay.innerHTML = incorrect;
+        }
     }
+
+    percentage = correct/(incorrect+correct) * 100;
+    percentageDisplay.innerHTML = percentage.toFixed(2) + '%';
+
+}
+
+function noteColorChange(color) {
+    noteButtons.forEach(element => {
+        element.style.color = color;
+    });
+
+    setTimeout(() => {
+        noteButtons.forEach(element => {
+            element.style.color = 'white';
+        });
+    }, 500);
 }
 
 function initializeNotes() {

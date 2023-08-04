@@ -414,7 +414,7 @@ function handleTouchStart(evt) {
     yDown = firstTouch.clientY;                                      
 };                                                
                                                                          
-function handleTouchMove(evt) {
+function handleTouchMove(evt) { //idk what any of this is lol common stackoverflow w
     if ( ! xDown || ! yDown ) {
         return;
     }
