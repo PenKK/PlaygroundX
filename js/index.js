@@ -3,6 +3,16 @@ if (localStorage.getItem("HarrHarrTime") == null) {
     localStorage.setItem("HarrHarrTime", "0");
 }
 
+if ((localStorage.getItem("MASTER_GUESSER") == "true") && 
+    (localStorage.getItem("SWEEPER_OR_SWEEPED") == "true") && 
+    (localStorage.getItem("TIC_TAC_TOE_LOSER") == "true") && 
+    (localStorage.getItem("2048_AMBASSADOR") == "true") &&
+    (localStorage.getItem("2048_COMPLETIONIST") == "true") &&
+    (localStorage.getItem("GRANDMASTER_GUESSER") == "true")) {
+    document.getElementById("achievementsButton").style.backgroundSize = "300%";
+    rainbowAnimationEl(document.getElementById("achievementsButton"), 4);
+}
+
 //Page transfering terrible names dont ask thank prob way better way to do this
 
 gg = () => {

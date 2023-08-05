@@ -1,13 +1,7 @@
+const rainbowGradient = "linear-gradient(45deg, rgb(238, 119, 82), rgb(231, 60, 126), rgb(35, 166, 213), rgb(35, 213, 171))";
+
 if (localStorage.getItem("muted") == null) {
     localStorage.setItem("muted", "false");
-}
-
-if ((localStorage.getItem("MASTER_GUESSER") == "true") && 
-    (localStorage.getItem("SWEEPER_OR_SWEEPED") == "true") && 
-    (localStorage.getItem("TIC_TAC_TOE_LOSER") == "true" &&
-     localStorage.getItem("2048_AMBASSADOR") == true &&
-    document.URL.endsWith("index.html"))){
-    ElementId("achievementsButton").style.backgroundSize = "300%";
 }
 
 //Utility
@@ -93,12 +87,12 @@ function runAnimation(id) {
 }
 
 function rainbowAnimation() {
-    document.body.style.backgroundImage = "linear-gradient(45deg, rgb(238, 119, 82), rgb(231, 60, 126), rgb(35, 166, 213), rgb(35, 213, 171))";
+    document.body.style.backgroundImage = rainbowGradient;
     document.body.classList.add("gradientAnimation");
 }
 
 function rainbowAnimationEl(element, speed) {
-    element.style.backgroundImage = "linear-gradient(45deg, rgb(238, 119, 82), rgb(231, 60, 126), rgb(35, 166, 213), rgb(35, 213, 171))";
+    element.style.backgroundImage = rainbowGradient;
     element.style.animation = "gradient " + speed + "s ease infinite";
     element.classList.add("gradientAnimation");
 }
