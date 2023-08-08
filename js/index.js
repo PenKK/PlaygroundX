@@ -13,7 +13,7 @@ if ((localStorage.getItem("MASTER_GUESSER") == "true") &&
     rainbowAnimationEl(document.getElementById("achievementsButton"), 4);
 }
 
-//Page transfering terrible names dont ask thank prob way better way to do this
+//Page transfering terrible method dont ask thank idc anymore
 
 gg = () => {
     setTimeout(() => {

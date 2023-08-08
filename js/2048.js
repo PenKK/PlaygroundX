@@ -127,6 +127,17 @@ updateTiles = () => {
     storageEvents();
 }
 
+logBoard = () => {
+    for (let i = 0; i < board.length; i++) {
+        let row = "";
+        for (let j = 0; j < board.length; j++) {
+            row += board[i][j] + " ";
+        }
+        console.log(row);
+        row = "";
+    }
+}
+
 checkValidBoardNumber = (num) => {
     if (num == 1) {
         return false;
