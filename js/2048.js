@@ -14,7 +14,7 @@ const c8192 = "rgb(245, 190, 254)";
 const c16384 = "rgb(123, 210, 237)";
 const COLOR_LARGE = "#660000";
 const TEXT_COLOR = "rgb(0,0,0,1)";
-const EMPTY_TILE_COLOR = "rgb(180, 123, 123)"
+const EMPTY_TILE_COLOR = "rgb(180, 123, 123)";
 
 // let board = [[2, 4, 8, 16],
 //              [32, 64, 128, 256],
@@ -111,7 +111,6 @@ updateTiles = () => {
                         id.innerHTML = id.innerHTML + "?";
                         console.log("Invalid number at row " + (x+1) + " column " + (y+1));
                     }
-            
             }
         }
     }
@@ -127,11 +126,11 @@ updateTiles = () => {
     storageEvents();
 }
 
-logBoard = () => {
-    for (let i = 0; i < board.length; i++) {
+log2DArray = (array) => {
+    for (let i = 0; i < array.length; i++) {
         let row = "";
-        for (let j = 0; j < board.length; j++) {
-            row += board[i][j] + " ";
+        for (let j = 0; j < array.length; j++) {
+            row += array[i][j] + " ";
         }
         console.log(row);
         row = "";

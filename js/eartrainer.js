@@ -4,7 +4,7 @@ const noteCheckBoxes = document.getElementsByClassName('checkBoxOptions');
 const guessInput = document.getElementById('guessInput');
 const enterButton = document.getElementById('enterButton');
 const nextNoteButton = document.getElementById('nextNote');
-const noteButtons = document.querySelectorAll('.gameButton')
+const noteButtons = document.querySelectorAll('.gameButton');
 const correctDisplay = document.getElementById('correctScore');
 const incorrectDisplay = document.getElementById('incorrectScore');
 const percentageDisplay = document.getElementById('scorePercentageText');
@@ -20,7 +20,7 @@ let CC;
 
 let selectedNotes;
 let noteToPlay;
-let canAdvance = false;
+let correctlyAnswered = false;
 
 let answer = -1;
 let correct = 0;
@@ -51,23 +51,23 @@ function selectionDisplay() {
 }
 
 function correctAnswer() {
-    if (canAdvance) {
+    if (correctlyAnswered) {
         nextNoteButton.style.visibility = "hidden";
         generateNote();
         noteToPlay.play();
-        canAdvance = false;
+        correctlyAnswered = false;
     }
 }
 
 function checkAnswer(input) {
-    if (input == answer && !canAdvance) {
+    if (input == answer && !correctlyAnswered) {
         nextNoteButton.style.visibility = "visible";
-        canAdvance = true;
+        correctlyAnswered = true;
         correct = parseInt(correctDisplay.innerHTML) + 1;
         correctDisplay.innerHTML = correct;
     } else {
         noteColorChange('red');
-        if (!canAdvance) {
+        if (!correctlyAnswered) {
             incorrect = parseInt(incorrectDisplay.innerHTML) + 1;
             incorrectDisplay.innerHTML = incorrect;
         }
