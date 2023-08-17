@@ -109,7 +109,7 @@ updateTiles = () => {
                         id.style.backgroundColor = "rgb(0,0,0)";
                         id.style.color = "rgb(255,255,255)";
                         id.innerHTML = id.innerHTML + "?";
-                        console.log("Invalid number at row " + (x+1) + " column " + (y+1));
+                        console.warn("Invalid number at row " + (x+1) + " column " + (y+1));
                     }
             }
         }
