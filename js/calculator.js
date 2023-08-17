@@ -1,8 +1,10 @@
 const calculatorButtons = document.getElementsByClassName("calculatorButton");
 const displayElement = document.getElementById("displayText");
-const DECIMAL_ROUNDING = 100000000000;
+const decimalElement = document.getElementById("decimalPlacesInput");
+let DECIMAL_ROUNDING = 100000;
 let currentNumHasDecimal = false;
 let errored = false;
+let typing = false;
 
 for (let i = 0; i < calculatorButtons.length; i++) {
     let button = calculatorButtons[i];
@@ -13,6 +15,30 @@ for (let i = 0; i < calculatorButtons.length; i++) {
 }
 
 let displayMessage = "";
+
+function focusInput() {
+    typing = true;
+}
+
+function blurInput() {
+    typing = false;
+    updateDecimalRounding();
+}
+
+function updateDecimalRounding() {
+    let decimalInt = decimalElement.value;
+    if (decimalInt > 16) {
+        decimalInt = 16;
+        decimalElement.value = 16;
+    }
+
+    let roundingInt = "1";
+    for (let i = 0; i < decimalInt; i++) {
+        roundingInt += "0";
+    }
+
+    DECIMAL_ROUNDING = roundingInt;
+}
 
 function checkLastIndexForNonInteger() {
     if (isNaN(displayMessage.trim()[displayMessage.length-1])) {
@@ -44,12 +70,12 @@ function calculate() {
                 i = 0;
             } else {
                 newInt = Math.sqrt(front);
-                displayArray[i+1] = undefined;
-                
+
                 if (!isNaN(behind)) {
                     newInt *= behind;
                 }
 
+                displayArray[i+1] = undefined;
                 displayArray[i-1] = undefined;
                 displayArray[i] = newInt;
 
