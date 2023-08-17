@@ -127,6 +127,7 @@ function pageKeyDown(e) {
     } else
 
     if (document.URL.search("calculator.html") != -1 && document.URL.search("quadratic") == -1) {
+        console.log(e.keyCode);
         switch(e.keyCode) {
             case 49:
                 inputNumber(1);
@@ -144,7 +145,11 @@ function pageKeyDown(e) {
                 inputNumber(5);
                 return;
             case 54:
-                inputNumber(6);
+                if (event.shiftKey) {
+                    inputOpperand('^');
+                } else {
+                    inputNumber(6);
+                }
                 return;
             case 55:
                 inputNumber(7);
@@ -169,6 +174,9 @@ function pageKeyDown(e) {
                 calculate();
                 return;
             case 27:
+                clearDisplay();
+                return;
+            case 67:
                 clearDisplay();
                 return;
             case 191:

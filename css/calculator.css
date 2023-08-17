@@ -6,7 +6,7 @@
 #calculatorFrame {
     width: 25vw;
     height: 70vh;
-    border: black 4px solid;
+    box-shadow: 1vw 1vw 0.25vw black;
     left: 50%;
     bottom: 50%;
     transform: translate(-50%, 60%);
@@ -30,6 +30,7 @@
     transition: color 300ms;
     word-wrap: break-word;
 }
+
 #buttonFrame {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -50,6 +51,12 @@
 }
 
 .calculatorButton:active {
+    background-color: rgb(107, 23, 23);
+    transform: translate(0.3vh, 0.3vh);
+    box-shadow: 0vh 0vh black;
+}
+
+.buttonActivePsuedoClass {
     background-color: rgb(107, 23, 23);
     transform: translate(0.3vh, 0.3vh);
     box-shadow: 0vh 0vh black;
