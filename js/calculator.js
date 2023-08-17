@@ -39,7 +39,7 @@ function calculate() {
             if (displayArray[i] == "^") {
                 newInt = behind ** front;
 
-                displayArray = AdjustArray(displayArray, i, newInt);
+                displayArray = ArrayInsertNewInt(displayArray, i, newInt);
                 loopLength = displayArray.length;
                 i = 0;
             } else {
@@ -76,7 +76,7 @@ function calculate() {
                 newInt = behind / front;
             }
 
-            displayArray = AdjustArray(displayArray, i, newInt);
+            displayArray = ArrayInsertNewInt(displayArray, i, newInt);
             loopLength = displayArray.length;
             i = 0;
         }
@@ -95,7 +95,7 @@ function calculate() {
                 newInt = behind - front;
             }
 
-            displayArray = AdjustArray(displayArray, i, newInt);
+            displayArray = ArrayInsertNewInt(displayArray, i, newInt);
             loopLength = displayArray.length;
             i = 0;
         }
@@ -114,7 +114,7 @@ function calculate() {
     buttonPressCSS('calculateButton');
 }
 
-function AdjustArray(array, index, newNumber) {
+function ArrayInsertNewInt(array, index, newNumber) {
     array[index] = newNumber;
     array[index-1] = undefined;
     array[index+1] = undefined;
