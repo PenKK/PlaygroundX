@@ -3,7 +3,7 @@ const displayElement = document.getElementById("displayText");
 const decimalElement = document.getElementById("decimalPlacesInput");
 const inputs = document.getElementsByTagName("input");
 
-let DECIMAL_ROUNDING = 100000;
+let DECIMAL_ROUNDING = 100000000;
 let currentNumHasDecimal = false;
 let errored = false;
 let typing = false;
