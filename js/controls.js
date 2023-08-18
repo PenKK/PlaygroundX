@@ -22,16 +22,16 @@ function pageKeyDown(e) {
         switch(e.keyCode) {
             case 49: 
                 location.href = "guessing-game.html";
-                break;
+                return;
             case 50:
                 location.href = "rock-paper-scissors.html";
-                break;
+                return;
             case 51:
                 location.href = "tic-tac-toe.html";
-                break;
+                return;
             case 52:
                 location.href = "2048.html";
-                break;
+                return;
         }
     } else 
 
@@ -39,13 +39,13 @@ function pageKeyDown(e) {
         switch(e.keyCode) {
             case 49:
                 play(0);
-                break;
+                return;
             case 50:
                 play(1);
-                break;
+                return;
             case 51:
                 play(2);
-                break;
+                return;
         }
     } else 
 

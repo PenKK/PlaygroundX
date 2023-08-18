@@ -126,8 +126,12 @@ for (let i = 0; i < inputs.length; i++) {
 
     inputs[i].onblur = () => {
         typing = false;
-        updateDecimalRounding();
+        updateOptions();
     }
+}
+
+function updateOptions() {
+    updateDecimalRounding();
 }
 
 function updateDecimalRounding() {
