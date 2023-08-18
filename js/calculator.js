@@ -7,6 +7,7 @@ let DECIMAL_ROUNDING = 100000000;
 let currentNumHasDecimal = false;
 let errored = false;
 let typing = false;
+let lastCalculationAnswer = 0;
 
 for (let i = 0; i < calculatorButtons.length; i++) {
     let button = calculatorButtons[i];
@@ -20,13 +21,32 @@ let displayMessage = "";
 
 function calculate() {
     if (!(endsWithNum())) {
-        alert("e")
         invalidStatement();
-        return; 
+        return;
     }
 
     let displayArray = displayMessage.split(" ");
+    displayArray = displayArray.filter(num => num != '');
     let loopLength = displayArray.length;
+
+    for (let i = 0; i < loopLength; i++) {
+        if (displayArray[i] == "ANS") {
+            displayArray[i] = lastCalculationAnswer;
+
+            let behind = parseFloat(displayArray[i-1]);
+            let front = parseFloat(displayArray[i+1]);
+
+            if (!isNaN(front)) {
+                displayArray.splice(i+1, 0, 'x');
+            }
+
+            if (!isNaN(behind)) {
+                displayArray.splice(i, 0, 'x');
+            }
+        }
+    }
+
+    loopLength = displayArray.length;
 
     for (let i = 0; i < loopLength; i++) { //EXPONENTS
         if (displayArray[i] == "^" || displayArray[i] == "√") {
@@ -103,7 +123,7 @@ function calculate() {
         displayMessage = "Error";
         errored = true;
     } else {
-        displayMessage = (Math.round(displayArray[0] * DECIMAL_ROUNDING) / DECIMAL_ROUNDING).toString();
+        displayMessage = lastCalculationAnswer = (Math.round(displayArray[0] * DECIMAL_ROUNDING) / DECIMAL_ROUNDING).toString();
     }
 
     displayMessage.includes(".") ? currentNumHasDecimal = true : currentNumHasDecimal = false;
@@ -158,6 +178,10 @@ function endingCharacter() {
 }
 
 function endsWithNum() {
+    if (displayElement.innerText.substring(displayElement.innerText.length-3, displayElement.innerText.length) == "ANS") {
+        return true;
+    }
+
      return isNaN(endingCharacter()) ? false : true
 }
 
@@ -207,8 +231,10 @@ function decimal() {
 function backspace() {
     checkErrored();
 
-    if (displayMessage.endsWith(" ")) {
-      displayMessage = displayMessage.substring(0, displayMessage.length-3);  
+    if (displayElement.innerText.substring(displayElement.innerText.length-3, displayElement.innerText.length) == "ANS") {
+        displayMessage = displayMessage.substring(0, displayMessage.length-6);
+    } else if (displayMessage.endsWith(" ")) {
+        displayMessage = displayMessage.substring(0, displayMessage.length-3);  
     } else {
         displayMessage = displayMessage.substring(0, displayMessage.length-1);
     }
@@ -222,6 +248,12 @@ function inputNumber(input) {
     displayMessage = displayMessage.concat(input);
     updateCalculationDisplay();
     buttonPressCSS(input);
+}
+
+function Ans() {
+    checkErrored();
+    displayMessage = displayMessage.concat(" ANS ");
+    updateCalculationDisplay();
 }
 
 function buttonPressCSS(id) {

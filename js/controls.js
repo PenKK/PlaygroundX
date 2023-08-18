@@ -169,6 +169,9 @@ function pageKeyDown(e) {
             case 48:
                 inputNumber(0);
                 return;
+            case 65:
+                Ans();
+                return;
             case 88:
                 inputOpperand("x");
                 return;
