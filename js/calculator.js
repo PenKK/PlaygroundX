@@ -40,6 +40,10 @@ function calculate() {
                 loopLength = displayArray.length;
                 i = 0;
             } else {
+                if (front < 0) {
+                    calculatorError("Radicand can't be negative");
+                    return;
+                }
                 newInt = Math.sqrt(front);
 
                 if (!isNaN(behind)) {
@@ -107,7 +111,7 @@ function calculate() {
 
     displayMessage.includes(".") ? currentNumHasDecimal = true : currentNumHasDecimal = false;
 
-    updateDisplay();
+    updateCalculationDisplay();
     buttonPressCSS('calculateButton');
 }
 
@@ -131,9 +135,13 @@ for (let i = 0; i < inputs.length; i++) {
 
 function updateDecimalRounding() {
     let decimalInt = decimalElement.value;
+
     if (decimalInt > 16) {
         decimalInt = 16;
-        decimalElement.value = 16;
+        decimalElement.value = decimalInt;
+    } else if (decimalInt % 1 != 0) {
+        decimalInt = decimalInt.substring(0, decimalInt.indexOf("."));
+        decimalElement.value = decimalInt;
     }
 
     let roundingInt = "1";
@@ -152,7 +160,7 @@ function endsWithNum() {
      return isNaN(endingCharacter()) ? false : true
 }
 
-function updateDisplay() {
+function updateCalculationDisplay() {
     displayElement.innerText = displayMessage.replace(/\s/g, "");
 }
 
@@ -168,7 +176,7 @@ function squareroot() {
     if (endingCharacter() != "√") {
         displayMessage = displayMessage.concat(" √ ");
     }
-    updateDisplay();
+    updateCalculationDisplay();
 }
 
 function calculatorError(message) {
@@ -191,7 +199,7 @@ function decimal() {
         currentNumHasDecimal = true;
     }
     
-    updateDisplay();
+    updateCalculationDisplay();
     buttonPressCSS('decimalButton');
 }
 
@@ -204,14 +212,14 @@ function backspace() {
         displayMessage = displayMessage.substring(0, displayMessage.length-1);
     }
     
-    updateDisplay();
+    updateCalculationDisplay();
     buttonPressCSS('backspaceButton');
 }
 
 function inputNumber(input) {
     checkErrored();
     displayMessage = displayMessage.concat(input);
-    updateDisplay();
+    updateCalculationDisplay();
     buttonPressCSS(input);
 }
 
@@ -230,7 +238,7 @@ function inputOpperand(input) {
     checkErrored();
     displayMessage = displayMessage.concat(" " + input + " ");
     currentNumHasDecimal = false;
-    updateDisplay();
+    updateCalculationDisplay();
     buttonPressCSS(input);
 }
 

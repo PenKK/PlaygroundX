@@ -187,7 +187,12 @@ function pageKeyDown(e) {
             case 83:
                 squareroot();
             case 187:
-                inputOpperand("+");
+                if (event.shiftKey) {
+                    inputOpperand("+");
+                } else {
+                    calculate();
+                }
+                
                 return;
             case 189:
                 inputOpperand("-");
