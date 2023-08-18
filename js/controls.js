@@ -184,6 +184,8 @@ function pageKeyDown(e) {
             case 191:
                 inputOpperand("/");
                 return;
+            case 83:
+                squareroot();
             case 187:
                 inputOpperand("+");
                 return;
