@@ -20,6 +20,7 @@ let displayMessage = "";
 
 function calculate() {
     if (!(endsWithNum())) {
+        alert("e")
         invalidStatement();
         return; 
     }
@@ -50,11 +51,7 @@ function calculate() {
                     newInt *= behind;
                 }
 
-                displayArray[i+1] = undefined;
-                displayArray[i-1] = undefined;
-                displayArray[i] = newInt;
-
-                displayArray = displayArray.filter(num => num != undefined);
+                displayArray = ArrayInsertNewInt(displayArray, i, newInt);
                 loopLength = displayArray.length;
                 i = 0;
             }

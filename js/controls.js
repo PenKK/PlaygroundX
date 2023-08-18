@@ -186,13 +186,13 @@ function pageKeyDown(e) {
                 return;
             case 83:
                 squareroot();
+                return;
             case 187:
                 if (event.shiftKey) {
                     inputOpperand("+");
                 } else {
                     calculate();
                 }
-                
                 return;
             case 189:
                 inputOpperand("-");
