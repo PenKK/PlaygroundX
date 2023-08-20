@@ -184,7 +184,7 @@ function pageKeyDown(e) {
                 inputOpperand("x");
                 return;
             case 13:
-                calculate(calculationArray);
+                calculate(sequenceArray);
                 return;
             case 27:
                 clearDisplay();

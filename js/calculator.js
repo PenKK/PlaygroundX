@@ -4,10 +4,10 @@ const decimalElement = document.getElementById("decimalPlacesInput");
 const inputs = document.getElementsByTagName("input");
 
 let DECIMAL_ROUNDING = 100000000;
-let currentNumHasDecimal = false;
 let errored = false;
 let typing = false;
 let lastCalculationAnswer = 0;
+let sequenceArray = [];
 
 for (let i = 0; i < calculatorButtons.length; i++) {
     let button = calculatorButtons[i];
@@ -17,17 +17,20 @@ for (let i = 0; i < calculatorButtons.length; i++) {
     }
 }
 
-let calculationArray = [];
-
 function calculate() {
-    calculationArray = calculateArray(calculationArray);
-    updateDisplay();
+    let tempOldArr = sequenceArray;
+    sequenceArray = calculateArray(sequenceArray);
+    if (!sequenceArray) {
+        sequenceArray = tempOldArr;
+    } else {
+        updateDisplay();
+    }
 }
 
 function calculateArray(array) {
-    if (!(endsWithNum())) {
+    if (lastElementIsOpperand() || errored) {
         invalidStatement();
-        return;
+        return false;
     }
 
     let loopLength = array.length;
@@ -49,13 +52,23 @@ function calculateArray(array) {
         }
     }
 
-    for (let i = 0; i < loopLength; i++) {
-        if (array[i] == "(") { 
+    for (let i = 0; i < loopLength; i++) { //BRACKETS
+        if (array[i] == "(") {
+            if (!isNaN(array[i-1])) {
+                array.splice(i, 0, 'x');
+                i++;
+                loopLength++;
+            }
             for (let j = loopLength-1; j > 0; j--) {
-                console.log("e");
-                if (i < 0) {
+                if (j < i) {
                     calculatorError("Bracket error");
-                    return;
+                    return false;
+                }
+
+                if (array[j] == ")") {
+                    let tempArr = array.slice(i+1, j);
+                    array.splice(i, j-i+1, calculateArray(tempArr)[0]);
+                    break;
                 }
             }
         }
@@ -78,7 +91,7 @@ function calculateArray(array) {
             } else {
                 if (front < 0) {
                     calculatorError("Radicand can't be negative");
-                    return;
+                    return false;
                 }
                 newInt = Math.sqrt(front);
 
@@ -108,7 +121,7 @@ function calculateArray(array) {
             } else {
                 if (front == 0) {
                     calculatorError("Can't divide by 0");
-                    return;
+                    return false;
                 }
                 newInt = behind / front;
             }
@@ -139,13 +152,11 @@ function calculateArray(array) {
     }
 
     if (isNaN(array[0])) {
-        displayElement.innerText = "Error";
-        errored = true;
+        calculatorError("Error");
     } else {
         array[0] = lastCalculationAnswer = (Math.round(array[0] * DECIMAL_ROUNDING) / DECIMAL_ROUNDING).toString();
     }
 
-    lastCalculationAnswer.includes(".") ? currentNumHasDecimal = true : currentNumHasDecimal = false;
     buttonPressCSS('calculateButton');
 
     return array;
@@ -159,47 +170,19 @@ function ArrayInsertNewInt(array, index, newNumber) {
 }
 
 function openBracket() {
-    calculationArray.push("(");
+    sequenceArray.push("(");
     updateDisplay();
 }
 
 function closeBracket() {
-    calculationArray.push(")");
+    sequenceArray.push(")");
     updateDisplay();
-}
-
-function lastArrayElement() {
-    return calculationArray[calculationArray.length-1];
-}
-
-function endsWithNum() {
-    if (calculationArray[calculationArray.length-1] == "ANS") {
-        return true;
-    }
-
-    return isNaN(lastArrayElement()) ? false : true
-}
-
-function clearDisplay() {
-    calculationArray = [];
-    updateDisplay();
-    currentNumHasDecimal = false;
-    buttonPressCSS('clearButton');
-}
-
-function updateDisplay() {
-    displayElement.innerText = "";
-    for (let i = 0; i < calculationArray.length; i++) {
-        displayElement.innerText += calculationArray[i];
-    }
-
-    console.log(calculationArray);
 }
 
 function squareroot() {
     checkErrored();
     if (lastArrayElement() != "√") {
-        calculationArray.push("√");
+        sequenceArray.push("√");
     }
     updateDisplay();
     buttonPressCSS('rootButton');
@@ -212,44 +195,40 @@ function calculatorError(message) {
 
 function checkErrored() {
     if (errored) {
-        displayElement.innerText = "";
+        sequenceArray = [];
         errored = false;
+        updateDisplay();
     }
 }
 
 function decimal() {
     checkErrored();
-    if (!currentNumHasDecimal) {
-        inputNumber(".")
-        currentNumHasDecimal = true;
+    if (lastArrayElement().toString().search(/[.]/) == -1) {
+        inputNumber(".");
     }
-    
-    buttonPressCSS('decimalButton');
 }
 
 function backspace() {
+    buttonPressCSS('backspaceButton');
     checkErrored();
 
-    let arrayLastIndex = calculationArray.length-1;
+    let arrayLastIndex = sequenceArray.length-1;
 
-    if (calculationArray.length === 0) {
+    if (arrayLastIndex == -1) {
         return;
     }
 
-    if (lastElementIsOpperand()) {
-        calculationArray.pop();
-    } else if (lastArrayElement() == "ANS" || lastElementIsOpperand()) {
-        calculationArray.pop();
+    if (lastElementIsOpperand() || lastArrayElement() == "ANS") {
+        sequenceArray.pop();
     } else {
-        calculationArray[arrayLastIndex] = calculationArray[arrayLastIndex].toString().substring(0, calculationArray[arrayLastIndex].length-1);
+        sequenceArray[arrayLastIndex] = sequenceArray[arrayLastIndex].toString().substring(0, sequenceArray[arrayLastIndex].length-1);
     }
 
     if (lastArrayElement() == "") {
-        calculationArray.pop();
+        sequenceArray.pop();
     }
 
     updateDisplay();
-    buttonPressCSS('backspaceButton');
 }
 
 function lastElementIsOpperand() {
@@ -259,18 +238,18 @@ function lastElementIsOpperand() {
 
 function Ans() {
     checkErrored();
-    calculationArray.push("ANS");
+    sequenceArray.push("ANS");
     buttonPressCSS('answerButton');
     updateDisplay();
 }
 
 function inputNumber(number) {
     if (lastArrayElement() == undefined) {
-        calculationArray[0] = number;
+        sequenceArray[0] = number;
     } else if (lastElementIsOpperand() || lastArrayElement() == "√" || lastArrayElement() == "(" || lastArrayElement == ")") {
-        calculationArray.push(number);
+        sequenceArray.push(number);
     } else {
-        calculationArray[calculationArray.length-1] += "" + number;
+        sequenceArray[sequenceArray.length-1] += "" + number;
     }
 
     updateDisplay();
@@ -283,10 +262,36 @@ function inputOpperand(input) {
     }
 
     checkErrored();
-    calculationArray.push(input);
-    currentNumHasDecimal = false;
+    sequenceArray.push(input);
     buttonPressCSS(input);
     updateDisplay();
+}
+
+function lastArrayElement() {
+    return sequenceArray[sequenceArray.length-1];
+}
+
+function endsWithNum() {
+    if (lastArrayElement() == "ANS" || lastArrayElement() == ")") {
+        return true;
+    }
+
+    return isNaN(lastArrayElement()) ? false : true
+}
+
+function clearDisplay() {
+    sequenceArray = [];
+    updateDisplay();
+    buttonPressCSS('clearButton');
+}
+
+function updateDisplay() {
+    displayElement.innerText = "";
+    for (let i = 0; i < sequenceArray.length; i++) {
+        displayElement.innerText += sequenceArray[i];
+    }
+
+    console.log(sequenceArray);
 }
 
 //side options
