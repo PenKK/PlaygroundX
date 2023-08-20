@@ -171,11 +171,13 @@ function ArrayInsertNewInt(array, index, newNumber) {
 
 function openBracket() {
     sequenceArray.push("(");
+    buttonPressCSS("(")
     updateDisplay();
 }
 
 function closeBracket() {
     sequenceArray.push(")");
+    buttonPressCSS(")")
     updateDisplay();
 }
 
