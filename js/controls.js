@@ -164,10 +164,18 @@ function pageKeyDown(e) {
                 }
                 return;
             case 57:
-                inputNumber(9);
+                if (event.shiftKey) {
+                    openBracket();
+                } else {
+                    inputNumber(9);
+                }
                 return;
             case 48:
-                inputNumber(0);
+                if (event.shiftKey) {
+                    closeBracket();
+                } else {
+                    inputNumber(0);
+                }
                 return;
             case 65:
                 Ans();
@@ -176,7 +184,7 @@ function pageKeyDown(e) {
                 inputOpperand("x");
                 return;
             case 13:
-                calculate();
+                calculate(calculationArray);
                 return;
             case 27:
                 clearDisplay();

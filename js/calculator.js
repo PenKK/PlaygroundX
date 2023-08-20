@@ -17,48 +17,63 @@ for (let i = 0; i < calculatorButtons.length; i++) {
     }
 }
 
-let displayMessage = "";
+let calculationArray = [];
 
 function calculate() {
+    calculationArray = calculateArray(calculationArray);
+    updateDisplay();
+}
+
+function calculateArray(array) {
     if (!(endsWithNum())) {
         invalidStatement();
         return;
     }
 
-    let displayArray = displayMessage.split(" ");
-    displayArray = displayArray.filter(num => num != '');
-    let loopLength = displayArray.length;
+    let loopLength = array.length;
 
     for (let i = 0; i < loopLength; i++) {
-        if (displayArray[i] == "ANS") {
-            displayArray[i] = lastCalculationAnswer;
+        if (array[i] == "ANS") {
+            array[i] = lastCalculationAnswer;
 
-            let behind = parseFloat(displayArray[i-1]);
-            let front = parseFloat(displayArray[i+1]);
+            let behind = parseFloat(array[i-1]);
+            let front = parseFloat(array[i+1]);
 
             if (!isNaN(front)) {
-                displayArray.splice(i+1, 0, 'x');
+                array.splice(i+1, 0, 'x');
             }
 
             if (!isNaN(behind)) {
-                displayArray.splice(i, 0, 'x');
+                array.splice(i, 0, 'x');
             }
         }
     }
 
-    loopLength = displayArray.length;
+    for (let i = 0; i < loopLength; i++) {
+        if (array[i] == "(") { 
+            for (let j = loopLength-1; j > 0; j--) {
+                console.log("e");
+                if (i < 0) {
+                    calculatorError("Bracket error");
+                    return;
+                }
+            }
+        }
+    }
+
+    loopLength = array.length;
 
     for (let i = 0; i < loopLength; i++) { //EXPONENTS
-        if (displayArray[i] == "^" || displayArray[i] == "√") {
+        if (array[i] == "^" || array[i] == "√") {
 
-            let behind = parseFloat(displayArray[i-1]);
-            let front = parseFloat(displayArray[i+1]);
+            let behind = parseFloat(array[i-1]);
+            let front = parseFloat(array[i+1]);
 
-            if (displayArray[i] == "^") {
+            if (array[i] == "^") {
                 newInt = behind ** front;
 
-                displayArray = ArrayInsertNewInt(displayArray, i, newInt);
-                loopLength = displayArray.length;
+                array = ArrayInsertNewInt(array, i, newInt);
+                loopLength = array.length;
                 i = 0;
             } else {
                 if (front < 0) {
@@ -69,22 +84,26 @@ function calculate() {
 
                 if (!isNaN(behind)) {
                     newInt *= behind;
+                    array[i-1] = undefined;
                 }
 
-                displayArray = ArrayInsertNewInt(displayArray, i, newInt);
-                loopLength = displayArray.length;
+                array[i] = newInt;
+                array[i+1] = undefined;
+                array = array.filter(num => num != undefined);
+
+                loopLength = array.length;
                 i = 0;
             }
         }
     }
 
     for (let i = 0; i < loopLength; i++) { //MULTIPLY + DIVIDE
-        if (displayArray[i] == "x" || displayArray[i] == "/") {
+        if (array[i] == "x" || array[i] == "/") {
 
-            let behind = parseFloat(displayArray[i-1]);
-            let front = parseFloat(displayArray[i+1]);
+            let behind = parseFloat(array[i-1]);
+            let front = parseFloat(array[i+1]);
             
-            if (displayArray[i] == "x") {
+            if (array[i] == "x") {
                 newInt = behind * front;
             } else {
                 if (front == 0) {
@@ -94,42 +113,42 @@ function calculate() {
                 newInt = behind / front;
             }
 
-            displayArray = ArrayInsertNewInt(displayArray, i, newInt);
-            loopLength = displayArray.length;
+            array = ArrayInsertNewInt(array, i, newInt);
+            loopLength = array.length;
             i = 0;
         }
     }
 
     for (let i = 0; i < loopLength; i++) { //ADD + SUBTRACT
-        if (displayArray[i] == "+" || displayArray[i] == "-") {
+        if (array[i] == "+" || array[i] == "-") {
 
             let newInt;
-            let behind = parseFloat(displayArray[i-1]);
-            let front = parseFloat(displayArray[i+1]);
+            let behind = parseFloat(array[i-1]);
+            let front = parseFloat(array[i+1]);
 
-            if (displayArray[i] == "+") {
+            if (array[i] == "+") {
                 newInt = behind + front;
             } else {
                 newInt = behind - front;
             }
 
-            displayArray = ArrayInsertNewInt(displayArray, i, newInt);
-            loopLength = displayArray.length;
+            array = ArrayInsertNewInt(array, i, newInt);
+            loopLength = array.length;
             i = 0;
         }
     }
 
-    if (isNaN(displayArray[0])) {
-        displayMessage = "Error";
+    if (isNaN(array[0])) {
+        displayElement.innerText = "Error";
         errored = true;
     } else {
-        displayMessage = lastCalculationAnswer = (Math.round(displayArray[0] * DECIMAL_ROUNDING) / DECIMAL_ROUNDING).toString();
+        array[0] = lastCalculationAnswer = (Math.round(array[0] * DECIMAL_ROUNDING) / DECIMAL_ROUNDING).toString();
     }
 
-    displayMessage.includes(".") ? currentNumHasDecimal = true : currentNumHasDecimal = false;
-
-    updateCalculationDisplay();
+    lastCalculationAnswer.includes(".") ? currentNumHasDecimal = true : currentNumHasDecimal = false;
     buttonPressCSS('calculateButton');
+
+    return array;
 }
 
 function ArrayInsertNewInt(array, index, newNumber) {
@@ -139,16 +158,138 @@ function ArrayInsertNewInt(array, index, newNumber) {
     return array.filter(num => num != undefined);
 }
 
-for (let i = 0; i < inputs.length; i++) {
-    inputs[i].onfocus = () => {
-        typing = true;
+function openBracket() {
+    calculationArray.push("(");
+    updateDisplay();
+}
+
+function closeBracket() {
+    calculationArray.push(")");
+    updateDisplay();
+}
+
+function lastArrayElement() {
+    return calculationArray[calculationArray.length-1];
+}
+
+function endsWithNum() {
+    if (calculationArray[calculationArray.length-1] == "ANS") {
+        return true;
     }
 
-    inputs[i].onblur = () => {
-        typing = false;
-        updateOptions();
+    return isNaN(lastArrayElement()) ? false : true
+}
+
+function clearDisplay() {
+    calculationArray = [];
+    updateDisplay();
+    currentNumHasDecimal = false;
+    buttonPressCSS('clearButton');
+}
+
+function updateDisplay() {
+    displayElement.innerText = "";
+    for (let i = 0; i < calculationArray.length; i++) {
+        displayElement.innerText += calculationArray[i];
+    }
+
+    console.log(calculationArray);
+}
+
+function squareroot() {
+    checkErrored();
+    if (lastArrayElement() != "√") {
+        calculationArray.push("√");
+    }
+    updateDisplay();
+    buttonPressCSS('rootButton');
+}
+
+function calculatorError(message) {
+    errored = true;
+    displayElement.innerText = message;
+}
+
+function checkErrored() {
+    if (errored) {
+        displayElement.innerText = "";
+        errored = false;
     }
 }
+
+function decimal() {
+    checkErrored();
+    if (!currentNumHasDecimal) {
+        inputNumber(".")
+        currentNumHasDecimal = true;
+    }
+    
+    buttonPressCSS('decimalButton');
+}
+
+function backspace() {
+    checkErrored();
+
+    let arrayLastIndex = calculationArray.length-1;
+
+    if (calculationArray.length === 0) {
+        return;
+    }
+
+    if (lastElementIsOpperand()) {
+        calculationArray.pop();
+    } else if (lastArrayElement() == "ANS" || lastElementIsOpperand()) {
+        calculationArray.pop();
+    } else {
+        calculationArray[arrayLastIndex] = calculationArray[arrayLastIndex].toString().substring(0, calculationArray[arrayLastIndex].length-1);
+    }
+
+    if (lastArrayElement() == "") {
+        calculationArray.pop();
+    }
+
+    updateDisplay();
+    buttonPressCSS('backspaceButton');
+}
+
+function lastElementIsOpperand() {
+    let last = lastArrayElement();
+    return last == "x" || last == "-" || last == "+" || last == "/" || last == "^" ? true : false;
+}
+
+function Ans() {
+    checkErrored();
+    calculationArray.push("ANS");
+    buttonPressCSS('answerButton');
+    updateDisplay();
+}
+
+function inputNumber(number) {
+    if (lastArrayElement() == undefined) {
+        calculationArray[0] = number;
+    } else if (lastElementIsOpperand() || lastArrayElement() == "√" || lastArrayElement() == "(" || lastArrayElement == ")") {
+        calculationArray.push(number);
+    } else {
+        calculationArray[calculationArray.length-1] += "" + number;
+    }
+
+    updateDisplay();
+    buttonPressCSS(number);
+}
+
+function inputOpperand(input) {
+    if (!endsWithNum()) {
+        return;
+    }
+
+    checkErrored();
+    calculationArray.push(input);
+    currentNumHasDecimal = false;
+    buttonPressCSS(input);
+    updateDisplay();
+}
+
+//side options
 
 function updateOptions() {
     updateDecimalRounding();
@@ -173,88 +314,7 @@ function updateDecimalRounding() {
     DECIMAL_ROUNDING = roundingInt;
 }
 
-function endingCharacter() {
-    return displayElement.innerText[displayElement.innerText.length-1];
-}
-
-function endsWithNum() {
-    if (displayElement.innerText.substring(displayElement.innerText.length-3, displayElement.innerText.length) == "ANS") {
-        return true;
-    }
-
-     return isNaN(endingCharacter()) ? false : true
-}
-
-function updateCalculationDisplay() {
-    displayElement.innerText = displayMessage.replace(/\s/g, "");
-}
-
-function clearDisplay() {
-    displayMessage = "";
-    displayElement.innerText = displayMessage;
-    currentNumHasDecimal = false;
-    buttonPressCSS('clearButton');
-}
-
-function squareroot() {
-    checkErrored();
-    if (endingCharacter() != "√") {
-        displayMessage = displayMessage.concat(" √ ");
-    }
-    updateCalculationDisplay();
-}
-
-function calculatorError(message) {
-    errored = true;
-    displayMessage = message;
-    displayElement.innerText = displayMessage;
-}
-
-function checkErrored() {
-    if (errored) {
-        displayMessage = "";
-        errored = false;
-    }
-}
-
-function decimal() {
-    checkErrored();
-    if (!currentNumHasDecimal) {
-        displayMessage = displayMessage.concat(".");
-        currentNumHasDecimal = true;
-    }
-    
-    updateCalculationDisplay();
-    buttonPressCSS('decimalButton');
-}
-
-function backspace() {
-    checkErrored();
-
-    if (displayElement.innerText.substring(displayElement.innerText.length-3, displayElement.innerText.length) == "ANS") {
-        displayMessage = displayMessage.substring(0, displayMessage.length-6);
-    } else if (displayMessage.endsWith(" ")) {
-        displayMessage = displayMessage.substring(0, displayMessage.length-3);  
-    } else {
-        displayMessage = displayMessage.substring(0, displayMessage.length-1);
-    }
-    
-    updateCalculationDisplay();
-    buttonPressCSS('backspaceButton');
-}
-
-function inputNumber(input) {
-    checkErrored();
-    displayMessage = displayMessage.concat(input);
-    updateCalculationDisplay();
-    buttonPressCSS(input);
-}
-
-function Ans() {
-    checkErrored();
-    displayMessage = displayMessage.concat(" ANS ");
-    updateCalculationDisplay();
-}
+//random stuff
 
 function buttonPressCSS(id) {
     const element = document.getElementById(id);
@@ -264,20 +324,20 @@ function buttonPressCSS(id) {
     }, 100);
 }
 
-function inputOpperand(input) {
-    if (!endsWithNum()) {
-        return;
-    }
-    checkErrored();
-    displayMessage = displayMessage.concat(" " + input + " ");
-    currentNumHasDecimal = false;
-    updateCalculationDisplay();
-    buttonPressCSS(input);
-}
-
 function invalidStatement() {
     displayElement.style.color = "red";
     setTimeout(() => {
         displayElement.style.color = "black"; 
     }, 300);
+}
+
+for (let i = 0; i < inputs.length; i++) {
+    inputs[i].onfocus = () => {
+        typing = true;
+    }
+
+    inputs[i].onblur = () => {
+        typing = false;
+        updateOptions();
+    }
 }

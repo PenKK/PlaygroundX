@@ -20,12 +20,12 @@
         </div>
         <div id="buttonFrame">
             <div class="calculatorButton" id="backspaceButton" onclick="backspace()">DEL</div>
-            <div class="calculatorButton" onclick="Ans()">ANS</div>
-            <div class="calculatorButton"></div>
-            <div class="calculatorButton"></div>
+            <div class="calculatorButton" id="answerButton" onclick="Ans()">ANS</div>
+            <div class="calculatorButton">(</div>
+            <div class="calculatorButton">)</div>
             <div class="calculatorButton"></div>
             <div class="calculatorButton" id="^" onclick="inputOpperand('^')">^</div>
-            <div class="calculatorButton" onclick="squareroot()">√</div>
+            <div class="calculatorButton" id="rootButton" onclick="squareroot()">√</div>
             <div class="calculatorButton" id="/" onclick="inputOpperand('/')">/</div>
             <div class="calculatorButton">7</div>
             <div class="calculatorButton">8</div>
@@ -42,14 +42,14 @@
             <div class="calculatorButton" id="clearButton" onclick="clearDisplay()">C</div>
             <div class="calculatorButton">0</div>
             <div class="calculatorButton" id="decimalButton" onclick="decimal()">.</div>
-            <div class="calculatorButton" id="calculateButton" onclick="calculate()">=</div>
+            <div class="calculatorButton" id="calculateButton" onclick="calculate(calculationArray)">=</div>
         </div>
     </div>
 
     <div id="sideMenu">
         <div class="optionContainer">
             Decimals:
-            <input id="decimalPlacesInput" type="number" value="5">
+            <input id="decimalPlacesInput" type="number" value="8">
         </div>
     </div>
 </body>
