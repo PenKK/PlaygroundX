@@ -203,7 +203,7 @@ function checkErrored() {
 
 function decimal() {
     checkErrored();
-    if (lastArrayElement().toString().search(/[.]/) == -1) {
+    if (sequenceArray[0] == undefined || lastArrayElement().toString().search(/[.]/) == -1) {
         inputNumber(".");
     }
 }
