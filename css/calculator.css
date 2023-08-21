@@ -90,3 +90,46 @@ input {
     transform: translate(0.3vh, 0.3vh);
     box-shadow: 0vh 0vh black;
 }
+
+@media (max-width: 800px) {
+    #calculatorFrame {
+        transform: translate(-50%, 55%);
+        border: 1.5vw brown solid;
+        border-radius: 3.2vw;
+        width: 90vw;
+        box-shadow: 3vw 3vw 1vw black;
+    }
+
+    .calculatorButton {
+        margin: 0.8vw;
+        border-radius: 2vw;
+        border: 1vw rgb(66, 66, 66) solid;
+    }
+
+    #sideMenu {
+        transform: translate(0%,0%);
+        top: 92%;
+        left: 4.5%;
+        width: 90vw;
+        border: 1vw solid brown;
+        border-radius: 2%;
+    }
+
+    input {
+        height: 50%;
+        width: 50%;
+        font-size: 4vw;
+        border-radius: 1vw;
+    }
+
+    .optionContainer {
+        font-size: 7vw;
+    }
+
+    #display {
+        border: 1vw brown solid;
+        border-radius: 3%;
+        transform: translate(-0.9%, -2%);
+        font-size: 5vh;
+    }
+}

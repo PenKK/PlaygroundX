@@ -350,7 +350,10 @@ function updateOptions() {
 function updateDecimalRounding() {
     let decimalInt = decimalElement.value;
 
-    if (decimalInt > 16) {
+    if (decimalInt < 0) {
+        decimalInt = 0;
+        decimalElement.value = decimalInt;
+    } else if (decimalInt > 16) {
         decimalInt = 16;
         decimalElement.value = decimalInt;
     } else if (decimalInt % 1 != 0) {
