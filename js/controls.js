@@ -206,7 +206,7 @@ function pageKeyDown(e) {
                 }
                 return;
             case 189:
-                inputOpperand("-");
+                minus();
                 return;
             case 8:
                 backspace();

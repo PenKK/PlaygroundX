@@ -133,7 +133,7 @@ function calculateArray(array) {
     }
 
     for (let i = 0; i < loopLength; i++) { //ADD + SUBTRACT
-        if (array[i] == "+" || array[i] == "-") {
+        if (array[i] == "+" || array[i].toString().search(/[-]/) != -1)  {
 
             let newInt;
             let behind = parseFloat(array[i-1]);
@@ -141,10 +141,14 @@ function calculateArray(array) {
 
             if (array[i] == "+") {
                 newInt = behind + front;
+            } else if (i != 0) {
+                array.splice(i, 0, "+");
+                front = parseFloat(array[i+1]);
+                newInt = behind + front;
             } else {
-                newInt = behind - front;
+                continue;
             }
-
+            
             array = ArrayInsertNewInt(array, i, newInt);
             loopLength = array.length;
             i = 0;
@@ -170,12 +174,14 @@ function ArrayInsertNewInt(array, index, newNumber) {
 }
 
 function openBracket() {
+    checkErrored();
     sequenceArray.push("(");
-    buttonPressCSS("(")
+    buttonPressCSS("(");
     updateDisplay();
 }
 
 function closeBracket() {
+    checkErrored();
     sequenceArray.push(")");
     buttonPressCSS(")")
     updateDisplay();
@@ -197,8 +203,8 @@ function calculatorError(message) {
 
 function checkErrored() {
     if (errored) {
-        sequenceArray = [];
         errored = false;
+        sequenceArray = [];
         updateDisplay();
     }
 }
@@ -246,9 +252,10 @@ function Ans() {
 }
 
 function inputNumber(number) {
+    checkErrored();
     if (lastArrayElement() == undefined) {
         sequenceArray[0] = number;
-    } else if (lastElementIsOpperand() || lastArrayElement() == "√" || lastArrayElement() == "(" || lastArrayElement == ")") {
+    } else if ((lastElementIsOpperand() && lastArrayElement() != "-") || lastArrayElement() == "√" || lastArrayElement() == "(" || lastArrayElement == ")") {
         sequenceArray.push(number);
     } else {
         sequenceArray[sequenceArray.length-1] += "" + number;
@@ -259,13 +266,26 @@ function inputNumber(number) {
 }
 
 function inputOpperand(input) {
-    if (!endsWithNum()) {
+    if (!endsWithNum() || errored) {
         return;
     }
 
     checkErrored();
     sequenceArray.push(input);
     buttonPressCSS(input);
+    updateDisplay();
+}
+
+function minus() {
+    buttonPressCSS('-');
+    checkErrored();
+    try {
+        if (lastArrayElement().toString()[lastArrayElement().length-1] == "-") {
+            return;
+        }
+    } catch(e) {}
+
+    sequenceArray.push("-");
     updateDisplay();
 }
 
