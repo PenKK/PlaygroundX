@@ -7,6 +7,7 @@ let DECIMAL_ROUNDING = 100000000;
 let errored = false;
 let typing = false;
 let lastCalculationAnswer = 0;
+let sequenceArray = [];
 
 for (let i = 0; i < calculatorButtons.length; i++) {
     let button = calculatorButtons[i];
