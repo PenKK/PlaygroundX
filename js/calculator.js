@@ -8,6 +8,7 @@ let errored = false;
 let typing = false;
 let lastCalculationAnswer = 0;
 let sequenceArray = [];
+updateDisplay();
 
 for (let i = 0; i < calculatorButtons.length; i++) {
     let button = calculatorButtons[i];
@@ -34,9 +35,7 @@ function calculateArray(array) {
         return false;
     }
 
-    let loopLength = array.length;
-
-    for (let i = 0; i < loopLength; i++) {
+    for (let i = 0; i < array.length; i++) {
         if (array[i] == "ANS") {
             array[i] = lastCalculationAnswer;
 
@@ -53,31 +52,62 @@ function calculateArray(array) {
         }
     }
 
-    for (let i = 0; i < loopLength; i++) { //BRACKETS
+    for (let i = 0; i < array.length; i++) { //BRACKETS
         if (array[i] == "(") {
             if (!isNaN(array[i-1])) {
                 array.splice(i, 0, 'x');
                 i++;
-                loopLength++;
             }
-            for (let j = loopLength; j > 0; j--) {
-                if (j < i) {
-                    calculatorError("Bracket error");
-                    return false;
-                }
 
-                if (array[j] == ")") {
-                    let tempArr = array.slice(i+1, j);
-                    array.splice(i, j-i+1, calculateArray(tempArr)[0]);
+            for (let x = i+1; x < array.length; x++) {
+                if (array[x] == "(") {
+                    array = jBackward(array, i);
+                    break;
+                } else if (array[x] == ")") {
+                    array = jForward(array, i);
                     break;
                 }
             }
         }
     }
 
-    loopLength = array.length;
+    if (array[0] == NaN) {
+        alert("e");
+    }
 
-    for (let i = 0; i < loopLength; i++) { //EXPONENTS
+    function jBackward(array, i) {
+        for (let j = array.length; j > 0; j--) {
+            if (j < i) {
+                calculatorError("Bracket error");
+                return false;
+            }
+
+            if (array[j] == ")") {
+                let tempArr = array.slice(i+1, j);
+                array.splice(i, j-i+1, calculateArray(tempArr)[0]);
+                break;
+            }
+        }
+        return array;
+    }
+
+    function jForward(array, i) {
+        for (let j = i+1; j < array.length; j++) {
+            if (array[j] == undefined) {
+                calculatorError("Bracket error");
+                return false;
+            }
+
+            if (array[j] == ")") {
+                let tempArr = array.slice(i+1, j);
+                array.splice(i, j-i+1, calculateArray(tempArr)[0]);
+                break;
+            }
+        }
+        return array;
+    }
+
+    for (let i = 0; i < array.length; i++) { //EXPONENTS
         if (array[i] == "^" || array[i] == "√") {
 
             let behind = parseFloat(array[i-1]);
@@ -87,7 +117,6 @@ function calculateArray(array) {
                 newInt = behind ** front;
 
                 array = ArrayInsertNewInt(array, i, newInt);
-                loopLength = array.length;
                 i = 0;
             } else {
                 if (front < 0) {
@@ -105,13 +134,12 @@ function calculateArray(array) {
                 array[i+1] = undefined;
                 array = array.filter(num => num != undefined);
 
-                loopLength = array.length;
                 i = 0;
             }
         }
     }
 
-    for (let i = 0; i < loopLength; i++) { //MULTIPLY + DIVIDE
+    for (let i = 0; i < array.length; i++) { //MULTIPLY + DIVIDE
         if (array[i] == "x" || array[i] == "/") {
 
             let behind = parseFloat(array[i-1]);
@@ -128,12 +156,11 @@ function calculateArray(array) {
             }
 
             array = ArrayInsertNewInt(array, i, newInt);
-            loopLength = array.length;
             i = 0;
         }
     }
 
-    for (let i = 0; i < loopLength; i++) { //ADD + SUBTRACT
+    for (let i = 0; i < array.length; i++) { //ADD + SUBTRACT
         if (array[i] == "+" || array[i].toString().search(/[-]/) != -1)  {
 
             let newInt;
@@ -151,13 +178,13 @@ function calculateArray(array) {
             }
             
             array = ArrayInsertNewInt(array, i, newInt);
-            loopLength = array.length;
             i = 0;
         }
     }
 
     if (isNaN(array[0])) {
         calculatorError("Error");
+        return false;
     } else {
         array[0] = lastCalculationAnswer = (Math.round(array[0] * DECIMAL_ROUNDING) / DECIMAL_ROUNDING).toString();
     }
@@ -311,7 +338,7 @@ function updateDisplay() {
         displayElement.innerText += sequenceArray[i];
     }
 
-    console.log(sequenceArray);
+    console.log(JSON.stringify(sequenceArray).replaceAll("\"", "'"));
 }
 
 //side options
