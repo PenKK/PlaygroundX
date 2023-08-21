@@ -7,7 +7,6 @@ let DECIMAL_ROUNDING = 100000000;
 let errored = false;
 let typing = false;
 let lastCalculationAnswer = 0;
-let sequenceArray = [];
 
 for (let i = 0; i < calculatorButtons.length; i++) {
     let button = calculatorButtons[i];
@@ -18,6 +17,7 @@ for (let i = 0; i < calculatorButtons.length; i++) {
 }
 
 function calculate() {
+    buttonPressCSS('calculateButton');
     let tempOldArr = sequenceArray;
     sequenceArray = calculateArray(sequenceArray);
     if (!sequenceArray) {
@@ -59,7 +59,7 @@ function calculateArray(array) {
                 i++;
                 loopLength++;
             }
-            for (let j = loopLength-1; j > 0; j--) {
+            for (let j = loopLength; j > 0; j--) {
                 if (j < i) {
                     calculatorError("Bracket error");
                     return false;
@@ -161,8 +161,6 @@ function calculateArray(array) {
         array[0] = lastCalculationAnswer = (Math.round(array[0] * DECIMAL_ROUNDING) / DECIMAL_ROUNDING).toString();
     }
 
-    buttonPressCSS('calculateButton');
-
     return array;
 }
 
@@ -188,12 +186,12 @@ function closeBracket() {
 }
 
 function squareroot() {
+    buttonPressCSS('rootButton');
     checkErrored();
     if (lastArrayElement() != "√") {
         sequenceArray.push("√");
     }
     updateDisplay();
-    buttonPressCSS('rootButton');
 }
 
 function calculatorError(message) {
@@ -266,13 +264,12 @@ function inputNumber(number) {
 }
 
 function inputOpperand(input) {
+    buttonPressCSS(input);
     if (!endsWithNum() || errored) {
         return;
     }
-
     checkErrored();
     sequenceArray.push(input);
-    buttonPressCSS(input);
     updateDisplay();
 }
 
