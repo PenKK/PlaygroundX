@@ -349,6 +349,7 @@ function updateOptions() {
 
 function updateDecimalRounding() {
     let decimalInt = decimalElement.value;
+    DECIMAL_ROUNDING = "1";
 
     if (decimalInt < 0) {
         decimalInt = 0;
@@ -361,12 +362,9 @@ function updateDecimalRounding() {
         decimalElement.value = decimalInt;
     }
 
-    let roundingInt = "1";
     for (let i = 0; i < decimalInt; i++) {
-        roundingInt += "0";
+        DECIMAL_ROUNDING += "0";
     }
-
-    DECIMAL_ROUNDING = roundingInt;
 }
 
 //random stuff
