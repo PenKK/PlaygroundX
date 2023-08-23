@@ -71,10 +71,6 @@ function calculateArray(array) {
         }
     }
 
-    if (array[0] == NaN) {
-        alert("e");
-    }
-
     function jBackward(array, i) {
         for (let j = array.length; j > 0; j--) {
             if (j < i) {
