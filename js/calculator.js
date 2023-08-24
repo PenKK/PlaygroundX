@@ -105,6 +105,7 @@ function calculateArray(array) {
 
             let behind = parseFloat(array[i-1]);
             let front = parseFloat(array[i+1]);
+            let newInt;
 
             if (array[i] == "^") {
                 newInt = behind ** front;
@@ -131,6 +132,7 @@ function calculateArray(array) {
     for (let i = 0; i < array.length; i++) { //MULTIPLY + DIVIDE
         if (array[i] == "x" || array[i] == "/") {
 
+            let newInt;
             let behind = parseFloat(array[i-1]);
             let front = parseFloat(array[i+1]);
             
@@ -325,6 +327,17 @@ function updateDisplay() {
 
 //side options
 
+for (let i = 0; i < inputs.length; i++) {
+    inputs[i].onfocus = () => {
+        typing = true;
+    }
+
+    inputs[i].onblur = () => {
+        typing = false;
+        updateOptions();
+    }
+}
+
 function updateOptions() {
     updateDecimalRounding();
 }
@@ -364,15 +377,4 @@ function invalidStatement() {
     setTimeout(() => {
         displayElement.style.color = "black"; 
     }, 300);
-}
-
-for (let i = 0; i < inputs.length; i++) {
-    inputs[i].onfocus = () => {
-        typing = true;
-    }
-
-    inputs[i].onblur = () => {
-        typing = false;
-        updateOptions();
-    }
 }
