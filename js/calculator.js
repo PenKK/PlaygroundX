@@ -8,7 +8,6 @@ let errored = false;
 let typing = false;
 let lastCalculationAnswer = 0;
 let sequenceArray = [];
-updateDisplay();
 
 for (let i = 0; i < calculatorButtons.length; i++) {
     let button = calculatorButtons[i];
@@ -20,13 +19,11 @@ for (let i = 0; i < calculatorButtons.length; i++) {
 
 function calculate() {
     buttonPressCSS('calculateButton');
-    let tempOldArr = sequenceArray;
+
     sequenceArray = calculateArray(sequenceArray);
-    if (!sequenceArray) {
-        sequenceArray = tempOldArr;
-    } else {
+    if (sequenceArray) {
         updateDisplay();
-    }
+    } 
 }
 
 function calculateArray(array) {
@@ -111,8 +108,7 @@ function calculateArray(array) {
 
             if (array[i] == "^") {
                 newInt = behind ** front;
-
-                array = ArrayInsertNewInt(array, i, newInt);
+                array.splice(i-1, 3, newInt);
                 i = 0;
             } else {
                 if (front < 0) {
@@ -123,13 +119,10 @@ function calculateArray(array) {
 
                 if (!isNaN(behind)) {
                     newInt *= behind;
-                    array[i-1] = undefined;
+                    array.splice(i--, 1);
                 }
 
-                array[i] = newInt;
-                array[i+1] = undefined;
-                array = array.filter(num => num != undefined);
-
+                array.splice(i, 2, newInt);
                 i = 0;
             }
         }
@@ -151,7 +144,7 @@ function calculateArray(array) {
                 newInt = behind / front;
             }
 
-            array = ArrayInsertNewInt(array, i, newInt);
+            array.splice(i-1, 3, newInt);
             i = 0;
         }
     }
@@ -173,7 +166,7 @@ function calculateArray(array) {
                 continue;
             }
             
-            array = ArrayInsertNewInt(array, i, newInt);
+            array.splice(i-1, 3, newInt);
             i = 0;
         }
     }
@@ -186,13 +179,6 @@ function calculateArray(array) {
     }
 
     return array;
-}
-
-function ArrayInsertNewInt(array, index, newNumber) {
-    array[index] = newNumber;
-    array[index-1] = undefined;
-    array[index+1] = undefined;
-    return array.filter(num => num != undefined);
 }
 
 function openBracket() {
