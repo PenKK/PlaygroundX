@@ -51,9 +51,17 @@ function calculateArray(array) {
 
     for (let i = 0; i < array.length; i++) { //BRACKETS
         if (array[i] == "(") {
+            let startHadMinus = false;
+
             if (!isNaN(array[i-1])) {
                 array.splice(i, 0, 'x');
                 i++;
+            }
+
+            if (array[i-1] == "-") {
+                array.splice(i-1, 1);
+                startHadMinus = true;
+                i--;
             }
 
             for (let x = i+1; x < array.length; x++) {
@@ -63,6 +71,14 @@ function calculateArray(array) {
                 } else if (array[x] == ")") {
                     array = jForward(array, i);
                     break;
+                }
+            }
+
+            if (startHadMinus) { //EDGE CASE FOR x-(y)
+                array[i] = "-" + array[i];
+                if (array[i].startsWith("--")) {
+                    array[i] = array[i].substring(2, array[i].length);
+                    array.splice(i, 0, "+");
                 }
             }
         }
@@ -184,9 +200,9 @@ function calculateArray(array) {
 }
 
 function openBracket() {
+    buttonPressCSS("(");
     checkErrored();
     sequenceArray.push("(");
-    buttonPressCSS("(");
     updateDisplay();
 }
 
