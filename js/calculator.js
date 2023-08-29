@@ -56,9 +56,7 @@ function calculateArray(array) {
             if (!isNaN(array[i-1])) {
                 array.splice(i, 0, 'x');
                 i++;
-            }
-
-            if (array[i-1] == "-") {
+            } else if (array[i-1] == "-") {
                 array.splice(i-1, 1);
                 startHadMinus = true;
                 i--;
@@ -74,7 +72,7 @@ function calculateArray(array) {
                 }
             }
 
-            if (startHadMinus) { //EDGE CASE FOR x-(y)
+            if (startHadMinus) { //Fix for bracket subtraction
                 array[i] = "-" + array[i];
                 if (array[i].startsWith("--")) {
                     array[i] = array[i].substring(2, array[i].length);
