@@ -67,6 +67,9 @@ function calculateArray(array) {
                     array = jBackward(array, i);
                     break;
                 } else if (array[x] == ")") {
+                    if (!isNaN(array[x+1])) {
+                        array.splice(x+1, 0, 'x');
+                    }
                     array = jForward(array, i);
                     break;
                 }
@@ -279,7 +282,7 @@ function inputNumber(number) {
     checkErrored();
     if (lastArrayElement() == undefined) {
         sequenceArray[0] = number;
-    } else if ((lastElementIsOpperand() && lastArrayElement() != "-") || lastArrayElement() == "√" || lastArrayElement() == "(" || lastArrayElement == ")") {
+    } else if ((lastElementIsOpperand() && lastArrayElement() != "-") || lastArrayElement() == "√" || lastArrayElement() == "(" || lastArrayElement() == ")" || lastArrayElement() == "ANS") {
         sequenceArray.push(number);
     } else {
         sequenceArray[sequenceArray.length-1] += "" + number;
