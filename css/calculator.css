@@ -3,6 +3,10 @@
     margin: 0;
 }
 
+sup {
+    font-size: 2vh;
+}
+
 #calculatorFrame {
     width: 25vw;
     height: 70vh;
@@ -74,8 +78,10 @@ input {
     border-radius: 0.5vw;
     background-color: brown;
     transition: 50ms all;
-    font-size: 5vh;
-    text-align: center;
+    font-size: 4.3vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     box-shadow: 0.3vh 0.3vh black;
 }
 

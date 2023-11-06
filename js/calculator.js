@@ -8,6 +8,8 @@ let errored = false;
 let typing = false;
 let lastCalculationAnswer = 0;
 let sequenceArray = [];
+let oldSeqArray = [];
+let inverseOn = false;
 
 for (let i = 0; i < calculatorButtons.length; i++) {
     let button = calculatorButtons[i];
@@ -19,11 +21,12 @@ for (let i = 0; i < calculatorButtons.length; i++) {
 
 function calculate() {
     buttonPressCSS('calculateButton');
+    oldSeqArray = sequenceArray;
 
     sequenceArray = calculateArray(sequenceArray);
     if (sequenceArray) {
         updateDisplay();
-    } 
+    }
 }
 
 function calculateArray(array) {
@@ -115,6 +118,55 @@ function calculateArray(array) {
             }
         }
         return array;
+    }
+
+
+    for (let i = 0; i < array.length; i++) {
+        const func = (array[i] + "").substring(0,3);
+
+        if (func == "sin" || func == "cos" || func == "tan") {
+            
+            let behind = parseFloat(array[i-1]);
+            let front = parseFloat(array[i+1]);
+            let newInt;
+
+            if (!array[i].endsWith(">")) {
+                switch(func) {
+                    case "sin": 
+                        newInt = Math.sin(front);
+                        break;
+                    case "cos":
+                        newInt = Math.cos(front);
+                        break;
+                    case "tan":
+                        newInt = Math.tan(front);
+                        break;
+                }
+            } else {
+                switch(func) {
+                    case "sin": 
+                        newInt = Math.asin(front);
+                        break;
+                    case "cos":
+                        newInt = Math.acos(front);
+                        break;
+                    case "tan":
+                        newInt = Math.atan(front);
+                        break;
+                }
+            }
+
+            if (isNaN(newInt)) {
+                calculatorError("Trigonometric error");
+                return false;
+            }
+
+            array.splice(i, 2, newInt);
+
+            if (!isNaN(behind)) {
+                array.splice(i, 0, 'x');
+            }
+        }
     }
 
     for (let i = 0; i < array.length; i++) { //EXPONENTS
@@ -231,7 +283,7 @@ function calculatorError(message) {
 function checkErrored() {
     if (errored) {
         errored = false;
-        sequenceArray = [];
+        sequenceArray = oldSeqArray;
         updateDisplay();
     }
 }
@@ -253,7 +305,9 @@ function backspace() {
         return;
     }
 
-    if (lastElementIsOpperand() || lastArrayElement() == "ANS") {
+    const lastElement = lastArrayElement();
+
+    if (lastElementIsOpperand() || lastElement == "ANS" || lastElement == "sin" || lastElement == "cos" || lastElement == "tan") {
         sequenceArray.pop();
     } else {
         sequenceArray[arrayLastIndex] = sequenceArray[arrayLastIndex].toString().substring(0, sequenceArray[arrayLastIndex].length-1);
@@ -302,6 +356,87 @@ function inputOpperand(input) {
     updateDisplay();
 }
 
+function inputTrig(buttonIndex, isInverse) {
+    checkErrored();
+
+    if (!isInverse) {
+        switch(buttonIndex) {
+            case 4:
+                sequenceArray.push("sin");
+                break;
+            case 5:
+                sequenceArray.push("cos");
+                break;
+            case 6:
+                sequenceArray.push("tan");
+                break;
+        }
+    } else {
+        switch(buttonIndex) {
+            case 4:
+                sequenceArray.push("sin<sup>-1</sup>");
+                break;
+            case 5:
+                sequenceArray.push("cos<sup>-1</sup>");
+                break;
+            case 6:
+                sequenceArray.push("tan<sup>-1</sup>");
+                break;
+        }
+    }
+    
+    sequenceArray.push("(");
+    restoreOriginalButtons();
+    updateDisplay();
+}
+
+function inverse() {
+    if (!calculatorButtons[4].innerHTML.endsWith(">")) {
+        inverseOn = true;
+        calculatorButtons[4].innerHTML = "sin<sup>-1</sup>";
+        calculatorButtons[5].innerHTML = "cos<sup>-1</sup>";
+        calculatorButtons[6].innerHTML = "tan<sup>-1</sup>";
+
+        for (let i = 4; i <= 6; i++) {
+            calculatorButtons[i].setAttribute("onclick", "inputTrig(" + i + ", true)");
+        }
+    } else {
+        inverseOn = false;
+        calculatorButtons[4].innerHTML = "sin";
+        calculatorButtons[5].innerHTML = "cos";
+        calculatorButtons[6].innerHTML = "tan";
+
+        for (let i = 4; i <= 6; i++) {
+            calculatorButtons[i].setAttribute("onclick", "inputTrig(" + i + ", false)");
+        }
+    }
+}
+
+function restoreOriginalButtons() {
+    calculatorButtons[4].innerHTML = "2nd";
+    calculatorButtons[5].innerHTML = "^";
+    calculatorButtons[6].innerHTML = "√";
+    calculatorButtons[7].innerHTML = "/";
+
+    calculatorButtons[4].setAttribute("onclick", "second()");
+    calculatorButtons[5].setAttribute("onclick", "inputOpperand('^')");
+    calculatorButtons[6].setAttribute("onclick", "squareroot()");
+    calculatorButtons[7].setAttribute("onclick", "inputOpperand('/')");
+}
+
+function second() {
+    calculatorButtons[4].innerHTML = "sin";
+    calculatorButtons[5].innerHTML = "cos";
+    calculatorButtons[6].innerHTML = "tan";
+    calculatorButtons[7].innerHTML = "Inv"
+
+    calculatorButtons[7].setAttribute("onclick", "inverse()");
+
+    for (let i = 4; i <= 6; i++) {
+        calculatorButtons[i].setAttribute("onclick", "inputTrig(" + i + ", false)");
+    }
+}
+
 function minus() {
     buttonPressCSS('-');
     checkErrored();
@@ -327,6 +462,7 @@ function endsWithNum() {
     return isNaN(lastArrayElement()) ? false : true
 }
 
+
 function clearDisplay() {
     sequenceArray = [];
     updateDisplay();
@@ -334,9 +470,9 @@ function clearDisplay() {
 }
 
 function updateDisplay() {
-    displayElement.innerText = "";
+    displayElement.innerHTML = "";
     for (let i = 0; i < sequenceArray.length; i++) {
-        displayElement.innerText += sequenceArray[i];
+        displayElement.innerHTML += sequenceArray[i];
     }
 
     console.log(JSON.stringify(sequenceArray).replaceAll("\"", "'"));

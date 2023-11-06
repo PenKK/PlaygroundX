@@ -127,9 +127,11 @@ function pageKeyDown(e) {
     } else
 
     if (document.URL.search("calculator.html") != -1 && document.URL.search("quadratic") == -1) {
+        console.log(e.keyCode);
         if (typing) {
             return;
         }
+
         switch(e.keyCode) {
             case 49:
                 inputNumber(1);
@@ -178,7 +180,9 @@ function pageKeyDown(e) {
                 }
                 return;
             case 65:
-                Ans();
+                if (!event.shiftKey) {
+                    Ans();
+                }
                 return;
             case 88:
                 inputOpperand("x");
@@ -190,13 +194,32 @@ function pageKeyDown(e) {
                 clearDisplay();
                 return;
             case 67:
-                clearDisplay();
+                if (event.shiftKey && inverseOn) {
+                    inputTrig(5, true);
+                } else if (event.shiftKey){
+                    inputTrig(5, false);
+                } else {
+                    clearDisplay();
+                }
                 return;
             case 191:
                 inputOpperand("/");
                 return;
             case 83:
-                squareroot();
+                if (event.shiftKey && inverseOn) {
+                    inputTrig(4, true);
+                } else if (event.shiftKey){
+                    inputTrig(4, false);
+                } else {
+                    squareroot();
+                }
+                return;
+            case 84:
+                if (event.shiftKey && inverseOn) {
+                    inputTrig(6, true);
+                } else if (event.shiftKey){
+                    inputTrig(6, false);
+                }
                 return;
             case 187:
                 if (event.shiftKey) {
@@ -213,6 +236,13 @@ function pageKeyDown(e) {
                 return;
             case 190:
                 decimal();
+                return;
+            case 73:
+                inverse();
+                return;
+            case 70:
+                second();
+                return;
         }
     } else
 
