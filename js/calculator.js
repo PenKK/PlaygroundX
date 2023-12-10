@@ -305,7 +305,7 @@ function backspace() {
 
     const lastElement = lastArrayElement();
 
-    if (lastElementIsOpperand() || lastElement == "ANS" || lastElement == "sin" || lastElement == "cos" || lastElement == "tan") {
+    if (lastElementIsOpperand() || lastElement == "ANS" || lastElement == "sin" || lastElement == "cos" || lastElement == "tan" || lastElement.endsWith(">")) {
         sequenceArray.pop();
     } else {
         sequenceArray[arrayLastIndex] = sequenceArray[arrayLastIndex].toString().substring(0, sequenceArray[arrayLastIndex].length-1);
@@ -356,33 +356,22 @@ function inputOpperand(input) {
 
 function inputTrig(buttonIndex, isInverse) {
     checkErrored();
+    let trigString;
 
-    if (!isInverse) {
-        switch(buttonIndex) {
-            case 4:
-                sequenceArray.push("sin");
-                break;
-            case 5:
-                sequenceArray.push("cos");
-                break;
-            case 6:
-                sequenceArray.push("tan");
-                break;
-        }
-    } else {
-        switch(buttonIndex) {
-            case 4:
-                sequenceArray.push("sin<sup>-1</sup>");
-                break;
-            case 5:
-                sequenceArray.push("cos<sup>-1</sup>");
-                break;
-            case 6:
-                sequenceArray.push("tan<sup>-1</sup>");
-                break;
-        }
+    switch(buttonIndex) {
+        case 4:
+            trigString = "sin";
+            break;
+        case 5:
+            trigString = "cos";
+            break;
+        case 6:
+            trigString = "tan";
+            break;
     }
-    
+
+    trigString += isInverse ? "<sup>-1</sup>" : "";
+    sequenceArray.push(trigString);
     sequenceArray.push("(");
     restoreOriginalButtons();
     updateDisplay();
