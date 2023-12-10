@@ -8,7 +8,6 @@ let errored = false;
 let typing = false;
 let lastCalculationAnswer = 0;
 let sequenceArray = [];
-let oldSeqArray = [];
 let inverseOn = false;
 
 for (let i = 0; i < calculatorButtons.length; i++) {
@@ -21,7 +20,6 @@ for (let i = 0; i < calculatorButtons.length; i++) {
 
 function calculate() {
     buttonPressCSS('calculateButton');
-    oldSeqArray = sequenceArray;
 
     sequenceArray = calculateArray(sequenceArray);
     if (sequenceArray) {
