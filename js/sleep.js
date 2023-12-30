@@ -2,15 +2,13 @@ const textBox = document.getElementById("dayText");
 textBox.innerText = getName();
 
 function getName() {
-  const date = new Date();
-  const today = date.getDate() % 3;
+  const members = ["Bob - Ice Bear",  "Daquavis - Panda", "Jr Chicken - Borgir", "John - Baguette"];
 
-  switch (today) {
-    case 0:
-      return "Bob - Ice Bear";
-    case 1:
-      return "Daquavis - Panda";
-    case 2:
-      return "Jr Chicken - Borgir";
-  }
+  let now = new Date();
+  let start = new Date(now.getFullYear(), 0, 0);
+  let diff = now - start;
+  let oneDay = 1000 * 60 * 60 * 24;
+  let day = Math.floor(diff / oneDay);
+
+  return members[day % members.length];
 }
