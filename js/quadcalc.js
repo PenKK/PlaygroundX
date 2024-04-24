@@ -1,6 +1,6 @@
-let a = -4;
-let b = -12;
-let c = -9;
+let a = 2;
+let b = 7;
+let c = 3;
 
 let p = 0;
 let q = 0;
@@ -108,7 +108,7 @@ factor = () => {
     
     let factorString = "(";
     let tempC = a*c;
-    let limit = Math.abs(a*tempC/2);
+    let limit = Math.max(Math.abs(b), Math.abs(tempC));
 
     let num1, num2;
 
@@ -201,17 +201,16 @@ factor = () => {
 }
 
 function findFactors(limit, b, tempC) {
-    
-    let tries = 0;
-    for (let i = -limit; i < limit; i++) {
-        for (let j = -limit; j < limit; j++) {
+    const startTime = Date.now();
+
+    for (let i = -limit; i <= limit; i++) {
+        for (let j = -limit; j <= limit; j++) {
             // console.log("I: " + i + "|J: " + j);
             if (i * j == tempC && i + j == b) {
                 // console.log("Found: " + i + "," + j + " in " + tries + " tries");
                 return [i,j];
             }
-            tries++;
-            if (tries > 100000000) {
+            if (Date.now() - startTime > 1000) {
                 failedFactor = true;
                 return;
             }
@@ -219,7 +218,7 @@ function findFactors(limit, b, tempC) {
     }
 }
 
-function reduce(numerator,denominator){ //stack overflow :praying_emoji:
+function reduce(numerator,denominator){ // stack overflow :praying_emoji: users/405017/phrogz
     var gcd = function gcd(a,b){
       return b ? gcd(b, a%b) : a;
     };
