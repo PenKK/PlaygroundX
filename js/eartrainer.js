@@ -92,6 +92,11 @@ function noteColorChange(color) {
 
 function initializeNotes() {
     updateNotes();
+
+    C.addEventListener('error', function(e) {
+        var noSourcesLoaded = (this.networkState===HTMLMediaElement.NETWORK_NO_SOURCE);
+        if(noSourcesLoaded) alert("Audio failed to load, audio may not work");
+    }, true);
 }
 
 function updateNotes() {

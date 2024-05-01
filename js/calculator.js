@@ -34,8 +34,8 @@ function calculateArray(array) {
     }
 
     for (let i = 0; i < array.length; i++) {
-        if (array[i] == "ANS") {
-            array[i] = lastCalculationAnswer;
+        if (array[i] == "ANS" || array[i] == "π") {
+            array[i] = array[i] == "ANS" ? lastCalculationAnswer : Math.PI;
 
             let behind = parseFloat(array[i-1]);
             let front = parseFloat(array[i+1]);
@@ -305,7 +305,7 @@ function backspace() {
 
     const lastElement = lastArrayElement();
 
-    if (lastElementIsOpperand() || lastElement == "ANS" || lastElement == "sin" || lastElement == "cos" || lastElement == "tan" || lastElement.endsWith(">")) {
+    if (lastElementIsOpperand() || lastElement == "ANS" || lastElement == "sin" || lastElement == "cos" || lastElement == "tan" || lastElement.toString().endsWith(">")) {
         sequenceArray.pop();
     } else {
         sequenceArray[arrayLastIndex] = sequenceArray[arrayLastIndex].toString().substring(0, sequenceArray[arrayLastIndex].length-1);
@@ -334,7 +334,8 @@ function inputNumber(number) {
     checkErrored();
     if (lastArrayElement() == undefined) {
         sequenceArray[0] = number;
-    } else if ((lastElementIsOpperand() && lastArrayElement() != "-") || lastArrayElement() == "√" || lastArrayElement() == "(" || lastArrayElement() == ")" || lastArrayElement() == "ANS") {
+    } else if ((lastElementIsOpperand() && lastArrayElement() != "-") || lastArrayElement() == "√" || lastArrayElement() == "(" || 
+                 lastArrayElement() == ")" || lastArrayElement() == "ANS" || lastArrayElement() == "π") {
         sequenceArray.push(number);
     } else {
         sequenceArray[sequenceArray.length-1] += "" + number;
@@ -342,6 +343,13 @@ function inputNumber(number) {
 
     updateDisplay();
     buttonPressCSS(number);
+}
+
+function inputConstant(character) {
+    checkErrored();
+    sequenceArray.push(character);
+    updateDisplay();
+    restoreOriginalButtons();
 }
 
 function inputOpperand(input) {
@@ -404,11 +412,13 @@ function restoreOriginalButtons() {
     calculatorButtons[5].innerHTML = "^";
     calculatorButtons[6].innerHTML = "√";
     calculatorButtons[7].innerHTML = "/";
+    calculatorButtons[11].innerHTML = "x";
 
     calculatorButtons[4].setAttribute("onclick", "second()");
     calculatorButtons[5].setAttribute("onclick", "inputOpperand('^')");
     calculatorButtons[6].setAttribute("onclick", "squareroot()");
     calculatorButtons[7].setAttribute("onclick", "inputOpperand('/')");
+    calculatorButtons[11].setAttribute("onclick", "inputOpperand('x')");
 }
 
 function second() {
@@ -416,8 +426,10 @@ function second() {
     calculatorButtons[5].innerHTML = "cos";
     calculatorButtons[6].innerHTML = "tan";
     calculatorButtons[7].innerHTML = "Inv"
+    calculatorButtons[11].innerHTML = "π";
 
     calculatorButtons[7].setAttribute("onclick", "inverse()");
+    calculatorButtons[11].setAttribute("onclick", "inputConstant('π')");
 
     for (let i = 4; i <= 6; i++) {
         calculatorButtons[i].setAttribute("onclick", "inputTrig(" + i + ", false)");
@@ -442,11 +454,11 @@ function lastArrayElement() {
 }
 
 function endsWithNum() {
-    if (lastArrayElement() == "ANS" || lastArrayElement() == ")") {
+    if (lastArrayElement() == "ANS" || lastArrayElement() == ")" || lastArrayElement() == "π") {
         return true;
     }
 
-    return isNaN(lastArrayElement()) ? false : true
+    return isNaN(lastArrayElement()) ? false : true;
 }
 
 
