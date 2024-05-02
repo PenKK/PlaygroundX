@@ -8,6 +8,7 @@ const noteButtons = document.querySelectorAll('.gameButton');
 const correctDisplay = document.getElementById('correctScore');
 const incorrectDisplay = document.getElementById('incorrectScore');
 const percentageDisplay = document.getElementById('scorePercentageText');
+const audioElements = document.getElementsByClassName("audios");
 
 let C;
 let D;
@@ -28,6 +29,15 @@ let incorrect = 0;
 let percentage = 0;
 
 initializeNotes();
+
+function playScale() {
+    for(let i = 0; i < 8; i++) {
+
+        setTimeout(() => {
+            audioElements[i + 8].play();
+        }, i * 500);
+    }
+}
 
 noteSelectionButtonDiv.onclick = () => {
     selectionDisplay();
@@ -91,31 +101,33 @@ function noteColorChange(color) {
 }
 
 function initializeNotes() {
+    noteCheckBoxes[0].checked = false;
     updateNotes();
 
-    C.addEventListener('error', function(e) {
-        var noSourcesLoaded = (this.networkState===HTMLMediaElement.NETWORK_NO_SOURCE);
-        if(noSourcesLoaded) alert("Audio failed to load, audio may not work");
-    }, true);
+    // C.addEventListener('error', function(e) {
+    //     var noSourcesLoaded = (this.networkState===HTMLMediaElement.NETWORK_NO_SOURCE);
+    //     if(noSourcesLoaded) alert("Audio failed to load, audio may not work");
+    // }, true);
+
 }
 
 function updateNotes() {
     if (noteCheckBoxes[0].checked) { //Trombone  Notes
-        C  = new Audio('https://drive.google.com/uc?export=download&id=1FSiOuIe878CeYK4ahqmPnZpRAmX7rq5_');
-        D  = new Audio('https://drive.google.com/uc?export=download&id=1LYnyYCBiv9twQA6BsX2_u9pwpmI89tDP');
-        E  = new Audio('https://drive.google.com/uc?export=download&id=1JAcT8gNEDJSImk2DJj8w_4nBgEsMzoqW');
-        F  = new Audio('https://drive.google.com/uc?export=download&id=1R9wq0x8gRX9w1MveWAzr5KOMiMPwvReu');
-        G  = new Audio('https://drive.google.com/uc?export=download&id=1RTC1-pAceRv1sFNe3PAZ4Vu0PMHWoaPp');
-        A  = new Audio('https://drive.google.com/uc?export=download&id=1XSanymobasi7z9-Jupdl8Dic7HmywhCI');
-        B  = new Audio('https://drive.google.com/uc?export=download&id=10q9KzPp2jv8_9VqFDG3Z89-ownOH8pRB');
+        C  = audioElements[0];
+        D  = audioElements[1];
+        F  = audioElements[2];
+        E  = audioElements[3];
+        G  = audioElements[4];
+        A  = audioElements[5];
+        B  = audioElements[6];
     } else { //TODO Piano notes
-        C  = new Audio();
-        D  = new Audio();
-        E  = new Audio();
-        F  = new Audio();
-        G  = new Audio();
-        A  = new Audio();
-        B  = new Audio();
+        C  = audioElements[8];
+        D  = audioElements[9];
+        F  = audioElements[10];
+        E  = audioElements[11];
+        G  = audioElements[12];
+        A  = audioElements[13];
+        B  = audioElements[14];
     }
 
     selectedNotes = [[],[]];
