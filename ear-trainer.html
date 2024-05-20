@@ -15,23 +15,20 @@
 <body>
     <h1>Ear Trainer</h1>
     <!-- Audios here not google drive cus stupid policy or wtvr idk i aint reading allat -->
-    <audio src="audio/Trombone-C.wav" class="audios"></audio>
-    <audio src="audio/Trombone-D.wav" class="audios"></audio>
-    <audio src="audio/Trombone-E.wav" class="audios"></audio>
-    <audio src="audio/Trombone-F.wav" class="audios"></audio>
-    <audio src="audio/Trombone-G.wav" class="audios"></audio>
-    <audio src="audio/Trombone-A.wav" class="audios"></audio>
-    <audio src="audio/Trombone-B.wav" class="audios"></audio>
-    <audio src="audio/Trombone-CU.wav" class="audios"></audio>
-
-    <audio src="audio/Piano-C.wav" class="audios"></audio>
-    <audio src="audio/Piano-D.wav" class="audios"></audio>
-    <audio src="audio/Piano-E.wav" class="audios"></audio>
-    <audio src="audio/Piano-F.wav" class="audios"></audio>
-    <audio src="audio/Piano-G.wav" class="audios"></audio>
-    <audio src="audio/Piano-A.wav" class="audios"></audio>
-    <audio src="audio/Piano-B.wav" class="audios"></audio>
-    <audio src="audio/Piano-CU.wav" class="audios"></audio>
+    <span hidden>
+        <audio src="audio/Piano-C.wav" class="audios">C</audio>
+        <audio src="audio/Piano-Db.wav" class="audios">Db</audio>
+        <audio src="audio/Piano-D.wav" class="audios">D</audio>
+        <audio src="audio/Piano-Eb.wav" class="audios">Eb</audio>
+        <audio src="audio/Piano-E.wav" class="audios">E</audio>
+        <audio src="audio/Piano-F.wav" class="audios">F</audio>
+        <audio src="audio/Piano-Gb.wav" class="audios">Gb</audio>
+        <audio src="audio/Piano-G.wav" class="audios">G</audio>
+        <audio src="audio/Piano-Ab.wav" class="audios">Ab</audio>
+        <audio src="audio/Piano-A.wav" class="audios">A</audio>
+        <audio src="audio/Piano-Bb.wav" class="audios">Bb</audio>
+        <audio src="audio/Piano-B.wav" class="audios">B</audio>
+    </span>
 
     <div id="mainContainer">
         <div id="upperContainer">
@@ -48,17 +45,24 @@
             </div>
 
             <div id="gameContainer">
-                <div id="noteButtonContainer">
-                    <button onclick="checkAnswer('C')" class="gameButton">C</button>
-                    <button onclick="checkAnswer('D')" class="gameButton">D</button>
-                    <button onclick="checkAnswer('E')" class="gameButton">E</button>
-                    <button onclick="checkAnswer('F')" class="gameButton">F</button>
-                    <button onclick="checkAnswer('G')" class="gameButton">G</button>
-                    <button onclick="checkAnswer('A')" class="gameButton">A</button>
-                    <button onclick="checkAnswer('B')" class="gameButton">B</button>
+                <div id="pianoContainer">
+                    <button onclick="clickKey('Db')" class="gameButton pianoKey pianoBlackKey" id="Db">C#<br>Db</button>
+                    <button onclick="clickKey('Eb')" class="gameButton pianoKey pianoBlackKey" id="Eb">D#<br>Eb</button>
+                    <button onclick="clickKey('Gb')" class="gameButton pianoKey pianoBlackKey" id="Gb">F#<br>Gb</button>
+                    <button onclick="clickKey('Ab')" class="gameButton pianoKey pianoBlackKey" id="Ab">G#<br>Ab</button>
+                    <button onclick="clickKey('Bb')" class="gameButton pianoKey pianoBlackKey" id="Bb">A#<br>Bb</button>
+                    <button onclick="clickKey('C')" class="gameButton pianoKey pianoWhiteKey" id="C">C</button>
+                    <button onclick="clickKey('D')" class="gameButton pianoKey pianoWhiteKey" id="D">D</button>
+                    <button onclick="clickKey('E')" class="gameButton pianoKey pianoWhiteKey" id="E">E</button>
+                    <button onclick="clickKey('F')" class="gameButton pianoKey pianoWhiteKey" id="F">F</button>
+                    <button onclick="clickKey('G')" class="gameButton pianoKey pianoWhiteKey" id="G">G</button>
+                    <button onclick="clickKey('A')" class="gameButton pianoKey pianoWhiteKey" id="A">A</button>
+                    <button onclick="clickKey('B')" class="gameButton pianoKey pianoWhiteKey" id="B">B</button>
                 </div>
-                <button id="listenButton" class="gameButton">Listen</button>
-                <button id="nextNote" class="gameButton">Next Note</button>
+                <div id="buttonHolder">
+                    <button id="listenButton" class="gameButton">Play Note</button>
+                </div>
+
             </div>
 
             <div class="sideBox" id="correctBox">
@@ -71,31 +75,6 @@
         <div id="mainBottomContainer">
             <div id="scorePercentage">
                 <h3 id="scorePercentageText">0%</h3>
-            </div>
-        </div>
-        <div id="noteSelection" hidden>
-            <div id="topSelection">
-                <h3>Enable Trombone Notes</h3>
-                <input class="checkBoxOptions" id="tromboneMode" checked="true" type="checkbox">
-                <h3>C Major</h3>
-            </div>
-            <div id="middleSelection">
-                <div>C</div>
-                <div>D</div>
-                <div>E</div>
-                <div>F</div>
-                <div>G</div>
-                <div>A</div>
-                <div>B</div>
-            </div>
-            <div id="bottomSelection">
-                <input class="checkBoxOptions" id="C" checked="true" type="checkbox">
-                <input class="checkBoxOptions" id="D" checked="true" type="checkbox">
-                <input class="checkBoxOptions" id="E" checked="true" type="checkbox">
-                <input class="checkBoxOptions" id="F" type="checkbox">
-                <input class="checkBoxOptions" id="G" type="checkbox">
-                <input class="checkBoxOptions" id="A" type="checkbox">
-                <input class="checkBoxOptions" id="B" type="checkbox">
             </div>
         </div>
     </div>
