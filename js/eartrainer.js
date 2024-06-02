@@ -1,20 +1,21 @@
 const noteSelectionButtonDiv = document.getElementById("noteSelectionButton");
 const noteSelectionMenu = document.getElementById("noteSelection");
 const noteCheckBoxes = document.getElementsByClassName('checkBoxOptions');
-const guessInput = document.getElementById('guessInput');
-const enterButton = document.getElementById('enterButton');
 const listenButton = document.getElementById('listenButton');
 const noteButtons = document.querySelectorAll('.gameButton');
 const correctDisplay = document.getElementById('correctScore');
 const incorrectDisplay = document.getElementById('incorrectScore');
 const percentageDisplay = document.getElementById('scorePercentageText');
 const audioElements = document.getElementsByClassName("audios");
+const pianoContainer = document.getElementById('pianoContainer');
 
 class Note {
     constructor(key, audioElement) {
         this.key = key;
         this.audio = audioElement;
         this.enabled = true;
+        this.backgroundColor = key.includes('b') ? "black" : "white";
+        this.incorrect = 0;
     }
 
     play() {
@@ -23,22 +24,23 @@ class Note {
     }
 }
 
+function playScale() {
+    for (let i = 0; i < notes.length; i++) {
+        setTimeout(() => {
+            notes[i].play();
+        }, i * 250);
+    }
+}
+
 const notes = [];
 let answer = -1;
 
-const states = {
-    selectingNotes: false,
-    canAnswer: true,
-    wonRound: false
+const stats = {
+    correct: 0,
+    incorrect: 0,
+    percentage: 0
 }
 
-
-let correct = 0;
-let incorrect = 0;
-let percentage = 0;
-
-// let noteToPlay;
-// let correctlyAnswered = false;
 
 for (let i = 0; i < audioElements.length; i++) {
     notes.push(new Note(audioElements[i].innerText, audioElements[i]))
@@ -48,38 +50,53 @@ randomizeAnswer();
 
 function nextRound() {
     listenButton.innerHTML = "Play Note";
-    states.wonRound = false;
+    pianoContainer.dataset.canClick = true;
     randomizeAnswer();
     answer.play();
 }
 
 function clickKey(key) {
-
-    if (states.selectingNotes) {
-        const keyIndex = notes.findIndex(note => note.key === key);
-        notes[keyIndex].enabled = !notes[keyIndex].enabled;
+    const note = notes[notes.findIndex(note => note.key === key)];
+    
+    if (noteSelectionButtonDiv.dataset.selectingNotes == "true") {
+        note.enabled = !note.enabled;
         toggleVisibility(key);
         return;
     }
 
-    if (states.wonRound)
+    if (pianoContainer.dataset.canClick == "false")
+        return;
+
+    if (!note.enabled)
         return;
 
     if (key === answer.key) {
-        correct++;
-        states.wonRound = true;
+        stats.correct++;
+        pianoContainer.dataset.canClick = false;
         listenButton.innerText = "Next note";
+        tempColorKey(key, "green");
     } else {
-        incorrect++;
+        stats.incorrect++;
+        note.incorrect++;
+        tempColorKey(key, "red");
     }
 
     updateScore();
 }
 
+function tempColorKey(id, color) {
+    const element = document.getElementById(id);
+
+    element.style.backgroundColor = color;
+    setTimeout(() => {
+        element.style.backgroundColor = notes[notes.findIndex(note => note.key === id)].backgroundColor;
+    }, 750);
+}
+
 function updateScore() {
-    correctDisplay.innerText = correct;
-    incorrectDisplay.innerText = incorrect;
-    percentageDisplay.innerText = `${Math.round(correct/(correct+incorrect)*100)}%`;
+    correctDisplay.innerText = stats.correct;
+    incorrectDisplay.innerText = stats.incorrect;
+    percentageDisplay.innerText = `${Math.round(stats.correct/(stats.correct+stats.incorrect)*100)}%`;
 }
 
 function toggleVisibility(id) {
@@ -89,15 +106,30 @@ function toggleVisibility(id) {
 }
 
 noteSelectionButtonDiv.onclick = () => {
-    states.selectingNotes = !states.selectingNotes;
-    if (!states.selectingNotes)
+    if (noteSelectionButtonDiv.dataset.selectingNotes == "true") {
+        noteSelectionButtonDiv.dataset.selectingNotes = false;
+        noteSelectionButtonDiv.classList.remove("pressed");
         randomizeAnswer();
+    } else {
+        noteSelectionButtonDiv.dataset.selectingNotes = true;
+        noteSelectionButtonDiv.classList.add("pressed");
+    }
+
+    if (notes.filter( note => note.enabled === true).length == 0) {
+        noteSelectionButtonDiv.dataset.selectingNotes = true;
+        noteSelectionButtonDiv.classList.add("pressed");
+    }
+
 }
 
 listenButton.onclick = () => {
-    if (states.wonRound) {
+    if (noteSelectionButtonDiv.dataset.selectingNotes == "true")
+        return;
+
+    if (pianoContainer.dataset.canClick == "false") {
         nextRound();
-    } else {
+    } else 
+    if (noteSelectionButtonDiv.dataset.selectingNotes == "false"){
         answer.play();
     }
 }

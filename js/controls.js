@@ -255,25 +255,25 @@ function pageKeyDown(e) {
                 noteToPlay.play(); 
                 return;
             case 67: 
-                checkAnswer('C'); 
+                clickKey('C'); 
                 return;
             case 68: 
-                checkAnswer('D'); 
+                clickKey('D'); 
                 return;
             case 69: 
-                checkAnswer('E'); 
+                clickKey('E'); 
                 return;
             case 70: 
-                checkAnswer('F'); 
+                clickKey('F'); 
                 return;
             case 71: 
-                checkAnswer('G'); 
+                clickKey('G'); 
                 return;
             case 65: 
-                checkAnswer('A'); 
+                clickKey('A'); 
                 return;
             case 66: 
-                checkAnswer('B'); 
+                clickKey('B'); 
                 return;
         }
     }

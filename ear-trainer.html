@@ -28,11 +28,12 @@
         <audio src="audio/Piano-A.wav" class="audios">A</audio>
         <audio src="audio/Piano-Bb.wav" class="audios">Bb</audio>
         <audio src="audio/Piano-B.wav" class="audios">B</audio>
+        <audio src="audio/Piano-Cu.wav" class="audios">Cu</audio>
     </span>
 
     <div id="mainContainer">
         <div id="upperContainer">
-            <div id="noteSelectionButton">
+            <div id="noteSelectionButton" data-selecting-notes="false">
                 <h3>Select Notes</h3>
             </div>
         </div>
@@ -45,7 +46,7 @@
             </div>
 
             <div id="gameContainer">
-                <div id="pianoContainer">
+                <div id="pianoContainer" data-can-click="true">
                     <button onclick="clickKey('Db')" class="gameButton pianoKey pianoBlackKey" id="Db">C#<br>Db</button>
                     <button onclick="clickKey('Eb')" class="gameButton pianoKey pianoBlackKey" id="Eb">D#<br>Eb</button>
                     <button onclick="clickKey('Gb')" class="gameButton pianoKey pianoBlackKey" id="Gb">F#<br>Gb</button>
@@ -58,6 +59,7 @@
                     <button onclick="clickKey('G')" class="gameButton pianoKey pianoWhiteKey" id="G">G</button>
                     <button onclick="clickKey('A')" class="gameButton pianoKey pianoWhiteKey" id="A">A</button>
                     <button onclick="clickKey('B')" class="gameButton pianoKey pianoWhiteKey" id="B">B</button>
+                    <button onclick="clickKey('Cu')" class="gameButton pianoKey pianoWhiteKey" id="Cu">C</button>
                 </div>
                 <div id="buttonHolder">
                     <button id="listenButton" class="gameButton">Play Note</button>

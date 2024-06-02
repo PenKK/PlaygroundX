@@ -3,6 +3,12 @@ h3 {
     padding: 0px;
 }
 
+
+.pressed {
+    transform: translate(-95%, 5%) !important;
+    box-shadow: 0 0 0 !important;
+}
+
 #mainContainer {
     width: 60vw;
     height: 60vh;
@@ -66,6 +72,10 @@ h3 {
     height: 4vh;
     font-size: 1.5vw;
     text-align: center;
+}
+
+#listenButton {
+    transform: translateY(20%);
 }
 
 .checkBoxOptions {
@@ -137,7 +147,8 @@ h3 {
     height: 40%;
     border: solid 0.25vw brown;
     border-radius: 0.75vw;
-    transition: background-color 200ms;
+    box-shadow: .25vw .25vw  black;
+    transition: all 100ms;
 }
 
 #noteSelectionButton:hover {
@@ -198,53 +209,49 @@ h3 {
 }
 
 #Db {
-    transform: translate(150%, -5%);
+    transform: translate(120%, -5%);
 }
 
 #Eb {
-    transform: translate(357%, -5%);
+    transform: translate(303%, -5%);
 }
 
 #Gb {
-    transform: translate(757%, -5%);
+    transform: translate(653%, -5%);
 }
 
 #Ab {
-    transform: translate(970%, -5%);
+    transform: translate(835%, -5%);
 }
 
 #Bb {
-    transform: translate(1173%, -5%);
+    transform: translate(1013%, -5%);
 }
 
-
-
-
-
 #Db:active {
-    transform: translate(160%, 0%);
+    transform: translate(135%, 0%);
 }
 
 #Eb:active {
-    transform: translate(367%, 0%);
+    transform: translate(318%, 0%);
 }
 
 #Gb:active {
-    transform: translate(767%, 0%);
+    transform: translate(668%, 0%);
 }
 
 #Ab:active {
-    transform: translate(980%, 0%);
+    transform: translate(848%, 0%);
 }
 
 #Bb:active {
-    transform: translate(1183%, 0%);
+    transform: translate(1028%, 0%);
 }
 
 #mainBottomContainer {
     width: 100%;
     height: 5%;
-    transform: translateY(-380%);
+    transform: translateY(-310%);
     display: flex;
     justify-content: space-evenly;
 }
@@ -305,6 +312,7 @@ h3 {
         height: 35%;
         border: solid .7vw brown;
         border-radius: 2.5vw;
+        transition: all 250ms;
     }
 
     .checkBoxOptions {
