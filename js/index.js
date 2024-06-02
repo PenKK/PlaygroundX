@@ -1,3 +1,5 @@
+rainbowAnimationEl(document.getElementById("earTrainer"), 10);
+
 if (localStorage.getItem("HarrHarrTime") == null) {
     console.log("Harr harr initialized");
     localStorage.setItem("HarrHarrTime", "0");
