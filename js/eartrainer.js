@@ -24,23 +24,13 @@ class Note {
     }
 }
 
-function playScale() {
-    for (let i = 0; i < notes.length; i++) {
-        setTimeout(() => {
-            notes[i].play();
-        }, i * 250);
-    }
-}
-
-const notes = [];
 let answer = -1;
-
+const notes = [];
 const stats = {
     correct: 0,
     incorrect: 0,
     percentage: 0
 }
-
 
 for (let i = 0; i < audioElements.length; i++) {
     notes.push(new Note(audioElements[i].innerText, audioElements[i]))
@@ -57,7 +47,7 @@ function nextRound() {
 
 function clickKey(key) {
     const note = notes[notes.findIndex(note => note.key === key)];
-    
+
     if (noteSelectionButtonDiv.dataset.selectingNotes == "true") {
         note.enabled = !note.enabled;
         toggleVisibility(key);
@@ -137,4 +127,12 @@ listenButton.onclick = () => {
 function randomizeAnswer() {
     const enabledNotes = notes.filter( note => note.enabled === true);
     answer = enabledNotes[Math.floor(Math.random() * enabledNotes.length)];
+}
+
+function playScale() {
+    for (let i = 0; i < notes.length; i++) {
+        setTimeout(() => {
+            notes[i].play();
+        }, i * 250);
+    }
 }
