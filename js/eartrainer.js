@@ -109,7 +109,6 @@ noteSelectionButtonDiv.onclick = () => {
         noteSelectionButtonDiv.dataset.selectingNotes = true;
         noteSelectionButtonDiv.classList.add("pressed");
     }
-
 }
 
 listenButton.onclick = () => {
