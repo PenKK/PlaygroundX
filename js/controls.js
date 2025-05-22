@@ -1,4 +1,4 @@
-//This code is really bad and stupid why did I make it all on one page idc anymore and ima just use dont judge 
+//This code is really bad why did I make it all on one page idc anymore and ima just use dont judge
 
 document.addEventListener("keydown", pageKeyDown, false);
 
@@ -7,7 +7,7 @@ function pageKeyDown(e) {
         return;
     }
     //General controls across all pages
-    switch(e.keyCode) {
+    switch (e.keyCode) {
         case 72: //H
             window.location.href = "index.html";
             return;
@@ -19,8 +19,8 @@ function pageKeyDown(e) {
     //Page specific controls
 
     if (document.URL.search("index.html") != -1) {
-        switch(e.keyCode) {
-            case 49: 
+        switch (e.keyCode) {
+            case 49:
                 location.href = "guessing-game.html";
                 return;
             case 50:
@@ -33,10 +33,8 @@ function pageKeyDown(e) {
                 location.href = "2048.html";
                 return;
         }
-    } else 
-
-    if (document.URL.search("rock-paper-scissors.html") != -1) {
-        switch(e.keyCode) {
+    } else if (document.URL.search("rock-paper-scissors.html") != -1) {
+        switch (e.keyCode) {
             case 49:
                 play(0);
                 return;
@@ -47,44 +45,44 @@ function pageKeyDown(e) {
                 play(2);
                 return;
         }
-    } else 
-
-    if (document.URL.search("tic-tac-toe.html") != -1 || document.URL.search("tic-tac-toe-ai.html") != -1) {
-        switch(e.keyCode) { //Numpad keys
+    } else if (document.URL.search("tic-tac-toe.html") != -1 || document.URL.search("tic-tac-toe-ai.html") != -1) {
+        switch (
+            e.keyCode //Numpad keys
+        ) {
             case 36:
-                clickTile(0,0);
+                clickTile(0, 0);
                 aiTriggerKeyboard();
                 return;
             case 38:
-                clickTile(0,1);
+                clickTile(0, 1);
                 aiTriggerKeyboard();
                 return;
             case 33:
-                clickTile(0,2);
+                clickTile(0, 2);
                 aiTriggerKeyboard();
                 return;
             case 37:
-                clickTile(1,0);
+                clickTile(1, 0);
                 aiTriggerKeyboard();
                 return;
             case 12:
-                clickTile(1,1);
+                clickTile(1, 1);
                 aiTriggerKeyboard();
                 return;
             case 39:
-                clickTile(1,2);
+                clickTile(1, 2);
                 aiTriggerKeyboard();
                 return;
             case 35:
-                clickTile(2,0);
+                clickTile(2, 0);
                 aiTriggerKeyboard();
                 return;
             case 40:
-                clickTile(2,1);
+                clickTile(2, 1);
                 aiTriggerKeyboard();
                 return;
             case 34:
-                clickTile(2,2);
+                clickTile(2, 2);
                 aiTriggerKeyboard();
                 return;
             case 13:
@@ -92,10 +90,8 @@ function pageKeyDown(e) {
                 return;
         }
         return;
-    } else 
-
-    if (document.URL.search("2048.html") != -1) {
-        switch(e.keyCode) {
+    } else if (document.URL.search("2048.html") != -1) {
+        switch (e.keyCode) {
             case 87:
                 up();
                 return;
@@ -118,21 +114,19 @@ function pageKeyDown(e) {
                 right();
                 return;
             case 39:
-                right()
+                right();
                 return;
             case 220:
                 spawnTile();
                 return;
         }
-    } else
-
-    if (document.URL.search("calculator.html") != -1 && document.URL.search("quadratic") == -1) {
+    } else if (document.URL.search("calculator.html") != -1 && document.URL.search("quadratic") == -1) {
         console.log(e.keyCode);
         if (typing) {
             return;
         }
 
-        switch(e.keyCode) {
+        switch (e.keyCode) {
             case 49:
                 inputNumber(1);
                 return;
@@ -150,7 +144,7 @@ function pageKeyDown(e) {
                 return;
             case 54:
                 if (event.shiftKey) {
-                    inputOpperand('^');
+                    inputOpperand("^");
                 } else {
                     inputNumber(6);
                 }
@@ -196,7 +190,7 @@ function pageKeyDown(e) {
             case 67:
                 if (event.shiftKey && inverseOn) {
                     inputTrig(5, true);
-                } else if (event.shiftKey){
+                } else if (event.shiftKey) {
                     inputTrig(5, false);
                 } else {
                     clearDisplay();
@@ -208,7 +202,7 @@ function pageKeyDown(e) {
             case 83:
                 if (event.shiftKey && inverseOn) {
                     inputTrig(4, true);
-                } else if (event.shiftKey){
+                } else if (event.shiftKey) {
                     inputTrig(4, false);
                 } else {
                     squareroot();
@@ -217,7 +211,7 @@ function pageKeyDown(e) {
             case 84:
                 if (event.shiftKey && inverseOn) {
                     inputTrig(6, true);
-                } else if (event.shiftKey){
+                } else if (event.shiftKey) {
                     inputTrig(6, false);
                 }
                 return;
@@ -244,37 +238,41 @@ function pageKeyDown(e) {
                 second();
                 return;
         }
-    } else
-
-    if (document.URL.search("ear-trainer.html") != -1) {
+    } else if (document.URL.search("ear-trainer.html") != -1) {
         switch (e.keyCode) {
-            case 13: 
-                correctAnswer(); 
+            case 13:
+                correctAnswer();
                 return;
-            case 76: 
-                noteToPlay.play(); 
+            case 76:
+                noteToPlay.play();
                 return;
-            case 67: 
-                clickKey('C'); 
+            case 67:
+                clickKey("C");
                 return;
-            case 68: 
-                clickKey('D'); 
+            case 68:
+                clickKey("D");
                 return;
-            case 69: 
-                clickKey('E'); 
+            case 69:
+                clickKey("E");
                 return;
-            case 70: 
-                clickKey('F'); 
+            case 70:
+                clickKey("F");
                 return;
-            case 71: 
-                clickKey('G'); 
+            case 71:
+                clickKey("G");
                 return;
-            case 65: 
-                clickKey('A'); 
+            case 65:
+                clickKey("A");
                 return;
-            case 66: 
-                clickKey('B'); 
+            case 66:
+                clickKey("B");
                 return;
+        }
+    } else if (document.URL.search("custom-beeper.html") != -1) {
+        switch (e.keyCode) {
+            case 13:
+                startButton.click();
+                break;
         }
     }
 }
