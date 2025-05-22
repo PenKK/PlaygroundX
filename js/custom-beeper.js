@@ -40,7 +40,7 @@ function updateBeepEstimate() {
 
     let text = "Enter valid values";
     if (isFinite(estimate) && estimate != 0) {
-        text = `There will be around ${estimate} beeps`;
+        text = `There will be around ${estimate} beep(s)`;
     } 
     beepEstimateEl.innerText = text;
 }
