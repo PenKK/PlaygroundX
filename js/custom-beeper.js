@@ -65,10 +65,10 @@ function getRandDelay() {
 
 function beep(delay) {
     setTimeout(() => {
-        if (new Date().getTime() - startTime > durationEl.value * 1000 || !on) {
-            if (!on) {
-                return;
-            }
+        if (!on) {
+            return;
+        }
+        if (new Date().getTime() - startTime > durationEl.value * 1000) {
             endBeeper();
         } else {
             playDing()
