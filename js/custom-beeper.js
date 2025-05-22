@@ -4,7 +4,9 @@ const maxEl = document.getElementById("maxInput");
 const startButton = document.getElementById("startButton");
 const beepEstimateEl = document.getElementById("beepEstimate");
 const volumeEl = document.getElementById("volume");
-const dingSound = new Audio('audio/beep-mono.wav');
+const dingSound = new Audio("audio/beep-mono.wav");
+const changeEl = document.getElementById("minChange");
+const changeTextWarn = document.getElementById("minChangeWarning");
 
 document.getElementById("toggle").onclick = toggleTheme;
 
@@ -24,6 +26,7 @@ minEl.onchange = updateBeepEstimate;
 maxEl.onchange = updateBeepEstimate;
 durationEl.onchange = updateBeepEstimate;
 volumeEl.onchange = updateVolume;
+changeEl.onchange = checkChange;
 
 updateVolume();
 
@@ -31,7 +34,20 @@ function updateVolume() {
     dingSound.volume = volumeEl.value / 1000;
 }
 
+function checkChange() {
+    let maxChange = (maxEl.value - minEl.value)/minEl.value * 100;
+    
+    if (maxChange - 70 < changeEl.value) {
+        changeTextWarn.innerText = `The maximum change is ${maxChange}%, ${changeEl.value}% is too high and the app may malfunction`
+    } else {
+        changeTextWarn.innerText = ``;
+    }
+
+    return maxChange;
+}
+
 function updateBeepEstimate() {
+    checkChange();
     if (minEl.value > maxEl.value) {
         return;
     }
@@ -41,7 +57,7 @@ function updateBeepEstimate() {
     let text = "Enter valid values";
     if (isFinite(estimate)) {
         text = `There will be around ${estimate} beep(s)`;
-    } 
+    }
     beepEstimateEl.innerText = text;
 }
 
@@ -56,23 +72,37 @@ function startBeeper() {
     startButton.onclick = endBeeper;
 
     startTime = new Date().getTime();
-    beep(getRandDelay());
+    beep(getRandDelay(0));
+
+    setTimeout(() => {
+        endBeeper();
+    }, durationEl * 1000);
 }
 
-function getRandDelay() {
-    return ((maxEl.value - minEl.value) * Math.random() - -minEl.value) * 1000;
+function getRandDelay(oldDelay) {
+    let delay = ((maxEl.value - minEl.value) * Math.random() - -minEl.value) * 1000;
+    let changePercent = Math.abs(delay - oldDelay) / oldDelay;
+
+    console.log(`Calculated change is ${changePercent * 100}`);
+
+    if (checkChange() < 5) {
+        return delay;
+    }
+
+    if (changePercent > changeEl.value / 100) {
+        return delay;
+    } else {
+        return getRandDelay(oldDelay);
+    }
 }
 
 function beep(delay) {
     setTimeout(() => {
-        if (!on) {
+        if (new Date().getTime() - startTime > durationEl.value * 1000 || !on) {
             return;
-        }
-        if (new Date().getTime() - startTime > durationEl.value * 1000) {
-            endBeeper();
         } else {
-            playDing()
-            let newDelay = getRandDelay();
+            playDing();
+            let newDelay = getRandDelay(delay);
             console.log(`The next beep is in ${newDelay} ms`);
             beep(newDelay);
         }
@@ -111,6 +141,5 @@ function themeDark() {
 }
 
 function themeBisque() {
-    document.body.style.backgroundColor = "bisque"
+    document.body.style.backgroundColor = "bisque";
 }
-
