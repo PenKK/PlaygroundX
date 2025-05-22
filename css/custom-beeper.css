@@ -1,0 +1,25 @@
+#sideMenu {
+    position: absolute;
+    width: 15vw;
+    height: 5vh;
+    background-color: beige;
+    border: 0.3vw solid brown;
+    left: 25%;
+    transform: translateX(-90%);
+    top: 25%;
+    border-radius: 0.7vw;
+    font-family: "Consolas";
+}
+
+.optionContainer {
+    width: 100%;
+    height: 5vh;
+    font-size: 1.3vw;
+    padding: 0.3vw;
+}
+
+#toggle {
+    position: absolute;
+    right: 1vh;
+    top: 1vh;
+}

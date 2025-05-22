@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Custom Beeper</title>
+    <script src="js/utility.js" defer></script>
+    <script src="js/controls.js"></script>
+    <script src="js/custom-beeper.js" defer></script>
+    <link rel="stylesheet" href="css/style.css">
+	<link rel="stylesheet" href="css/custom-beeper.css">
+    <!-- For elvis huehuehue -->
+</head>
+<body>
+    <h1>Custom Beeper</h1>
+
+    <div id="sideMenu">
+        <div class="optionContainer">
+            Volume <input id="volume" type="range" value="8">
+        </div>
+    </div>
+
+    <button class="gameButton" id="toggle">Toggle theme</button>
+
+    <div class="gameBox" style="height: 65vh; transform: translateY(-6vh);">
+        <h2>Duration</h2>
+        
+        <input class="gameInput" type="number" placeholder="in seconds" id="durationInput"> 
+        <h2>Minimum delay</h2>
+        <input class="gameInput" type="number" placeholder="in seconds" id="minInput"> 
+        <h2>Maximum delay</h2>
+        <input class="gameInput" type="number" placeholder="in seconds" id="maxInput"> 
+        <br>
+        <h3 id="beepEstimate">Enter valid values</h3>
+        <br>
+        <button style="margin-top: 0; " class="gameButton" id="startButton">Start</button> <br>
+    </div>
+
+    
+</body>
+</html>

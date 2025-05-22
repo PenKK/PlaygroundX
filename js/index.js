@@ -1,4 +1,4 @@
-rainbowAnimationEl(document.getElementById("earTrainer"), 10);
+rainbowAnimationEl(document.getElementById("customBeeper"), 10);
 
 if (localStorage.getItem("HarrHarrTime") == null) {
     console.log("Harr harr initialized");
@@ -17,62 +17,52 @@ if ((localStorage.getItem("MASTER_GUESSER") == "true") &&
 
 //Page transfering terrible method dont ask thank idc anymore
 
-gg = () => {
+function goToPage(page) {
     setTimeout(() => {
-        window.location.href = "guessing-game.html";
+        window.location.href = page;
     }, pageChangeDelay);	
+}
+
+gg = () => {
+    goToPage("guessing-game.html");
 }
 
 rps = () => {
-    setTimeout(() => {
-        window.location.href = "rock-paper-scissors.html";
-    }, pageChangeDelay);	
+    goToPage("rock-paper-scissors.html");
 }
 
 ttt = () => {
-    setTimeout(() => {
-        window.location.href = "tic-tac-toe.html";
-    }, pageChangeDelay);	
+    goToPage("tic-tac-toe.html");
 }
 
 tft = () => {
-    setTimeout(() => {
-        window.location.href = "2048.html";
-    }, pageChangeDelay);
+    goToPage("2048.html");
 }
 
 ach = () => {
-    setTimeout(() => {
-        window.location.href = "achievements.html";
-    }, pageChangeDelay);
+    goToPage("achievements.html");
 }
 
 cont = () => {
-    setTimeout(() => {
-        window.location.href = "controls.html";
-    }, pageChangeDelay);
+    goToPage("controls.html");
 }
 
 quad = () => {
-    setTimeout(() => {
-        window.location.href = "quadratic-calculator.html";
-    }, pageChangeDelay);
+    goToPage("quadratic-calculator.html");
 }
 
 calc = () => {
-    setTimeout(() => {
-        window.location.href = "calculator.html"
-    }, pageChangeDelay);
+    goToPage("calculator.html");
 }
 
 graph = () => {
-    setTimeout(() => {
-        window.location.href = "graphing-tool.html"
-    }, pageChangeDelay);
+    goToPage("graphing-tool.html");
 }
 
 train = () => {
-    setTimeout(() => {
-        window.location.href = "ear-trainer.html"
-    }, pageChangeDelay);
+    goToPage("ear-trainer.html");
+}
+
+beep = () => {
+    goToPage("custom-beeper.html");
 }
