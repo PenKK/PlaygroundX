@@ -76,7 +76,7 @@ function startBeeper() {
 
     setTimeout(() => {
         endBeeper();
-    }, durationEl * 1000);
+    }, durationEl.value * 1000);
 }
 
 function getRandDelay(oldDelay) {
@@ -88,7 +88,6 @@ function getRandDelay(oldDelay) {
     if (checkChange() < 5) {
         return delay;
     }
-
     if (changePercent > changeEl.value / 100) {
         return delay;
     } else {
@@ -102,9 +101,13 @@ function beep(delay) {
             return;
         } else {
             playDing();
-            let newDelay = getRandDelay(delay);
-            console.log(`The next beep is in ${newDelay} ms`);
-            beep(newDelay);
+            try {
+                let newDelay = getRandDelay(delay);
+                console.log(`The next beep is in ${newDelay} ms`);
+                beep(newDelay);
+            } catch(e) {
+                alert("Minimum change was too high, unable to find a delay");
+            }
         }
     }, delay);
 }
