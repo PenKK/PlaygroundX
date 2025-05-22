@@ -39,7 +39,7 @@ function updateBeepEstimate() {
     let estimate = Math.floor(durationEl.value / ((maxEl.value - -minEl.value) / 2)) - 1;
 
     let text = "Enter valid values";
-    if (isFinite(estimate) && estimate != 0) {
+    if (isFinite(estimate)) {
         text = `There will be around ${estimate} beep(s)`;
     } 
     beepEstimateEl.innerText = text;
