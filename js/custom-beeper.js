@@ -48,7 +48,7 @@ function checkChange() {
 
 function updateBeepEstimate() {
     checkChange();
-    if (minEl.value > maxEl.value) {
+    if (parseInt(minEl.value, 10) > parseInt(maxEl.value, 10)) {
         return;
     }
 
@@ -62,9 +62,10 @@ function updateBeepEstimate() {
 }
 
 function startBeeper() {
-    if (minEl.value > maxEl.value) {
+    if (parseInt(minEl.value, 10) > parseInt(maxEl.value, 10)) {
         return;
     }
+    
     console.log("Beeping started");
     on = true;
 
