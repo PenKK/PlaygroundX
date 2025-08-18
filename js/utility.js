@@ -188,7 +188,7 @@ checkAfton = () => {
         ElementId("skipButton").hidden = true;
         document.body.removeAttribute("style");
         try {
-            ElementId("aftonHeader").innerHTML = "PlaygroundX - Arman Bains";
+            ElementId("aftonHeader").innerHTML = "PlaygroundX";
         } catch (error) {}
 
         for (let i = 0; i < header2Elements.length; i++) {

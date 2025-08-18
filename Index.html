@@ -1,118 +1,202 @@
-<!DOCTYPE html> 
+<!DOCTYPE html>
 <html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>PlaygroundX</title>
-	<link rel="icon" type="image/x-icon" href="icon.png">
-	<link rel="shortcut icon" href="#">
-	<script src="js/utility.js" defer></script>
-	<script src="js/index.js" defer></script>
-	<script src="js/controls.js"></script>
-	<script src="https://kit.fontawesome.com/837a8073e0.js" crossorigin="anonymous"></script>
-	<link rel="stylesheet" type="text/css" href="css/style.css"/>
-	<link rel="stylesheet" type="text/css" href="css/index.css"/>
-	<!-- SCHOOL COMPUTERS ARE 1600x1200 -->
-	<!-- SMALL LAPTOPS AT SCHOOL ARE 1366x768 IM TOO BAD AT CSS FOR THIS -->
-	<!-- ^ update: vary ez just use vh and vw i was so foolish -->
+    <head>
+        <meta charset="UTF-8" />
+        <meta
+            http-equiv="X-UA-Compatible"
+            content="IE=edge"
+        />
+        <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1.0"
+        />
+        <title>PlaygroundX</title>
+        <link
+            rel="icon"
+            type="image/x-icon"
+            href="icon.png"
+        />
+        <link
+            rel="shortcut icon"
+            href="#"
+        />
+        <script
+            src="js/utility.js"
+            defer
+        ></script>
+        <script
+            src="js/index.js"
+            defer
+        ></script>
+        <script src="js/controls.js"></script>
+        <script
+            src="https://kit.fontawesome.com/837a8073e0.js"
+            crossorigin="anonymous"
+        ></script>
+        <link
+            rel="stylesheet"
+            type="text/css"
+            href="css/style.css"
+        />
+        <link
+            rel="stylesheet"
+            type="text/css"
+            href="css/index.css"
+        />
+        <!-- SCHOOL COMPUTERS ARE 1600x1200 -->
+        <!-- SMALL LAPTOPS AT SCHOOL ARE 1366x768 IM TOO BAD AT CSS FOR THIS -->
+        <!-- ^ update: vary ez just use vh and vw i was so foolish -->
 
-	<!-- khanh sugestyions:
+        <!-- khanh sugestyions:
 		circles not rectangles
 		more images like background image for index.html -->
-</head>
+    </head>
 
-<body>
-	<!-- Page header -->
+    <body>
+        <!-- Page header -->
 
-	<h1 id="aftonHeader">
-		PlaygroundX - Arman Bains
-	</h1>
+        <h1 id="aftonHeader">PlaygroundX</h1>
 
-	<div class="notificationClass notificationEnterClass " id="noti">
-        <i id="notiExclamation" class="fa-solid fa-exclamation vertical-center fa-2xl" style="position: absolute;"></i>
-        <div id="notiText">
-            Sample
+        <div
+            class="notificationClass notificationEnterClass"
+            id="noti"
+        >
+            <i
+                id="notiExclamation"
+                class="fa-solid fa-exclamation vertical-center fa-2xl"
+                style="position: absolute"
+            ></i>
+            <div id="notiText">Sample</div>
         </div>
-    </div>
 
-	<!-- Header text -->
-	<div class="mainContainer">
-		<h2 id="headerText" class="aftonColor">Welcome to my Playground!<br>
-			Try to complete all achievements throughout games!
-		</h2>
+        <!-- Header text -->
+        <div class="mainContainer">
+            <h2
+                id="headerText"
+                class="aftonColor"
+            >
+                Welcome to my Playground!<br />
+                Try to complete all achievements throughout games! <br />
+            </h2>
+            <h3 id="nameLabel">By Arman Bains</h3>
 
-		<!-- Game buttons -->
+            <!-- Game buttons -->
 
-		<div class="innerContainer">
-			<div class="gameContainer">
-				
-				<button class="selectButton buttonSound" onclick="gg()">
-					Guessing Game
-				</button>
-	
-				<button class="selectButton buttonSound" onclick="rps()">
-					Rock Paper Scissors
-				</button>
-	
-				<button class="selectButton buttonSound" onclick="ttt()">
-					2 Player Tic Tac Toe
-				</button>
+            <div class="innerContainer">
+                <div class="gameContainer">
+                    <button
+                        class="selectButton buttonSound"
+                        onclick="gg()"
+                    >
+                        Guessing Game
+                    </button>
 
-				<button class="selectButton buttonSound" onclick="tft()">
-					2048
-				</button>
-				
-			</div>
+                    <button
+                        class="selectButton buttonSound"
+                        onclick="rps()"
+                    >
+                        Rock Paper Scissors
+                    </button>
 
-			<div class="break"></div>
+                    <button
+                        class="selectButton buttonSound"
+                        onclick="ttt()"
+                    >
+                        2 Player Tic Tac Toe
+                    </button>
 
-			<div class="gameContainer">
-				<button class="selectButton buttonSound secondaryButton" onclick="quad()">
-					Quadratic Calculator
-				</button>
-				<button class="selectButton buttonSound secondaryButton" onclick="calc()">
-					Calculator
-				</button>
-				<!-- <button class="selectButton buttonSound secondaryButton" onclick="graph()">
+                    <button
+                        class="selectButton buttonSound"
+                        onclick="tft()"
+                    >
+                        2048
+                    </button>
+                </div>
+
+                <div class="break"></div>
+
+                <div class="gameContainer">
+                    <button
+                        class="selectButton buttonSound secondaryButton"
+                        onclick="quad()"
+                    >
+                        Quadratic Calculator
+                    </button>
+                    <button
+                        class="selectButton buttonSound secondaryButton"
+                        onclick="calc()"
+                    >
+                        Calculator
+                    </button>
+                    <!-- <button class="selectButton buttonSound secondaryButton" onclick="graph()">
 					Graphing Tool
 				</button> -->
 
-				<button class="selectButton buttonSound secondaryButton" id="earTrainer" onclick="train()">
-					Ear Trainer
-				</button>
+                    <button
+                        class="selectButton buttonSound secondaryButton"
+                        id="earTrainer"
+                        onclick="train()"
+                    >
+                        Ear Trainer
+                    </button>
 
-                <button class="selectButton buttonSound secondaryButton" id="customBeeper" onclick="beep()">
-					Custom Beeper
-				</button>
-			</div>
+                    <button
+                        class="selectButton buttonSound secondaryButton"
+                        id="customBeeper"
+                        onclick="beep()"
+                    >
+                        Custom Beeper
+                    </button>
+                </div>
 
-			<div class="break"></div>
-	
-			<div class="gameContainer">
-				<button id="achievementsButton" class="selectButton buttonSound secondaryButton" onclick="ach()">
-					Achievements
-				</button>
-	
-				<button class="selectButton buttonSound secondaryButton" onclick="cont()">
-					Controls
-				</button>
-			</div>
+                <div class="break"></div>
 
-			
-		</div>
-		
-	</div>
-	
-	<button id="muteButton" class="buttonSound" onclick="toggleMute()">
-		<i id="muteIcon" class="fa-solid fa-volume-high fa-2xl"></i>
-		<i id="muteIcon" class="fa-solid fa-volume-off fa-2xl"></i>
-	</button>
+                <div class="gameContainer">
+                    <button
+                        id="achievementsButton"
+                        class="selectButton buttonSound secondaryButton"
+                        onclick="ach()"
+                    >
+                        Achievements
+                    </button>
 
-	<button hidden id="skipButton" class="buttonSound" onclick="skipSong()">
-		<i class="fa-solid fa-forward fa-2xl"></i>
-	</button>
+                    <button
+                        class="selectButton buttonSound secondaryButton"
+                        onclick="cont()"
+                    >
+                        Controls
+                    </button>
+                </div>
+            </div>
+        </div>
 
-	<button id="freddyButton" onclick="toggleFreddyFazbearMode()"></button>
-</body>
+        <button
+            id="muteButton"
+            class="buttonSound"
+            onclick="toggleMute()"
+        >
+            <i
+                id="muteIcon"
+                class="fa-solid fa-volume-high fa-2xl"
+            ></i>
+            <i
+                id="muteIcon"
+                class="fa-solid fa-volume-off fa-2xl"
+            ></i>
+        </button>
+
+        <button
+            hidden
+            id="skipButton"
+            class="buttonSound"
+            onclick="skipSong()"
+        >
+            <i class="fa-solid fa-forward fa-2xl"></i>
+        </button>
+
+        <button
+            id="freddyButton"
+            onclick="toggleFreddyFazbearMode()"
+        ></button>
+    </body>
 </html>
