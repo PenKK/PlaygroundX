@@ -10,7 +10,7 @@ function ElementId(id) {
 }
 
 function isHidden(el) {
-    return (el.offsetParent === null)
+    return el.offsetParent === null;
 }
 
 function hide(id) {
@@ -28,7 +28,7 @@ function grantAchievements() {
 }
 
 function incrementStorage(item) {
-    localStorage.setItem(item, parseInt(localStorage.getItem(item))+1)
+    localStorage.setItem(item, parseInt(localStorage.getItem(item)) + 1);
 }
 
 function aiTriggerKeyboard() {
@@ -46,7 +46,6 @@ function goTo(location) {
             window.location.href = "tic-tac-toe.html";
         }
     }, 100);
-    
 }
 
 //Notification
@@ -61,16 +60,15 @@ function notification(message) {
         notificationSound.play();
         ElementId("noti").style.opacity = 1;
         ElementId("notiText").innerHTML = message;
-        runAnimation("noti")
-    
-        setTimeout(function() {
+        runAnimation("noti");
+
+        setTimeout(function () {
             ElementId("noti").style.opacity = 0;
             notiLock = false;
         }, 5000);
-    
+
         resetAnimation("noti", "notificationEnterClass");
     }
-    
 }
 
 //Animation
@@ -116,7 +114,7 @@ locationReload = () => {
     setTimeout(() => {
         location.reload();
     }, pageChangeDelay);
-}
+};
 
 //Audio
 
@@ -124,9 +122,9 @@ const buttonTiles = document.getElementsByClassName("buttonSound");
 const clickSound = new Audio("https://assets.mixkit.co/active_storage/sfx/2568/2568-preview.mp3");
 
 for (let i = 0; i < buttonTiles.length; i++) {
-    buttonTiles[i].addEventListener("click", function() {
+    buttonTiles[i].addEventListener("click", function () {
         clickSound.play();
-    })
+    });
 }
 
 //Music
@@ -140,7 +138,6 @@ if (localStorage.getItem("song") == null) {
 }
 
 checkMuted = () => {
-    
     if (localStorage.getItem("muted") == "true") {
         clickSound.volume = 0;
         onIcon.style.opacity = 0;
@@ -154,10 +151,8 @@ checkMuted = () => {
         if (localStorage.getItem("williamAfton") == "true") {
             audioList[getSongIndex()].play();
         }
-
     }
-    
-}
+};
 
 const williamAftonRap = new Audio("https://docs.google.com/uc?export=download&id=1o6ltnLLWPBMq2-zbHiwllc5NowbB3IHH");
 const itsBeenSolong = new Audio("https://drive.google.com/uc?export=download&id=14ty-7Tmx3LVAOg0KQSk0oASONeP46MRI");
@@ -169,52 +164,48 @@ const audioList = [williamAftonRap, itsBeenSolong, harrHarrNoRap, jennifer17];
 audioList.forEach(element => {
     element.onended = () => {
         skipSong();
-    }
+    };
 });
 
 checkAfton = () => {
-
     const imageStyleEl = document.body.style;
     const header2Elements = document.getElementsByClassName("aftonColor");
 
     if (localStorage.getItem("williamAfton") == "true") {
-        
         ElementId("skipButton").removeAttribute("hidden");
         try {
             ElementId("aftonHeader").innerHTML = "WILLIAM AFTON MODE ACTIVATED";
         } catch (error) {}
-        
-        
+
         imageStyleEl.backgroundImage = "url(https://i.scdn.co/image/ab6761610000e5eba07eb018071ca45120dceb4f)";
 
         for (let i = 0; i < header2Elements.length; i++) {
             header2Elements[i].style.color = "white";
         }
-        
+
         playSong();
     } else {
-
         ElementId("skipButton").hidden = true;
-        document.body.removeAttribute("style")
+        document.body.removeAttribute("style");
         try {
-            ElementId("aftonHeader").innerHTML = "Capstone Project";
+            ElementId("aftonHeader").innerHTML = "Playground - Arman Bains";
         } catch (error) {}
-        
+
         for (let i = 0; i < header2Elements.length; i++) {
             header2Elements[i].style.color = "black";
         }
-        
+
         pauseAllSongs();
     }
 
     checkMuted();
-}
+};
 
 pauseAllSongs = () => {
     audioList.forEach(element => {
         element.pause();
     });
-}
+};
 
 playSong = () => {
     pauseAllSongs();
@@ -222,10 +213,9 @@ playSong = () => {
     audioList[getSongIndex()].play();
 
     checkMuted();
-}
+};
 
 skipSong = () => {
-
     incrementStorage("song");
 
     if (getSongIndex() >= audioList.length) {
@@ -233,7 +223,7 @@ skipSong = () => {
     }
 
     playSong();
-}
+};
 
 const offIcon = document.querySelector(".fa-volume-off");
 const onIcon = document.querySelector(".fa-volume-high");
@@ -245,7 +235,7 @@ toggleMute = () => {
         localStorage.setItem("muted", "false");
     }
     checkMuted();
-}
+};
 
 toggleFreddyFazbearMode = () => {
     if (localStorage.getItem("williamAfton") != "true") {
@@ -254,7 +244,7 @@ toggleFreddyFazbearMode = () => {
         localStorage.setItem("williamAfton", "false");
     }
     checkAfton();
-}
+};
 
 setInterval(() => {
     localStorage.setItem("HarrHarrTime", audioList[getSongIndex()].currentTime);
