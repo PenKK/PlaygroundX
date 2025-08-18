@@ -3,8 +3,8 @@ git checkout master
 
 echo "Deploying files to server..."
 
-ssh deploy 'rm -rf /var/www/capstone11.mooo.com/*'
-scp -r * deploy:/var/www/capstone11.mooo.com
+ssh deploy 'rm -rf /var/www/playgroundx.mooo.com/*'
+scp -r * deploy:/var/www/playgroundx.mooo.com
 
 echo "Done"
 

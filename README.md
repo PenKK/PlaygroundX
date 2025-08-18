@@ -1,4 +1,4 @@
-# Playground
+# PlaygroundX
 Started sometime November 2022 for my grade 11 capstone project in Computer Programming 11. I have since continued to work on the site for fun whenever I found time or inspiration to make something. The website has achievements to complete and easter eggs sprinkled around.
 
 ## [Website link](https://capstone11.mooo.com)
