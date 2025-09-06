@@ -6,10 +6,10 @@ Started sometime November 2022 for my grade 11 capstone project in Computer Prog
 * Number guessing game
 * Rock paper scissors (against a computer)
 * Tic Tac Toe, vs either a friend or a random choice generator
-* <img width="1573" height="552" alt="image" src="https://github.com/user-attachments/assets/2026b488-729f-434d-9b90-a40d317fb871" />
+<img width="1573" height="552" alt="image" src="https://github.com/user-attachments/assets/2026b488-729f-434d-9b90-a40d317fb871" />
 
 * 2048
-* <img width="732" height="724" alt="image" src="https://github.com/user-attachments/assets/9f0cbc0e-de9f-4a9e-a3ae-441eba6e0170" />
+<img width="732" height="724" alt="image" src="https://github.com/user-attachments/assets/9f0cbc0e-de9f-4a9e-a3ae-441eba6e0170" />
 
 
 ## Tools
