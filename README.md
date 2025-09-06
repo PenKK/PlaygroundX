@@ -7,6 +7,8 @@ Started sometime November 2022 for my grade 11 capstone project in Computer Prog
 * Rock paper scissors (against a computer)
 * Tic Tac Toe, vs either a friend or a random choice generator
 * 2048
+* <img width="732" height="724" alt="image" src="https://github.com/user-attachments/assets/9f0cbc0e-de9f-4a9e-a3ae-441eba6e0170" />
+
 
 ## Tools
 * A quadratic calculator that I created to help me with my precalculus homework in grade 11
