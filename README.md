@@ -41,6 +41,6 @@ Started sometime November 2022. I have since continued to work on the site for f
 
 ---
 
-### A beeper with customizable random intervals, requested by a friend
+### A beeper with customizable random intervals
 <img width="761" height="638" alt="image" src="https://github.com/user-attachments/assets/31d57b5b-9e41-4f0c-8412-233ef05f165e" />
 
