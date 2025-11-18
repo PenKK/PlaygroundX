@@ -1,4 +1,4 @@
-//This code is really bad why did I make it all on one page idc anymore and ima just use dont judge
+// Very weird way of adding controls that I refuse to change because I am lazy
 
 document.addEventListener("keydown", pageKeyDown, false);
 
