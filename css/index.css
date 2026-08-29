@@ -44,3 +44,13 @@
     right: 6vh;
     position: absolute;
 }
+
+#freeDnsAttrition {
+    position: absolute;
+    right: 0.5vw;
+    bottom: 0px;
+}
+
+#freeDnsAttritionLink {
+    color: brown;
+}
